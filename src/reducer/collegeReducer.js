@@ -16,7 +16,8 @@ switch (action.type) {
         
       return{
         loading:true,
-        colleges:[]
+        colleges:[],
+    
       };
     case ALL_COLLEGE_SUCCESS:
         

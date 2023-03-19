@@ -6,7 +6,7 @@ import Loader from '../layout/loader/loader';
 import CourseCard from './collegecardAndComponent/courseCard';
 import "./allCourses.css"
 import {  useParams } from 'react-router-dom';
-import Search from './collegecardAndComponent/search';
+import Search from '../layout/search';
 
 
 const AllCourses = () => {

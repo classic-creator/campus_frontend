@@ -4,7 +4,7 @@ import {  NavLink } from 'react-router-dom';
 import $ from 'jquery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookAtlas, faBuilding, faCheck,  faHomeAlt,  faUserAlt,  } from '@fortawesome/free-solid-svg-icons'
-import Search from '../../college/collegecardAndComponent/search';
+import Search from '../search';
 
 const Header = () => {
 
