@@ -1,0 +1,50 @@
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(184, 189, 192, 0.568);
+    transition: all 0.5s;
+    width: 16rem;
+    height: auto;
+    margin: 2vmax ;
+}
+.card:hover{
+    background-color: rgba(175, 168, 168, 0.733);
+    border: 0.5px solid rgb(59, 55, 55);
+    box-shadow: 0 0 5px rgba(15,15,15,0.26);
+    transform: translateY(-0.5vmax);
+    text-decoration: none;
+    /* cursor: pointer; */
+}
+.coursecard_body{
+
+    width: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: left; */
+    /* flex-direction: column; */
+    text-transform: capitalize;
+    padding-left: 1vmax;
+    margin: 1.5vmax 1.5vmax;
+}
+.coursecard_body h2{
+    
+    font: 2vmax "Roboto";
+}
+.coursecard_body span{
+    
+    font: 1vmax "Roboto";
+    display: inline;
+}
+.coursecard_body h3{
+    display: inline;
+    font: 1.5vmax "Roboto";
+}
+
+.coursecard_body_2{
+    margin-top: 1.5vmax;
+    margin-bottom: 2vmax;
+    margin-left: 1vmax;
+}
+
+

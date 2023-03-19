@@ -1,0 +1,30 @@
+h1{
+  
+    position: relative;
+    text-align: center;
+    font: 3vmax "Roboto";
+    border-bottom: 1px solid black;
+    padding: 1vmax 1vmax;
+    width: 95%;
+    left: 2.5%;
+}
+.main{
+    display: flex;
+  
+    margin: 1vmax auto;
+
+}
+.coursesdiv{
+
+    /* border: 2px solid black; */
+    margin-left: 0;
+    padding-left: 0vmax;
+}
+.filters{
+    width: 17%;
+    /* border: 2px solid black; */
+    margin-left: 1vmax;
+}
+.filters h2{
+    text-align: center;
+}

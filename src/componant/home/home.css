@@ -1,0 +1,53 @@
+.container{
+    display: flex;
+    margin: 1vmax auto;
+    width: 80vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* border: 2px solid rebeccapurple; */
+    max-width: 100%;
+    
+}
+.card_body{
+    display: flex;
+    color: rgb(44, 47, 49);
+    width: 80vmax;
+    text-decoration: none;
+    border-radius: 6px;
+    margin: 1vmax;
+    height: 20vmax;
+    background-color: rgba(224, 232, 236, 0.548);
+    transition: all 0.5s;
+}
+
+.card_body img{
+    width: 30vmax;
+    height: 18vmax;
+    border-radius: 4%;
+    margin: 1vmax 1vmax;
+    opacity: 10;
+}
+
+.card_body div h2{
+
+    text-transform: uppercase;
+    font-family: "Roboto";
+    font-size: 1.8vmax;
+    margin: 2px auto;
+    padding-top: 1vmax;
+    text-align: center; 
+    border-bottom: 1px solid black ;
+    width: 90%;
+    
+}
+.card_body div p{
+
+    margin-left: 2vmax;
+}
+.card_body:hover{
+    background-color: rgb(228, 235, 236);
+    border: 0.5px solid rgb(231, 196, 196);
+    box-shadow: 0 0 5px rgba(15,15,15,0.26);
+    transform: translateX(0.5vmax);
+    text-decoration: none;
+}

@@ -1,0 +1,221 @@
+.containers {
+    position: relative;
+    max-width: 100%;
+    padding: 2px 2px;
+    z-index: 0;
+}
+
+img {
+    width: 100%;
+    height: 37vh;
+    opacity: 0.7;
+}
+
+.bottomleft {
+    position: absolute;
+    bottom: 4.5vmax;
+    left: 1.5%;
+}
+
+.bottomRight {
+    position: absolute;
+    bottom: 2px;
+    left: 82%;
+    font-size: 1.2vmax;
+    font-family: "Roboto";
+}
+
+.bottomleft h2 {
+    text-transform: capitalize;
+    font-family: "Roboto";
+    font-size: 3.5vmax;
+    color: rgba(5, 5, 5, 0.795);
+    margin-bottom: -0.5vmax;
+
+}
+
+.bottomleft svg {
+    margin: 5px;
+    color: rgba(255, 0, 0, 0.377);
+    font-size: 1vmax;
+}
+
+.bottomleft span {
+    color: rgba(5, 5, 5, 0.548);
+    font-size: 1.5vmax;
+    text-transform: capitalize;
+
+
+}
+
+.logo {
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    border: 5px solid rgb(168, 163, 163);
+    background-color: rgba(0, 0, 0, 0.863);
+    width: 11vmax;
+    height: 9vmax;
+    margin-top: -4vmax;
+    left: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 11;
+}
+
+.logo img {
+
+    width: 10vmax;
+    height: 8vmax;
+
+}
+
+.collegeNav {
+    /* background-color: rgba(0, 0, 0, 0.397); */
+    background: linear-gradient(to right, #d1d6d6, #303130d5);
+    /* border: 2px solid black; */
+    width: 100%;
+    position: relative;
+    height: 3vmax;
+    display: flex;
+    list-style: none;
+}
+
+.collegeNav ul {
+    top: 0.5vmax;
+    position: absolute;
+    left: 21%;
+}
+
+.collegeNav ul li {
+    margin-left: 2.3vmax;
+    float: left;
+    overflow: hidden;
+
+}
+
+.collegeNav ul li a {
+    text-decoration: none;
+    color: black;
+    font: 1.5vmax "Roboto";
+    transition: all 0.5s;
+    padding-left: 1vmax;
+    border-left: 2px solid white;
+}
+
+.collegeNav ul li a:hover {
+    color: rgb(255, 99, 71);
+}
+
+.detailContainer {
+    display: flex;
+
+    /* border: 2px solid rgb(168, 34, 34); */
+    height: 110vh;
+    margin: 1vmax;
+    padding-top: 1vmax;
+
+}
+
+.detailsdiv-1 {
+    display: block;
+    margin: 1vmax;
+    display: flex;
+    /* border: 2px solid rgb(168, 34, 34); */
+    width: 80%;
+
+}
+
+
+
+.detailsdiv-2-1 {
+    border: 2px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 2px solid rgb(194, 183, 183);
+    margin-top: 1vmax;
+    margin-bottom: 1.5vmax;
+    height: 16rem;
+    width: 16rem;
+    padding: 3px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+
+.detailsdiv-2-1 h3 {
+    font-size: 1.5vmax;
+    padding: 0.5vmax;
+    border-bottom: 1px solid black;
+}
+
+.detailsdiv-2-1 span {
+
+    position: absolute;
+    bottom: 3vmax;
+}
+
+.marqueeText {
+    text-decoration: none;
+    font: 2vmax "Roboto";
+}
+
+.marqueeText a {
+    color: tomato;
+    filter: brightness(100%);
+}
+
+
+.carouselImg {
+
+    text-align: center;
+    height: 30vh;
+    width: 260px;
+    /* left: 79%; */
+    position: relative;
+
+
+}
+
+.carousel {
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* border: 2px solid rgb(194, 183, 183); */
+    justify-content: center;
+
+    width: 230px;
+    background-color: rgba(49, 39, 39, 0.692);
+
+}
+
+.carousel.carousel-slider {
+    height: 280px;
+}
+
+.carousel .thumbs {
+    height: 35px;
+    width: 100%;
+}
+
+.carousel .thumbs img {
+    height: 35px;
+    width: 35px;
+}
+
+.image {
+    margin: 0 auto;
+    height: 100%;
+    width: 200px;
+}
+
+.courseTable {
+    margin: 1vmax auto;
+    border-top: 2px solid black;
+    text-align: center;
+    width: 95%;
+}
+
+.courseListTable {
+    background-color: #8f929262;
+    box-sizing: border-box;
+}
