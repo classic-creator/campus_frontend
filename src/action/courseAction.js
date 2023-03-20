@@ -29,11 +29,11 @@ try {
 
 //COURSE DETAILS ACTION
 
-export const getCourseDetails=()=>async(dispatch)=>{
+export const getCourseDetails=(id)=>async(dispatch)=>{
     try {
         dispatch({type:COURSE_DETAILS_REQUEST })
     
-        const {data}=await axios.get("/api/courses")
+        const {data}=await axios.get(`/api/college/course/${id}`)
         dispatch({
             type:COURSE_DETAILS_SUCCESS,
             payload:data
