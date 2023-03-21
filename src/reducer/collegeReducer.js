@@ -54,7 +54,8 @@ export const collegeDetailsReducer= ((state={college:{},courses:[]},action)=> {
             
           return{
             loading:true,
-           ...state
+           ...state,
+           college:{}
           
           };
         case COLLEGE_DETAILS_SUCCESS:

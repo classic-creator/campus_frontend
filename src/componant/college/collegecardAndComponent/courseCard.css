@@ -7,6 +7,7 @@
     width: 16rem;
     height: auto;
     margin: 2vmax ;
+    padding-bottom: 0.5vmax;
 }
 .card:hover{
     background-color: rgba(175, 168, 168, 0.733);
@@ -16,6 +17,7 @@
     text-decoration: none;
     /* cursor: pointer; */
 }
+
 .coursecard_body{
 
     width: 100%;
@@ -47,4 +49,6 @@
     margin-left: 1vmax;
 }
 
-
+@media screen and (max-width:600px) {
+  
+}

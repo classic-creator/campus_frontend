@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import "./courseCard.css"
 
-const CourseCard = ({course}) => {
+const CourseCard = ({course,college}) => {
 
  
 
@@ -12,17 +12,18 @@ const CourseCard = ({course}) => {
   return (
    <Fragment>
      
-     <div className="card  ">
+     <div className="card">
       <div className="coursecard_body">
         <h2 >{course.courseName}</h2>
-        <span>with</span> <h3>{course.collegeName}</h3>
+        <span className='mr-2'>with</span>
+       {college ? <h3>{college.collegeName}</h3> :  <h3>{course.collegeName}</h3> }
       </div>
     <div className='coursecard_body_2'>
 
         <p>Duration : {course.duration}</p>
         <p>Fees : {course.fees}</p>
     
-        <Link to={`/course/${course.id}`} className="btn btn-primary">Go somewhere</Link>
+        <Link to={`/course/${course.id}`} className="btn btn-primary">Details/Apply</Link>
     </div>
         
     </div>

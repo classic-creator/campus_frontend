@@ -6,7 +6,7 @@ import { getCollegesDetails } from '../../action/collegeAction';
 import Loader from '../layout/loader/loader';
 import "./collegeDetails.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 
 
 import { DataGrid } from "@material-ui/data-grid"
@@ -34,50 +34,54 @@ const CollegeDetails = () => {
   const columns = [
     {
       field: "id", headerName: "Sl no",
-      // minWidth:40,
-      maxWidth: 20,
+      minWidth:100,
+      // maxWidth: 20,
       flex: 0.1
     },
 
     {
       field: "name",
       headerName: "C_Name",
-      minWidth: 140,
-      flex: 0.3,
+      minWidth:130,
+      // minWidth: 140,
+      flex: 0.2,
     },
     {
       field: "eligibility",
       headerName: "Eligibility",
 
-      minWidth: 120,
-      flex: 0.4,
+      minWidth: 270,
+      flex: 0.2,
 
     },
     {
       field: "duration",
       headerName: "Duration",
 
-      minWidth: 80,
+      minWidth: 130,
       flex: 0.2,
     },
     {
       field: "fees",
       headerName: "Fees",
-      minWidth: 80,
-      flex: 0.2,
+      minWidth: 110,
+      flex: 0.13,
     },
 
 
     {
       field: "actions",
-      flex: 0.2,
-      headerName: "Apply",
-      minWidth: 100,
-      type: "number",
+      flex: 0.1,
+      headerName: "Action",
+      minWidth: 110,
+     
       sortable: false,
       renderCell: (params) => {
         return (
           <Fragment>
+            <Link to={`/course/${params.getValue(params.id, "id")}`}>
+              <FontAwesomeIcon icon={faFilePdf} />
+            </Link>
             <Link to={`/course/${params.getValue(params.id, "id")}`}>
               <FontAwesomeIcon icon={faArrowRight} />
             </Link>
@@ -104,8 +108,8 @@ const CollegeDetails = () => {
   return (
     <Fragment>
       {loading ? <Loader /> : <Fragment>
-
         <CoverAndNav college={college} />
+
 
         <div className="detailContainer">
 
@@ -136,6 +140,7 @@ const CollegeDetails = () => {
             className='courseListTable'
             autoHeight
 
+           
           />
 
         </div>

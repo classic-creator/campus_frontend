@@ -6,7 +6,7 @@ import Loader from '../layout/loader/loader';
 import CourseCard from './collegecardAndComponent/courseCard';
 import "./allCourses.css"
 import {  useParams } from 'react-router-dom';
-import Search from '../layout/search';
+import Search from '../layout/Search/search';
 
 
 const AllCourses = () => {
@@ -38,6 +38,7 @@ const AllCourses = () => {
           <div className='filters'>
             <h2> Filters </h2>
 
+            <p>Search Course : </p>
             <Search c={c}/>
 
             <p>Fees</p>

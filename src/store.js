@@ -3,9 +3,7 @@ import {configureStore} from '@reduxjs/toolkit'
 import { collegeDetailsReducer, collegeReducer } from './reducer/collegeReducer';
 import { courseReducer ,courseDetailsReducer} from './reducer/courseReducer';
 
-// const reducer =combineReducers({
 
-// })
 let initialState={};
 
 

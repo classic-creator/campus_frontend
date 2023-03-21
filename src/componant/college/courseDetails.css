@@ -1,0 +1,23 @@
+.courseHeader{
+    text-transform: uppercase;
+    font:2.5vmax 400 "Roboto";
+    /* border-bottom: 2px solid black; */
+    margin-top: 4vmax;
+    margin-left: 3vmax;
+    width: fit-content;
+    min-width: 20%;
+    text-align: center;
+
+}
+.table{
+    display: flex;
+    flex-direction: column;
+   margin-top: 5vmax;
+   padding-top: 5vmax;
+}
+.detailsdiv-1 p{
+    border-left: 3px solid tomato;
+    padding: 1vmax 1vmax;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    min-height: 5vmax;
+}

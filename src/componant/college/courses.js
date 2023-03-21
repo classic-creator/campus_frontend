@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getCollegesDetails } from '../../action/collegeAction'
 
+
 import CourseCard from './collegecardAndComponent/courseCard'
 import CoverAndNav from './collegecardAndComponent/coverAndNav'
 import Imgcarousel from './collegecardAndComponent/Imgcarousel'
@@ -27,20 +28,21 @@ const Courses = () => {
 
   return (
     <Fragment>
-      <CoverAndNav college={college} />
+   <CoverAndNav college={college} />
 
-      <div className="detailContainer">
-        <div className="detailsdiv-1 container">
-          {courses && courses.map(course => (<CourseCard course={course} />))}
-        </div>
-        <div>
-
-          <ImportantLinkCard />
-          <Imgcarousel />
-        </div>
+   <div className="detailContainer">
+      <div className="detailsdiv-1 container">
+        {courses && courses.map(course => (<CourseCard course={course} college={college}/>))}
       </div>
+      <div>
 
-    </Fragment>
+        <ImportantLinkCard />
+        <Imgcarousel />
+      </div>
+    </div>
+
+  </Fragment>
+  
   )
 }
 

@@ -8,6 +8,7 @@ import AllCourses from "./componant/college/AllCourses.js"
 import CollegeDetails from "./componant/college/CollegeDetails.js"
 import Courses from "./componant/college/courses.js"
 import CourseDetails from "./componant/college/courseDetails.js"
+import LoginRegister from "./componant/user/LoginRegister.js"
 
 
 import Footer from "./componant/layout/footer/Footer.js"
@@ -37,6 +38,7 @@ useEffect(()=>{
         <Route exact path='/college/:id' element={<CollegeDetails />} />
         <Route exact path='college/course/:id' element={<Courses />} />
         <Route exact path='/course/:id' element={<CourseDetails />} />
+        <Route exact path='/login' element={<LoginRegister/>} />
 
 
         <Route exact path='/about' element={<About />} />
