@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Imgcarousel = () => {
   return (
     <Fragment>
-         <Carousel className='carouselImg' autoPlay infiniteLoop >
+         <Carousel className='carouselImg mr-3' autoPlay infiniteLoop >
                 <div className='image'>
                   <img src="/logo192.png" alt='img' />
 

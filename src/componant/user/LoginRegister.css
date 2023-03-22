@@ -73,28 +73,19 @@
 .registerForm{
     transform: translateY(-100%) translateX(-100vmax)
 }
-/* .loginForm  div ,.registerForm  div{
-    display: flex;
-    width: 100%;
-    align-items: center;
-} */
-
-/* .loginForm div input,.registerForm div input {
-    padding: 1vmax 4vmax;
-    padding-right: 1vmax;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid black;
-    border-radius:4px ;
-    font: 100 0.9vmax cursive;
-    outline: none;
-} */
-
-.loginBtn:hover,.signUpBtn:hover
-
-{
-    background-color: rgb(179,66,46);
+.loginData {
+  display: flex;
+  flex-direction: column;
 }
+#loginDatadiv-1,#loginDatadiv-2{
+ width: 60vw;
+}
+.loginData input{
+  width: 100%;
+}
+
+
+
 .shiftToLeft{
     transform: translateX(-100%);
 
@@ -137,7 +128,7 @@ form .input-box span.details{
 }
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
-  border-color: #9b59b6;
+  border-color: tomato;
 }
 form .gender-details .gender-title{
   
@@ -168,7 +159,7 @@ form .category label .dot{
 #dot-1:checked ~ .category label .one,
 #dot-2:checked ~ .category label .two,
 #dot-3:checked ~ .category label .three{
-  background: #9b59b6;
+  background:tomato;
   border-color: #d9d9d9;
 }
 form input[type="radio"]{
@@ -176,7 +167,8 @@ form input[type="radio"]{
 }
 form .button{
   height: 45px;
-  margin: 35px 0
+  margin: 35px 0;
+  width: 15rem;
 }
 form .button input{
   height: 100%;
@@ -189,16 +181,14 @@ form .button input{
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(135deg, tomato,rgba(255, 99, 71, 0.219));
 }
 
 
  
    form .button input:hover{
     transform: scale(0.99);
-  
-  
-    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+    background: linear-gradient(-135deg,rgba(255, 99, 71, 0.219), tomato);
     }
 
 

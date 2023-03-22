@@ -113,10 +113,9 @@ img {
     height: auto;
     margin: 1vmax auto;
     padding-top: 1vmax;
-    flex-wrap: wrap;
     /* justify-content: center; */
     /* align-items: center; */
-
+    
 }
 
 
@@ -126,7 +125,8 @@ img {
     display: flex;
     /* flex-direction: column; */
     /* border: 2px solid rgb(168, 34, 34); */
-    width: 80%;
+    width: 75%;
+    flex-wrap: wrap;
 
 }
 

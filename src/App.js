@@ -9,12 +9,20 @@ import CollegeDetails from "./componant/college/CollegeDetails.js"
 import Courses from "./componant/college/courses.js"
 import CourseDetails from "./componant/college/courseDetails.js"
 import LoginRegister from "./componant/user/LoginRegister.js"
+import Logout from "./componant/user/Logout.js"
+
+import store from "./store"
 
 
 import Footer from "./componant/layout/footer/Footer.js"
 import WebFont from "webfontloader"
+import { loadUser } from './action/userAction';
+import ProtectedRoute from './protectedRoute/protectedRoute';
 
 function App() {
+  
+  
+ 
 
 useEffect(()=>{
   WebFont.load({
@@ -22,6 +30,7 @@ useEffect(()=>{
       families:['Roboto','Droid Sans','Chilanka'],
     }
   })
+  store.dispatch(loadUser())
 })
   return (
 
@@ -39,6 +48,7 @@ useEffect(()=>{
         <Route exact path='college/course/:id' element={<Courses />} />
         <Route exact path='/course/:id' element={<CourseDetails />} />
         <Route exact path='/login' element={<LoginRegister/>} />
+        <Route exact path='/logout' element={<ProtectedRoute component={Logout} />} />
 
 
         <Route exact path='/about' element={<About />} />

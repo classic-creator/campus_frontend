@@ -120,7 +120,7 @@ const CollegeDetails = () => {
           </div>
 
 
-          <div> 
+          <div > 
             <ImportantLinkCard />
             <Imgcarousel />
           </div>
