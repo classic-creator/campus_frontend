@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react'
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { getCourseDetails } from '../../action/courseAction'
+import { clearErrors, getCourseDetails } from '../../action/courseAction'
 import "./courseDetails.css"
 
 
@@ -10,18 +10,19 @@ import CoverAndNav from './collegecardAndComponent/coverAndNav'
 import { DataGrid } from '@material-ui/data-grid'
 import ImportantLinkCard from './collegecardAndComponent/importantLinkCard'
 import Imgcarousel from './collegecardAndComponent/Imgcarousel'
-import Loader from '../layout/loader/loader'
+
 
 const CourseDetails = () => {
 
-  const { loading ,error, course } = useSelector(state => state.courseDetails)
+  const { error, course } = useSelector(state => state.courseDetails)
   const dispatch = useDispatch()
   const alert = useAlert()
   const { id } = useParams()
 
   useEffect(() => {
     if (error) {
-      return alert.error(error)
+     alert.error(error)
+     dispatch(clearErrors())
     }
 
     dispatch(getCourseDetails(id))

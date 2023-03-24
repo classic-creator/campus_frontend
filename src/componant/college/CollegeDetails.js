@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react'
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom';
-import { getCollegesDetails } from '../../action/collegeAction';
+import { clearErrors, getCollegesDetails } from '../../action/collegeAction';
 import Loader from '../layout/loader/loader';
 import "./collegeDetails.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,7 +24,8 @@ const CollegeDetails = () => {
 
   useEffect(() => {
     if (error) {
-      return alert.error(error)
+      alert.error(error)
+      dispatch(clearErrors())
     }
     dispatch(getCollegesDetails(id))
   }, [dispatch, id, alert, error])

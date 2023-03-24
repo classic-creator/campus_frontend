@@ -3,7 +3,7 @@ import MetaData from '../layout/MetaData.js'
 import CollegeCard from './CollegeCard.js'
 import "./home.css"
 import { useSelector, useDispatch } from "react-redux"
-import { getColleges } from '../../action/collegeAction.js'
+import { clearErrors, getColleges } from '../../action/collegeAction.js'
 import Loader from '../layout/loader/loader.js'
 import { useAlert } from 'react-alert'
 import { useParams } from 'react-router-dom'
@@ -18,7 +18,8 @@ const Home = () => {
 
   useEffect(() => {
     if(error){
-      return alert.error(error)
+      alert.error(error)
+      dispatch(clearErrors())
     }
     dispatch(getColleges(keyword))
   }, [dispatch,error,alert,keyword])

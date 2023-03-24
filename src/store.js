@@ -2,7 +2,7 @@
 import {configureStore} from '@reduxjs/toolkit'
 import { collegeDetailsReducer, collegeReducer } from './reducer/collegeReducer';
 import { courseReducer ,courseDetailsReducer} from './reducer/courseReducer';
-import { userReducer } from './reducer/userReducer';
+import { ForgetPasswordReducer, profileReducer, userReducer } from './reducer/userReducer';
 
 
 let initialState={};
@@ -15,7 +15,9 @@ const store=configureStore({
         collegeDetails:collegeDetailsReducer,
         courses:courseReducer,
         courseDetails:courseDetailsReducer,
-         user:userReducer
+         user:userReducer,
+         profile:profileReducer,
+         forgetPassword:ForgetPasswordReducer,
     },
     initialState,
    

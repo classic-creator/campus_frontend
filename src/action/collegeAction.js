@@ -10,10 +10,19 @@ import {
 import axios from "axios"
 
 export const getColleges=(keyword="")=>async(dispatch)=>{
-try {
+
+    try {
+    const token=localStorage.getItem('token')
+    const config = {
+        baseURL: process.env.REACT_APP_API_BASE_URL,
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    };
     dispatch({type:ALL_COLLEGE_REQUEST })
 
-    const {data}=await axios.get(`/api/colleges?keyword=${keyword}`)
+    const {data}=await axios.get(`/api/colleges?keyword=${keyword}`,config)
     dispatch({
         type:ALL_COLLEGE_SUCCESS,
         payload:data

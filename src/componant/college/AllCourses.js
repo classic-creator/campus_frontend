@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect} from 'react'
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllCourses } from '../../action/courseAction';
+import { clearErrors, getAllCourses } from '../../action/courseAction';
 import Loader from '../layout/loader/loader';
 import CourseCard from './collegecardAndComponent/courseCard';
 import "./allCourses.css"
@@ -21,7 +21,8 @@ const AllCourses = () => {
 
   useEffect(() => {
     if (error) {
-      return alert.error(error)
+      alert.error(error)
+      dispatch(clearErrors())
     }
     dispatch(getAllCourses(keyword))
 

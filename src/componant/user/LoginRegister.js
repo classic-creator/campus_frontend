@@ -3,7 +3,7 @@ import React, { Fragment, useEffect, useRef, useState } from 'react'
 import './LoginRegister.css'
 import { useDispatch, useSelector } from "react-redux"
 import { clearErrors, login, registerUser } from '../../action/userAction'
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate,Link } from "react-router-dom"
 import Loader from "../layout/loader/loader"
 import { useAlert } from "react-alert"
 
@@ -69,7 +69,7 @@ const regisDataChange=(e)=>{
     setUser({ ...user, [e.target.name]: e.target.value })
 }
 
-    const redirect = location.search ? location.search.split("=")[1] : "/logout";
+    const redirect = location.search ? location.search.split("=")[1] : "/account";
 
     useEffect(() => {
         if (error) {
@@ -125,6 +125,8 @@ const regisDataChange=(e)=>{
                             <div className="button">
                                 <input type="submit" value="Login" />
                             </div>
+
+                        <Link to={'/forgetPassword'}>forget password?...</Link>
                         </form>
                         {/* </div> */}
                         {/* register form */}
