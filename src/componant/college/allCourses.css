@@ -20,6 +20,12 @@ h1{
     margin-left: 0;
     padding-left: 0vmax;
 }
+.allcourse{
+    width: 100%;
+    border-top: 2px solid black;
+    margin-left: 1%;
+
+}
 .filters{
     width: 20%;
     /* border: 2px solid black; */
@@ -27,4 +33,10 @@ h1{
 }
 .filters h2{
     text-align: center;
+}
+
+#allCourse{
+    margin-top: 2vmax;
+    text-align: center;
+    font: 1.5vmax "Roboto";
 }

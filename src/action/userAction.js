@@ -189,15 +189,13 @@ export const forgetPassword = (email) => async (dispatch) => {
   
       dispatch({
         type: FORGET_PASSWORD_SUCCESS,
-        payload: data
+        payload:data
       })
-  
-  
-  
+    
     } catch (error) {
       dispatch({
         type: FORGET_PASSWORD_FAIL,
-        payload: error.response.data.message
+        payload:error.response.data.message
       })
   
     }}

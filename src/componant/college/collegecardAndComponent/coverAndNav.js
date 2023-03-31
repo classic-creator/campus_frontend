@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 const CoverAndNav = ({ college }) => {
     return (
         <Fragment>
+            <Link to={`/college/${college.id}`}>
             <div className="containers">
                 <img src="/collegeimg.jpg" alt="Cinque Terre" />
                 <div className="bottomleft">
@@ -17,8 +18,11 @@ const CoverAndNav = ({ college }) => {
                     <p> NAAC 2023 A gread college</p>
                 </div>
             </div>
+            </Link>
             <div className='logo'>
-                <img src='/logo192.png' alt='logo' />
+               <Link to={`/college/${college.id}`}>
+               <img src='/logo192.png' alt='logo' />
+               </Link> 
             </div>
             <div className="collegeNav">
 

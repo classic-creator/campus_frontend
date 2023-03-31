@@ -4,7 +4,7 @@ import React, { Fragment, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./search.css"
 
-const Search = ({c}) => {
+const Search = (props) => {
 
     const navigate=useNavigate()
       const [keyword, setKeyword] = useState(" ")
@@ -12,9 +12,9 @@ const Search = ({c}) => {
       const searchSubmitHendlar = (e) => {
         e.preventDefault();
         if (keyword.trim()) {
-            navigate(`/${c.link}/${keyword}`)
+            navigate(`/${props.link}/${keyword}`)
         } else {
-            navigate(`/${c.link}`)
+            navigate(`/${props.link}`)
         }
     }
     return (
@@ -22,7 +22,7 @@ const Search = ({c}) => {
         <Fragment>
 
             <form onSubmit={searchSubmitHendlar} className="search">
-               <FontAwesomeIcon icon={faSearch}/> <input type="text" onChange={(e) => setKeyword(e.target.value)} />
+               <FontAwesomeIcon icon={faSearch}/> <input type="text" placeholder={props.placeholder} onChange={(e) => setKeyword(e.target.value)} />
                 <input type="submit"  value="Search" />
             </form>
 

@@ -1,6 +1,4 @@
 
-
-import { clearErrors } from "../action/userAction";
 import {
 
   LOGIN_REQUEST,
@@ -139,7 +137,7 @@ export const profileReducer=((state={},action)=>{
 
      };
 
-     case clearErrors:
+     case CLEAR_ERRORS:
       return{
         ...state,
         error:null
@@ -158,9 +156,9 @@ export const ForgetPasswordReducer=((state={},action)=>{
     case RESET_PASSWORD_REQUEST:
       
           return{
-     ...state,
-      loading:true,
-      error:null
+        ...state,
+        loading:true,
+        error:null
      };
   
     case FORGET_PASSWORD_SUCCESS:
@@ -183,7 +181,7 @@ export const ForgetPasswordReducer=((state={},action)=>{
 
      };
   
-     case clearErrors:
+     case CLEAR_ERRORS:
       return{
         ...state,
         error:null

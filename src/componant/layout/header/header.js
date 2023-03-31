@@ -48,9 +48,7 @@ const Header = () => {
 
    
 
-   const c={
-        link:"colleges"
-    }
+  
 
     return (
         <nav className="navbar navbar-expand-lg navbar-mainbg">
@@ -80,7 +78,7 @@ const Header = () => {
                    
 
                     <li className="nav-item active">
-                        <NavLink className="nav-link" to="/colleges" exact>
+                        <NavLink className="nav-link" to="/" exact>
                             <i>
                                 <FontAwesomeIcon icon={faHomeAlt} />
                             </i>Home
@@ -89,7 +87,7 @@ const Header = () => {
 
 
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/" exact>
+                        <NavLink className="nav-link" to="/colleges" exact>
                             <i>
                                 <FontAwesomeIcon icon={faBuilding} />
                             </i> Colleges
@@ -120,7 +118,7 @@ const Header = () => {
                     </li>
                 </ul>
             </div>
-            <Search c={c}/>
+            <Search  link='colleges' placeholder='Seearch Colleges'/>
         </nav>
     )
 }

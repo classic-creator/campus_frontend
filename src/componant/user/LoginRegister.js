@@ -2,8 +2,8 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import './LoginRegister.css'
 import { useDispatch, useSelector } from "react-redux"
-import { clearErrors, login, registerUser } from '../../action/userAction'
-import { useLocation, useNavigate,Link } from "react-router-dom"
+import { clearErrors, forgetPassword, login, registerUser } from '../../action/userAction'
+import { useLocation, useNavigate } from "react-router-dom"
 import Loader from "../layout/loader/loader"
 import { useAlert } from "react-alert"
 
@@ -19,6 +19,7 @@ const LoginRegister = () => {
 
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('')
+    
 
 
     const [user, setUser] = useState({
@@ -28,7 +29,22 @@ const LoginRegister = () => {
         confirm_password: '',
     })
     const { name, email, password, confirm_password } = user
+
     const { error, isAuthenticated, loading } = useSelector(state => state.user)
+    const {loading:forgetLoading, message, error:forgetError} = useSelector(state => state.forgetPassword)
+
+
+    const [forgetEmail, setForgetEmail] = useState('')
+
+
+    const forgetPasswordFunction = (e) => {
+      e.preventDefault();
+  
+      const myForm = new FormData()
+      myForm.set('forgetEmail', forgetEmail)
+  
+      dispatch(forgetPassword(myForm))
+    }
 
     const switchTabs = (e, tab) => {
 
@@ -54,20 +70,20 @@ const LoginRegister = () => {
         dispatch(login(loginEmail, loginPassword))
     }
 
-    const registerFunction =(e)=>{
+    const registerFunction = (e) => {
         e.preventDefault()
-        const myForm=new FormData()
+        const myForm = new FormData()
 
-        myForm.set('name',name)
-        myForm.set('email',email)
-        myForm.set('password',password)
-        myForm.set('confirm_password',confirm_password)
+        myForm.set('name', name)
+        myForm.set('email', email)
+        myForm.set('password', password)
+        myForm.set('confirm_password', confirm_password)
         dispatch(registerUser(myForm))
 
     }
-const regisDataChange=(e)=>{
-    setUser({ ...user, [e.target.name]: e.target.value })
-}
+    const regisDataChange = (e) => {
+        setUser({ ...user, [e.target.name]: e.target.value })
+    }
 
     const redirect = location.search ? location.search.split("=")[1] : "/account";
 
@@ -76,10 +92,19 @@ const regisDataChange=(e)=>{
             alert.error(error)
             dispatch(clearErrors())
         }
+        if(forgetError){
+            alert.error(forgetError)
+            dispatch(clearErrors())
+           
+        }
+        if(message){
+            alert.success(message)
+         
+        }
         if (isAuthenticated) {
             navigate(redirect)
         }
-    }, [dispatch, error, alert, isAuthenticated, navigate, redirect])
+    }, [dispatch, error,forgetError, message,alert, isAuthenticated, navigate, redirect])
 
     return (
         <Fragment>
@@ -93,10 +118,11 @@ const regisDataChange=(e)=>{
                                 <p onClick={(e) => switchTabs(e, "login")} >Login</p>
                                 <p onClick={(e) => switchTabs(e, "register")}>Register</p>
                             </div>
-                            <button ref={switcherTab}></button>
+                            <button id='switch' ref={switcherTab}></button>
 
 
                         </div >
+
                         <form onSubmit={loginFunction} className='loginForm' ref={loginTab}>
                             <div className="user-details loginData">
 
@@ -104,7 +130,7 @@ const regisDataChange=(e)=>{
                                 <div className="input-box" id='loginDatadiv-1'>
                                     <span className="details">Email</span>
                                     <input
-                                        type="text"
+                                        type="email"
                                         value={loginEmail}
                                         placeholder="Enter your email"
                                         required
@@ -126,12 +152,15 @@ const regisDataChange=(e)=>{
                                 <input type="submit" value="Login" />
                             </div>
 
-                        <Link to={'/forgetPassword'}>forget password?...</Link>
+                          { forgetLoading ? <Loader/> : <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Forget_pass">
+                                forget password?
+                            </button>}  
                         </form>
+
                         {/* </div> */}
                         {/* register form */}
                         {/* <div className="content"> */}
-                        <form onSubmit={registerFunction} className=' registerForm' ref={registerTab}>
+                        <form onSubmit={registerFunction} className='registerForm' ref={registerTab}>
                             <div className="user-details">
                                 <div className="input-box">
                                     <span className="details">Full Name</span>
@@ -144,11 +173,11 @@ const regisDataChange=(e)=>{
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Username</span>
-                                    <input type="text" placeholder="Enter your username"  />
+                                    <input type="text" placeholder="Enter your username" />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Email</span>
-                                    <input type="text"
+                                    <input type="email"
                                         value={email}
                                         name='email'
                                         placeholder="Enter your email"
@@ -202,6 +231,34 @@ const regisDataChange=(e)=>{
                                 <input type="submit" value="Register" />
                             </div>
                         </form>
+                        <form onSubmit={forgetPasswordFunction}>
+                        <div class="modal fade" id="Forget_pass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Enter Your Email</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="input-group flex-nowrap">
+                                                <input type="email" 
+                                                class="form-control"                                            onChange={e => setForgetEmail(e.target.value)}
+                                                value={forgetEmail}
+                                                required
+                                                name='forgetEmail'
+                                                placeholder='Enter your email'
+                                                aria-label="Username" aria-describedby="addon-wrapping" />
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="submit" data-bs-dismiss="modal" class="btn btn-primary" value='Get Link'/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                 
                     </div>
 
                 </div>

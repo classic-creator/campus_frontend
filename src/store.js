@@ -1,7 +1,8 @@
 
 import {configureStore} from '@reduxjs/toolkit'
 import { collegeDetailsReducer, collegeReducer } from './reducer/collegeReducer';
-import { courseReducer ,courseDetailsReducer} from './reducer/courseReducer';
+import { courseReducer ,courseDetailsReducer, preferedCourseReducer} from './reducer/courseReducer';
+import { preferenceReducer } from './reducer/preferenceReducer';
 import { ForgetPasswordReducer, profileReducer, userReducer } from './reducer/userReducer';
 
 
@@ -14,10 +15,12 @@ const store=configureStore({
         colleges:collegeReducer,
         collegeDetails:collegeDetailsReducer,
         courses:courseReducer,
+        preferedCourse:preferedCourseReducer,
         courseDetails:courseDetailsReducer,
-         user:userReducer,
-         profile:profileReducer,
-         forgetPassword:ForgetPasswordReducer,
+        user:userReducer,
+        profile:profileReducer,
+        forgetPassword:ForgetPasswordReducer,
+        preference:preferenceReducer,
     },
     initialState,
    

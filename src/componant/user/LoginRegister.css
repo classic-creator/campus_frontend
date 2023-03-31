@@ -50,7 +50,7 @@
     color: tomato;
 }
 
-.content div button {
+#switch{
     background-color: tomato;
     height: 3px;
     width: 50%;

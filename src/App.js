@@ -12,7 +12,6 @@ import LoginRegister from "./componant/user/LoginRegister.js"
 import Account from "./componant/user/Account.js"
 import ChangePassword from "./componant/user/ChangePassword.js"
 
-import ForgetPassword from "./componant/user/ForgetPassword.js"
 import ResetPassword from "./componant/user/ResetPassword.js"
 import store from "./store"
 
@@ -44,19 +43,15 @@ useEffect(()=>{
       <Routes>
 
 
-        {/* <Route exact path='/' element={<Home />} />
-        <Route exact path='/colleges' element={<Home />} /> */}
-        {/* <Route exact path='/colleges/:keyword' element={<Home />} /> */}
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/colleges' element={<Home />} />
+        <Route exact path='/colleges/:keyword' element={<Home />} />
         <Route exact path='/courses' element={<AllCourses />} />
         <Route exact path='/courses/:keyword' element={<AllCourses />} />
         <Route exact path='/college/:id' element={<CollegeDetails />} />
         <Route exact path='college/course/:id' element={<Courses />} />
         <Route exact path='/course/:id' element={<CourseDetails />} />
         <Route exact path='/login' element={<LoginRegister/>} />
-        
-        <Route exact path='/colleges' element={<ProtectedRoute component={Home} />} />
-        <Route exact path='/colleges/:keyword' element={<ProtectedRoute component={Home} />} />
-        <Route exact path='/forgetPassword' element={<ForgetPassword/>} />
         <Route exact path='/user/reset/:token' element={<ResetPassword/>} />
         <Route exact path='/account' element={<ProtectedRoute component={Account} />} />
         <Route exact path='/password/update' element={<ProtectedRoute component={ChangePassword} />} />
