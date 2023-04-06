@@ -44,7 +44,7 @@ export const GetPreferedCourses=()=>async(dispatch)=>{
         const config = {
             baseURL: process.env.REACT_APP_API_BASE_URL,
             headers: {
-                "Content-Type": "application/json",
+                
                 Authorization: `Bearer ${token}`
             }
         };
@@ -77,7 +77,7 @@ export const getCourseDetails=(id)=>async(dispatch)=>{
     } catch (error) {
         dispatch({
             type:COURSE_DETAILS_FAIL,
-            payload:error.response.data.message
+            payload:error.response.data
         })
     }}
     

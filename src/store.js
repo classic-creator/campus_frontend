@@ -2,12 +2,25 @@
 import {configureStore} from '@reduxjs/toolkit'
 import { collegeDetailsReducer, collegeReducer } from './reducer/collegeReducer';
 import { courseReducer ,courseDetailsReducer, preferedCourseReducer} from './reducer/courseReducer';
-import { preferenceReducer } from './reducer/preferenceReducer';
+import { preferenceReducer, updatePreferenceReducer } from './reducer/preferenceReducer';
 import { ForgetPasswordReducer, profileReducer, userReducer } from './reducer/userReducer';
+import { applyFormReducer, studentDetailsReducer } from './reducer/applyReducer';
 
 
-let initialState={};
+// let initialState={
+//     applyForm:{   
+//         studentPersonalData:localStorage.getItem("studentPersonalData")
+//         ? JSON.parse(localStorage.getItem("studentPersonalData")):[]
+//     }
+// };
 
+
+// const studentPersonalDataInfo=localStorage.getItem("studentPersonalData")
+// ? JSON.parse(localStorage.getItem("studentPersonalData")):[]
+
+const initialState={
+    // applyForm:{studentPersonalData:studentPersonalDataInfo}
+}
 
 const store=configureStore({
  
@@ -21,8 +34,11 @@ const store=configureStore({
         profile:profileReducer,
         forgetPassword:ForgetPasswordReducer,
         preference:preferenceReducer,
+        updatePreference:updatePreferenceReducer,
+        applyForm:applyFormReducer,
+        studentDetails:studentDetailsReducer,
     },
-    initialState,
+    preloadedState:initialState
    
 }
 )

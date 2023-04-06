@@ -21,7 +21,7 @@ export const courseReducer= ((state={courses:[],initialState},action)=> {
 
     switch (action.type) {
         case ALL_COURSES_REQUEST:
-         
+        
             
           return{
 
@@ -36,7 +36,7 @@ export const courseReducer= ((state={courses:[],initialState},action)=> {
            
           };
 
-       
+         
 
         case ALL_COURSES_FAIL :   
             return{
@@ -64,16 +64,16 @@ export const courseReducer= ((state={courses:[],initialState},action)=> {
 
       switch (action.type) {
           case PREFERED_COURSES_REQUEST:
-           
-              
+                         
             return{
-  
+            
               loading:true,
               preferCourses:[]
             };
   
           case PREFERED_COURSES_SUCCESS:    
             return{
+            
               loading:false,
               preferCourses:action.payload.preferCourses,
              
@@ -83,6 +83,7 @@ export const courseReducer= ((state={courses:[],initialState},action)=> {
   
           case PREFERED_COURSES_FAIL :   
               return{
+               
                 loading:false,
                 error:action.payload,
                 
@@ -122,7 +123,7 @@ export const courseReducer= ((state={courses:[],initialState},action)=> {
               
             return{
               loading:false,
-             error:action.payload,
+              error:action.payload.message,
             };
           case CLEAR_ERRORS:
               

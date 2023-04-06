@@ -118,7 +118,7 @@ const Header = () => {
                     </li>
                 </ul>
             </div>
-            <Search  link='colleges' placeholder='Seearch Colleges'/>
+            <Search  link='colleges' placeholder='Search Colleges'/>
         </nav>
     )
 }

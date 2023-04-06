@@ -1,0 +1,59 @@
+.error{
+    position: absolute;
+    color: red;
+    font-size: .6rem;
+}
+
+.applyForm {
+    display: flex;
+    margin: 1vmax auto;
+    width: 90vw;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    /* border: 2px solid rebeccapurple; */
+    max-width: 100%;
+}
+.applyForm div:last-child{
+    /* border: 2px solid yellow; */
+    width: 100vw;
+   text-align: center;
+   margin-top: 2vmax;
+}
+.applyForm button{
+    width: 20vw;
+    height: 3vmax;
+    background-color: #4CAF50;
+    /* transition: all 0.5s; */
+}
+.applyForm button:hover{
+  transform: scale(1.03);
+  transition: all 0.5s;
+
+    
+}
+
+.applyinput{
+    margin-left: 2vmax;
+    width: 20vmax;
+    /* border: 2px solid black; */
+}
+
+.applyinput input{
+   
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+   
+   
+}
+
+.applyinput input:focus
+{
+  border-color: rgb(71, 172, 255);
+}

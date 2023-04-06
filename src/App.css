@@ -1,8 +1,18 @@
 *{
     margin: 0;
-    padding: 0;
     scroll-behavior: smooth;
-    /* overflow-x: hidden; */
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance:none;
+     margin: 0;
+}
+
+
+input[type="number"]
+{
+    -moz-appearance:textfield;
+
 }
 li{
     list-style: none;

@@ -1,71 +1,91 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { clearErrors, registerPreferenceAction } from '../../action/preferenceAction'
+import { clearErrors,updatePreference } from '../../action/preferenceAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert';
 import Loader from '../layout/loader/loader';
+import { UPDATE_PREFERENCE_RESET } from '../../constants/preferenceConstants';
+import {  useNavigate} from 'react-router-dom';
+import { GetPreferedCourses } from '../../action/courseAction';
 
 
-const Preference = () => {
+
+const UpdatePreference = () => {
 
   const dispatch = useDispatch();
   const alert = useAlert()
+  const  navigate =useNavigate()
 
-  const { loading, error } = useSelector(state => state.preference)
-
-  const [preferences, setPreferences] = useState({
-    college1: '',
-    college2: '',
-    college3: '',
-
-    course1: '',
-    course2: '',
-    course3: '',
-
-    address: ''
-  })
+  const {loading, error,isUpdated} = useSelector(state => state.updatePreference)
+  const { preference } = useSelector(state => state.preference)
 
 
-  const { college1, college2, college3, course1, course2, course3, address } = preferences
+  const [college1, setCollege1] = useState('')
+  const [college2, setCollege2] = useState('')
+  const [college3, setCollege3] = useState('')
+  const [course1, setCourse1] = useState('')
+  const [course2, setCourse2] = useState('')
+  const [course3, setCourse3] = useState('')
+  const [address, setAddress] = useState('')
 
-  const PreferenceDataChange = (e) => {
-    setPreferences({...preferences, [e.target.name]: e.target.value })
-  }
-  const PreferenceFunction = (e) => {
-    
 
-   e.preventDefault();
 
-    const myForm = new FormData()
 
-    myForm.set('college1', college1)
-    myForm.set('college2', college2)
-    myForm.set('college3', college3)
-    myForm.set('course1', course1)
-    myForm.set('course2', course2)
-    myForm.set('course3', course3)
-    myForm.set('address', address)
+const updatePreferenceFunction=(e)=>{
 
-    dispatch(registerPreferenceAction(myForm))
+  e.preventDefault();
 
-  }
+  const myForm = new FormData()
+
+  myForm.set('college1', college1)
+  myForm.set('college2', college2)
+  myForm.set('college3', college3)
+  myForm.set('course1', course1)
+  myForm.set('course2', course2)
+  myForm.set('course3', course3)
+  myForm.set('address', address)
+
+  dispatch(updatePreference(myForm))
+  
+
+}
+
+
   useEffect(() => {
+
+   if(preference ){
+    setCollege1(preference.college1)
+    setCollege2(preference.college2)
+    setCollege3(preference.college3)
+    setCourse1(preference.course1)
+    setCourse2(preference.course2)
+    setCourse3(preference.course3)
+    setAddress(preference.address)
+   }
+
+
+
     if (error) {
       alert.error(error)
       dispatch(clearErrors())
     }
-  }, [alert, error, dispatch])
+    if(isUpdated){
+      alert.success(isUpdated)  
+      dispatch({type:UPDATE_PREFERENCE_RESET})
+      dispatch(GetPreferedCourses())   
+    }
+  }, [alert, error,isUpdated,navigate, dispatch,preference])
 
   return (
 
-    <Fragment>
+  <Fragment>{
+    loading? <Loader/> :   <Fragment>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#preferenceModal">
- Update Preference
-</button>
+  
 
+<button to={'/preference/update'} type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#preferenceModal" >update</button>
 
    
-      <form onSubmit={PreferenceFunction} > 
+      <form onSubmit={updatePreferenceFunction} > 
         <div className="modal fade" id="preferenceModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
           aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div className="modal-dialog modal-lg">
@@ -92,7 +112,7 @@ const Preference = () => {
                           name='college1'
                           placeholder="Enter college name"
                           required
-                          onChange={PreferenceDataChange}
+                          onChange={(e) => setCollege1(e.target.value)}
                         />
                       </div>
                       <div className="input-box">
@@ -104,7 +124,7 @@ const Preference = () => {
                           name='college2'
                           placeholder="Enter college name"
 
-                          onChange={PreferenceDataChange}
+                          onChange={(e) => setCollege2(e.target.value)}
                         />
                       </div>
                       <div className=" input-box">
@@ -115,7 +135,7 @@ const Preference = () => {
                           name='college3'
                           placeholder="Enter college name"
 
-                          onChange={PreferenceDataChange}
+                          onChange={(e) => setCollege3(e.target.value)}
                         />
                       </div>
                       <div className=" input-box">
@@ -126,7 +146,7 @@ const Preference = () => {
                           name='course1'
                           placeholder="Enter course name"
                           required
-                          onChange={PreferenceDataChange}
+                          onChange={(e) => setCourse1(e.target.value)}
                         />
                       </div>
                       <div className=" input-box">
@@ -136,7 +156,7 @@ const Preference = () => {
                           name='course2'
                           placeholder="Enter course name"
 
-                          onChange={PreferenceDataChange}
+                          onChange={(e) => setCourse2(e.target.value)}
                         />
 
                       </div>
@@ -147,7 +167,7 @@ const Preference = () => {
                           name='course3'
                           placeholder="Enter your name"
 
-                          onChange={PreferenceDataChange}
+                          onChange={(e) => setCourse3(e.target.value)}
                           className="form-control shadow-none" />
                       </div>
 
@@ -176,13 +196,13 @@ const Preference = () => {
                           name='address'
                           placeholder="Enter address"
                           required
-                          onChange={PreferenceDataChange}
+                          onChange={(e) => setAddress(e.target.value)}
                           className="form-control shadow-none" />
                       </div>
                     </div>
                   </div>
                       <div className="alighn-center my-1">
-                        <button type="submit" className="btn btn-dark shadow-none"  >Submit</button>
+                        <button type="submit" className="btn btn-dark shadow-none" data-bs-dismiss="modal" >Submit</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                       </div>
                   
@@ -196,8 +216,9 @@ const Preference = () => {
         </form>
      
     </Fragment>
+    }</Fragment>
 
   )
 }
 
-export default Preference
+export default UpdatePreference

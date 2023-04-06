@@ -177,7 +177,7 @@ const CourseDetails = () => {
         />
       </div>
 
-      <Link className="btn btn-primary item-center">Apply</Link>
+      <Link to={`/apply/${id}`} className="btn btn-primary item-center" >Apply</Link>
 
     </Fragment>
 
