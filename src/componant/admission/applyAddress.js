@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { AddStudentAddress, GetStudentAddress, clearErrors } from '../../action/applyAction'
 import * as Yup from 'yup'
 import Loader from '../layout/loader/loader'
+import { REGISTER_ADDRESS_RESET } from '../../constants/applyConstants'
 
 const ApplyAddress = () => {
 
@@ -17,7 +18,7 @@ const ApplyAddress = () => {
     const navigate=useNavigate()
     const {id} = useParams()
   
-    const { error, message, loading } = useSelector(state => state.applyForm)
+    const { error, message, loading } = useSelector(state => state.applystudentAddress)
     const {studentAddress}=useSelector(state=>state.studentDetails)
 
     const initialvalue={
@@ -54,6 +55,7 @@ const ApplyAddress = () => {
         if (message) {
           alert.success(message)
           navigate(`/apply/education/${id}`)
+          dispatch({type:REGISTER_ADDRESS_RESET})
         }
     
         dispatch(GetStudentAddress())
@@ -103,7 +105,6 @@ const ApplyAddress = () => {
                     
                    <div className='but'>
                     <button type='submit' className='btn '>Submit</button>
-
                    </div>
                   
                     

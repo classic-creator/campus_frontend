@@ -6,21 +6,22 @@ import TextField from './textField'
 import { GetStudentPersonalData, StudentPersonalData, clearErrors } from '../../action/applyAction'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../layout/loader/loader'
-import {useNavigate, useParams} from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { REGISTER_PERSONALDATA_RESET } from '../../constants/applyConstants'
 
 
 const StudentDetailsApply = () => {
- 
+
 
   const dispatch = useDispatch()
   const alert = useAlert()
-  const navigate=useNavigate()
-  const {id} = useParams()
+  const navigate = useNavigate()
+  const { id } = useParams()
 
   const { error, message, loading } = useSelector(state => state.applyForm)
-  const {studentPersonalData}=useSelector(state=>state.studentDetails)
+  const { studentPersonalData } = useSelector(state => state.studentDetails)
 
-  const initialvalue={
+  const initialvalue = {
     first_name: studentPersonalData.first_name ? studentPersonalData.first_name : '',
     middle_name: studentPersonalData.middle_name ? studentPersonalData.middle_name : '',
     last_name: studentPersonalData.last_name ? studentPersonalData.last_name : '',
@@ -34,23 +35,24 @@ const StudentDetailsApply = () => {
     qualification: studentPersonalData.qualification ? studentPersonalData.qualification : '',
     mark_obtain_lastExam: studentPersonalData.mark_obtain_lastExam ? studentPersonalData.mark_obtain_lastExam : '',
   }
- 
-    const handleSubmit = async (values, { setSubmitting }) => {
-      // Check if form values have changed from initial values
-      const hasChanged = JSON.stringify(values) !== JSON.stringify(initialvalue);
-      
-      if (hasChanged) {
-        // Make API call to save data to database
-        dispatch(StudentPersonalData(values));
-      }
-      else{
 
-        setSubmitting(false);
-        alert.success('Success')
-        navigate(`/apply/address/${id}`)
-      }
-    };
-  
+  const handleSubmit = async (values, { setSubmitting }) => {
+    // Check if form values have changed from initial values
+    const hasChanged = JSON.stringify(values) !== JSON.stringify(initialvalue);
+
+    if (hasChanged) {
+      // Make API call to save data to database
+      dispatch(StudentPersonalData(values));
+      
+    }
+    else {
+
+      setSubmitting(false);
+      alert.success('Success')
+      navigate(`/apply/address/${id}`)
+    }
+  };
+
 
   useEffect(() => {
 
@@ -61,10 +63,11 @@ const StudentDetailsApply = () => {
     if (message) {
       alert.success(message)
       navigate(`/apply/address/${id}`)
+      dispatch({type:REGISTER_PERSONALDATA_RESET})
     }
 
     dispatch(GetStudentPersonalData())
-  }, [error,navigate, dispatch, message,id, alert])
+  }, [error, navigate, dispatch, message, id, alert])
 
 
   const validate = Yup.object({
@@ -84,45 +87,47 @@ const StudentDetailsApply = () => {
 
 
   return (
-   <Fragment>
-    {loading ? <Loader/> :  
     <Fragment>
-      <Formik
-        enableReinitialize={true}
-        initialValues={initialvalue}
-        validationSchema={validate}
-        // onSubmit={values => { dispatch(StudentPersonalData(values)) }}
-        onSubmit={handleSubmit}
-      >
-        {Formik => (
-          <div>
-            <h1>Student Details Form</h1>
+      {loading ? <Loader /> :
+        <Fragment>
+          <Formik
+            enableReinitialize={true}
+            initialValues={initialvalue}
+            validationSchema={validate}
+            // onSubmit={values => { dispatch(StudentPersonalData(values)) }}
+            onSubmit={handleSubmit}
+          >
+            {Formik => (
+              <div>
+                <h1>Student Details Form</h1>
 
-            <div className='applyFor '>
-              <Form className='applyForm '>
-                <TextField label='First Name' name='first_name' type='text' />
-                <TextField label='Middle Name' name='middle_name' type='text' />
-                <TextField label='Last Name' name='last_name' type='text' />
-                <TextField label='Email' name='email' type='email' />
-                <TextField label='Father Name' name='father_name' type='text' />
-                <TextField label='Mother Name' name='mother_name' type='text' />
-                <TextField label='Date of Birth' name='dob' type='date' />
-                <TextField label='Phon Number' name='phon_no' type='number' />
+                <div className='applyFor '>
+                  <Form className='applyForm '>
+                    <TextField label='First Name' name='first_name' type='text' />
+                    <TextField label='Middle Name' name='middle_name' type='text' />
+                    <TextField label='Last Name' name='last_name' type='text' />
+                    <TextField label='Email' name='email' type='email' />
+                    <TextField label='Father Name' name='father_name' type='text' />
+                    <TextField label='Mother Name' name='mother_name' type='text' />
+                    <TextField label='Date of Birth' name='dob' type='date' />
+                    <TextField label='Phon Number' name='phon_no' type='number' />
 
-                <TextField label='Identification' name='identification' type='text' />
-                <TextField label='Identification Number' name='identification_no' type='number' />
-                <TextField label='Qualification' name='qualification' type='text' />
-                <TextField label='Mark Obtain LastExam' name='mark_obtain_lastExam' type='number' />
-                <button type='submit' className='btn btn-dark mt3'>Submit</button>
-              </Form>
-            </div>
-          </div>
-        )}
+                    <TextField label='Identification' name='identification' type='text' />
+                    <TextField label='Identification Number' name='identification_no' type='number' />
+                    <TextField label='Qualification' name='qualification' type='text' />
+                    <TextField label='Mark Obtain LastExam' name='mark_obtain_lastExam' type='number' />
+                    <div className='but'>
+                      <button type='submit' className='btn '>Submit</button>
+                    </div>
+                  </Form>
+                </div>
+              </div>
+            )}
 
-      </Formik>
+          </Formik>
 
-    </Fragment>}
-   </Fragment>
+        </Fragment>}
+    </Fragment>
   )
 }
 

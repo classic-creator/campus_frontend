@@ -13,6 +13,8 @@ import Account from "./componant/user/Account.js"
 import ChangePassword from "./componant/user/ChangePassword.js"
 import StudentDetailsApply from "./componant/admission/StudentDetailsApply"
 import ApplyAddress from './componant/admission/applyAddress';
+import ApplyEducationalDetails from './componant/admission/ApplyEducationalDetails.js';
+import ReviewApplication from './componant/admission/ReviewApplication.js';
 
 import ResetPassword from "./componant/user/ResetPassword.js"
 import store from "./store"
@@ -59,6 +61,8 @@ useEffect(()=>{
         <Route exact path='/password/update' element={<ProtectedRoute component={ChangePassword} />} />
         <Route exact path='/apply/:id' element={<ProtectedRoute component={StudentDetailsApply} />} />
         <Route exact path='/apply/address/:id' element={<ProtectedRoute component={ApplyAddress} />} />
+        <Route exact path='/apply/education/:id' element={<ProtectedRoute component={ApplyEducationalDetails} />} />
+        <Route exact path='/review/application/:id' element={<ProtectedRoute component={ReviewApplication} />} />
        
 
 

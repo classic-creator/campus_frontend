@@ -11,7 +11,13 @@ import {
    REGISTER_ADDRESS_FAIL,
    GET_ADDRESS_REQUEST,
    GET_ADDRESS_SUCCESS,
-   GET_ADDRESS_FAIL
+   GET_ADDRESS_FAIL,
+   REGISTER_EDUCATION_REQUEST,
+   REGISTER_EDUCATION_SUCCESS,
+   REGISTER_EDUCATION_FAIL,
+   GET_EDUCATION_REQUEST,
+   GET_EDUCATION_SUCCESS,
+   GET_EDUCATION_FAIL
 } from "../constants/applyConstants";
 
 import axios from "axios"
@@ -133,6 +139,62 @@ export const GetStudentAddress = () => async (dispatch) => {
    }
 }
 
+// register student educational details
+
+
+export const AddStudentEducation = (studentData) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: REGISTER_EDUCATION_REQUEST })
+
+      const { data } = await axios.post(`/api/register/educationalDetails`, studentData, config)
+
+      dispatch({
+         type: REGISTER_EDUCATION_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: REGISTER_EDUCATION_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+//get educational details
+export const GetStudentEducation = () => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: GET_EDUCATION_REQUEST })
+
+      const { data } = await axios.get(`/api/get/educationalDetails`, config)
+      
+      dispatch({
+         type: GET_EDUCATION_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: GET_EDUCATION_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
 
 export const clearErrors = () => async (dispatch) => {
    dispatch({

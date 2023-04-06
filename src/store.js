@@ -4,7 +4,7 @@ import { collegeDetailsReducer, collegeReducer } from './reducer/collegeReducer'
 import { courseReducer ,courseDetailsReducer, preferedCourseReducer} from './reducer/courseReducer';
 import { preferenceReducer, updatePreferenceReducer } from './reducer/preferenceReducer';
 import { ForgetPasswordReducer, profileReducer, userReducer } from './reducer/userReducer';
-import { applyFormReducer, studentDetailsReducer } from './reducer/applyReducer';
+import { applyFormAddressReducer, applyFormEducationReducer, applyFormReducer, studentDetailsReducer } from './reducer/applyReducer';
 
 
 // let initialState={
@@ -36,6 +36,8 @@ const store=configureStore({
         preference:preferenceReducer,
         updatePreference:updatePreferenceReducer,
         applyForm:applyFormReducer,
+        applystudentAddress:applyFormAddressReducer,
+        applyEducation:applyFormEducationReducer,
         studentDetails:studentDetailsReducer,
     },
     preloadedState:initialState
