@@ -121,7 +121,7 @@ const handleSubmit = async (values,{ setSubmitting }) => {
       
 
             <div className='applyFor '>
-              <Form className='applyForm '>
+              <Form className='applyForm  applyform'>
 
                 <div className='but'>
                   <h3>Personal details</h3>

@@ -108,7 +108,7 @@ const ApplyEducationalDetails = () => {
           >
             {Formik => (
               <div> 
-                  <Form className='applyForm '>
+                  <Form className='applyForm  applyform'>
                    
                     <div className='but'> 
                          <h3>Class 10 exam details</h3>

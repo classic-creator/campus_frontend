@@ -1,0 +1,52 @@
+.upperHeader{
+   height: auto;
+    /* align-items: center; */
+    /* border: 2px solid black; */
+    margin-top: 5px;
+    display: flex;
+}
+.upperHeader h2{
+    margin-left: 10px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    font: 2vmax  400 'Roboto';
+    color: rgb(40, 26, 238);
+    
+}
+.navMain{
+    width: 98% ;
+    margin: 23px auto;
+    margin-top: 5px;
+    /* padding-top: 0; */
+    box-shadow: rgba(0, 0, 0, 0.345) 0px 10px 15px;
+}
+
+.navli  svg{
+   margin-right:10px ;
+   font-size: 1.5vmax;
+
+}
+.navli{
+    margin-left: 1.5vmax;
+}
+.active{
+    font-size:1.5vmax !important;
+}
+
+.left{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 90%;
+    text-align: right;
+}
+.left a{
+    color: black;
+    padding-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    font: 1vmax 300 'Roboto';
+}
+.leftBorder{
+    border-left: 2px solid black;
+}

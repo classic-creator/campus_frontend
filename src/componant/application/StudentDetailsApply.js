@@ -103,8 +103,8 @@ const StudentDetailsApply = () => {
               <div>
               
 
-                <div className='applyFor '>
-                  <Form className='applyForm '>
+                <div className='applyFor  '>
+                  <Form className='applyForm applyform '>
                     <TextField label='First Name' name='first_name' type='text' />
                     <TextField label='Middle Name' name='middle_name' type='text' />
                     <TextField label='Last Name' name='last_name' type='text' />

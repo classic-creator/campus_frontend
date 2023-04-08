@@ -5,6 +5,7 @@ import { courseReducer ,courseDetailsReducer, preferedCourseReducer} from './red
 import { preferenceReducer, updatePreferenceReducer } from './reducer/preferenceReducer';
 import { ForgetPasswordReducer, profileReducer, userReducer } from './reducer/userReducer';
 import { MyApplicationReducer, applyAdmissionReducer, applyFormAddressReducer, applyFormEducationReducer, applyFormReducer, studentDetailsReducer } from './reducer/applyReducer';
+import { collegesReducer } from './reducer/collegeAdminReducer';
 
 
 // let initialState={
@@ -41,6 +42,7 @@ const store=configureStore({
         studentDetails:studentDetailsReducer,
         apply:applyAdmissionReducer,
         application:MyApplicationReducer,
+        college:collegesReducer,
     },
 
    

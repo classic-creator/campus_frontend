@@ -15,6 +15,8 @@ import StudentDetailsApply from "./componant/application/StudentDetailsApply"
 import ApplyAddress from './componant/application/applyAddress';
 import ApplyEducationalDetails from './componant/application/ApplyEducationalDetails.js';
 import ReviewApplication from './componant/application/ReviewApplication.js';
+import RegisterCollege from './componant/collegeAdmin/RegisterCollege.js';
+import CollegeProfile from './componant/collegeAdmin/CollegeProfile.js';
 
 import ResetPassword from "./componant/user/ResetPassword.js"
 import MyApplication from "./componant/application/MyApplication.js"
@@ -65,6 +67,8 @@ useEffect(()=>{
         <Route exact path='/apply/education/:id' element={<ProtectedRoute component={ApplyEducationalDetails} />} />
         <Route exact path='/review/application/:id' element={<ProtectedRoute component={ReviewApplication} />} />
         <Route exact path='/myApplication' element={<ProtectedRoute component={MyApplication} />} />
+        <Route exact path='/college/register' element={<ProtectedRoute component={RegisterCollege} />} />
+        <Route exact path='/college/manager/profile' element={<ProtectedRoute component={CollegeProfile} />} />
        
 
 

@@ -1,0 +1,31 @@
+
+.registerClg{
+    /* border: 2px solid black; */
+    background-color: #f5dadaa8;
+    box-shadow: rgba(0, 0, 0, 0.345) 0px 10px 15px;
+   
+}
+.registerClg div{
+    width: 33rem;
+
+}
+.but h3{
+   
+    border-bottom: 1px solid black;
+    padding-bottom: 1vmax;
+    width: 80%;
+    margin: 1px auto;
+}
+.registerClg input{
+    
+    height: 45px;
+    width: 98%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+margin: 1px auto;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}

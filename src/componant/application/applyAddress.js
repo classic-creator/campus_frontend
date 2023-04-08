@@ -93,7 +93,7 @@ const ApplyAddress = () => {
                
     
                 <div className='applyFor '>
-                  <Form className='applyForm '>
+                  <Form className='applyForm applyform'>
                    
 
                     <TextField label='State' name='state' type='text' />

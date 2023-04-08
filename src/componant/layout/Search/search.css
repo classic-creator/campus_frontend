@@ -1,7 +1,7 @@
 .search input[type=text] {
     /* padding: 0.5vmax 1vmax; */
     font-family: "Roboto";
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* border-radius: 10px; */
     /* line-height: 1.5rem; */
     height: 3rem;
@@ -30,7 +30,7 @@
 .search {
     max-width: 100%;
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .search svg {
