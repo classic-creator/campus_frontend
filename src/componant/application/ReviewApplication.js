@@ -2,14 +2,26 @@ import React,{Fragment, useEffect} from 'react'
 import TextField from './textField'
 import { Form, Formik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
-import { GetStudentAddress, GetStudentEducation, GetStudentPersonalData } from '../../action/applyAction'
+import { useNavigate, useParams } from 'react-router-dom'
+import { GetStudentAddress, GetStudentEducation, GetStudentPersonalData, applyAdmissionAction, clearErrors } from '../../action/applyAction'
+import CheckoutSteps from './checkOutStep'
+import { APPLY_ADMISSION_RESET } from '../../constants/applyConstants'
+import { useAlert } from 'react-alert'
+import Loader from '../layout/loader/loader'
+
 
 const ReviewApplication = () => {
+
   const dispatch=useDispatch()
+  const {id}=useParams()
+  const navigate=useNavigate()
+  const alert=useAlert()
 
   const {studentEducation}=useSelector(state=>state.studentDetails)
   const { studentPersonalData } = useSelector(state => state.studentDetails)
   const {studentAddress}=useSelector(state=>state.studentDetails)
+
+  const {loading,error,msg}=useSelector(state=>state.apply)
 
   const initialvalue={
     class10_passingYear: studentEducation.class10_passingYear ? studentEducation.class10_passingYear : '',
@@ -52,25 +64,61 @@ const ReviewApplication = () => {
 
 
 useEffect(() => {
+
+ 
+
   dispatch(GetStudentAddress())
   dispatch(GetStudentEducation())
   dispatch(GetStudentPersonalData())
+
 }, [dispatch])
 
+useEffect(() => {
+
+  if(error){
+    alert.error(error)
+    dispatch(clearErrors())
+    navigate('/myApplication')
+  }
+  if(msg){
+   
+    alert.success(msg)
+    dispatch({type:APPLY_ADMISSION_RESET})
+    navigate('/myApplication')
+   
+  }
+}, [dispatch,error,alert,msg,navigate])
+
+const handleSubmit = async (values,{ setSubmitting }) => {
+  // Check if form values have changed from initial values
+  const hasChanged = JSON.stringify(values) !== JSON.stringify(initialvalue);
+
+  if (hasChanged) {
+    // Make API call to save data to database
+    
+    setSubmitting(false);
+    alert.success('Success')
+    navigate(`/review/application/${id}`)
+  }
+  else {
+    dispatch(applyAdmissionAction(id));
+  }
+};
 
   return (
-    <Fragment>
+   <Fragment>
+        <CheckoutSteps activeStep={3}/>
       <Formik
         enableReinitialize={true}
         initialValues={initialvalue}
         // validationSchema={validate}
         // onSubmit={values => { dispatch(StudentPersonalData(values)) }}
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         readOnly
       >
         {Formik => (
           <div>
-            <h1>Student Details Form</h1>
+      
 
             <div className='applyFor '>
               <Form className='applyForm '>
@@ -78,55 +126,55 @@ useEffect(() => {
                 <div className='but'>
                   <h3>Personal details</h3>
                 </div>
-                <TextField label='First Name' name='first_name' type='text' readOnly='true' />
-                <TextField label='Middle Name' name='middle_name' type='text' readOnly='true' />
-                <TextField label='Last Name' name='last_name' type='text' readOnly='true'/>
-                <TextField label='Email' name='email' type='email'readOnly='true' />
-                <TextField label='Father Name' name='father_name' type='text' readOnly='true'/>
-                <TextField label='Mother Name' name='mother_name' type='text' readOnly='true'/>
-                <TextField label='Date of Birth' name='dob' type='date' readOnly='true'/>
-                <TextField label='Phon Number' name='phon_no' type='number' readOnly='true'/>
+                <TextField label='First Name' name='first_name' type='text' readOnly />
+                <TextField label='Middle Name' name='middle_name' type='text' readOnly />
+                <TextField label='Last Name' name='last_name' type='text' readOnly/>
+                <TextField label='Email' name='email' type='email'readOnly />
+                <TextField label='Father Name' name='father_name' type='text' readOnly/>
+                <TextField label='Mother Name' name='mother_name' type='text' readOnly/>
+                <TextField label='Date of Birth' name='dob' type='date' readOnly/>
+                <TextField label='Phon Number' name='phon_no' type='number' readOnly/>
 
-                <TextField label='Identification' name='identification' type='text' readOnly='true'/>
-                <TextField label='Identification Number' name='identification_no' type='number' readOnly='true'/>
-                <TextField label='Qualification' name='qualification' type='text' readOnly='true'/>
-                <TextField label='Mark Obtain LastExam' name='mark_obtain_lastExam' type='number' readOnly='true'/>
+                <TextField label='Identification' name='identification' type='text' readOnly/>
+                <TextField label='Identification Number' name='identification_no' type='number' readOnly/>
+                <TextField label='Qualification' name='qualification' type='text' readOnly/>
+                <TextField label='Mark Obtain LastExam' name='mark_obtain_lastExam' type='number' readOnly/>
 
                 <div className='but'>
                   <h3>Address</h3>
                 </div>
 
-                <TextField label='State' name='state' type='text' readOnly='true'/>
-                <TextField label='District' name='district' type='text' readOnly='true'/>
-                <TextField label='Sub_district' name='sub_district' type='text' readOnly='true'/>
-                <TextField label='circle_office' name='circle_office' type='text' readOnly='true'/>
-                <TextField label='police_station' name='police_station' type='text' readOnly='true'/>
-                <TextField label='post_office' name='post_office' type='text'readOnly='true' />
-                <TextField label='pin_no' name='pin_no' type='number' readOnly='true'/>
+                <TextField label='State' name='state' type='text' readOnly/>
+                <TextField label='District' name='district' type='text' readOnly/>
+                <TextField label='Sub_district' name='sub_district' type='text' readOnly/>
+                <TextField label='circle_office' name='circle_office' type='text' readOnly/>
+                <TextField label='police_station' name='police_station' type='text' readOnly/>
+                <TextField label='post_office' name='post_office' type='text'readOnly />
+                <TextField label='pin_no' name='pin_no' type='number' readOnly/>
 
 
                 <div className='but'>
                   <h3>Class 10 exam details</h3>
                 </div>
-                <TextField label='Passing year' name='class10_passingYear' type='number'readOnly='true' />
-                <TextField label='Roll' name='class10_roll' type='number' readOnly='true'/>
-                <TextField label='No' name='class10_no' type='number' readOnly='true'/>
-                <TextField label='Board' name='class10_board' type='text' readOnly='true'/>
-                <TextField label='School' name='class10_school' type='text' readOnly='true'/>
-                <TextField label='Total Mark' name='class10_totalMark' type='number' readOnly='true'/>
-                <TextField label='Mark Obtain' name='class10_markObtain' type='number' readOnly='true'/>
+                <TextField label='Passing year' name='class10_passingYear' type='number'readOnly />
+                <TextField label='Roll' name='class10_roll' type='number' readOnly/>
+                <TextField label='No' name='class10_no' type='number' readOnly/>
+                <TextField label='Board' name='class10_board' type='text' readOnly/>
+                <TextField label='School' name='class10_school' type='text' readOnly/>
+                <TextField label='Total Mark' name='class10_totalMark' type='number' readOnly/>
+                <TextField label='Mark Obtain' name='class10_markObtain' type='number' readOnly/>
 
                 <div className='but'>
                   <h3>Class 12 exam details</h3>
                 </div>
-                <TextField label='Passing year' name='class12_passingYear' type='number' readOnly='true'/>
-                <TextField label='Roll' name='class12_roll' type='number' readOnly='true'/>
-                <TextField label='No' name='class12_no' type='number' readOnly='true'/>
-                <TextField label='Board' name='class12_board' type='text' readOnly='true'/>
-                <TextField label='School/College' name='class12_college' type='text' readOnly='true'/>
-                <TextField label='Strem' name='class12_strem' type='text' readOnly='true' />
-                <TextField label='Total Mark' name='class12_totalMark' type='number' readOnly='true'/>
-                <TextField label='Mark Obtain' name='class12_markObtain' type='number' readOnly='true'/>
+                <TextField label='Passing year' name='class12_passingYear' type='number' readOnly/>
+                <TextField label='Roll' name='class12_roll' type='number' readOnly/>
+                <TextField label='No' name='class12_no' type='number' readOnly/>
+                <TextField label='Board' name='class12_board' type='text' readOnly/>
+                <TextField label='School/College' name='class12_college' type='text' readOnly/>
+                <TextField label='Strem' name='class12_strem' type='text' readOnly />
+                <TextField label='Total Mark' name='class12_totalMark' type='number' readOnly/>
+                <TextField label='Mark Obtain' name='class12_markObtain' type='number' readOnly/>
 
                 <div className='but'>
                   <button type='submit' className='btn '>Submit</button>
@@ -139,7 +187,8 @@ useEffect(() => {
       </Formik>
 
 
-    </Fragment>
+    
+   </Fragment>
   )
 }
 

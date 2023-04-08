@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../layout/loader/loader'
 import { useNavigate, useParams } from 'react-router-dom'
 import { REGISTER_PERSONALDATA_RESET } from '../../constants/applyConstants'
+import CheckoutSteps from './checkOutStep'
 
 
 const StudentDetailsApply = () => {
@@ -90,6 +91,7 @@ const StudentDetailsApply = () => {
     <Fragment>
       {loading ? <Loader /> :
         <Fragment>
+          <CheckoutSteps activeStep={0}/>
           <Formik
             enableReinitialize={true}
             initialValues={initialvalue}
@@ -99,7 +101,7 @@ const StudentDetailsApply = () => {
           >
             {Formik => (
               <div>
-                <h1>Student Details Form</h1>
+              
 
                 <div className='applyFor '>
                   <Form className='applyForm '>

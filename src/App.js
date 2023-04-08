@@ -11,12 +11,13 @@ import CourseDetails from "./componant/college/courseDetails.js"
 import LoginRegister from "./componant/user/LoginRegister.js"
 import Account from "./componant/user/Account.js"
 import ChangePassword from "./componant/user/ChangePassword.js"
-import StudentDetailsApply from "./componant/admission/StudentDetailsApply"
-import ApplyAddress from './componant/admission/applyAddress';
-import ApplyEducationalDetails from './componant/admission/ApplyEducationalDetails.js';
-import ReviewApplication from './componant/admission/ReviewApplication.js';
+import StudentDetailsApply from "./componant/application/StudentDetailsApply"
+import ApplyAddress from './componant/application/applyAddress';
+import ApplyEducationalDetails from './componant/application/ApplyEducationalDetails.js';
+import ReviewApplication from './componant/application/ReviewApplication.js';
 
 import ResetPassword from "./componant/user/ResetPassword.js"
+import MyApplication from "./componant/application/MyApplication.js"
 import store from "./store"
 
 
@@ -63,6 +64,7 @@ useEffect(()=>{
         <Route exact path='/apply/address/:id' element={<ProtectedRoute component={ApplyAddress} />} />
         <Route exact path='/apply/education/:id' element={<ProtectedRoute component={ApplyEducationalDetails} />} />
         <Route exact path='/review/application/:id' element={<ProtectedRoute component={ReviewApplication} />} />
+        <Route exact path='/myApplication' element={<ProtectedRoute component={MyApplication} />} />
        
 
 

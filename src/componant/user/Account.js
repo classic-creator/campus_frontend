@@ -57,7 +57,7 @@ const Account = () => {
                     <p>{(user.created_at)}</p>
                 </div>
                 <div>
-                    <Link to="/orders">My Application</Link>
+                    <Link to="/myApplication">My Application</Link>
                     <Link to="/password/update">Change password</Link>
                     <Button id='logoutBtn' onClick={logoutUser}>Logout</Button>
                 </div>

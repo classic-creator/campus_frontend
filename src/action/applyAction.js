@@ -17,7 +17,15 @@ import {
    REGISTER_EDUCATION_FAIL,
    GET_EDUCATION_REQUEST,
    GET_EDUCATION_SUCCESS,
-   GET_EDUCATION_FAIL
+   GET_EDUCATION_FAIL,
+   APPLY_ADMISSION_REQUEST,
+   APPLY_ADMISSION_SUCCESS,
+   APPLY_ADMISSION_FAIL,
+   MY_APPLICATION_REQUEST,
+   MY_APPLICATION_SUCCESS,
+   MY_APPLICATION_FAIL,
+
+   
 } from "../constants/applyConstants";
 
 import axios from "axios"
@@ -191,6 +199,65 @@ export const GetStudentEducation = () => async (dispatch) => {
    } catch (error) {
       dispatch({
          type: GET_EDUCATION_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+
+//APPLY aDMISSION
+
+export const applyAdmissionAction = (id) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: APPLY_ADMISSION_REQUEST })
+
+      const { data } = await axios.post(`/api/apply/course/${id}`,null, config)
+
+      dispatch({
+         type: APPLY_ADMISSION_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: APPLY_ADMISSION_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+
+
+//GET APLICATIONS FOR USER
+
+export const GetMyApplications = () => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: MY_APPLICATION_REQUEST })
+
+      const { data } = await axios.get(`/api/get/applications`, config)
+      
+      dispatch({
+         type: MY_APPLICATION_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: MY_APPLICATION_FAIL,
          payload: error.response.data.message
       })
    }

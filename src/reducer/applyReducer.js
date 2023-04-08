@@ -20,7 +20,14 @@ import {
     GET_EDUCATION_FAIL,
     REGISTER_EDUCATION_RESET,
     REGISTER_ADDRESS_RESET,
-    REGISTER_PERSONALDATA_RESET
+    REGISTER_PERSONALDATA_RESET,
+    APPLY_ADMISSION_SUCCESS,
+    APPLY_ADMISSION_REQUEST,
+    APPLY_ADMISSION_RESET,
+    APPLY_ADMISSION_FAIL,
+    MY_APPLICATION_REQUEST,
+    MY_APPLICATION_SUCCESS,
+    MY_APPLICATION_FAIL
 } from "../constants/applyConstants";
 
 export const applyFormReducer = (state = {}, action) => {
@@ -152,6 +159,51 @@ export const applyFormEducationReducer = (state = {}, action) => {
             return state;
     }
 }
+
+
+
+//apply admission
+
+export const applyAdmissionReducer = (state = {}, action) => {
+    switch (action.type) {
+       
+        case APPLY_ADMISSION_REQUEST:
+            return {
+                // ...state,
+                loading: true
+            }
+
+        
+        case APPLY_ADMISSION_SUCCESS:
+            return {
+                // ...state,
+                loading: false,
+                msg: action.payload.msg
+            }
+            case APPLY_ADMISSION_RESET:
+       
+            return {
+                // ...state,
+                loading: false,
+               
+            }
+        case APPLY_ADMISSION_FAIL:
+            return {
+                // ...state,
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }
+}
+
 //get student personal details
 
 export const studentDetailsReducer = (state = { studentPersonalData: {}, studentAddress: {}, studentEducation: {} }, action) => {
@@ -191,6 +243,42 @@ export const studentDetailsReducer = (state = { studentPersonalData: {}, student
         case GET_EDUCATION_FAIL:
             return {
                 ...state,
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }
+}
+
+//get  applications for user
+
+export const MyApplicationReducer = (state = {applications:[]}, action) => {
+    switch (action.type) {
+       
+        case MY_APPLICATION_REQUEST:
+            return {
+                // ...state,
+                loading: true       
+            }
+
+        
+        case MY_APPLICATION_SUCCESS:
+            return {
+                // ...state,
+                loading: false,
+                applications: action.payload.applications
+            }
+           
+        case MY_APPLICATION_FAIL:
+            return {
+                // ...state,
                 loading: false,
                 error: action.payload
             }

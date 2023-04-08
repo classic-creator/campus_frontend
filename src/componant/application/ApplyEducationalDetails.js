@@ -8,6 +8,7 @@ import {  AddStudentEducation, GetStudentEducation, clearErrors } from '../../ac
 import * as Yup from 'yup'
 import Loader from '../layout/loader/loader'
 import { REGISTER_EDUCATION_RESET } from '../../constants/applyConstants'
+import CheckoutSteps from './checkOutStep'
 
 const ApplyEducationalDetails = () => {
 
@@ -97,6 +98,7 @@ const ApplyEducationalDetails = () => {
        <Fragment>
         {loading ? <Loader/> :  
         <Fragment>
+            <CheckoutSteps activeStep={2}/>
           <Formik
             enableReinitialize={true}
             initialValues={initialvalue}
@@ -105,10 +107,7 @@ const ApplyEducationalDetails = () => {
             onSubmit={handleSubmit}
           >
             {Formik => (
-              <div>
-                <h1>Student Details Form</h1>
-    
-                
+              <div> 
                   <Form className='applyForm '>
                    
                     <div className='but'> 

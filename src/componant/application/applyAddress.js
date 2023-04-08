@@ -8,6 +8,7 @@ import { AddStudentAddress, GetStudentAddress, clearErrors } from '../../action/
 import * as Yup from 'yup'
 import Loader from '../layout/loader/loader'
 import { REGISTER_ADDRESS_RESET } from '../../constants/applyConstants'
+import CheckoutSteps from './checkOutStep'
 
 const ApplyAddress = () => {
 
@@ -79,6 +80,7 @@ const ApplyAddress = () => {
        <Fragment>
         {loading ? <Loader/> :  
         <Fragment>
+          <CheckoutSteps activeStep={1}/>
           <Formik
             enableReinitialize={true}
             initialValues={initialvalue}
@@ -88,7 +90,7 @@ const ApplyAddress = () => {
           >
             {Formik => (
               <div>
-                <h1>Student Details Form</h1>
+               
     
                 <div className='applyFor '>
                   <Form className='applyForm '>
