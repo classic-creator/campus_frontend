@@ -2,7 +2,7 @@ import { Form, Formik } from 'formik'
 import React, { Fragment, useEffect } from 'react'
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import TextField from '../application/textField'
 import * as Yup from 'yup'
 import './registercollege.css'
@@ -16,9 +16,13 @@ const RegisterCollege = () => {
     const dispatch = useDispatch()
     const alert = useAlert()
     const navigate=useNavigate()
+    const location=useLocation()
     
   
     const { error, message, loading } = useSelector(state => state.college)
+    const {user}=useSelector(state=>state.user)
+
+    const redirect = location.search ? location.search.split("=")[1] : "/college/manager/profile";
    
     // 
       useEffect(() => {
@@ -31,8 +35,11 @@ const RegisterCollege = () => {
                     alert.error(error)
                     dispatch(clearErrors())
                 }
+                if(user.type==='manager'){
+                  navigate(redirect)
+                }
        
-      }, [error,navigate, dispatch, message, alert])
+      }, [error,navigate, dispatch, message,user.type,redirect, alert])
 
 
     const validate = Yup.object({

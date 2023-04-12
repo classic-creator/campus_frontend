@@ -70,8 +70,8 @@ const updatePreferenceFunction=(e)=>{
     }
     if(isUpdated){
       alert.success(isUpdated)  
-      dispatch({type:UPDATE_PREFERENCE_RESET})
       dispatch(GetPreferedCourses())   
+      dispatch({type:UPDATE_PREFERENCE_RESET})
     }
   }, [alert, error,isUpdated,navigate, dispatch,preference])
 

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
-const ProtectedRoute = ({ isAdmin, component: Component, ...routeProps }) => {
+const ProtectedRoute = ({ isAdmin,isSuperAdmin, component: Component, ...routeProps }) => {
 
     const { isAuthenticated, loading, user } = useSelector(state => state.user)
 
@@ -11,7 +11,10 @@ const ProtectedRoute = ({ isAdmin, component: Component, ...routeProps }) => {
         return <Navigate to={'/login'}/>
     }
 
-    if(isAdmin===true && user.type!=='admin'){
+    if(isAdmin===true && user.type!=='manager'){
+        return <Navigate to={'/login'} />
+    }
+    if(isSuperAdmin===true && user.type!=='admin'){
         return <Navigate to={'/login'} />
     }
 

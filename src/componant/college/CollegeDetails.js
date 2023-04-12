@@ -14,6 +14,7 @@ import { DataGrid } from "@material-ui/data-grid"
 import CoverAndNav from './collegecardAndComponent/coverAndNav';
 import ImportantLinkCard from './collegecardAndComponent/importantLinkCard';
 import Imgcarousel from './collegecardAndComponent/Imgcarousel';
+import { Button, Popconfirm, Table,Space,Form,Input } from 'antd'
 
 const CollegeDetails = () => {
 
@@ -32,66 +33,52 @@ const CollegeDetails = () => {
 
 
   //course list table
+  
+
   const columns = [
     {
-      field: "id", headerName: "Sl no",
-      minWidth:100,
-      // maxWidth: 20,
-      flex: 0.1
-    },
-
-    {
-      field: "name",
-      headerName: "C_Name",
-      minWidth:130,
-      // minWidth: 140,
-      flex: 0.2,
+        title: 'Id',
+        dataIndex: 'id'
     },
     {
-      field: "eligibility",
-      headerName: "Eligibility",
-
-      minWidth: 270,
-      flex: 0.2,
-
+        title: 'Name',
+        dataIndex: 'name',
+        align: "center",
+        editable: true
     },
     {
-      field: "duration",
-      headerName: "Duration",
-
-      minWidth: 130,
-      flex: 0.2,
+        title: 'Duration'
+        , dataIndex: 'duration',
+        align: "center",
+        editable: true
     },
     {
-      field: "fees",
-      headerName: "Fees",
-      minWidth: 110,
-      flex: 0.13,
+        title: 'Fees',
+        dataIndex: 'fees',
+        align: "center",
+        editable: true
     },
-
-
     {
-      field: "actions",
-      flex: 0.1,
-      headerName: "Action",
-      minWidth: 110,
-     
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <Fragment>
-            <Link to={`/course/${params.getValue(params.id, "id")}`}>
-              <FontAwesomeIcon icon={faFilePdf} />
-            </Link>
-            <Link to={`/course/${params.getValue(params.id, "id")}`}>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </Link>
-
-          </Fragment>
-        );
-      },
+        title: 'Eligibility',
+        dataIndex: "eligibility",
+        align: "center",
+        editable: true
     },
-  ];
+    {
+        title: 'Action',
+        dataIndex: "action",
+        align: "center"
+        ,render:(_,record)=>
+        rows.length>=1 ? (
+           <Space>
+             {/* <Popconfirm title='Are you sure you want to delete ?'> */}
+               <Link to={`/course/${record.id}`}> <Button  type='primary'> Go</Button></Link>
+            {/* </Popconfirm> */}
+              <Button onClick={()=>console.log('edit')} type='primary'>Apply</Button>
+           </Space>
+        ):null
+    }
+]
 
   const rows = [];
 
@@ -131,7 +118,7 @@ const CollegeDetails = () => {
         <div className="courseTable">
           <h2>Courses</h2>
 
-          <DataGrid
+          {/* <DataGrid
             rows={rows}
             columns={columns}
             pageSize={20}
@@ -142,7 +129,15 @@ const CollegeDetails = () => {
             autoHeight
 
            
-          />
+          /> */}
+             <Table
+                    columns={columns}
+                    dataSource={rows}
+                    bordered
+                    loading={loading}
+
+
+                    />
 
         </div>
       </Fragment>}

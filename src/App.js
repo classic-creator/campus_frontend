@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import Header from "./componant/layout/header/header.js"
 import About from "./componant/about/About.js"
 import Home from "./componant/home/Home.js"
@@ -17,6 +17,11 @@ import ApplyEducationalDetails from './componant/application/ApplyEducationalDet
 import ReviewApplication from './componant/application/ReviewApplication.js';
 import RegisterCollege from './componant/collegeAdmin/RegisterCollege.js';
 import CollegeProfile from './componant/collegeAdmin/CollegeProfile.js';
+import CreateDepertment from './componant/collegeAdmin/CreateDepertment.js';
+import AllDepertments from './componant/collegeAdmin/AllDepertments.js';
+import DepertmentDetails from './componant/collegeAdmin/DepertmentDetails.js';
+import AddCourse from './componant/collegeAdmin/AddCourse.js';
+import UpdateCourse from './componant/collegeAdmin/UpdateCourse.js';
 
 import ResetPassword from "./componant/user/ResetPassword.js"
 import MyApplication from "./componant/application/MyApplication.js"
@@ -28,6 +33,18 @@ import WebFont from "webfontloader"
 import { loadUser } from './action/userAction';
 import ProtectedRoute from './protectedRoute/protectedRoute';
 
+
+
+function ScrollToTop({ children }) {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return children;
+}
+
 function App() {
   
   
@@ -38,16 +55,20 @@ useEffect(()=>{
     google:{
       families:['Roboto','Droid Sans','Chilanka'],
     }
+
   })
+
   store.dispatch(loadUser())
 })
   return (
+ 
 
     <BrowserRouter>
 
       <Header />
 
-      <Routes>
+      <ScrollToTop/>
+          <Routes>
 
 
         <Route exact path='/' element={<Home />} />
@@ -69,6 +90,11 @@ useEffect(()=>{
         <Route exact path='/myApplication' element={<ProtectedRoute component={MyApplication} />} />
         <Route exact path='/college/register' element={<ProtectedRoute component={RegisterCollege} />} />
         <Route exact path='/college/manager/profile' element={<ProtectedRoute component={CollegeProfile} />} />
+        <Route exact path='/college/depertment/create' element={<ProtectedRoute component={CreateDepertment} />} />
+        <Route exact path='/depertments' element={<ProtectedRoute component={AllDepertments} />} />
+        <Route exact path='/depertment/:id' element={<ProtectedRoute component={DepertmentDetails} />} />
+        <Route exact path='/Register/Course/:id' element={<ProtectedRoute component={AddCourse} />} />
+        <Route exact path='/course/update/:id' element={<ProtectedRoute component={UpdateCourse} />} />
        
 
 
@@ -76,12 +102,12 @@ useEffect(()=>{
 
 
       </Routes>
-
+      {/* </ScrollToTop>  */}
       <Footer/>
 
     </BrowserRouter>
 
-
+  
 
 
   );

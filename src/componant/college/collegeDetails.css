@@ -70,7 +70,7 @@ img {
 }
 
 .collegeNav {
-   background: linear-gradient(to right, #d1d6d6, #303130d5);
+    background: linear-gradient(to right, #d1d6d6, #303130d5);
     /* border: 2px solid black; */
     width: 100%;
     position: relative;
@@ -115,7 +115,7 @@ img {
     padding-top: 1vmax;
     /* justify-content: center; */
     /* align-items: center; */
-    
+
 }
 
 
@@ -211,7 +211,7 @@ img {
     width: 30px;
 }
 
-.image img{
+.image img {
     margin: 0 auto;
     height: 90%;
     width: 90%;
@@ -226,45 +226,60 @@ img {
 
 .courseListTable {
     background-color: #8f929262;
-    display:flex;
+    display: flex;
     width: 100%;
-    box-sizing: border-box;
-    overflow-x: scroll;
 
-   
+    box-sizing: border-box;
+
+    /* overflow-x: scroll; */
+
+
 }
-.courseListTable svg{
-    font-size:1.5vmax ;
+
+.actionSvg svg {
+    font-size: 1.5vmax;
     color: rgba(0, 0, 0, 0.644);
     margin-left: 1.7vmax;
     transition: all 0.5s;
 }
-.courseListTable svg:hover{
-   transform:translateY(-0.2vmax);
-   color: tomato;
+
+.actionSvg svg:hover {
+    transform: translateY(-0.2vmax);
+    color: tomato;
 }
-.MuiDataGrid-root .MuiDataGrid-columnsContainer{
-    overflow-x: scroll;
-}
+
+
+
 .courseListTable .MuiDataGrid-cell {
-    line-height:unset !important ;
-    white-space:normal !important;
-    overflow:auto !important;
+    line-height: unset !important;
+
+    white-space: normal !important;
+    overflow: auto !important;
     text-transform: capitalize;
     font-size: 1.5vmax;
-    
-  
+
+
 }
+
+.MuiDataGrid-root .MuiDataGrid-cell {
+    padding: 8px 15px !important;
+}
+
+.MuiDataGrid-root .MuiDataGrid-main {
+    /* overflow-x: scroll !important; */
+}
+
 @media screen and (max-width:600px) {
-    .detailContainer{
+    .detailContainer {
         display: block;
         margin: 5vmax auto;
         height: auto;
-         
+
     }
-    .detailContainer div{
+
+    .detailContainer div {
         margin: 2vmax auto;
         height: auto;
     }
-  
+
 }

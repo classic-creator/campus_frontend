@@ -22,8 +22,14 @@ const Search = (props) => {
         <Fragment>
 
             <form onSubmit={searchSubmitHendlar} className="search">
-               <FontAwesomeIcon icon={faSearch}/> <input type="text" placeholder={props.placeholder} onChange={(e) => setKeyword(e.target.value)} />
-                <input type="submit"  value="Search" />
+             
+                <input type="text" placeholder={props.placeholder} onChange={(e) => setKeyword(e.target.value)} />
+                <input type="submit"  value=" &#128270;"/>
+                {/* <button type="submit" >
+                <i class="bi bi-search"></i>
+</button> */}
+
+                {/* <i type='submit' class="bi bi-search"></i> */}
             </form>
 
 

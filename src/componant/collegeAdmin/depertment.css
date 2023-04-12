@@ -1,0 +1,35 @@
+.dept{ 
+    border-top: none;
+    /* border: 2px solid black; */
+    margin-top: 2vmax;
+    margin-bottom: 2vmax;
+}
+.dept h2{
+    margin-top: 2vmax;
+    margin-bottom: 2vmax;
+}
+.allCourseTable{
+    border-top: none;
+    margin-top: 3vmax;
+}
+
+.ant-table-wrapper{
+    box-shadow: rgba(0, 0, 0, 0.345) 0px 5px 10px;
+    border-radius: 4px;
+
+}
+
+.allCourseTable h2{
+    margin-bottom: 2vmax;
+}
+.allCourseTable a{
+    text-decoration: none;
+    font-size: 1.1vmax;
+    color: rgba(0, 0, 0, 0.712);
+    text-transform: capitalize;
+
+}
+.ant-table-thead .ant-table-cell {
+    background-color:#9FA6B2 !important;
+    /* color:#9FA6B2 !important; */
+    }

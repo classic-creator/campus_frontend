@@ -96,7 +96,7 @@ export const updatePreferenceReducer = ((state = {}, action) => {
                 return{
                
                 isUpdated:false,
-                ...state,
+               loading:false
             }
         case CLEAR_ERRORS:
 

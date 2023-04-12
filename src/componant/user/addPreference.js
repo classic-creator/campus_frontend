@@ -47,6 +47,7 @@ const AddPreference = () => {
     myForm.set('address', address)
 
     dispatch(registerPreferenceAction(myForm))
+
     dispatch(GetPreferedCourses())
 
   }
@@ -55,6 +56,7 @@ const AddPreference = () => {
       alert.error(error)
       dispatch(clearErrors())
     }
+    
   }, [alert, error, dispatch])
 
   return (

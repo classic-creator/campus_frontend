@@ -2,25 +2,32 @@ import React, { Fragment } from 'react'
 import Search from '../Search/search'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookAtlas, faBuilding, faCheck, faHomeAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons'
-import { NavLink,Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import "./header.css"
 
 const header = () => {
     return (
         <Fragment>
 
-           <div className='upperHeader'>
-            
-             <h2>CAMPUS</h2>
+            <div className='upperHeader'>
+                <div className='rigt'>
 
-             <div className="left">
-                <Link to={'/college/register'} >College Exicutive</Link>
+                    <h2>CAMPUS</h2>
+                    <span>Common Admission Plateform for underGraduate Studies</span>
+                </div>
 
-                <Link className='leftBorder'>Government Exicutive</Link>
-             </div>
+                <div className="left">
+                    <div>
+                        <Link to={'/college/register'} >College Exicutive</Link>
+                        <Link className='leftBorder'>Government Exicutive</Link>
+                    </div>
+                    {/* <form className="d-flex"> */}
+                    <Search link='colleges' placeholder='Search Colleges' />
+
+                </div>
             </div>
 
-            <nav className="navbar navMain navbar-expand-lg sticky-top navbar-light bg-primary ">
+            <nav className="navbar navMain navbar-expand-lg sticky-top navbar-dark bg-primary ">
                 <div className="container-fluid">
                     {/* <a className="navbar-brand" href="#">Navbar</a> */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,15 +38,15 @@ const header = () => {
                             <li className="nav-item navli  navli">
                                 <NavLink className="nav-link" to="/" exact>
                                     <i>
-                                        <FontAwesomeIcon  icon={faHomeAlt} />
-                                    </i><span>Homee</span>
+                                        <FontAwesomeIcon icon={faHomeAlt} />
+                                    </i><span>Home</span>
                                 </NavLink>
                             </li>
                             <li className="nav-item navli">
                                 <NavLink className="nav-link" to="/colleges" exact>
                                     <i>
                                         <FontAwesomeIcon icon={faBuilding} />
-                                    </i> Colleges
+                                    </i> <span> Colleges </span>
 
                                 </NavLink>
                             </li>
@@ -47,24 +54,24 @@ const header = () => {
                                 <NavLink className="nav-link" to="/courses" exact>
                                     <i>
                                         <FontAwesomeIcon icon={faBookAtlas} />
-                                    </i>Courses
+                                    </i> <span>Courses</span>
                                 </NavLink>
                             </li>
                             <li className="nav-item navli">
-                                <NavLink className="nav-link" to="/desbord" exact>
+                                <NavLink className="nav-link" to="/myApplication" exact>
                                     <i>
                                         <FontAwesomeIcon icon={faCheck} />
-                                    </i>My Application
+                                    </i><span>My Application</span>
                                 </NavLink>
                             </li>
                             <li className="nav-item navli">
                                 <NavLink className="nav-link" to="/login" exact>
                                     <i>
                                         <FontAwesomeIcon icon={faUserAlt} />
-                                    </i>Profile
+                                    </i><span>Profile</span>
                                 </NavLink>
                             </li>
-                            <li className="nav-item navli dropdown">
+                            {/* <li className="nav-item navli dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Dropdown
                                 </a>
@@ -74,14 +81,12 @@ const header = () => {
                                     <li><hr className="dropdown-divider" /></li>
                                     <li><a className="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
-                            </li>
+                            </li> */}
                             {/* <li className="nav-item">
                                 <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                             </li> */}
                         </ul>
-                        <form className="d-flex">
-                            <Search link='colleges' placeholder='Search Colleges' />
-                        </form>
+
                     </div>
                 </div>
             </nav>

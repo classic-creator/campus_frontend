@@ -15,15 +15,16 @@
     text-decoration: none;
     border-radius: 6px;
     margin: 1vmax;
-    height: 20vmax;
+    height: auto;
+    /* height: 20vmax; */
     background-color: rgba(224, 232, 236, 0.548);
     transition: all 0.5s;
     padding-bottom: 0.5vmax;
 }
 
 .card_body img{
-    width: 30vmax;
-    height: 18vmax;
+    width: 27vmax;
+    height: 13vmax;
     border-radius: 4%;
     margin: 1vmax 1vmax;
     opacity: 10;
@@ -38,7 +39,7 @@
     padding-top: 1vmax;
     text-align: center; 
     border-bottom: 1px solid black ;
-    width: 90%;
+ 
     
 }
 .card_body div p{
