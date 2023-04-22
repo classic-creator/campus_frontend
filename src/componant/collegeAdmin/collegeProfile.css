@@ -46,9 +46,9 @@
     background-color: rgb(255, 233, 174);
     text-decoration: none;
     padding: 1.5rem;
-    width: 15vmax;
-    height: 15vmax;
-    margin: 2rem;
+    width: 17vmax;
+    height: 17vmax;
+    margin: 3rem;
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -69,8 +69,9 @@
     margin: auto;
 }
 .doughnutChat{
-    width: 30vmax;
+    width: 25vmax;
     margin: auto;
+    margin-bottom: 3vmax;
 }
 .datatable{
     text-align: center;

@@ -1,10 +1,14 @@
 import React, { Fragment } from 'react'
-import { useSelector } from 'react-redux'
+import {useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
+
 
 const ProtectedRoute = ({ isAdmin,isSuperAdmin, component: Component, ...routeProps }) => {
 
     const { isAuthenticated, loading, user } = useSelector(state => state.user)
+
+  
+    
 
     if(!loading && isAuthenticated===false){
 

@@ -24,6 +24,12 @@ import {
    MY_APPLICATION_REQUEST,
    MY_APPLICATION_SUCCESS,
    MY_APPLICATION_FAIL,
+   COURSE_APPLICATION_REQUEST,
+   COURSE_APPLICATION_SUCCESS,
+   COURSE_APPLICATION_FAIL,
+   APPLICATION_UPDATE_REQUEST,
+   APPLICATION_UPDATE_SUCCESS,
+   APPLICATION_UPDATE_FAIL,
 
    
 } from "../constants/applyConstants";
@@ -258,6 +264,64 @@ export const GetMyApplications = () => async (dispatch) => {
    } catch (error) {
       dispatch({
          type: MY_APPLICATION_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+
+//get  course application
+
+export const GetCourseApplications = (id) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: COURSE_APPLICATION_REQUEST })
+
+      const { data } = await axios.get(`/api/course/applications/${id}`, config)
+      
+      dispatch({
+         type: COURSE_APPLICATION_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: COURSE_APPLICATION_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+
+//UPDATE ADMISSION STATUS
+
+export const UpdateApplicationStatus = ({myForm,id}) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: APPLICATION_UPDATE_REQUEST })
+
+      const { data } = await axios.put(`/api/application/update/${id}`,myForm, config)
+      
+      dispatch({
+         type: APPLICATION_UPDATE_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: APPLICATION_UPDATE_FAIL,
          payload: error.response.data.message
       })
    }

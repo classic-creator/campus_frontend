@@ -1,20 +1,31 @@
 import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { myCollegeAction } from '../../action/collegeAdminAction'
+import { clearErrors, myCollegeAction } from '../../action/collegeAdminAction'
 import './collegeProfile.css'
 import { Link } from 'react-router-dom'
 import { Typography } from '@material-ui/core'
 import Sidebar from './sidebar'
+import { useAlert } from 'react-alert'
+import { loadUser } from '../../action/userAction'
 
 const CollegeProfile = () => {
 
+  const alert =useAlert()
   const dispatch = useDispatch()
-  const { myCollege, myCourses } = useSelector(state => state.college)
+  const { myCollege, myCourses,error } = useSelector(state => state.myCollege)
 
   useEffect(() => {
-    dispatch(myCollegeAction())
+    
+    if(error){
+      alert.error(error)
+      dispatch(clearErrors())
+    }else{
 
-  }, [dispatch])
+      dispatch(myCollegeAction())
+    }
+   
+
+  }, [dispatch,alert,error])
 
   return (
     <Fragment>

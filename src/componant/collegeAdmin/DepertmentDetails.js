@@ -3,7 +3,8 @@ import Sidebar from './sidebar'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getDepertmentCourseAction } from '../../action/collegeAdminAction'
-import { Button, Popconfirm, Table,Space,Form,Input } from 'antd'
+import { Button, Popconfirm, Table, Space, Form, Input } from 'antd'
+import { faLeftLong } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -12,7 +13,8 @@ const DepertmentDetails = () => {
     const { id } = useParams()
     const dispatch = useDispatch()
 
-    const { courses } = useSelector(state => state.depertments)
+    const { courses} = useSelector(state => state.depertments)
+    
     // const [gridData, setGridData] = useState([])
     // const [loading, setLoading] = useState(false)
 
@@ -20,55 +22,66 @@ const DepertmentDetails = () => {
         dispatch(getDepertmentCourseAction(id))
     }, [dispatch, id])
 
-   
+
 
     const columns = [
         {
             title: 'Id',
             dataIndex: 'id',
             style: { background: '#1890ff', color: '#fff' },
+            fixed:'left',
+            width:10
+        },
+        {
+            title: 'Action',
+            dataIndex: "action",
+            align: "center",
+            // fixed:"right",
+            width:40,
+            render: (_, record) =>
+                rows.length >= 1 ? (
+                    <Space>
+                         <Link to={`/course/deashboard/${record.id}`}> <Button  type='primary'> Go</Button></Link>
+                        <Link to={`/course/update/${record.id}`}> <Button type='primary'> Edit</Button></Link>
+                        <Popconfirm title='Are you sure you want to delete ?' onConfirm={() => handleDelete(record)}>
+                            <Button danger type='primary'> Delete</Button>
+                        </Popconfirm>
+                    </Space>
+                ) : null
         },
         {
             title: 'Name',
             dataIndex: 'name',
             align: "center",
+            // fixed:'left',
+            width:50,
             editable: true,
             render: (_, record) => (
-                <Link to={`/course/${record.id}`}>{record.name}</Link>
-              ),
+                <Link to={`/course/deashboard/${record.id}`}>{record.name}</Link>
+            ),
         },
         {
             title: 'Duration'
             , dataIndex: 'duration',
             align: "center",
-            editable: true
+            editable: true,
+            width:23
         },
         {
             title: 'Fees',
             dataIndex: 'fees',
             align: "center",
-            editable: true
+            editable: true,
+            width:23
         },
         {
             title: 'Eligibility',
             dataIndex: "eligibility",
             align: "center",
-            editable: true
+            editable: true,
+            width:90
         },
-        {
-            title: 'Action',
-            dataIndex: "action",
-            align: "center"
-            ,render:(_,record)=>
-            rows.length>=1 ? (
-               <Space>
-                 <Popconfirm title='Are you sure you want to delete ?' onConfirm={()=>handleDelete(record)}>
-                    <Button danger type='primary'> Delete</Button>
-                </Popconfirm>
-                  <Link to={`/course/update/${record.id}`}> <Button  type='primary'> Edit</Button></Link>
-               </Space>
-            ):null
-        }
+       
     ]
 
     const rows = []
@@ -87,9 +100,9 @@ const DepertmentDetails = () => {
     })
 
 
-const handleDelete =(value)=>{
-   
-}
+    const handleDelete = (value) => {
+
+    }
 
 
     return (
@@ -97,17 +110,24 @@ const handleDelete =(value)=>{
             <div className='dashboard'>
 
                 <Sidebar />
-                <div className="container allCourseTable" style={{ maxWidth: '100%' }}>
+                <div className="container">
 
+               
+                    <h2>Registered Courses</h2>
+                <div className="allCourseTable" style={{overflowX:'auto' }}>
                     <Table
-                    columns={columns}
-                    dataSource={rows}
-                    bordered
-                    
+                        columns={columns}
+                        dataSource={rows}
+                        bordered
+                        scroll={{
+                            x: 1300,
+                            y: 400,
+                          }}
                     />
 
                 </div>
                 <Link to={`/register/course/${id}`}>Add Course</Link>
+                </div>
             </div>
         </Fragment>
     )

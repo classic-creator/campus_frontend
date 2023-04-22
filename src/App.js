@@ -22,6 +22,9 @@ import AllDepertments from './componant/collegeAdmin/AllDepertments.js';
 import DepertmentDetails from './componant/collegeAdmin/DepertmentDetails.js';
 import AddCourse from './componant/collegeAdmin/AddCourse.js';
 import UpdateCourse from './componant/collegeAdmin/UpdateCourse.js';
+import CourseDeashboard from './componant/collegeAdmin/CourseDeashboard.js';
+import CourseAdmissionList from './componant/collegeAdmin/CourseAdmissionList.js';
+import ApplyDetails from './componant/collegeAdmin/apply/ApplyDetails.js';
 
 import ResetPassword from "./componant/user/ResetPassword.js"
 import MyApplication from "./componant/application/MyApplication.js"
@@ -46,30 +49,25 @@ function ScrollToTop({ children }) {
 }
 
 function App() {
-  
-  
- 
 
-useEffect(()=>{
-  WebFont.load({
-    google:{
-      families:['Roboto','Droid Sans','Chilanka'],
-    }
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Roboto', 'Droid Sans', 'Chilanka'],
+      }
 
+    })
+
+    store.dispatch(loadUser())
   })
-
-  store.dispatch(loadUser())
-})
   return (
- 
+
 
     <BrowserRouter>
 
       <Header />
-
-      <ScrollToTop/>
-          <Routes>
-
+      <ScrollToTop />
+      <Routes>
 
         <Route exact path='/' element={<Home />} />
         <Route exact path='/colleges' element={<Home />} />
@@ -79,8 +77,8 @@ useEffect(()=>{
         <Route exact path='/college/:id' element={<CollegeDetails />} />
         <Route exact path='college/course/:id' element={<Courses />} />
         <Route exact path='/course/:id' element={<CourseDetails />} />
-        <Route exact path='/login' element={<LoginRegister/>} />
-        <Route exact path='/user/reset/:token' element={<ResetPassword/>} />
+        <Route exact path='/login' element={<LoginRegister />} />
+        <Route exact path='/user/reset/:token' element={<ResetPassword />} />
         <Route exact path='/account' element={<ProtectedRoute component={Account} />} />
         <Route exact path='/password/update' element={<ProtectedRoute component={ChangePassword} />} />
         <Route exact path='/apply/:id' element={<ProtectedRoute component={StudentDetailsApply} />} />
@@ -89,13 +87,16 @@ useEffect(()=>{
         <Route exact path='/review/application/:id' element={<ProtectedRoute component={ReviewApplication} />} />
         <Route exact path='/myApplication' element={<ProtectedRoute component={MyApplication} />} />
         <Route exact path='/college/register' element={<ProtectedRoute component={RegisterCollege} />} />
-        <Route exact path='/college/manager/profile' element={<ProtectedRoute component={CollegeProfile} />} />
-        <Route exact path='/college/depertment/create' element={<ProtectedRoute component={CreateDepertment} />} />
-        <Route exact path='/depertments' element={<ProtectedRoute component={AllDepertments} />} />
-        <Route exact path='/depertment/:id' element={<ProtectedRoute component={DepertmentDetails} />} />
-        <Route exact path='/Register/Course/:id' element={<ProtectedRoute component={AddCourse} />} />
-        <Route exact path='/course/update/:id' element={<ProtectedRoute component={UpdateCourse} />} />
-       
+        <Route exact path='/college/manager/profile' element={<ProtectedRoute isAdmin={true} component={CollegeProfile} />} />
+        <Route exact path='/college/depertment/create' element={<ProtectedRoute isAdmin={true} component={CreateDepertment} />} />
+        <Route exact path='/depertments' element={<ProtectedRoute isAdmin={true} component={AllDepertments} />} />
+        <Route exact path='/depertment/:id' element={<ProtectedRoute isAdmin={true} component={DepertmentDetails} />} />
+        <Route exact path='/Register/Course/:id' element={<ProtectedRoute isAdmin={true} component={AddCourse} />} />
+        <Route exact path='/course/update/:id' element={<ProtectedRoute isAdmin={true} component={UpdateCourse} />} />
+        <Route exact path='/course/deashboard/:id' element={<ProtectedRoute isAdmin={true} component={CourseDeashboard} />} />
+        <Route exact path='/course/apply/:id' element={<ProtectedRoute isAdmin={true} component={CourseAdmissionList} />} />
+        <Route exact path='/apply/update/:id' element={<ProtectedRoute isAdmin={true} component={ApplyDetails} />} />
+
 
 
         <Route exact path='/about' element={<About />} />
@@ -103,11 +104,11 @@ useEffect(()=>{
 
       </Routes>
       {/* </ScrollToTop>  */}
-      <Footer/>
+      <Footer />
 
     </BrowserRouter>
 
-  
+
 
 
   );

@@ -11,6 +11,10 @@
 .allCourseTable{
     border-top: none;
     margin-top: 3vmax;
+    margin-bottom: 3vmax;
+    width: 96vw;
+    /* margin: 1px auto; */
+    /* width: 100% !important; */
 }
 
 .ant-table-wrapper{
@@ -33,3 +37,14 @@
     background-color:#9FA6B2 !important;
     /* color:#9FA6B2 !important; */
     }
+
+    @media (max-width: 768px) {
+        /* Styles for small screens */
+        .ant-table-thead > tr > th {
+          font-size: 14px; /* Adjust font size for small screens */
+        }
+        .ant-table-tbody > tr > td {
+          font-size: 12px; /* Adjust font size for small screens */
+        }
+        /* Additional styles for small screens */
+      }

@@ -27,7 +27,14 @@ import {
     APPLY_ADMISSION_FAIL,
     MY_APPLICATION_REQUEST,
     MY_APPLICATION_SUCCESS,
-    MY_APPLICATION_FAIL
+    MY_APPLICATION_FAIL,
+    COURSE_APPLICATION_REQUEST,
+    COURSE_APPLICATION_SUCCESS,
+    COURSE_APPLICATION_FAIL,
+    APPLICATION_UPDATE_REQUEST,
+    APPLICATION_UPDATE_SUCCESS,
+    APPLICATION_UPDATE_FAIL,
+    APPLICATION_UPDATE_RESET,
 } from "../constants/applyConstants";
 
 export const applyFormReducer = (state = {}, action) => {
@@ -292,3 +299,81 @@ export const MyApplicationReducer = (state = {applications:[]}, action) => {
             return state;
     }
 }
+
+
+//GET COURSE APPLICATIONS
+
+export const CourseApplicationReducer = (state = {applications:[]}, action) => {
+    switch (action.type) {
+       
+        case COURSE_APPLICATION_REQUEST:
+            return {
+                ...state,
+                loading: true       
+            }
+
+        
+        case COURSE_APPLICATION_SUCCESS:
+            return {
+                // ...state,
+                loading: false,
+                applications: action.payload.applications
+            }
+           
+        case COURSE_APPLICATION_FAIL:
+            return {
+              
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }}
+
+    //update application status
+
+    export const ApplicationReducer = (state = {}, action) => {
+        switch (action.type) {
+           
+            case APPLICATION_UPDATE_REQUEST:
+                return {
+                    ...state,
+                    loading: true       
+                }
+    
+            
+            case APPLICATION_UPDATE_SUCCESS:
+                return {
+                    // ...state,
+                    loading: false,
+                    isUpdated: true
+                }
+            case APPLICATION_UPDATE_RESET:
+                return {
+                    // ...state,
+                    loading: false,
+                    isUpdated: false
+                }
+               
+            case APPLICATION_UPDATE_FAIL:
+                return {
+                  
+                    loading: false,
+                    error: action.payload,
+                    isUpdated:false
+                }
+    
+            case CLEAR_ERRORS:
+                return {
+                    ...state,
+                    error: null
+                }
+            default:
+                return state;
+        }}

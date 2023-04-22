@@ -4,6 +4,7 @@
     /* border: 2px solid black; */
     margin-top: 5px;
     display: flex;
+    justify-content: space-between;
 }
 
 .navMain{
@@ -38,9 +39,9 @@
 .left{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 65%;
+  
+  margin-right: 2vmax;
+  
     text-align: right;
 }
 .left div{
@@ -60,6 +61,7 @@
 .rigt{
 /* display: flex; */
 margin-left: 2vmax !important;
+/* margin-right: 2vmax; */
 
 }
 .rigt h2{
@@ -68,4 +70,11 @@ margin-left: 2vmax !important;
     font-family:"Roboto";
     color: rgb(40, 26, 238);
     
+}
+@media (max-width: 640px) 
+{
+    .rigt span
+    {
+        display: none;
+    }
 }

@@ -59,25 +59,24 @@ export const collegeRegisterAction = (collegeData) => async (dispatch) => {
 
 //my college details
 
+
+
 export const myCollegeAction = () => async (dispatch) => {
     try {
-
         const token = localStorage.getItem('token')
 
         const config = {
-            baseURL: process.env.REACT_APP_API_BASE_URL,
             headers: {
+                // "Access-Control-Allow-Origin:": "*",
+                Accept: 'application/json',
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
-            }
+            },
+            baseURL: process.env.REACT_APP_API_BASE_URL,
         };
         dispatch({ type: MY_COLLEGE_REQUEST })
 
-        const { data } = await axios.get(
-            "/api/college/staff/profile",
-            
-            config
-        )
+        const { data } = await axios.get("/api/college/staff/profile", config)
 
         dispatch({
             type: MY_COLLEGE_SUCCESS,
@@ -88,8 +87,11 @@ export const myCollegeAction = () => async (dispatch) => {
             type: MY_COLLEGE_FAIL,
             payload: error.response.data.message
         })
+     
     }
 }
+
+
 
 // create depertment
 

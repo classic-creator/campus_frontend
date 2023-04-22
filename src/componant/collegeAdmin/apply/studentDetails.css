@@ -1,0 +1,115 @@
+.profile1{
+    display: flex;
+    flex-direction: column;
+ 
+   margin-left: 8vmax;
+    text-align: left;
+    font-family: "Roboto";
+    margin-top: 7vmax;
+}
+.profile1 span:first-of-type{
+    color: tomato;
+    margin-bottom: 15px;
+    font-size: 23px;
+}
+.profile1 h3,
+.profile1 span:nth-last-of-type(-n+2){
+    margin-left: 25px;
+   
+}
+.profile2{
+    margin-top: 3vmax;
+}
+.allCourseTable{
+    /* overflow-x: hidden; */
+}
+.ApplicatinInfo{
+    display: flex;
+    justify-content: space-between;
+}
+.RightBar{
+    margin-right: 4vmax;
+    margin-top: 4vmax;
+    padding-left: 2vmax;
+    border-left: 1px solid black;
+}
+
+
+.createProductForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin: auto; */
+    /* padding: 3vmax; */
+    justify-content: space-evenly;
+    height: 40vh;
+    width: 25vw;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
+  }
+  
+  .createProductForm > div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  .createProductForm > div > select
+   {
+    padding: 1vmax 4vmax;
+    padding-right: 1vmax;
+    margin: 1px auto;
+    width: 95%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    border-radius: 4px;
+    font: 300 0.9vmax cursive;
+    outline: none;
+  }
+  
+  .createProductForm > div > svg {
+    position: absolute;
+    transform: translateX(1vmax);
+    font-size: 1.6vmax;
+    color: rgba(0, 0, 0, 0.623);
+    margin-left: 1vmax;
+  }
+  
+  
+  #createProductBtn {
+    border: none;
+    background-color: tomato;
+    color: white;
+    font: 300 0.9vmax "Roboto";
+    width: 90%;
+    margin: 1px auto;
+    padding: 0.8vmax;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  }
+  
+  #createProductBtn:hover {
+    background-color: rgb(179, 66, 46);
+  }
+  
+
+@media (max-width: 768px) {
+  .ApplicatinInfo{
+    display: block;
+    margin: 1px auto;
+  }
+  .createProductForm{
+    margin: 10px auto;
+    text-align: center;
+    width: 80vw;
+    
+  }
+  .createProductForm > div > select
+  {
+    /* width: 80%; */
+    height: 5vmax;
+  }
+  }

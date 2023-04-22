@@ -26,12 +26,12 @@ import {
     UPDATE_COURSES_RESET,
     UPDATE_COURSES_SUCCESS
 } from "../constants/collegeAdminConstants";
-export const collegesReducer = ((state = {myCollege:{},myCourses:[] }, action) => {
+export const collegesReducer = ((state = {}, action) => {
 
     switch (action.type) {
 
         case REGISTER_COLLEGE_REQUEST:
-            case MY_COLLEGE_REQUEST:
+          
             return {
                 loading: true,
 
@@ -46,15 +46,9 @@ export const collegesReducer = ((state = {myCollege:{},myCourses:[] }, action) =
 
             };
 
-            case MY_COLLEGE_SUCCESS:
-                return{
-                loading:false,
-                myCollege:action.payload.myCollege,
-                myCourses:action.payload.myCourses
-
-            }
+          
         case REGISTER_COLLEGE_FAIL:
-            case MY_COLLEGE_FAIL:
+           
             return {
                 loading: false,
                 error:action.payload
@@ -163,6 +157,51 @@ export const GetDepertmentReducer = ((state = {depertments:[],courses:[]}, actio
 
 })
 
+
+//get my college
+
+export const mycollegesReducer = (state = {myCollege:{},myCourses:[]}, action) => {
+
+    switch (action.type) {
+
+       
+            case MY_COLLEGE_REQUEST:
+            return {
+                ...state,
+                loading: true,
+
+            };
+      
+
+            case MY_COLLEGE_SUCCESS:
+                return{
+                loading:false,
+                myCollege:action.payload.myCollege,
+                myCourses:action.payload.myCourses,
+               
+
+            }
+    
+            case MY_COLLEGE_FAIL:
+            return {
+              
+                loading: false,
+                error:action.payload
+            }
+
+        case CLEAR_ERRORS:
+
+            return {
+                ...state,
+                error: null,
+            };
+
+            default:
+                return state;
+        };
+        
+
+}
 //CREATE COURSE
 
 export const addCourseReducer = ((state = {}, action) => {

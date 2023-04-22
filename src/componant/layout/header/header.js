@@ -12,8 +12,8 @@ const header = () => {
             <div className='upperHeader'>
                 <div className='rigt'>
 
-                    <h2>CAMPUS</h2>
-                    <span>Common Admission Plateform for underGraduate Studies</span>
+                    <Link to={'/'}><h2>CAMPUS</h2></Link>
+                    <span>Common Admission Management Plateform for undergraduate Studies</span>
                 </div>
 
                 <div className="left">

@@ -17,3 +17,6 @@ input[type="number"]
 li{
     list-style: none;
 }
+a{
+    text-decoration: none;
+}

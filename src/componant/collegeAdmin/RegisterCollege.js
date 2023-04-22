@@ -9,6 +9,7 @@ import './registercollege.css'
 import {  clearErrors, collegeRegisterAction } from '../../action/collegeAdminAction'
 import Loader from "../layout/loader/loader"
 
+
 const RegisterCollege = () => {
 
     
@@ -19,27 +20,31 @@ const RegisterCollege = () => {
     const location=useLocation()
     
   
-    const { error, message, loading } = useSelector(state => state.college)
+    const { error,  message, loading } = useSelector(state => state.college)
     const {user}=useSelector(state=>state.user)
 
     const redirect = location.search ? location.search.split("=")[1] : "/college/manager/profile";
    
     // 
       useEffect(() => {
-                if(message)
+                if( message)
                 {
                     alert.success("College Register Success")
-                    navigate('/desbord/manager/profile')
+                    // dispatch(loadUser())
+                    // navigate(redirect)
+                    // window.location.reload(false);
+                    user['type']='manager'
+                    // console.log(user)
                 }
                 if(error){
                     alert.error(error)
                     dispatch(clearErrors())
                 }
-                if(user.type==='manager'){
+                if(user['type']==='manager'){
                   navigate(redirect)
                 }
        
-      }, [error,navigate, dispatch, message,user.type,redirect, alert])
+      }, [error,navigate, dispatch, message,user,redirect, alert])
 
 
     const validate = Yup.object({

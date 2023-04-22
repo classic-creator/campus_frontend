@@ -1,11 +1,11 @@
 .container{
     display: flex;
     margin: 1vmax auto;
-    width: 80vw;
+    width: 88vw;
     flex-wrap: wrap;
     justify-content: center;
     /* border: 2px solid rebeccapurple; */
-    max-width: 100%;
+    /* max-width: 100%; */
     
 }
 .card_body{
