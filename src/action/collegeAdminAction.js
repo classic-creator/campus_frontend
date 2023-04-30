@@ -2,6 +2,9 @@ import axios from 'axios'
 
 import {
     CLEAR_ERRORS,
+    COLLEGE_COURSES_FAIL,
+    COLLEGE_COURSES_REQUEST,
+    COLLEGE_COURSES_SUCCESS,
     CREATE_COURSE_FAIL,
     CREATE_COURSE_REQUEST,
     CREATE_COURSE_SUCCESS,
@@ -224,6 +227,39 @@ export const createCourseAction = ({values,id}) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: CREATE_COURSE_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+//get College Course
+
+export const getCollegeCourseAction = () => async (dispatch) => {
+    try {
+
+        const token = localStorage.getItem('token')
+
+        const config = {
+            baseURL: process.env.REACT_APP_API_BASE_URL,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        };
+        dispatch({ type: COLLEGE_COURSES_REQUEST })
+
+        const { data } = await axios.get(
+            `/api/college/all/courses`,
+            
+            config
+        )
+
+        dispatch({
+            type: COLLEGE_COURSES_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: COLLEGE_COURSES_FAIL,
             payload: error.response.data.message
         })
     }

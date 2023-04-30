@@ -6,76 +6,81 @@ import { Link } from 'react-router-dom'
 import { Typography } from '@material-ui/core'
 import Sidebar from './sidebar'
 import { useAlert } from 'react-alert'
-import { loadUser } from '../../action/userAction'
+import Loader from '../layout/loader/loader'
+import CountUp from 'react-countup';
 
 const CollegeProfile = () => {
 
-  const alert =useAlert()
+  const alert = useAlert()
   const dispatch = useDispatch()
-  const { myCollege, myCourses,error } = useSelector(state => state.myCollege)
+  const { myCollege, myCourses, error,loading } = useSelector(state => state.myCollege)
 
   useEffect(() => {
-    
-    if(error){
+
+    if (error) {
       alert.error(error)
       dispatch(clearErrors())
-    }else{
+    } else {
 
       dispatch(myCollegeAction())
     }
-   
 
-  }, [dispatch,alert,error])
+
+  }, [dispatch, alert, error])
 
   return (
-    <Fragment>
+   <Fragment>
+    {loading ? <Loader/> :  <Fragment>
 
-<div className='dashboard'>
-      <Sidebar />
-      <div className='dashboardContainer'>
-        <Typography component="h1">Dashboard</Typography>
-        <div className='dashboardSummery'>
-          <div>
-            <p className='dashboardSummeryP'>
-             
-              {myCollege && myCollege.collegeName}
-            </p>
+<div className='dashboard'> 
+ <div>
+  <Sidebar />
+  </div>
+   <div className='dashboardContainer'>
+     <Typography component="h1">Dashboard</Typography>
+     <div className='dashboardSummery'>
+       <div >
+         <p className='dashboardSummeryP'>
 
-          </div>
-          <div className="dashboardSummeryBox2">
-            <Link to="/admin/products">
-              <p>Registered Courses</p>
-              <p>{myCourses && myCourses.length}</p>
-            </Link>
+           {myCollege && myCollege.collegeName}
+         </p>
 
-            <Link to="/admin/orders">
-              <p>Seat Remain</p>
-              {/* <p>{orders && orders.length}</p> */}
-            </Link>
+       </div>
+       <div className="dashboardSummeryBox2">
+         <Link to="/college/course">
+           <p>Registered Courses</p>
+           {/* <p>{myCourses && myCourses.length}</p> */}
+           <CountUp end={myCourses && myCourses.length} duration={5}/>
+         </Link>
+        <Link to="/admin/orders">
+         <p>Seat Remain</p>
+        {/* <p>{orders && orders.length}</p> */}
+       </Link>
+       <Link to="/admin/users">
+           <p>Admission Confirm</p>
+         {/* <p>{users && users.length}</p> */}
+       </Link>
+     </div>
+   </div>
 
-
-            <Link to="/admin/users">
-              <p>Admission Confirm</p>
-              {/* <p>{users && users.length}</p> */}
-            </Link>
-          </div>
-
-        </div>
-
-        <div className="lineChart">
-         
+    <div className="lineChart">
 
 
-        </div>
-        <div className="doughnutChat">
-          {/* <Doughnut
-            data={doughnutState} /> */}
-        </div>
 
-      </div>
-    </div>
-    </Fragment>
+   </div>
+   <div className="doughnutChat">
+     {/* <Doughnut
+       data={doughnutState} /> */}
+   </div>
+
+ </div>
+
+
+</div>
+</Fragment>}
+   </Fragment>
   )
 }
 
 export default CollegeProfile
+       

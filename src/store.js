@@ -7,8 +7,8 @@ import { collegeDetailsReducer, collegeReducer } from './reducer/collegeReducer'
 import { courseReducer ,courseDetailsReducer, preferedCourseReducer} from './reducer/courseReducer';
 import { preferenceReducer, updatePreferenceReducer } from './reducer/preferenceReducer';
 import { ForgetPasswordReducer, profileReducer, userReducer } from './reducer/userReducer';
-import { ApplicationReducer, CourseApplicationReducer, MyApplicationReducer, applyAdmissionReducer, applyFormAddressReducer, applyFormEducationReducer, applyFormReducer, studentDetailsReducer } from './reducer/applyReducer';
-import { GetDepertmentReducer, addCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer } from './reducer/collegeAdminReducer';
+import { ApplicationReducer, CourseApplicationReducer, MyApplicationReducer, SelectedApplicationReducer, applicationDetailsReducer, applyAdmissionReducer, applyFormAddressReducer, applyFormEducationReducer, applyFormReducer, studentDetailsReducer } from './reducer/applyReducer';
+import { GetDepertmentReducer, addCourseReducer, collegeCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer } from './reducer/collegeAdminReducer';
 import thunk from 'redux-thunk';
 
 
@@ -51,8 +51,11 @@ const reducers = combineReducers({
             depertments:GetDepertmentReducer,
             deptAdCourse:addCourseReducer,
             UpdateCourse:updateCourseReducer,
+            collegeCourses:collegeCourseReducer,
             courseApplyList:CourseApplicationReducer,
             applicationAction:ApplicationReducer,
+            applicationDetails:applicationDetailsReducer,
+            selectedApplication:SelectedApplicationReducer,
 })
 
 const middleWare= [thunk]

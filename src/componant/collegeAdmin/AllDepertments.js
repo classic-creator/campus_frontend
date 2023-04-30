@@ -12,7 +12,7 @@ const AllDepertments = () => {
 
   const dispatch = useDispatch()
 
-  const { depertments } = useSelector(state => state.depertments)
+  const { loading,depertments } = useSelector(state => state.depertments)
 
   useEffect(() => {
     dispatch(getDepertmentAction())
@@ -92,7 +92,7 @@ const AllDepertments = () => {
               columns={columns}
               dataSource={rows}
               bordered
-
+              loading={loading}
               scroll={{
                 x: 1000,
                 y: 400,

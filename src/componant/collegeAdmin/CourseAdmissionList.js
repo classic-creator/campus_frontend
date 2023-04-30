@@ -54,7 +54,8 @@ const CourseAdmissionList = () => {
             title: 'Application Status',
             dataIndex: "admission_status",
             align: "center",
-            editable: true
+            editable: true,
+           
         },
         {
             title: 'Action',
@@ -63,7 +64,7 @@ const CourseAdmissionList = () => {
             ,render:(_,record)=>
             rows.length>=1 ? (
                <Space>                
-                  <Link to={`/apply/update/${record.id}`}> <Button  type='primary'> Edit</Button></Link>
+                  <Link to={`/apply/update/${record.id}`}> <Button  type='primary'> Open</Button></Link>
                </Space>
             ):null
         }

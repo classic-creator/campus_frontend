@@ -15,7 +15,7 @@ const ProtectedRoute = ({ isAdmin,isSuperAdmin, component: Component, ...routePr
         return <Navigate to={'/login'}/>
     }
 
-    if(isAdmin===true && user.type!=='manager'){
+    if(isAdmin===true &&  user.type!=='manager'){
         return <Navigate to={'/login'} />
     }
     if(isSuperAdmin===true && user.type!=='admin'){

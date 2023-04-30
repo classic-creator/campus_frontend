@@ -32,7 +32,7 @@ const PreferenceCourses = () => {
     <Fragment>
       {loading ? <Loader /> : <Fragment>
       <span id='modalp' >Courses matching with your Preference  <UpdatePreference/></span>
-        <div className="container coursesdiv prefered">
+        <div className="coursesdiv prefered">
         {preferCourses && preferCourses.map(course => (<CourseCard course={course} />))}
       </div></Fragment>}
 

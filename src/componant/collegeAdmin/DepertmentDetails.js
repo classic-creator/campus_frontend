@@ -13,7 +13,7 @@ const DepertmentDetails = () => {
     const { id } = useParams()
     const dispatch = useDispatch()
 
-    const { courses} = useSelector(state => state.depertments)
+    const {loading, courses} = useSelector(state => state.depertments)
     
     // const [gridData, setGridData] = useState([])
     // const [loading, setLoading] = useState(false)
@@ -119,6 +119,7 @@ const DepertmentDetails = () => {
                         columns={columns}
                         dataSource={rows}
                         bordered
+                        loading={loading}
                         scroll={{
                             x: 1300,
                             y: 400,

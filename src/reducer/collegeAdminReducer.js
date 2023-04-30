@@ -1,6 +1,9 @@
 
 import {
     CLEAR_ERRORS,
+    COLLEGE_COURSES_FAIL,
+    COLLEGE_COURSES_REQUEST,
+    COLLEGE_COURSES_SUCCESS,
     CREATE_COURSE_FAIL,
     CREATE_COURSE_REQUEST,
     CREATE_COURSE_RESET,
@@ -244,6 +247,50 @@ export const addCourseReducer = ((state = {}, action) => {
     }
 
 })
+//get college course
+
+export const collegeCourseReducer = (state = {courses:[]}, action) => {
+
+    switch (action.type) {
+
+       
+            case COLLEGE_COURSES_REQUEST:
+            return {
+                ...state,
+                loading: true,
+
+            };
+      
+
+            case COLLEGE_COURSES_SUCCESS:
+                return{
+                loading:false,
+                
+                courses:action.payload.courses,
+               
+
+            }
+    
+            case COLLEGE_COURSES_FAIL:
+            return {
+              
+                loading: false,
+                error:action.payload
+            }
+
+        case CLEAR_ERRORS:
+
+            return {
+                ...state,
+                error: null,
+            };
+
+            default:
+                return state;
+        };
+        
+
+}
 
 //update Course
 

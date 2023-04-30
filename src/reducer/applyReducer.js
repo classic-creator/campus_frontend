@@ -35,6 +35,12 @@ import {
     APPLICATION_UPDATE_SUCCESS,
     APPLICATION_UPDATE_FAIL,
     APPLICATION_UPDATE_RESET,
+    GET_APPLICATION_REQUEST,
+    GET_APPLICATION_SUCCESS,
+    GET_APPLICATION_FAIL,
+    SELECTED_APPLICATION_REQUEST,
+    SELECTED_APPLICATION_SUCCESS,
+    SELECTED_APPLICATION_FAIL,
 } from "../constants/applyConstants";
 
 export const applyFormReducer = (state = {}, action) => {
@@ -336,6 +342,41 @@ export const CourseApplicationReducer = (state = {applications:[]}, action) => {
             return state;
     }}
 
+    //get application details
+
+    export const applicationDetailsReducer = (state = {application:{}}, action) => {
+        switch (action.type) {
+           
+            case GET_APPLICATION_REQUEST:
+                return {
+                    ...state,
+                    loading: true       
+                }
+    
+            
+            case GET_APPLICATION_SUCCESS:
+                return {
+                    // ...state,
+                    loading: false,
+                    application: action.payload.application
+                }
+               
+            case GET_APPLICATION_FAIL:
+                return {
+                  
+                    loading: false,
+                    error: action.payload
+                }
+    
+            case CLEAR_ERRORS:
+                return {
+                    ...state,
+                    error: null
+                }
+            default:
+                return state;
+        }}
+    
     //update application status
 
     export const ApplicationReducer = (state = {}, action) => {
@@ -352,7 +393,8 @@ export const CourseApplicationReducer = (state = {applications:[]}, action) => {
                 return {
                     // ...state,
                     loading: false,
-                    isUpdated: true
+                    isUpdated: true,
+                    message:action.payload.message
                 }
             case APPLICATION_UPDATE_RESET:
                 return {
@@ -377,3 +419,38 @@ export const CourseApplicationReducer = (state = {applications:[]}, action) => {
             default:
                 return state;
         }}
+        //get selected applications
+
+        export const SelectedApplicationReducer = (state = {SelectedApplication:[]}, action) => {
+            switch (action.type) {
+               
+                case SELECTED_APPLICATION_REQUEST:
+                    return {
+                        ...state,
+                        loading: true       
+                    }
+        
+                
+                case SELECTED_APPLICATION_SUCCESS:
+                    return {
+                        // ...state,
+                        loading: false,
+                        SelectedApplication: action.payload.SelectedApplication
+                    }
+                   
+                case SELECTED_APPLICATION_FAIL:
+                    return {
+                      
+                        loading: false,
+                        error: action.payload
+                    }
+        
+                case CLEAR_ERRORS:
+                    return {
+                        ...state,
+                        error: null
+                    }
+                default:
+                    return state;
+            }}
+        

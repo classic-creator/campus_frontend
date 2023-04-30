@@ -30,6 +30,12 @@ import {
    APPLICATION_UPDATE_REQUEST,
    APPLICATION_UPDATE_SUCCESS,
    APPLICATION_UPDATE_FAIL,
+   GET_APPLICATION_REQUEST,
+   GET_APPLICATION_SUCCESS,
+   GET_APPLICATION_FAIL,
+   SELECTED_APPLICATION_REQUEST,
+   SELECTED_APPLICATION_SUCCESS,
+   SELECTED_APPLICATION_FAIL,
 
    
 } from "../constants/applyConstants";
@@ -297,8 +303,35 @@ export const GetCourseApplications = (id) => async (dispatch) => {
       })
    }
 }
+//GET APPLICATION DETAILS
 
-//UPDATE ADMISSION STATUS
+export const GetApplicationDetails = (id) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: GET_APPLICATION_REQUEST })
+
+      const { data } = await axios.get(`/api/application/${id}`, config)
+      
+      dispatch({
+         type: GET_APPLICATION_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: GET_APPLICATION_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+//UPDATE APPLICATION STATUS
 
 export const UpdateApplicationStatus = ({myForm,id}) => async (dispatch) => {
 
@@ -322,6 +355,36 @@ export const UpdateApplicationStatus = ({myForm,id}) => async (dispatch) => {
    } catch (error) {
       dispatch({
          type: APPLICATION_UPDATE_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+
+
+//GET SELECTED APPLICATION 
+
+export const getSelectedApplication = (id) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: SELECTED_APPLICATION_REQUEST })
+
+      const { data } = await axios.get(`/api/course/selected/application/${id}`, config)
+      
+      dispatch({
+         type: SELECTED_APPLICATION_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: SELECTED_APPLICATION_FAIL,
          payload: error.response.data.message
       })
    }

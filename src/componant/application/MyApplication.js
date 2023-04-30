@@ -26,7 +26,7 @@ const MyApplication = () => {
 
     <Fragment>
       {loading ? <Loader /> : <Fragment>
-        {applications.length > 0 ? (<Fragment> <h1>my Applications</h1>
+        {applications.length > 0 ? (<Fragment>
 
           <div>
 

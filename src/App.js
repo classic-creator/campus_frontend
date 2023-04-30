@@ -24,7 +24,9 @@ import AddCourse from './componant/collegeAdmin/AddCourse.js';
 import UpdateCourse from './componant/collegeAdmin/UpdateCourse.js';
 import CourseDeashboard from './componant/collegeAdmin/CourseDeashboard.js';
 import CourseAdmissionList from './componant/collegeAdmin/CourseAdmissionList.js';
+import CollegeCourseList from './componant/collegeAdmin/CollegeCourseList.js';
 import ApplyDetails from './componant/collegeAdmin/apply/ApplyDetails.js';
+import SelectedApplicationList from './componant/collegeAdmin/apply/SelectedApplicationList.js';
 
 import ResetPassword from "./componant/user/ResetPassword.js"
 import MyApplication from "./componant/application/MyApplication.js"
@@ -35,7 +37,8 @@ import Footer from "./componant/layout/footer/Footer.js"
 import WebFont from "webfontloader"
 import { loadUser } from './action/userAction';
 import ProtectedRoute from './protectedRoute/protectedRoute';
-
+import Sidebar from './componant/collegeAdmin/sidebar';
+import { RouteWrapper } from './protectedRoute/routeWrapper'
 
 
 function ScrollToTop({ children }) {
@@ -87,7 +90,7 @@ function App() {
         <Route exact path='/review/application/:id' element={<ProtectedRoute component={ReviewApplication} />} />
         <Route exact path='/myApplication' element={<ProtectedRoute component={MyApplication} />} />
         <Route exact path='/college/register' element={<ProtectedRoute component={RegisterCollege} />} />
-        <Route exact path='/college/manager/profile' element={<ProtectedRoute isAdmin={true} component={CollegeProfile} />} />
+
         <Route exact path='/college/depertment/create' element={<ProtectedRoute isAdmin={true} component={CreateDepertment} />} />
         <Route exact path='/depertments' element={<ProtectedRoute isAdmin={true} component={AllDepertments} />} />
         <Route exact path='/depertment/:id' element={<ProtectedRoute isAdmin={true} component={DepertmentDetails} />} />
@@ -96,14 +99,16 @@ function App() {
         <Route exact path='/course/deashboard/:id' element={<ProtectedRoute isAdmin={true} component={CourseDeashboard} />} />
         <Route exact path='/course/apply/:id' element={<ProtectedRoute isAdmin={true} component={CourseAdmissionList} />} />
         <Route exact path='/apply/update/:id' element={<ProtectedRoute isAdmin={true} component={ApplyDetails} />} />
+        <Route exact path='/application/selected/:id' element={<ProtectedRoute isAdmin={true} component={SelectedApplicationList} />} />
+        <Route exact path='/college/course' element={<ProtectedRoute isAdmin={true} component={CollegeCourseList} />} />
 
 
 
+        <Route exact path='/college/manager/profile' element={<ProtectedRoute isAdmin={true} component={CollegeProfile} />} />
         <Route exact path='/about' element={<About />} />
 
-
       </Routes>
-      {/* </ScrollToTop>  */}
+    
       <Footer />
 
     </BrowserRouter>
