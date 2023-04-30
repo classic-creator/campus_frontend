@@ -29,6 +29,7 @@ export const UpdateCourse = () => {
        if(course){
         alert.success('Update Course Successfully')
         dispatch({type:UPDATE_COURSES_RESET})
+        
       }
 
       dispatch(getCourseDetails(id))
@@ -42,7 +43,7 @@ export const UpdateCourse = () => {
         duration: Yup.string().max(15, 'Must be characters or less').required('required'),
         eligibility: Yup.string().required('required'),
         fees: Yup.string().required('required'),   
-
+        seat_capacity: Yup.string().required('required'),   
 
     })
 
@@ -53,6 +54,7 @@ export const UpdateCourse = () => {
         duration: details.duration ? details.duration : '',
         eligibility: details.eligibility ? details.eligibility : '',
         fees: details.fees ? details.fees : '',
+        seat_capacity: details.seat_capacity ? details.seat_capacity : '',
        
     }
 
@@ -83,6 +85,7 @@ export const UpdateCourse = () => {
                                 <TextField label='Course Name' name='courseName' type='text' />
                                 <TextField label='Duration' name='duration' type='text' />
                                 <TextField label='Eligibility' name='eligibility' type='text' />
+                                <TextField label='Seat Capacity' name='seat_capacity' type='number' />
                                 <TextField label='fees' name='fees' type='text' />
 
 

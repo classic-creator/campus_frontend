@@ -45,24 +45,35 @@ const SelectedApplicationList = () => {
       editable: true
     },
     {
-      title: 'Payment Status',
-      dataIndex: 'payment_status',
-      align: "center",
-      editable: true
-    },
-    // {
-    //     title: 'category',
-    //     dataIndex: "eligibility",
-    //     align: "center",
-    //     editable: true
-    // },
-    {
       title: 'Application Status',
       dataIndex: "admission_status",
       align: "center",
       editable: true,
-
-    },
+      render(text, record) {
+          return {
+            props: {
+              style: { color: record.admission_status==='Selected'? "green" : "red" }
+            },
+            children: <div>{text}</div>
+          };
+        }
+     
+  },
+  {
+      title: 'Payment Status',
+      dataIndex: "payment_status",
+      align: "center",
+      editable: true,
+      render(text, record) {
+          return {
+            props: {
+              style: { color: record.payment_status==='Selected'? "green" : "red" }
+            },
+            children: <div>{text}</div>
+          };
+        }
+     
+  },
     {
       title: 'Action',
       dataIndex: "action",

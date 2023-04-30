@@ -36,25 +36,47 @@ const CourseAdmissionList = () => {
             title: 'Parcentage'
             , dataIndex: 'mark_obtain_lastExam',
             align: "center",
-            editable: true
+            editable: true,
+            render(text, record) {
+                return {
+                 
+                  children: <div>{text}%</div>
+                };
+              }
         },
         {
-            title: 'district',
-            dataIndex: 'district',
+            title: 'Address',
+            dataIndex: 'circle_office',
             align: "center",
             editable: true
         },
-        // {
-        //     title: 'category',
-        //     dataIndex: "eligibility",
-        //     align: "center",
-        //     editable: true
-        // },
         {
-            title: 'Application Status',
-            dataIndex: "admission_status",
+            title: 'Cast',
+            dataIndex: "eligibility",
+            align: "center",
+            editable: true
+        },
+        {
+            title: 'DOB',
+            dataIndex: "dob",
             align: "center",
             editable: true,
+          
+           
+        },
+        {
+            title: 'Payment Status',
+            dataIndex: "payment_status",
+            align: "center",
+            editable: true,
+            render(text, record) {
+                return {
+                  props: {
+                    style: { color: record.payment_status==='paid'? "green" : "red" }
+                  },
+                  children: <div>{text}</div>
+                };
+              }
            
         },
         {
@@ -76,10 +98,12 @@ const CourseAdmissionList = () => {
     applications && applications.forEach((item) => {
         rows.push({
             id: item.id,
-            name: item.name,
+            name: item.first_name + ' '+item.middle_name+' ' + item.last_name,
+            mark_obtain_lastExam: item.mark_obtain_lastExam,
             admission_status: item.admission_status,
-            district: item.district,
-            mark_obtain_lastExam: item.mark_obtain_lastExam
+            payment_status: item.payment_status,
+            circle_office:item.circle_office,
+            dob:item.dob
 
 
         })

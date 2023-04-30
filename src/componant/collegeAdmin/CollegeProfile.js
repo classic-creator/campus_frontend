@@ -13,7 +13,7 @@ const CollegeProfile = () => {
 
   const alert = useAlert()
   const dispatch = useDispatch()
-  const { myCollege, myCourses, error,loading } = useSelector(state => state.myCollege)
+  const { myCollege, myCourses, error, loading } = useSelector(state => state.myCollege)
 
   useEffect(() => {
 
@@ -29,58 +29,57 @@ const CollegeProfile = () => {
   }, [dispatch, alert, error])
 
   return (
-   <Fragment>
-    {loading ? <Loader/> :  <Fragment>
+    <Fragment>
+      {loading ? <Loader /> : <Fragment>
 
-<div className='dashboard'> 
- <div>
-  <Sidebar />
-  </div>
-   <div className='dashboardContainer'>
-     <Typography component="h1">Dashboard</Typography>
-     <div className='dashboardSummery'>
-       <div >
-         <p className='dashboardSummeryP'>
+        <div className='dashboard'>
+          <div>
+            <Sidebar />
+          </div>
+          <div className='dashboardContainer'>
+            <Typography component="h1">Dashboard</Typography>
+            <div className='dashboardSummery'>
+              <div >
+                <p className='dashboardSummeryP'>
 
-           {myCollege && myCollege.collegeName}
-         </p>
+                  {myCollege && myCollege.collegeName}
+                </p>
 
-       </div>
-       <div className="dashboardSummeryBox2">
-         <Link to="/college/course">
-           <p>Registered Courses</p>
-           {/* <p>{myCourses && myCourses.length}</p> */}
-           <CountUp end={myCourses && myCourses.length} duration={5}/>
-         </Link>
-        <Link to="/admin/orders">
-         <p>Seat Remain</p>
-        {/* <p>{orders && orders.length}</p> */}
-       </Link>
-       <Link to="/admin/users">
-           <p>Admission Confirm</p>
-         {/* <p>{users && users.length}</p> */}
-       </Link>
-     </div>
-   </div>
+              </div>
+              <div className="dashboardSummeryBox2">
+                <Link to="/college/course">
+                  <p>Registered Courses</p>
+                  {/* <p>{myCourses && myCourses.length}</p> */}
+                  <CountUp end={myCourses && myCourses.length} duration={5} />
+                </Link>
+                <Link to="/admin/orders">
+                  <p>Seat Remain</p>
+                  {/* <p>{orders && orders.length}</p> */}
+                </Link>
+                <Link to="/admin/users">
+                  <p>Admission Confirm</p>
+                  {/* <p>{users && users.length}</p> */}
+                </Link>
+              </div>
+            </div>
 
-    <div className="lineChart">
+            <div className="lineChart">
 
 
 
-   </div>
-   <div className="doughnutChat">
-     {/* <Doughnut
+            </div>
+            <div className="doughnutChat">
+              {/* <Doughnut
        data={doughnutState} /> */}
-   </div>
+            </div>
 
- </div>
+          </div>
 
 
-</div>
-</Fragment>}
-   </Fragment>
+        </div>
+      </Fragment>}
+    </Fragment>
   )
 }
 
 export default CollegeProfile
-       

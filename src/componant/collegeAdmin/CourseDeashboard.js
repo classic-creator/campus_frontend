@@ -27,7 +27,7 @@ const CourseDeashboard = () => {
     ChartJS.register(...registerables);
 
     const admission = 4;
-    const seat = 9
+    // const seat = 9
     const doughnutState = {
         labels: ["Admission Confirm", "Total Seat"],
         datasets: [
@@ -35,7 +35,7 @@ const CourseDeashboard = () => {
 
                 backgroundColor: ["#00A6B4", "#6800B4"],
                 hoverBackgroundColor: ["#4B5000", "#35014F"],
-                data: [admission, seat]
+                data: [admission,course['seat_capacity']]
 
             }
         ]
@@ -75,7 +75,7 @@ const CourseDeashboard = () => {
                         </Link>
 
 
-                        <Link to="/admin/users">
+                        <Link to={`/confirm/students/${id}`}>
                             <p>Confirm Student</p>
                             {/* <p>{users && users.length}</p> */}
                         </Link>

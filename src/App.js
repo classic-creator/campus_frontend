@@ -27,6 +27,8 @@ import CourseAdmissionList from './componant/collegeAdmin/CourseAdmissionList.js
 import CollegeCourseList from './componant/collegeAdmin/CollegeCourseList.js';
 import ApplyDetails from './componant/collegeAdmin/apply/ApplyDetails.js';
 import SelectedApplicationList from './componant/collegeAdmin/apply/SelectedApplicationList.js';
+import ConfirmStudentsList from './componant/collegeAdmin/apply/ConfirmStudentsList.js';
+import AdmissionPayment from './componant/application/AdmissionPayment.js';
 
 import ResetPassword from "./componant/user/ResetPassword.js"
 import MyApplication from "./componant/application/MyApplication.js"
@@ -90,6 +92,7 @@ function App() {
         <Route exact path='/review/application/:id' element={<ProtectedRoute component={ReviewApplication} />} />
         <Route exact path='/myApplication' element={<ProtectedRoute component={MyApplication} />} />
         <Route exact path='/college/register' element={<ProtectedRoute component={RegisterCollege} />} />
+        <Route exact path='/admission/payment/:id' element={<ProtectedRoute component={AdmissionPayment} />} />
 
         <Route exact path='/college/depertment/create' element={<ProtectedRoute isAdmin={true} component={CreateDepertment} />} />
         <Route exact path='/depertments' element={<ProtectedRoute isAdmin={true} component={AllDepertments} />} />
@@ -101,6 +104,7 @@ function App() {
         <Route exact path='/apply/update/:id' element={<ProtectedRoute isAdmin={true} component={ApplyDetails} />} />
         <Route exact path='/application/selected/:id' element={<ProtectedRoute isAdmin={true} component={SelectedApplicationList} />} />
         <Route exact path='/college/course' element={<ProtectedRoute isAdmin={true} component={CollegeCourseList} />} />
+        <Route exact path='/confirm/students/:id' element={<ProtectedRoute isAdmin={true} component={ConfirmStudentsList} />} />
 
 
 

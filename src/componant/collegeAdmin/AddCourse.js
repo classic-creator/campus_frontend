@@ -76,6 +76,7 @@ const AddCourse = () => {
                   <TextField label='Course Name' name='courseName' type='text' />
                   <TextField label='Duration' name='duration' type='text'/>
                   <TextField label='Eligibility' name='eligibility' type='text'/>
+                  <TextField label='Seat Capacity' name='seat_capacity' type='number'/>
 
                   <TextField label='fees' name='fees' type='text'/>
                   

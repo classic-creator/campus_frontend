@@ -38,12 +38,7 @@ const Sidebar = () => {
             <h3>CAMPUS</h3>
           
         </Link>
-        <Link to="/college/course">
-            <p >
-                <FontAwesomeIcon icon={faBookAtlas}/>
-               <span>Courses</span>
-            </p>
-        </Link>
+       
         {/* <Link>
         <TreeView defaultCollapseIcon={<FontAwesomeIcon icon={faFileAlt}/>} 
         defaultExpandIcon={<FontAwesomeIcon icon={faFileImport}/> }>
@@ -67,7 +62,12 @@ const Sidebar = () => {
                <span>Deashboard</span>
             </p>
         </Link>
-
+        <Link to="/college/course">
+            <p >
+                <FontAwesomeIcon icon={faBookAtlas}/>
+               <span>Courses</span>
+            </p>
+        </Link>
         <Link >
         <TreeView defaultCollapseIcon={<FontAwesomeIcon icon={faDoorOpen}/>} 
         defaultExpandIcon={<FontAwesomeIcon icon={faDoorClosed}/> }>

@@ -36,6 +36,9 @@ import {
    SELECTED_APPLICATION_REQUEST,
    SELECTED_APPLICATION_SUCCESS,
    SELECTED_APPLICATION_FAIL,
+   CONFIRMED_APPLICATION_REQUEST,
+   CONFIRMED_APPLICATION_SUCCESS,
+   CONFIRMED_APPLICATION_FAIL,
 
    
 } from "../constants/applyConstants";
@@ -385,6 +388,65 @@ export const getSelectedApplication = (id) => async (dispatch) => {
    } catch (error) {
       dispatch({
          type: SELECTED_APPLICATION_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+
+
+//GET SELECTED APPLICATION 
+
+export const AdmissionPaymentAction = (id) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: SELECTED_APPLICATION_REQUEST })
+
+      const { data } = await axios.get(`/api/admission/payment/${id}`, config)
+      
+      dispatch({
+         type: SELECTED_APPLICATION_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: SELECTED_APPLICATION_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+
+//confirm student application
+
+export const ConfirmStudentAction = (id) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: CONFIRMED_APPLICATION_REQUEST })
+
+      const { data } = await axios.get(`/api/course/confirm/student/${id}`, config)
+      
+      dispatch({
+         type: CONFIRMED_APPLICATION_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: CONFIRMED_APPLICATION_FAIL,
          payload: error.response.data.message
       })
    }

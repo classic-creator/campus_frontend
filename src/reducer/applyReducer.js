@@ -41,6 +41,9 @@ import {
     SELECTED_APPLICATION_REQUEST,
     SELECTED_APPLICATION_SUCCESS,
     SELECTED_APPLICATION_FAIL,
+    CONFIRMED_APPLICATION_REQUEST,
+    CONFIRMED_APPLICATION_SUCCESS,
+    CONFIRMED_APPLICATION_FAIL,
 } from "../constants/applyConstants";
 
 export const applyFormReducer = (state = {}, action) => {
@@ -439,6 +442,41 @@ export const CourseApplicationReducer = (state = {applications:[]}, action) => {
                     }
                    
                 case SELECTED_APPLICATION_FAIL:
+                    return {
+                      
+                        loading: false,
+                        error: action.payload
+                    }
+        
+                case CLEAR_ERRORS:
+                    return {
+                        ...state,
+                        error: null
+                    }
+                default:
+                    return state;
+            }}
+
+             //get selected applications
+
+        export const ConfirmStudentReducer = (state = {ConfirmStudent:[]}, action) => {
+            switch (action.type) {
+               
+                case CONFIRMED_APPLICATION_REQUEST:
+                    return {
+                        ...state,
+                        loading: true       
+                    }
+        
+                
+                case CONFIRMED_APPLICATION_SUCCESS:
+                    return {
+                        // ...state,
+                        loading: false,
+                        ConfirmStudent: action.payload.ConfirmStudent
+                    }
+                   
+                case CONFIRMED_APPLICATION_FAIL:
                     return {
                       
                         loading: false,

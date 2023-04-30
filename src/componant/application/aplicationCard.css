@@ -1,6 +1,7 @@
 .MyApplication{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     /* border:2px solid black; */
     width: 90vw;
     margin: 2vmax auto;
@@ -10,7 +11,9 @@
    
 }
 .leftDiv{
-    width: 60%;
+    /* width: 60%; */
+    max-width: 40%;
+    overflow: hidden;
     margin-top: 1vmax;
     display: flex;
     flex-direction: column;
@@ -18,7 +21,7 @@
    
 }
 .middleDiv{
-    width: 20%;
+    /* width: 20%; */
     margin-top: 1vmax;
     display: flex;
     justify-content: center;
@@ -26,11 +29,26 @@
     flex-direction: column;
 }
 .rightDiv{
-    width: 20%;
+    max-width: 25%;
     margin-top: 1vmax;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 
+}
+.rightDiv button,.rightDiv a{
+ min-width: 10rem;
+ min-width: 10rem;
+
+}
+.Paybtm{
+    background:  #33b249;
+    border: none;
+}
+.Paybtm:hover{
+    background:  #0ece2e !important;
+}
+.paynotic{
+    font-size: 0.7vmax;
 }

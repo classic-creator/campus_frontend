@@ -193,7 +193,7 @@ const ApplyDetails = () => {
                     <span className='smlspan'>#{ application && application.id}</span>
                     <span className='smlspan'>{ application && application.email}</span>
                     <p>Application Status :<span className={ application && application.admission_status==='Selected'?'greenColor':'redColor'}>  {application && application.admission_status}</span></p> 
-                    <p>Payment Status : <span className={ application && application.payment_status==='Paid'?'greenColor':'redColor'}>{application && application.payment_status}</span> </p>
+                    <p>Payment Status : <span className={ application && application.payment_status==='paid'?'greenColor':'redColor'}>{application && application.payment_status}</span> </p>
              
                     </div>
                     <div className="profile12">
