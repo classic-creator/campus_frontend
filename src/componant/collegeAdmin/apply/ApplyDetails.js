@@ -8,11 +8,11 @@ import { GetApplicationDetails, UpdateApplicationStatus, clearErrors } from '../
 import { useDispatch, useSelector } from 'react-redux'
 import { APPLICATION_UPDATE_RESET } from '../../../constants/applyConstants'
 import {useAlert} from 'react-alert'
-import Loader from '../../layout/loader/loader'
+
 const ApplyDetails = () => {
 
     const {loading,error,isUpdated}=useSelector(state=>state.applicationAction)
-    const {loading:applicationLoading,application}=useSelector(state=>state.applicationDetails)
+    const {application}=useSelector(state=>state.applicationDetails)
     const{id} = useParams()
     const [status, setStatus] = useState('')
     const dispatch=useDispatch()

@@ -7,11 +7,20 @@ import "./home.css"
 
 const CollegeCard = ({ college }) => {
     return (
+
+<div className="container">
+
         <Link className='card_body' to={`/college/${college.id}`}>
                  
-                        <img src="/collegeimg.jpg" alt="img" />
+                   
+                
+                     <div className='clgimg'>
+
+                        <img src={college.image_url}  alt="img" />
+                     </div>
+                        
                   
-                    <div >
+                    <div className='clgData' >
                             <h2>{college.collegeName}</h2>
                             <p > <FontAwesomeIcon icon={faLocationDot}/> {college.address}</p>
                             <p > <FontAwesomeIcon icon={faMailBulk}/> {college.email}</p>
@@ -22,6 +31,7 @@ const CollegeCard = ({ college }) => {
              
             
         </Link>
+</div>
     )
 }
 

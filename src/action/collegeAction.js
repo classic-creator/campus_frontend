@@ -14,9 +14,11 @@ export const getColleges=(keyword="")=>async(dispatch)=>{
     try {
     const token=localStorage.getItem('token')
     const config = {
+        // baseURL:'http://127.0.0.1:8000',
         baseURL: process.env.REACT_APP_API_BASE_URL,
         headers: {
-            "Content-Type": "application/json",
+            // 'Accept' : 'application/json',
+            'Content-Type' : 'multipart/form-data',
             Authorization: `Bearer ${token}`
         }
     };

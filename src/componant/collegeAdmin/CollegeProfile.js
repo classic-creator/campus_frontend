@@ -8,6 +8,7 @@ import Sidebar from './sidebar'
 import { useAlert } from 'react-alert'
 import Loader from '../layout/loader/loader'
 import CountUp from 'react-countup';
+import CollegeDataChange from './CollegeDataChange'
 
 const CollegeProfile = () => {
 
@@ -30,14 +31,15 @@ const CollegeProfile = () => {
 
   return (
     <Fragment>
-      {loading ? <Loader /> : <Fragment>
+      {/* {loading ? <Loader /> : <Fragment> */}
 
         <div className='dashboard'>
           <div>
             <Sidebar />
-          </div>
+          </div>{loading?<Loader/>:(
           <div className='dashboardContainer'>
             <Typography component="h1">Dashboard</Typography>
+            <CollegeDataChange/>
             <div className='dashboardSummery'>
               <div >
                 <p className='dashboardSummeryP'>
@@ -74,10 +76,10 @@ const CollegeProfile = () => {
             </div>
 
           </div>
-
+          )}
 
         </div>
-      </Fragment>}
+      {/* </Fragment>} */}
     </Fragment>
   )
 }

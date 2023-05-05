@@ -5,7 +5,7 @@ import { Link,  useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import "./Account.css"
-import { Button } from '@material-ui/core'
+import { Button } from 'antd'
 import { useAlert } from 'react-alert'
 import { logout } from '../../action/userAction'
 
@@ -29,7 +29,8 @@ const Account = () => {
     function logoutUser(){
         dispatch(logout())
         alert.success("Logout Successfully")
-       
+        
+        
     }
 
   return (
@@ -59,7 +60,7 @@ const Account = () => {
                 <div>
                     <Link to="/myApplication">My Application</Link>
                     <Link to="/password/update">Change password</Link>
-                    <Button id='logoutBtn' onClick={logoutUser}>Logout</Button>
+                    <Button id='logoutBtn' onClick={logoutUser} loading={loading}>Logout</Button>
                 </div>
             </div>
         

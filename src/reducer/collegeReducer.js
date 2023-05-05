@@ -47,7 +47,7 @@ switch (action.type) {
 
 //GET COLLEGE DETAILS REDUCER
 
-export const collegeDetailsReducer= ((state={college:{},courses:[]},action)=> {
+export const collegeDetailsReducer= ((state={college:{},courses:[],photos:[]},action)=> {
 
     switch (action.type) {
         case COLLEGE_DETAILS_REQUEST:
@@ -63,7 +63,8 @@ export const collegeDetailsReducer= ((state={college:{},courses:[]},action)=> {
           return{
             loading:false,
             college:action.payload.college,
-            courses:action.payload.courses
+            courses:action.payload.courses,
+            photos:action.payload.photos,
           };
         case COLLEGE_DETAILS_FAIL:
             

@@ -34,13 +34,13 @@ export const collegesReducer = ((state = {}, action) => {
     switch (action.type) {
 
         case REGISTER_COLLEGE_REQUEST:
-          
+
             return {
                 loading: true,
 
             };
         case REGISTER_COLLEGE_SUCCESS:
-           
+
 
             return {
 
@@ -49,12 +49,12 @@ export const collegesReducer = ((state = {}, action) => {
 
             };
 
-          
+
         case REGISTER_COLLEGE_FAIL:
-           
+
             return {
                 loading: false,
-                error:action.payload
+                error: action.payload
             }
 
         case CLEAR_ERRORS:
@@ -78,27 +78,27 @@ export const depertmentReducer = ((state = {}, action) => {
     switch (action.type) {
 
         case CREATE_DEPERTMENT_REQUEST:
-            
+
             return {
                 loading: true,
             };
-        
 
-            case CREATE_DEPERTMENT_SUCCESS:
-                return{
-                loading:false,
-                depertment:action.payload.depertment,
-            }
-            case CREATE_DEPERTMENT_RESET:
-                return{
-                loading:false,
-               
-            }
-        case CREATE_DEPERTMENT_FAIL:
-          
+
+        case CREATE_DEPERTMENT_SUCCESS:
             return {
                 loading: false,
-                error:action.payload
+                depertment: action.payload.depertment,
+            }
+        case CREATE_DEPERTMENT_RESET:
+            return {
+                loading: false,
+
+            }
+        case CREATE_DEPERTMENT_FAIL:
+
+            return {
+                loading: false,
+                error: action.payload
             }
 
         case CLEAR_ERRORS:
@@ -115,36 +115,36 @@ export const depertmentReducer = ((state = {}, action) => {
 })
 
 //GET DEPERTMENT
-export const GetDepertmentReducer = ((state = {depertments:[],courses:[]}, action) => {
+export const GetDepertmentReducer = ((state = { depertments: [], courses: [] }, action) => {
 
     switch (action.type) {
 
         case GET_DEPERTMENT_REQUEST:
-            case DEPERTMENT_COURSES_REQUEST:
-            
+        case DEPERTMENT_COURSES_REQUEST:
+
             return {
                 ...state,
                 loading: true,
             };
-        
 
-            case GET_DEPERTMENT_SUCCESS:
-                return{
-                loading:false,
-                depertments:action.payload.depertments,
+
+        case GET_DEPERTMENT_SUCCESS:
+            return {
+                loading: false,
+                depertments: action.payload.depertments,
             }
-            case DEPERTMENT_COURSES_SUCCESS:
-                return{
-                loading:false,
-                courses:action.payload.courses,
+        case DEPERTMENT_COURSES_SUCCESS:
+            return {
+                loading: false,
+                courses: action.payload.courses,
             }
 
         case GET_DEPERTMENT_FAIL:
         case DEPERTMENT_COURSES_FAIL:
-          
+
             return {
                 loading: false,
-                error:action.payload
+                error: action.payload
             }
 
         case CLEAR_ERRORS:
@@ -163,33 +163,33 @@ export const GetDepertmentReducer = ((state = {depertments:[],courses:[]}, actio
 
 //get my college
 
-export const mycollegesReducer = (state = {myCollege:{},myCourses:[]}, action) => {
+export const mycollegesReducer = (state = { myCollege: {}, myCourses: [] }, action) => {
 
     switch (action.type) {
 
-       
-            case MY_COLLEGE_REQUEST:
+
+        case MY_COLLEGE_REQUEST:
             return {
                 ...state,
                 loading: true,
 
             };
-      
 
-            case MY_COLLEGE_SUCCESS:
-                return{
-                loading:false,
-                myCollege:action.payload.myCollege,
-                myCourses:action.payload.myCourses,
-               
+
+        case MY_COLLEGE_SUCCESS:
+            return {
+                loading: false,
+                myCollege: action.payload.myCollege,
+                myCourses: action.payload.myCourses,
+
 
             }
-    
-            case MY_COLLEGE_FAIL:
+
+        case MY_COLLEGE_FAIL:
             return {
-              
+
                 loading: false,
-                error:action.payload
+                error: action.payload
             }
 
         case CLEAR_ERRORS:
@@ -199,10 +199,10 @@ export const mycollegesReducer = (state = {myCollege:{},myCourses:[]}, action) =
                 error: null,
             };
 
-            default:
-                return state;
-        };
-        
+        default:
+            return state;
+    };
+
 
 }
 //CREATE COURSE
@@ -212,27 +212,27 @@ export const addCourseReducer = ((state = {}, action) => {
     switch (action.type) {
 
         case CREATE_COURSE_REQUEST:
-            
+
             return {
                 loading: true,
             };
-        
 
-            case CREATE_COURSE_SUCCESS:
-                return{
-                loading:false,
-                course:action.payload.course,
-            }
-            case CREATE_COURSE_RESET:
-                return{
-                loading:false,
-               
-            }
-        case CREATE_COURSE_FAIL:
-          
+
+        case CREATE_COURSE_SUCCESS:
             return {
                 loading: false,
-                error:action.payload
+                course: action.payload.course,
+            }
+        case CREATE_COURSE_RESET:
+            return {
+                loading: false,
+
+            }
+        case CREATE_COURSE_FAIL:
+
+            return {
+                loading: false,
+                error: action.payload
             }
 
         case CLEAR_ERRORS:
@@ -249,33 +249,33 @@ export const addCourseReducer = ((state = {}, action) => {
 })
 //get college course
 
-export const collegeCourseReducer = (state = {courses:[]}, action) => {
+export const collegeCourseReducer = (state = { courses: [] }, action) => {
 
     switch (action.type) {
 
-       
-            case COLLEGE_COURSES_REQUEST:
+
+        case COLLEGE_COURSES_REQUEST:
             return {
                 ...state,
                 loading: true,
 
             };
-      
 
-            case COLLEGE_COURSES_SUCCESS:
-                return{
-                loading:false,
-                
-                courses:action.payload.courses,
-               
+
+        case COLLEGE_COURSES_SUCCESS:
+            return {
+                loading: false,
+
+                courses: action.payload.courses,
+
 
             }
-    
-            case COLLEGE_COURSES_FAIL:
+
+        case COLLEGE_COURSES_FAIL:
             return {
-              
+
                 loading: false,
-                error:action.payload
+                error: action.payload
             }
 
         case CLEAR_ERRORS:
@@ -285,10 +285,10 @@ export const collegeCourseReducer = (state = {courses:[]}, action) => {
                 error: null,
             };
 
-            default:
-                return state;
-        };
-        
+        default:
+            return state;
+    };
+
 
 }
 
@@ -299,27 +299,27 @@ export const updateCourseReducer = ((state = {}, action) => {
     switch (action.type) {
 
         case UPDATE_COURSES_REQUEST:
-            
+
             return {
                 loading: true,
             };
-        
 
-            case UPDATE_COURSES_SUCCESS:
-                return{
-                loading:false,
-                course:action.payload.course,
-            }
-            case UPDATE_COURSES_RESET:
-                return{
-                loading:false,
-               
-            }
-        case UPDATE_COURSES_FAIL:
-          
+
+        case UPDATE_COURSES_SUCCESS:
             return {
                 loading: false,
-                error:action.payload
+                course: action.payload.course,
+            }
+        case UPDATE_COURSES_RESET:
+            return {
+                loading: false,
+
+            }
+        case UPDATE_COURSES_FAIL:
+
+            return {
+                loading: false,
+                error: action.payload
             }
 
         case CLEAR_ERRORS:

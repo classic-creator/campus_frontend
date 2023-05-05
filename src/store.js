@@ -10,6 +10,7 @@ import { ForgetPasswordReducer, profileReducer, userReducer } from './reducer/us
 import { ApplicationReducer, ConfirmStudentReducer, CourseApplicationReducer, MyApplicationReducer, SelectedApplicationReducer, applicationDetailsReducer, applyAdmissionReducer, applyFormAddressReducer, applyFormEducationReducer, applyFormReducer, studentDetailsReducer } from './reducer/applyReducer';
 import { GetDepertmentReducer, addCourseReducer, collegeCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer } from './reducer/collegeAdminReducer';
 import thunk from 'redux-thunk';
+import { courseImageReducer } from './reducer/imageReducer';
 
 
 
@@ -57,6 +58,7 @@ const reducers = combineReducers({
             applicationDetails:applicationDetailsReducer,
             selectedApplication:SelectedApplicationReducer,
             confirmStudent:ConfirmStudentReducer,
+            courseImage:courseImageReducer,
 })
 
 const middleWare= [thunk]

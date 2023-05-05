@@ -2,6 +2,9 @@
     margin: 0;
     scroll-behavior: smooth;
 }
+body{
+    /* background:linear-gradient(to right,#36d5f1,#cf9dcd); */
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
     -webkit-appearance:none;

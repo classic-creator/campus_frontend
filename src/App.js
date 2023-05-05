@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import Header from "./componant/layout/header/header.js"
 import About from "./componant/about/About.js"
 import Home from "./componant/home/Home.js"
+import Colleges from "./componant/college/Colleges.js"
 import AllCourses from "./componant/college/AllCourses.js"
 import CollegeDetails from "./componant/college/CollegeDetails.js"
 import Courses from "./componant/college/courses.js"
@@ -75,8 +76,8 @@ function App() {
       <Routes>
 
         <Route exact path='/' element={<Home />} />
-        <Route exact path='/colleges' element={<Home />} />
-        <Route exact path='/colleges/:keyword' element={<Home />} />
+        <Route exact path='/colleges' element={<Colleges />} />
+        <Route exact path='/colleges/:keyword' element={<Colleges />} />
         <Route exact path='/courses' element={<AllCourses />} />
         <Route exact path='/courses/:keyword' element={<AllCourses />} />
         <Route exact path='/college/:id' element={<CollegeDetails />} />

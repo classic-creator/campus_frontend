@@ -4,10 +4,11 @@ import { Chart as ChartJS, registerables } from 'chart.js';
 import { Link, useParams } from 'react-router-dom';
 import Sidebar from './sidebar';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetCourseApplications, getSelectedApplication } from '../../action/applyAction';
+import { ConfirmStudentAction, GetCourseApplications, getSelectedApplication } from '../../action/applyAction';
 import CountUp from 'react-countup';
 import { getCourseDetails } from '../../action/courseAction';
-import { Typography } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
+import CourseDataChange from './CourseDataChange';
 
 const CourseDeashboard = () => {
 
@@ -17,25 +18,27 @@ const CourseDeashboard = () => {
     const { applications } = useSelector(state => state.courseApplyList)
     const { SelectedApplication } = useSelector(state => state.selectedApplication)
     const {  course } = useSelector(state => state.courseDetails)
+    const {ConfirmStudent} =useSelector(state=>state.confirmStudent)
 
     useEffect(() => {
         dispatch(GetCourseApplications(id))
         dispatch(getSelectedApplication(id))
         dispatch(getCourseDetails(id))
+        dispatch(ConfirmStudentAction(id))
     }, [dispatch, id])
 
     ChartJS.register(...registerables);
 
-    const admission = 4;
+    // const admission = 4;
     // const seat = 9
     const doughnutState = {
-        labels: ["Admission Confirm", "Total Seat"],
+        labels: [`Admission Confirm : ${ConfirmStudent.length}`, `Vacant seat : ${course['seat_capacity']}`],
         datasets: [
             {
 
                 backgroundColor: ["#00A6B4", "#6800B4"],
                 hoverBackgroundColor: ["#4B5000", "#35014F"],
-                data: [admission,course['seat_capacity']]
+                data: [ConfirmStudent.length,course['seat_capacity']]
 
             }
         ]
@@ -46,6 +49,7 @@ const CourseDeashboard = () => {
             <div className='dashboard'>
                 <Sidebar />
                 <div className="dashboardContainer">
+                    <CourseDataChange />
                 <Typography component="h1">Course Dashboard</Typography>
                 <div className='dashboardSummery'>
                     <div>
@@ -65,7 +69,8 @@ const CourseDeashboard = () => {
                     <div className="dashboardSummeryBox2">
                         <Link to={`/course/apply/${id}`}>
                             <p>admission requests</p>
-                            <p>{applications && applications.length}</p>
+                            <CountUp end={applications && applications.length} duration={5} />
+                            {/* <p>{applications && applications.length}</p> */}
                         </Link>
 
                         <Link to={`/application/selected/${id}`}>
@@ -77,7 +82,8 @@ const CourseDeashboard = () => {
 
                         <Link to={`/confirm/students/${id}`}>
                             <p>Confirm Student</p>
-                            {/* <p>{users && users.length}</p> */}
+                            <CountUp end={ConfirmStudent && ConfirmStudent.length} duration={5} />
+                     
                         </Link>
                     </div>
                     </div>

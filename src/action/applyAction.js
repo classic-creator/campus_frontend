@@ -447,7 +447,7 @@ export const ConfirmStudentAction = (id) => async (dispatch) => {
    } catch (error) {
       dispatch({
          type: CONFIRMED_APPLICATION_FAIL,
-         payload: error.response.data.message
+         payload:error.response.data.message
       })
    }
 }

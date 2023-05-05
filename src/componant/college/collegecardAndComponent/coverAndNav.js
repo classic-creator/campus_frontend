@@ -9,7 +9,7 @@ const CoverAndNav = ({ college }) => {
         <Fragment>
             <Link to={`/college/${college.id}`}>
             <div className="containers">
-                <img src="/collegeimg.jpg" alt="Cinque Terre" />
+                <img src={college.cover_image_url} alt="Cinque Terre" />
                 <div className="bottomleft">
                     <h2>{college.collegeName}</h2>
                     <span><FontAwesomeIcon icon={faLocationPin} />{college.address}</span>
@@ -17,11 +17,12 @@ const CoverAndNav = ({ college }) => {
                 <div className="bottomRight">
                     <p> NAAC 2023 A gread college</p>
                 </div>
+                
             </div>
             </Link>
             <div className='logo'>
                <Link to={`/college/${college.id}`}>
-               <img src='/logo192.png' alt='logo' />
+               <img src={college.logo_image_url} alt='logo' />
                </Link> 
             </div>
             <div className="collegeNav">
