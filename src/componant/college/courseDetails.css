@@ -18,6 +18,8 @@
 .p-edit p{
     border-left: 3px solid tomato;
     padding: 1vmax 1vmax;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
+    border-radius: 10px;
     min-height: 5vmax;
 }

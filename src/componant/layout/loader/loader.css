@@ -25,9 +25,9 @@
 } */
 
 .loading{
-  width: 100vw;
-  height: 100vh;
-  background-color: white;
+  /* width: 100vw;
+  height: 100vh; */
+  /* background-color: white; */
   display: grid;
   place-items: center;
   max-width: 100%;
@@ -37,6 +37,9 @@
     animation: rotate 1s infinite;  
     height: 50px;
     width: 50px;
+    position:absolute;
+    top: 50%;
+    left:50%;
     /* display: grid;
     place-items: center; */
     /* max-width: 100%; */

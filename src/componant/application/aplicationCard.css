@@ -1,8 +1,8 @@
-.MyApplication{
+/* .MyApplication{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* border:2px solid black; */
+  
     width: 90vw;
     margin: 2vmax auto;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -11,7 +11,7 @@
    
 }
 .leftDiv{
-    /* width: 60%; */
+
     max-width: 40%;
     overflow: hidden;
     margin-top: 1vmax;
@@ -21,7 +21,7 @@
    
 }
 .middleDiv{
-    /* width: 20%; */
+    
     margin-top: 1vmax;
     display: flex;
     justify-content: center;
@@ -51,4 +51,56 @@
 }
 .paynotic{
     font-size: 0.7vmax;
-}
+} */
+
+.MyApplication {
+    background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-left: 2px solid tomato;
+    border-right: 2px solid tomato;
+  }
+  
+  .MyApplication .leftDiv {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .MyApplication .leftDiv p {
+    margin-bottom: 10px;
+  }
+  
+  .MyApplication .middleDiv {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .MyApplication .middleDiv p {
+    margin-bottom: 10px;
+  }
+  
+  .MyApplication .rightDiv {
+    flex: 1;
+
+  }
+  
+  .MyApplication .rightDiv button {
+    margin-right: 10px;
+  }
+  
+  .MyApplication .rightDiv .Paybtm {
+    margin-right: 10px;
+  }
+  
+  .MyApplication .paynotic {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 10px;
+    color: tomato;
+  }
+  

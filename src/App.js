@@ -30,6 +30,7 @@ import ApplyDetails from './componant/collegeAdmin/apply/ApplyDetails.js';
 import SelectedApplicationList from './componant/collegeAdmin/apply/SelectedApplicationList.js';
 import ConfirmStudentsList from './componant/collegeAdmin/apply/ConfirmStudentsList.js';
 import AdmissionPayment from './componant/application/AdmissionPayment.js';
+import TestCom from './componant/user/MyApplication';
 
 import ResetPassword from "./componant/user/ResetPassword.js"
 import MyApplication from "./componant/application/MyApplication.js"
@@ -75,6 +76,7 @@ function App() {
       <ScrollToTop />
       <Routes>
 
+        <Route exact path='/test' element={<TestCom />} />
         <Route exact path='/' element={<Home />} />
         <Route exact path='/colleges' element={<Colleges />} />
         <Route exact path='/colleges/:keyword' element={<Colleges />} />

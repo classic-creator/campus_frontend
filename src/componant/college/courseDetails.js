@@ -26,6 +26,7 @@ const CourseDetails = () => {
     }
 
     dispatch(getCourseDetails(id))
+   
 
   }, [dispatch, id, alert, error])
 

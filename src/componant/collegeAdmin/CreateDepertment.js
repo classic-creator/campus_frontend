@@ -21,6 +21,7 @@ useEffect(() => {
   if(error){
     alert.error(error)
     dispatch(clearErrors())
+    
   }
  if(depertment){
   alert.success('creat Depertment Successfully')

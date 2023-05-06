@@ -33,10 +33,11 @@ const CollegeProfile = () => {
     <Fragment>
       {/* {loading ? <Loader /> : <Fragment> */}
 
-        <div className='dashboard'>
+        <div className='clgdashboard'>
           <div>
             <Sidebar />
-          </div>{loading?<Loader/>:(
+          </div>
+          {loading?<Loader/>:(
           <div className='dashboardContainer'>
             <Typography component="h1">Dashboard</Typography>
             <CollegeDataChange/>

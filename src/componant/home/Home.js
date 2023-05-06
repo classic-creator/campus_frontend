@@ -1,12 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import MetaData from '../layout/MetaData.js'
-import CollegeCard from './CollegeCard.js'
+
 import "./home.css"
-import { useSelector, useDispatch } from "react-redux"
-import { clearErrors, getColleges } from '../../action/collegeAction.js'
-import Loader from '../layout/loader/loader.js'
-import { useAlert } from 'react-alert'
-import { useParams } from 'react-router-dom'
+
 
 const Home = () => {
 
@@ -29,16 +25,18 @@ const Home = () => {
   ];
   return (
     <Fragment>
-      <div className="container-fluid">
+      <div className="container-fluid homediv">
         <div id="carouselExampleIndicators" className="carousel slide " data-bs-ride="carousel">
           <div className="carousel-indicators">
             {images.map((_, index) => (
               <button
                 type="button"
+
                 key={index}
                 data-bs-target="#carouselExampleIndicators"
                 data-bs-slide-to={index}
                 className={activeIndex === index ? 'active' : ''}
+                id='indicator'
                 aria-current={activeIndex === index}
                 aria-label={`Slide ${index + 1}`}
               ></button>
@@ -62,17 +60,36 @@ const Home = () => {
             <span className="visually-hidden">Previous</span>
           </button>
           <button
-            className="carousel-control-next"
+            className="carousel-control-next "
             type="button"
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide="next"
             onClick={handleNextClick}
           >
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="carousel-control-next-icon " aria-hidden="true"></span>
             <span className="visually-hidden">Next</span>
           </button>
         </div>
-
+        <div className="bar">
+          <div className="bar1">
+            <img src="https://assets.sentinelassam.com/h-upload/2020/11/11/172257-assam-government.jpg" alt="img" />
+            <h3>Goverment Of Assam</h3>
+          </div>
+          <div className="bar1">
+            <img src="https://cache.careers360.mobi/media/article_images/2022/7/29/school-students.jpg" alt="img" />
+            <h3>Education Depertment Of Assam</h3>
+          </div>
+          <div className="minister">
+            <div className="minister1">
+              <img src="https://cm.assam.gov.in/documents/34104/55533/CM.jpg/ad0d9308-26b0-8aa4-6764-cb89b59fe740?version=1.0&t=1639826849984" alt="img" />
+              <span>Hon'ble Chif Minister</span>
+            </div>
+            <div className="minister2">
+              <img src="https://assets.sentinelassam.com/h-upload/2022/08/05/371399-ranoj-pegu.webp" alt="img" />
+              <span>Hon'ble Education Minister</span>
+            </div>
+          </div>
+        </div>
         <div className="boxes">
           <div className="box1   box ">
             <h3>Registered College</h3>
@@ -81,13 +98,36 @@ const Home = () => {
           <div className="box2   box">
             <h3>Application Count</h3>
             <span>4000</span>
-            </div>
+          </div>
           <div className="box3   box">
             <h3>User Count</h3>
             <span>5000</span>
-            </div>
+          </div>
         </div>
 
+
+        <div className="schemes">
+            <h2>SCHEMES</h2>
+            <p>Some education related Schemes/Scholarship to making higher education more accessible</p>
+          <div className='schemes_body'>
+            <div className='schemesCard'>
+              <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="" />
+              <span>UGC Scholarships</span>
+            </div>
+            <div className='schemesCard'>
+              <img src="https://i0.wp.com/www.dailylifeinformation.com/wp-content/uploads/2017/08/20200901_141044-e1598950100519.jpg?resize=527%2C296&ssl=1" alt="" />
+              <span>Anundoram Barooah Award</span>
+            </div>
+            <div className='schemesCard'>
+              <img src="https://i0.wp.com/www.dailylifeinformation.com/wp-content/uploads/2017/08/20200901_141044-e1598950100519.jpg?resize=527%2C296&ssl=1" alt="" />
+              <span>Anundoram Barooah Award</span>
+            </div>
+            <div className='schemesCard'>
+              <img src="https://i0.wp.com/www.dailylifeinformation.com/wp-content/uploads/2017/08/20200901_141044-e1598950100519.jpg?resize=527%2C296&ssl=1" alt="" />
+              <span>Anundoram Barooah Award</span>
+            </div>
+          </div>
+        </div>
       </div>
     </Fragment>
   )

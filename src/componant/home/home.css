@@ -8,6 +8,78 @@
     /* max-width: 100%; */
     
 }
+.homediv{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+#carouselExampleIndicators{
+  margin: 0;padding: 0;
+  height: 55vh;
+  /* width: 100vw; */
+  
+  /* margin: 1vmax auto; */
+  /* border-left: 20px solid rgb(40, 26, 238);
+  border-right: 20px solid rgb(40, 26, 238); */
+  border: 1px solid rgb(201, 184, 184);
+}
+#indicator{
+  border: 1px solid black;
+  height: 13px;
+  width: 13px;
+  border-radius: 100%;
+}
+.carousel-indicators .active{
+  background: rgb(40, 26, 238);
+ 
+  border: 1px solid  rgb(40, 26, 238) !important;
+  
+}
+/* .carousel-inner {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-item {
+  height: 100%;
+  background-color: transparent;
+}
+*/
+.carousel-item img {
+  /* object-fit: cover; */
+  height: 55vh;
+  
+} 
+.bar{
+  background:  #0275d8 ;
+  min-height: 4vmax;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  border: none;
+}
+.bar div{
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1vmax;
+  padding-bottom:  1vmax;
+  padding-left: 10px;
+}
+.bar img{
+  height: 7rem;
+  width: 7rem;
+  border-radius: 100%;
+}
+.minister{
+  background:rgba(231, 84, 26, 0.925) ;
+}
+.bar h3,.bar span{
+  padding-left: 5px;
+}
 .card_body {
     display: flex;
     color: rgb(44, 47, 49);
@@ -17,11 +89,32 @@
     margin: 0.5vh;
     height: auto;
     height: 30vh;
-    background-color: rgba(224, 232, 236, 0.548);
+    /* background-color: rgba(224, 232, 236, 0.548); */
+    background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
     transition: all 0.5s;
     padding-bottom: 0.3vmax;
   }
-  
+  .cardbutton{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .cardbutton a{
+
+    min-width: 90%;
+    max-width: 90%;
+    margin: 5px;
+    padding: 5px;
+    margin-right: 10px;
+    border: none;
+    /* background: yellow; */
+  }
+  .cardbutton a:first-child{
+    /* margin-top: 90px; */
+  }
   .card_body img {
     width: 100%;
     height: 100%;
@@ -32,16 +125,17 @@
   .clgimg {
     height: 90%;
     margin-top: 1.1vmax;
-    width: 35%;
+    width: 38%;
     margin-right: 1vmax;
     margin-left: 1vmax;
   }
   
   .clgData {
-    margin: 1px auto;
+    /* margin: 1px auto; */
     height: 100%;
     display: flex;
     flex-direction: column;
+    margin-left: 2vmax;
   }
   
   .clgData h2 {
@@ -50,14 +144,17 @@
     font-size: 1.8vmax;
     margin: 2px auto;
     padding-top: 1vmax;
-    text-align: center;
-    border-bottom: 1px solid black;
     margin-bottom: 1vmax;
-    min-width: 45vmax;
+    /* 
+    border-bottom: 1px solid black;*/
+    text-align: left;
+    min-width: 45vmax; 
+    /* margin-left: 2vmax; */
   }
   
   .clgData p {
-    margin-left: 2vmax;
+    /* margin-left: 2vmax; */
+    text-align: left;
     margin-top: 0;
     margin-bottom: auto;
     overflow-wrap: break-word;
@@ -79,8 +176,8 @@
 .box{
   
   height: 20vh;
-  width: 25vw;
-  border-radius: 20%;
+  width: 23vw;
+  /* border-radius: 20%; */
   background: rgb(204, 102, 19);
   color: aliceblue;
   display: flex;
@@ -89,42 +186,97 @@
   align-items: center;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
 }
+.box:first-child{
+  background: aqua;
+}
+.box:last-child{
+  background: rgb(59, 140, 216);
+}
 .box span{
 font-size: 2vmax;
 }
+.schemes{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2vmax;
+  /* border: 1px solid black; */
+  
 
-  @media only screen and (max-width: 768px) {
-    .card_body {
-      width: 90%;
-      margin: 1vmax auto;
-      height: auto;
-      flex-wrap: wrap;
-    }
+}
+.schemes h2,.schemes p{
+  /* margin:1vmax auto; */
+  margin-left: 3vmax;
   
-    .clgimg {
-      width: 100%;
-      height: 25vh;
-      margin-top: 0;
-      margin-right: 0;
-      margin-left: 0;
-      border-radius: 6px 6px 0 0;
-    }
+}
+.schemes_body{
+  display: flex;
+  margin: 1vmax auto;
+  /* width: 88vw; */
+  flex-wrap: wrap;
+  justify-content: center;
+  /* border: 1px solid black; */
   
-    .clgData {
-      width: 100%;
-      height: 60%;
-      padding: 1vmax;
-      border-radius: 0 0 6px 6px;
-    }
+ 
+}
+.schemesCard{
+  height: 35vh;
+  width: 25vw;
+  margin: 1vmax;
   
-    .clgData h2 {
-      font-size: 1.4vmax;
-    }
-  
-    .clgData p {
-      font-size: 1.5vmax;
-      margin-left: 0;
-      margin-top: 1vmax;
-    }
+}
+.schemesCard img{
+  width: 100%;
+  height: 80%;
+  background-color: rgba(224, 232, 236, 0.548);
+  transition: all 0.5s;
+  padding-bottom: 0.3vmax;
+}@media only screen and (max-width: 768px) {
+  .card_body {
+    width: 90%;
+    margin: 1vmax auto;
+    height: auto;
+    flex-wrap: wrap;
   }
-  
+
+  .clgimg {
+    width: 100%;
+    height: 23vh;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+    border-radius: 6px 6px 0 0;
+  }
+
+  .clgData {
+    width: 100%;
+    height: 40%;
+    padding: 1vmax;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .cardbutton {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 1vmax;
+  }
+
+  .cardbutton a {
+    min-width: 40%;
+    max-width: 40%;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .clgData h2 {
+    font-size: 1.4vmax;
+  }
+
+  .clgData p {
+    font-size: 1.5vmax;
+    margin-left: 0;
+    margin-top: 1vmax;
+  }
+}

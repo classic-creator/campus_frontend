@@ -1,0 +1,22 @@
+.form-div-container{
+    display:flex
+}
+.form-input-container {
+
+}
+.form-input-container{
+    width: 50%;
+}
+.form-input-container input{
+   border: none !important;
+}
+
+@media screen and (max-width: 600px) {
+    .form-div-container{
+       flex-direction: column;
+    }
+    .form-input-container{
+        width: 90%;
+        margin: 1px auto;
+    }
+}

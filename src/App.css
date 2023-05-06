@@ -4,6 +4,7 @@
 }
 body{
     /* background:linear-gradient(to right,#36d5f1,#cf9dcd); */
+    background-color: #cce5ff;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{

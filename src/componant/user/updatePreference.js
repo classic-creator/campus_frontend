@@ -1,12 +1,14 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import { clearErrors,updatePreference } from '../../action/preferenceAction'
+import React, { Fragment, useEffect, useMemo, useState } from 'react'
+import { clearErrors,getPreferences,updatePreference } from '../../action/preferenceAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert';
 import Loader from '../layout/loader/loader';
 import { UPDATE_PREFERENCE_RESET } from '../../constants/preferenceConstants';
 import {  useNavigate} from 'react-router-dom';
 import { GetPreferedCourses } from '../../action/courseAction';
-
+import { Autocomplete } from '@material-ui/lab';
+import { TextField } from '@material-ui/core';
+import {Button} from 'antd'
 
 
 const UpdatePreference = () => {
@@ -17,7 +19,7 @@ const UpdatePreference = () => {
 
   const {loading, error,isUpdated} = useSelector(state => state.updatePreference)
   const { preference } = useSelector(state => state.preference)
-
+  const { courses } = useSelector(state => state.courses)
 
   const [college1, setCollege1] = useState('')
   const [college2, setCollege2] = useState('')
@@ -25,10 +27,19 @@ const UpdatePreference = () => {
   const [course1, setCourse1] = useState('')
   const [course2, setCourse2] = useState('')
   const [course3, setCourse3] = useState('')
-  const [address, setAddress] = useState('')
+  const [depertment1, setDepertment1] = useState('')
+  const [depertment2, setDepertment2] = useState('')
+  const [depertment3, setDepertment3] = useState('')
+  // const [address, setAddress] = useState('')
 
+  const uniqueCourses = [...new Set(courses.map(course => course.courseName))];  //filter same value
+  const uniqueCollege = [...new Set(courses.map(course => course.collegeName))];  //filter same value
+  const uniqueDepertment = [...new Set(courses.map(course => course.depertment_name))];  //filter same value
+  
 
-
+  const courseoption = uniqueCourses.map(course => (course));
+  const clgoption = uniqueCollege.map(course => (course));
+  const deptoption = uniqueDepertment.map(course => (course));
 
 const updatePreferenceFunction=(e)=>{
 
@@ -42,10 +53,13 @@ const updatePreferenceFunction=(e)=>{
   myForm.set('course1', course1)
   myForm.set('course2', course2)
   myForm.set('course3', course3)
-  myForm.set('address', address)
+  myForm.set('depertment1', depertment1)
+  myForm.set('depertment2', depertment2)
+  myForm.set('depertment3', depertment3)
+  // myForm.set('address', address)
 
   dispatch(updatePreference(myForm))
-  
+  dispatch(getPreferences());
 
 }
 
@@ -59,7 +73,10 @@ const updatePreferenceFunction=(e)=>{
     setCourse1(preference.course1)
     setCourse2(preference.course2)
     setCourse3(preference.course3)
-    setAddress(preference.address)
+    setDepertment1(preference.depertment1)
+    setDepertment2(preference.depertment2)
+    setDepertment3(preference.depertment3)
+    // setAddress(preference.address)
    }
 
 
@@ -77,12 +94,13 @@ const updatePreferenceFunction=(e)=>{
 
   return (
 
-  <Fragment>{
-    loading? <Loader/> :   <Fragment>
+  // <Fragment>{
+  //   loading? <Loader/> : 
+      <Fragment>
 
   
 
-<button to={'/preference/update'} type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#preferenceModal" >update</button>
+<Button loading={loading} to={'/preference/update'} type="primary"  data-bs-toggle="modal" data-bs-target="#preferenceModal" >Update</Button>
 
    
       <form onSubmit={updatePreferenceFunction} > 
@@ -95,115 +113,149 @@ const updatePreferenceFunction=(e)=>{
                   <h5 className="modal-title d-flex align-items-center">
                     <i className="bi bi-person-lines-fill fs-3 me-2"></i>Update Your Preference
                   </h5>
-
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div className="modal-body">
 
 
                 
-                  <div className="container-fluide user-details">
-                    <div className="row">
-                      <div className=" input-box">
-                        <label className="form-label">College Preference 1</label>
-                        <input
-                          className="form-control shadow-none"
-                          type="text"
-                          value={college1}
-                          name='college1'
-                          placeholder="Enter college name"
-                          required
-                          onChange={(e) => setCollege1(e.target.value)}
-                        />
-                      </div>
-                      <div className="input-box">
-                        <label className="form-label">College Preference 2</label>
-                        <input
-                          type="text"
-                          className="form-control shadow-none"
-                          value={college2}
-                          name='college2'
-                          placeholder="Enter college name"
+                  <div className="container-fluide ">
+                    <div className="row form-div-container">
+                      <div className=" input-box form-input-container">
+                       
+                       
+                          <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={clgoption}
+                        sx={{ width: 300 }}
+                        onChange={(event, value) => setCollege1(value)}
+                        value={college1}
+                        renderInput={(params) => <TextField {...params} name="college1"
 
-                          onChange={(e) => setCollege2(e.target.value)}
-                        />
+                          label="College Preference 1" />}
+                      />
                       </div>
-                      <div className=" input-box">
-                        <label className="form-label">College Preference 3</label>
-                        <input type="text"
-                          className="form-control shadow-none"
-                          value={college3}
-                          name='college3'
-                          placeholder="Enter college name"
+                      <div className="input-box form-input-container">
+                        
+                          <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={clgoption}
+                        sx={{ width: 300 }}
+                        onChange={(event, value) => setCollege2(value)}
+                        value={college2}
+                        renderInput={(params) => <TextField {...params} name="college2"
 
-                          onChange={(e) => setCollege3(e.target.value)}
-                        />
+                          label="College Preference 2" />}
+                      />
                       </div>
-                      <div className=" input-box">
-                        <label className="form-label">Course Preference 1</label>
-                        <input type="text"
-                          className="form-control shadow-none"
-                          value={course1}
-                          name='course1'
-                          placeholder="Enter course name"
-                          required
-                          onChange={(e) => setCourse1(e.target.value)}
-                        />
-                      </div>
-                      <div className=" input-box">
-                        <label className="form-label">Course Preference 2</label>
-                        <input type='text' className="form-control shadow-none"
-                          value={course2}
-                          name='course2'
-                          placeholder="Enter course name"
+                      <div className=" input-box form-input-container">
+                       
+                          <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={clgoption}
+                        // sx={{ width: 300 }}
+                        onChange={(event, value) => setCollege3(value)}
+                        value={college3}
+                        renderInput={(params) => <TextField {...params} name="college3"
 
-                          onChange={(e) => setCourse2(e.target.value)}
-                        />
+                          label="College Preference 3" />}
+                      />
+                      </div>
+                      <div className=" input-box form-input-container">
+                       
+                          <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={courseoption}
+                        sx={{ width: 300 }}
+                        onChange={(event, value) => setCourse1(value)}
+                        value={course1}
+                        renderInput={(params) => <TextField {...params} name="course1"
+
+                          label="Course Preference 1" />}
+                      />
+                      </div>
+                      <div className=" input-box form-input-container">
+                      
+                          <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={courseoption}
+                        sx={{ width: 300 }}
+                        onChange={(event, value) => setCourse2(value)}
+                        value={course2}
+                        renderInput={(params) => <TextField {...params} name="course2"
+
+                          label="Course Preference 2" />}
+                      />
 
                       </div>
-                      <div className="input-box">
-                        <label className="form-label">Course Preference 3</label>
-                        <input type="text"
-                          value={course3}
-                          name='course3'
-                          placeholder="Enter your name"
+                      <div className="input-box form-input-container">
+                      
+                            <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={courseoption}
+                        sx={{ width: 300 }}
+                        onChange={(event, value) => setCourse3(value)}
+                        value={course3}
+                        renderInput={(params) => <TextField {...params} name="course3"
 
-                          onChange={(e) => setCourse3(e.target.value)}
-                          className="form-control shadow-none" />
+                          label="Course Preference 3" />}
+                      />
                       </div>
 
-                      <div className="input-box">
-                        <label className="form-label">Depertment Preference 1</label>
-                        <input type="text"
-                          placeholder='Enter depertment name'
-                          className="form-control shadow-none" />
+                      <div className="input-box form-input-container">
+                      
+                            <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        sx={{ width: 300 }}
+                        options={deptoption}
+                        onChange={(event, value) => setDepertment1(value)}
+                        value={depertment1}
+                        renderInput={(params) => <TextField {...params} name="depertment1"
+
+                          label="Depertment Preference 1" />}
+                      />
                       </div>
-                      <div className="input-box">
-                        <label className="form-label">Depertment Preference 2</label>
-                        <input type="text"
-                          placeholder='Enter depertment name'
-                          className="form-control shadow-none" />
+                      <div className="input-box form-input-container">
+                       
+                           <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        sx={{ width: 300 }}
+                        options={deptoption}
+                        onChange={(event, value) => setDepertment2(value)}
+                        value={depertment2}
+                        renderInput={(params) => <TextField {...params} name="depertment2"
+
+                          label="Depertment Preference 2" />}
+                      />
                       </div>
-                      <div className="input-box">
-                        <label className="form-label">Depertment Preference 3</label>
-                        <input type="text"
-                          placeholder='Enter depertment name'
-                          className="form-control shadow-none" />
+                      <div className="input-box form-input-container">
+                       
+                           <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        sx={{ width: 300 }}
+                        options={deptoption}
+                        onChange={(event, value) => setDepertment3(value)}
+                        value={depertment3}
+                        renderInput={(params) => <TextField {...params} name="depertment3"
+
+                          label="Depertment Preference 3" />}
+                      />
                       </div>
-                      <div className="input-box">
-                        <label className="form-label">Address Preference</label>
-                        <input type="text"
-                          value={address}
-                          name='address'
-                          placeholder="Enter address"
-                          required
-                          onChange={(e) => setAddress(e.target.value)}
-                          className="form-control shadow-none" />
-                      </div>
+                     
                     </div>
                   </div>
                       <div className="alighn-center my-1">
-                        <button type="submit" className="btn btn-dark shadow-none" data-bs-dismiss="modal" >Submit</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <Button loading={loading} onClick={updatePreferenceFunction} data-bs-dismiss="modal" type='primary'  >Submit</Button>
+                    
                       </div>
                   
 
@@ -216,7 +268,7 @@ const updatePreferenceFunction=(e)=>{
         </form>
      
     </Fragment>
-    }</Fragment>
+    // }</Fragment>
 
   )
 }

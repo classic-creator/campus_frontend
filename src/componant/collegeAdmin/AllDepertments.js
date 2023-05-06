@@ -12,7 +12,7 @@ const AllDepertments = () => {
 
   const dispatch = useDispatch()
 
-  const { loading,depertments } = useSelector(state => state.depertments)
+  const { loading, depertments } = useSelector(state => state.depertments)
 
   useEffect(() => {
     dispatch(getDepertmentAction())
@@ -79,34 +79,57 @@ const AllDepertments = () => {
 
 
   return (
+    // <Fragment>
+    //     <Sidebar />
+    //   <div className='dashboard '>
+    //     {/* //courseTable */}
+    //     <div className="container-fluid">
+
+    //       <h2>Depertment</h2>
+    //       <div className=" allCourseTable" style={{ overflowX: 'auto' }}>
+
+    //         <Table
+    //           columns={columns}
+    //           dataSource={rows}
+    //           bordered
+    //           loading={loading}
+    //           scroll={{
+    //             x: 1000,
+    //             y: 400,
+    //           }}
+
+    //         />
+
+    //       </div>
+    //     </div>
+
+    //   </div>
+
+    // </Fragment>
     <Fragment>
-      <div className='dashboard'>
-        <Sidebar />
-        {/* //courseTable */}
-        <div className="container">
-
+    <div className="depertmentDeash">
+      <Sidebar />
+      <div className="dashboard">
+      <div className='headdept'>
+        
           <h2>Depertment</h2>
-          <div className=" allCourseTable" style={{ overflowX: 'auto' }}>
-
-            <Table
-              columns={columns}
-              dataSource={rows}
-              bordered
-              loading={loading}
-              scroll={{
-                x: 1000,
-                y: 400,
-              }}
-
-            />
-
-          </div>
-        </div>
-
       </div>
-
-    </Fragment>
-  )
+        
+        <div className="allCourseTable" style={{ overflowX: 'auto' }}>
+          <Table
+            columns={columns}
+            dataSource={rows}
+            bordered
+            loading={loading}
+          // scroll={{
+          //   x: 1000,
+          //   y: 400,
+          // }}
+          />
+        </div>
+      </div>
+    </div>
+    </Fragment>)
 }
 
 export default AllDepertments

@@ -87,6 +87,7 @@ export const depertmentReducer = ((state = {}, action) => {
         case CREATE_DEPERTMENT_SUCCESS:
             return {
                 loading: false,
+                message:action.payload.message,
                 depertment: action.payload.depertment,
             }
         case CREATE_DEPERTMENT_RESET:
@@ -97,6 +98,7 @@ export const depertmentReducer = ((state = {}, action) => {
         case CREATE_DEPERTMENT_FAIL:
 
             return {
+                // ...state, 
                 loading: false,
                 error: action.payload
             }

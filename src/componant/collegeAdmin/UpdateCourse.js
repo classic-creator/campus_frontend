@@ -15,26 +15,26 @@ export const UpdateCourse = () => {
     const dispatch = useDispatch()
     const alert = useAlert()
     const navigate = useNavigate()
-    const {id}=useParams()
+    const { id } = useParams()
 
-    const {loading,error,course}=useSelector(state=>state.UpdateCourse)
-    const {course:details}=useSelector(state=>state.courseDetails)
+    const { loading, error, course } = useSelector(state => state.UpdateCourse)
+    const { course: details } = useSelector(state => state.courseDetails)
 
-      useEffect(() => {
+    useEffect(() => {
 
-        if(error){
-          alert.error(error)
-          dispatch(clearErrors())
+        if (error) {
+            alert.error(error)
+            dispatch(clearErrors())
         }
-       if(course){
-        alert.success('Update Course Successfully')
-        dispatch({type:UPDATE_COURSES_RESET})
-        
-      }
+        if (course) {
+            alert.success('Update Course Successfully')
+            dispatch({ type: UPDATE_COURSES_RESET })
+            navigate(`/depertment/${details.depertment_id}`)
+        }
 
-      dispatch(getCourseDetails(id))
+        dispatch(getCourseDetails(id))
 
-      }, [course,alert,dispatch,error,navigate])
+    }, [course, alert, dispatch, error, navigate])
 
 
     const validate = Yup.object({
@@ -42,71 +42,74 @@ export const UpdateCourse = () => {
         courseName: Yup.string().required('required'),
         duration: Yup.string().max(15, 'Must be characters or less').required('required'),
         eligibility: Yup.string().required('required'),
-        fees: Yup.string().required('required'),   
-        seat_capacity: Yup.string().required('required'),   
+        admission_fees: Yup.string().required('required'),
+        application_fees: Yup.string().required('required'),
+        seat_capacity: Yup.string().required('required'),
 
     })
 
 
-   
-    const initialvalues={
+
+    const initialvalues = {
         courseName: details.courseName ? details.courseName : '',
         duration: details.duration ? details.duration : '',
         eligibility: details.eligibility ? details.eligibility : '',
-        fees: details.fees ? details.fees : '',
+        admission_fees: details.admission_fees ? details.admission_fees : '',
+        application_fees: details.application_fees ? details.application_fees : '',
         seat_capacity: details.seat_capacity ? details.seat_capacity : '',
-       
+
     }
 
     return (
 
         <Fragment>
             {
-              loading ? <Loader/> :  <Fragment>
+                loading ? <Loader /> : <Fragment>
 
-            <Formik
-                  enableReinitialize={true}
-                initialValues={initialvalues}
-                validationSchema={validate}
-            // onSubmit={values => { console.log(values) }}
-              onSubmit={values => { dispatch(updateCourseAction({values,id})) }}
+                    <Formik
+                        enableReinitialize={true}
+                        initialValues={initialvalues}
+                        validationSchema={validate}
+                        // onSubmit={values => { console.log(values) }}
+                        onSubmit={values => { dispatch(updateCourseAction({ values, id })) }}
 
-            >
-                {Formik => (
-                    <div>
+                    >
+                        {Formik => (
+                            <div>
 
 
-                        <div className='applyFor '>
-                            <Form className='applyForm registerClg'>
-                                <div className='but'>
-                                    <h3>Register Course</h3>
+                                <div className='applyFor '>
+                                    <Form className='applyForm registerClg'>
+                                        <div className='but'>
+                                            <h3>Update Course</h3>
+                                        </div>
+
+                                        <TextField label='Course Name' name='courseName' type='text' />
+                                        <TextField label='Duration' name='duration' type='text' />
+                                        <TextField label='Eligibility' name='eligibility' type='text' />
+                                        <TextField label='Seat Capacity' name='seat_capacity' type='number' />
+                                        <TextField label='Admission_fees' name='admission_fees' type='number' />
+                                        <TextField label='Application_fees' name='application_fees' type='number' />
+
+
+
+
+                                        <div className='but'>
+                                            <button type='submit' className='btn '>Update</button>
+                                        </div>
+
+
+                                    </Form>
                                 </div>
-
-                                <TextField label='Course Name' name='courseName' type='text' />
-                                <TextField label='Duration' name='duration' type='text' />
-                                <TextField label='Eligibility' name='eligibility' type='text' />
-                                <TextField label='Seat Capacity' name='seat_capacity' type='number' />
-                                <TextField label='fees' name='fees' type='text' />
+                            </div>
+                        )}
 
 
+                    </Formik>
 
-
-                                <div className='but'>
-                                    <button type='submit' className='btn '>Update</button>
-                                </div>
-
-
-                            </Form>
-                        </div>
-                    </div>
-                )}
-
-
-            </Formik>
-
-        </Fragment>
+                </Fragment>
             }
-          </Fragment>
+        </Fragment>
 
     )
 }

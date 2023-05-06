@@ -46,8 +46,8 @@ const CourseDeashboard = () => {
 
     return (
         < Fragment>
-            <div className='dashboard'>
-                <Sidebar />
+            <div className='clgdashboard'>
+               <div> <Sidebar /></div>
                 <div className="dashboardContainer">
                     <CourseDataChange />
                 <Typography component="h1">Course Dashboard</Typography>

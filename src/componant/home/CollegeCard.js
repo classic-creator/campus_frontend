@@ -28,6 +28,10 @@ const CollegeCard = ({ college }) => {
                             <p ><small className="text-muted">Last updated 3 mins ago</small></p>
                             
                     </div>
+                    <div className="cardbutton">
+                        <Link className='btn btn-secondary'  to={`/college/${college.id}`}>View </Link>
+                        <Link className='btn btn-secondary' to={`/college/course/${college.id}`}> Courses</Link>
+                    </div>
              
             
         </Link>

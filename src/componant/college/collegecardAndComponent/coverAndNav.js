@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 
 
 const CoverAndNav = ({ college }) => {
+
+    
+
     return (
         <Fragment>
             <Link to={`/college/${college.id}`}>

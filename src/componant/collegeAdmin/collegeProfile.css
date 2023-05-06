@@ -1,19 +1,22 @@
-.dashboard{
-    width: 100vw;
+.clgdashboard{
     max-width: 100%;
+    display:flex;
+    position: relative;
+    overflow: auto;
+
+
+    /* width: 100vw; */
     /* display: grid;
     
     grid-template-columns: 1fr 5fr; */
-    display:flex;
-    /* flex-direction: column; */
     /* justify-content: space-between; */
-    position: relative;
+    /* flex-direction: column; */
  
 }
 
 .dashboardContainer{
     border-left: 1px solid rgba(0, 0, 0, 0.13);
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
     padding: 1rem 0;
     width: 100%;
     /* display: block */
@@ -35,7 +38,7 @@
 .dashboardSummery div{
     display: flex;
     justify-content: center;
-    background-color: white;
+    /* background-color: white; */
 }
 .dashboardSummeryP{
     background-color: rgba(70, 117, 218, 0.932);

@@ -25,7 +25,9 @@ const AddCourse = () => {
         courseName: Yup.string().required('required'),
         duration: Yup.string().max(15, 'Must be characters or less').required('required'),
         eligibility: Yup.string().required('required'),
-        fees: Yup.string().required('required'),   
+        seat_capacity: Yup.string().required('required'),
+        application_fees: Yup.string().required('required'),   
+        admission_fees: Yup.string().required('required'),   
         })
 
 
@@ -55,13 +57,15 @@ const AddCourse = () => {
           initialValues={{
            courseName:'',
            duration:'',
+           seat_capacity:'',
            eligibility:'',
-           fees:'',
+           application_fees:'',
+           admission_fees:'',
           }}
           validationSchema={validate}
-          // onSubmit={values => { console.log(values) }}
+         
           onSubmit={values => { dispatch(createCourseAction({values,id})) }}
-        
+          
         >
           {Formik => (
             <div>
@@ -78,13 +82,14 @@ const AddCourse = () => {
                   <TextField label='Eligibility' name='eligibility' type='text'/>
                   <TextField label='Seat Capacity' name='seat_capacity' type='number'/>
 
-                  <TextField label='fees' name='fees' type='text'/>
+                  <TextField label='Admission_fees' name='admission_fees' type='number'/>
+                  <TextField label='Application_fees' name='application_fees' type='number'/>
                   
              {/* <textarea type='text' name='eligibility'/> */}
                 
                   
                  <div className='but'>
-                  <button type='submit' className='btn '>Register</button>
+                  <button type='submit'   className='btn '>Register</button>
                  </div>
                 
                   

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCollegeCourseAction } from '../../action/collegeAdminAction'
 import { Button, Popconfirm, Table, Space, Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
+import Sidebar from './sidebar'
 const CollegeCourseList = () => {
 
     const dispatch = useDispatch()
@@ -99,7 +100,15 @@ const CollegeCourseList = () => {
 
     return (
         <Fragment>
-            <div className="container">
+        <div className="depertmentDeash">
+          <Sidebar />
+          <div className="dashboard">
+          <div className='headdept'>
+            
+              <h2>All Courses</h2>
+          </div>
+            
+            <div className="allCourseTable" style={{ overflowX: 'auto' }}>
                 <Table
                     columns={columns}
                     dataSource={rows}
@@ -111,6 +120,9 @@ const CollegeCourseList = () => {
                 //   }}
                 />
             </div>
+            </div>
+            </div>
+            
         </Fragment>
     )
 }

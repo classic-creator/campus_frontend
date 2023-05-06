@@ -1,4 +1,4 @@
-.card{
+/* .card{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,16 +15,13 @@
     box-shadow: 0 0 5px rgba(15,15,15,0.26);
     transform: translateY(-0.5vmax);
     text-decoration: none;
-    /* cursor: pointer; */
+
 }
 
 .coursecard_body{
 
     width: 100%;
-    /* display: flex;
-    justify-content: center;
-    align-items: left; */
-    /* flex-direction: column; */
+  
     text-transform: capitalize;
     padding-left: 1vmax;
     margin: 1vmax 1vmax;
@@ -48,11 +45,99 @@
 }
 
 .coursecard_body_2{
-    /* margin-top: 1vmax; */
+  
     margin-bottom: 2vmax;
     margin-left: 1vmax;
 }
 
 @media screen and (max-width:600px) {
   
+}  */
+
+
+
+.card {
+    display: inline-block;
+    width: 30%;
+    min-width: 300px;
+    margin: 10px;
+    max-height: 43vh;
+ 
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+  
+    background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
+    border-radius: 10px;
+  }
+  .clgname{
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+  }
+  .clgname img{
+    margin-right: 5px;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .coursecard_body {
+    
+    background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%);
+    padding: 10px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .coursecard_body h2 {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 1.2rem;
+    text-transform: capitalize;
 }
+
+.coursecard_body h3 {
+      text-transform: capitalize;
+    font-size: 1rem;
+  }
+  
+  .coursecard_body_2 {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .coursecard_body_2 p {
+    margin: 0;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+  }
+  
+  .applybtn {
+    font-size: 0.7rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: #007bffd2;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+    border: none;
+  }
+  
+  .applybtn:hover {
+    background-color: #0056b3;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  

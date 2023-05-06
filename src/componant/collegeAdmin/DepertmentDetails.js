@@ -107,23 +107,23 @@ const DepertmentDetails = () => {
 
     return (
         <Fragment>
-            <div className='dashboard'>
-
-                <Sidebar />
-                <div className="container">
-
-               
-                    <h2>Registered Courses</h2>
+        <div className="depertmentDeash">
+          <Sidebar />
+          <div className="dashboard">
+          <div className='headdept'>
+            
+              <h2>Registered Course</h2>
+          </div>
                 <div className="allCourseTable" style={{overflowX:'auto' }}>
                     <Table
                         columns={columns}
                         dataSource={rows}
                         bordered
                         loading={loading}
-                        scroll={{
-                            x: 1300,
-                            y: 400,
-                          }}
+                        // scroll={{
+                        //     x: 1300,
+                        //     y: 400,
+                        //   }}
                     />
 
                 </div>
