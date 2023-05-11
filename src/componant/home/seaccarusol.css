@@ -1,0 +1,9 @@
+.SchemeSlider{
+    width: 95vw;
+    margin: 2px auto;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: rgba(18, 18, 19, 0.952) !important;
+  background: white;
+}

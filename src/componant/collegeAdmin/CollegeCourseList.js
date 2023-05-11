@@ -4,6 +4,7 @@ import { getCollegeCourseAction } from '../../action/collegeAdminAction'
 import { Button, Popconfirm, Table, Space, Form, Input } from 'antd'
 import { Link } from 'react-router-dom'
 import Sidebar from './sidebar'
+import TableComponent from '../layout/TableComponent'
 const CollegeCourseList = () => {
 
     const dispatch = useDispatch()
@@ -108,18 +109,9 @@ const CollegeCourseList = () => {
               <h2>All Courses</h2>
           </div>
             
-            <div className="allCourseTable" style={{ overflowX: 'auto' }}>
-                <Table
-                    columns={columns}
+            <TableComponent  columns={columns}
                     dataSource={rows}
-                    bordered
-                    loading={loading}
-                // scroll={{
-                //     x: 1300,
-                //     y: 400,
-                //   }}
-                />
-            </div>
+                    loading={loading} />
             </div>
             </div>
             

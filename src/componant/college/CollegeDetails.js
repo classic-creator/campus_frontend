@@ -14,7 +14,8 @@ import { DataGrid } from "@material-ui/data-grid"
 import CoverAndNav from './collegecardAndComponent/coverAndNav';
 import ImportantLinkCard from './collegecardAndComponent/importantLinkCard';
 import Imgcarousel from './collegecardAndComponent/Imgcarousel';
-import { Button, Popconfirm, Table,Space,Form,Input } from 'antd'
+import { Button, Popconfirm, Table, Space, Form, Input } from 'antd'
+import TableComponent from '../layout/TableComponent';
 
 const CollegeDetails = () => {
 
@@ -33,52 +34,52 @@ const CollegeDetails = () => {
 
 
   //course list table
-  
+
 
   const columns = [
     {
-        title: 'Id',
-        dataIndex: 'id'
+      title: 'Id',
+      dataIndex: 'id'
     },
     {
-        title: 'Name',
-        dataIndex: 'name',
-        align: "center",
-        editable: true
+      title: 'Name',
+      dataIndex: 'name',
+      align: "center",
+      editable: true
     },
     {
-        title: 'Duration'
-        , dataIndex: 'duration',
-        align: "center",
-        editable: true
+      title: 'Duration'
+      , dataIndex: 'duration',
+      align: "center",
+      editable: true
     },
     {
-        title: 'Fees',
-        dataIndex: 'fees',
-        align: "center",
-        editable: true
+      title: 'Fees',
+      dataIndex: 'fees',
+      align: "center",
+      editable: true
     },
     {
-        title: 'Eligibility',
-        dataIndex: "eligibility",
-        align: "center",
-        editable: true
+      title: 'Eligibility',
+      dataIndex: "eligibility",
+      align: "center",
+      editable: true
     },
     {
-        title: 'Action',
-        dataIndex: "action",
-        align: "center"
-        ,render:(_,record)=>
-        rows.length>=1 ? (
-           <Space>
-             {/* <Popconfirm title='Are you sure you want to delete ?'> */}
-               <Link to={`/course/${record.id}`}> <Button  type='primary'> Go</Button></Link>
+      title: 'Action',
+      dataIndex: "action",
+      align: "center"
+      , render: (_, record) =>
+        rows.length >= 1 ? (
+          <Space>
+            {/* <Popconfirm title='Are you sure you want to delete ?'> */}
+            <Link to={`/course/${record.id}`}> <Button type='primary'> Go</Button></Link>
             {/* </Popconfirm> */}
-              <Button onClick={()=>console.log('edit')} type='primary'>Apply</Button>
-           </Space>
-        ):null
+            <Button onClick={() => console.log('edit')} type='primary'>Apply</Button>
+          </Space>
+        ) : null
     }
-]
+  ]
 
   const rows = [];
 
@@ -93,6 +94,80 @@ const CollegeDetails = () => {
     })
   })
 
+
+  //seat structure table
+
+
+  const seatcolumns = [
+
+    {
+      dataIndex: "courseName",
+      title: "Course name",
+
+    },
+    {
+      dataIndex: "total_seat",
+      title: "Total Seat",
+
+    },
+
+    {
+      dataIndex: "EWS",
+      title: "EWS",
+
+    },
+    {
+      dataIndex: "EWS",
+      title: "EWS",
+
+
+    },
+    {
+      dataIndex: "SC",
+      title: "SC",
+
+
+    },
+    {
+      dataIndex: "OBC",
+      title: "OBC",
+
+    },
+    {
+      dataIndex: "other",
+      title: "Others",
+
+    },
+    {
+      dataIndex: "open",
+      title: "Open",
+
+    },
+  ]
+
+  const seatrows = []
+
+
+  {
+    courses && courses.forEach(course => {
+
+      seatrows.push({
+        courseName: course.courseName,
+        total_seat: course.total_seat,
+        open: course.open,
+        other: course.other,
+        SC: course.SC,
+        ST: course.ST,
+        EWS: course.EWS,
+        OBC: course.OBC,
+      })
+
+    })
+  }
+
+
+
+
   return (
     <Fragment>
       {loading ? <Loader /> : <Fragment>
@@ -102,44 +177,36 @@ const CollegeDetails = () => {
         <div className="detailContainer">
 
           <div className='detailsdiv-1'>
+
             <p>
-              {college.description}
+              {college && college.description}
             </p>
           </div>
 
 
-          <div > 
+          <div >
             <ImportantLinkCard />
             <Imgcarousel />
           </div>
 
         </div>
 
-        <div className="courseTable">
-          <h2>Courses</h2>
+        <div className="container-fluid">
 
-          {/* <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={20}
-            rowsPerPageOptions={[20]}
-            disableSelectionOnClick
+          <h2 className='m-3 text-center'>Courses</h2>
 
-            className='courseListTable'
-            autoHeight
-
-           
-          /> */}
-             <Table
-                    columns={columns}
-                    dataSource={rows}
-                    bordered
-                    loading={loading}
-
-
-                    />
-
+          <TableComponent columns={columns}
+            dataSource={rows}
+            loading={loading} />
         </div>
+        <div className='container-fluid' id='seatStructure'>
+          <h2 className='m-3 text-center'>Seat Structure</h2>
+
+          <TableComponent columns={seatcolumns}
+            dataSource={seatrows}
+            loading={loading} />
+        </div>
+
       </Fragment>}
     </Fragment>
   )

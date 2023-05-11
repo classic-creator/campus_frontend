@@ -52,7 +52,7 @@ const ApplyEducationalDetails = () => {
   
           setSubmitting(false);
           alert.success('Success')
-          navigate(`/review/application/${id}`)
+          navigate(`/upload/file/${id}`)
         }
       };
     
@@ -64,7 +64,8 @@ const ApplyEducationalDetails = () => {
         }
         if (message) {
           alert.success(message)
-          navigate(`/review/application/${id}`)
+          navigate(`/upload/file/${id}`)
+          // navigate(`/review/application/${id}`)
           dispatch({type:REGISTER_EDUCATION_RESET})
         }
     

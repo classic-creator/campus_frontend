@@ -8,24 +8,52 @@ import "./header.css"
 const header = () => {
     return (
         <Fragment>
+            <header className='upperHeader1'>
 
-            <div className='upperHeader'>
+                <div className="left1">
+                    <a href="">
+                        <span>GOVERNMENT OF INDIA </span>
+                        <span>भारत सरकार</span>
+                    </a>
+                    <a href="">
+                        <span>Ministry of Electronics and Information Technology </span>
+                        <span>इलेक्ट्रॉनिकी और सूचना प्रौद्योगिकी मंत्रालय</span>
+                    </a>
+                </div>
+                <div className="middle1">
+                    <a href='#home'>Skip to Main Contatent</a>
+
+                </div>
+                <div className="right1 ">
+                
+                        <Link to={'/college/register'} >College Exicutive</Link>
+                        <Link className='leftBorder'>Government Exicutive</Link>
+                  
+                </div>
+
+            </header>
+
+            <header className='upperHeader'>
+
                 <div className='rigt'>
+                    <div>
+                        <img className='rigtfirst' src='https://indtoday.com/wp-content/uploads/2019/10/india-govt.jpg' alt='aslkfjd' />
+                        <img className='rigtsecond' src="https://static.javatpoint.com/fullformpages/images/nic.png" alt="img" />
+                    </div>
+                </div>
 
-                    <Link to={'/'}><h2>CAMPUS</h2></Link>
-                    <span>Common Admission Management Plateform for undergraduate Studies</span>
+                <div className="middle">
+                    
+                    <h3>Common Admission Management Plateform For Undergraduate Studies</h3>
+
                 </div>
 
                 <div className="left">
-                    <div>
-                        <Link to={'/college/register'} >College Exicutive</Link>
-                        <Link className='leftBorder'>Government Exicutive</Link>
-                    </div>
-                    {/* <form className="d-flex"> */}
+                  
                     <Search link='colleges' placeholder='Search Colleges' />
 
                 </div>
-            </div>
+            </header>
 
             <nav className="navbar navMain navbar-expand-lg sticky-top navbar-dark bg-primary ">
                 <div className="container-fluid">

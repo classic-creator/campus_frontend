@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { clearErrors, getCollegesDetails } from '../../action/collegeAction'
 
 
@@ -10,6 +10,8 @@ import CourseCard from './collegecardAndComponent/courseCard'
 import CoverAndNav from './collegecardAndComponent/coverAndNav'
 import Imgcarousel from './collegecardAndComponent/Imgcarousel'
 import ImportantLinkCard from './collegecardAndComponent/importantLinkCard'
+import SidebarOfcave from './collegecardAndComponent/sidebarOfcave'
+import { Button } from 'antd'
 
 
 const Courses = () => {
@@ -19,6 +21,11 @@ const Courses = () => {
   const { id } = useParams()
   const alert = useAlert()
 
+  const [selectedDepartment, setSelectedDepartment] = useState("");
+
+  const handleDepartmentClick = (department) => {
+    setSelectedDepartment(department);
+  };
 
   useEffect(() => {
     if (error) {
@@ -30,21 +37,40 @@ const Courses = () => {
 
   return (
     <Fragment>
-   <CoverAndNav college={college} />
+      <CoverAndNav college={college} />
 
-   <div className="detailContainer">
-      <div className="detailsdiv-1 container">
-        {courses && courses.map(course => (<CourseCard course={course} college={college}/>))}
+      <div className="detailContainer">
+        <div className="depertmentbar">
+        
+           <h3>Departments</h3>
+
+            {courses && [...new Set(courses.map(course => course.depertment_name))]
+              .map(department => (
+                <Link onClick={() => handleDepartmentClick(department)}>
+                  {department}
+                </Link>
+
+              ))}
+
+
+          
+        </div>
+        <div className="detailsdiv-1 container">
+         
+          {courses &&
+            courses
+              .filter((course) => course.depertment_name === selectedDepartment || selectedDepartment === "")
+              .map((course) => <CourseCard course={course} college={college} />)}
+        </div>
+        <div>
+
+          <ImportantLinkCard />
+          <Imgcarousel />
+        </div>
       </div>
-      <div>
 
-        <ImportantLinkCard />
-        <Imgcarousel />
-      </div>
-    </div>
+    </Fragment>
 
-  </Fragment>
-  
   )
 }
 

@@ -110,7 +110,8 @@ export const courseReducer= ((state={courses:[],initialState},action)=> {
               
             return{
               loading:true,
-             ...state
+             ...state,
+             course:{}
             };
           case COURSE_DETAILS_SUCCESS:
               

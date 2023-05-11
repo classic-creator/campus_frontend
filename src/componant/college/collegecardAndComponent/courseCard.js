@@ -20,6 +20,7 @@ const CourseCard = ({course,college}) => {
        
        {college ? <div className="clgname"><img src={college.logo_image_url} alt="" /><h3 >{college.collegeName}</h3></div> :  <div className="clgname"><img src="https://assets.sentinelassam.com/h-upload/2020/11/11/172257-assam-government.jpg" alt="" /><h3>{course.collegeName}</h3></div> }
         <p> <FontAwesomeIcon icon={faLocationPin}/> {course.address}</p>
+        <p>  {course.depertment_name}</p>
         <p>Duration: {course.duration}year</p>
       </div>
     <div className='coursecard_body_2'>

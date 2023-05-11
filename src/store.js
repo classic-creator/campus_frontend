@@ -7,7 +7,7 @@ import { collegeDetailsReducer, collegeReducer } from './reducer/collegeReducer'
 import { courseReducer ,courseDetailsReducer, preferedCourseReducer} from './reducer/courseReducer';
 import { preferenceReducer, updatePreferenceReducer } from './reducer/preferenceReducer';
 import { ForgetPasswordReducer, profileReducer, userReducer } from './reducer/userReducer';
-import { ApplicationReducer, ConfirmStudentReducer, CourseApplicationReducer, MyApplicationReducer, SelectedApplicationReducer, applicationDetailsReducer, applyAdmissionReducer, applyFormAddressReducer, applyFormEducationReducer, applyFormReducer, studentDetailsReducer } from './reducer/applyReducer';
+import { ApplicationReducer, ConfirmStudentReducer, CourseApplicationReducer, MyApplicationReducer, SelectedApplicationReducer, applicationDetailsReducer, applyAdmissionReducer, applyFormAddressReducer, applyFormEducationReducer, applyFormReducer, appyFormfileReducer, studentDetailsReducer } from './reducer/applyReducer';
 import { GetDepertmentReducer, addCourseReducer, collegeCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer } from './reducer/collegeAdminReducer';
 import thunk from 'redux-thunk';
 import { courseImageReducer } from './reducer/imageReducer';
@@ -44,6 +44,7 @@ const reducers = combineReducers({
             applystudentAddress:applyFormAddressReducer,
             applyEducation:applyFormEducationReducer,
             studentDetails:studentDetailsReducer,
+            applyfiles:appyFormfileReducer,
             apply:applyAdmissionReducer,
             application:MyApplicationReducer,
             college:collegesReducer,

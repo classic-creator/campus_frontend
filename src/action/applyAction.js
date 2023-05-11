@@ -39,6 +39,12 @@ import {
    CONFIRMED_APPLICATION_REQUEST,
    CONFIRMED_APPLICATION_SUCCESS,
    CONFIRMED_APPLICATION_FAIL,
+   REGISTER_FILES_SUCCESS,
+   REGISTER_FILES_REQUEST,
+   REGISTER_FILES_FAIL,
+   GET_FILES_REQUEST,
+   GET_FILES_SUCCESS,
+   GET_FILES_FAIL,
 
    
 } from "../constants/applyConstants";
@@ -133,6 +139,64 @@ export const AddStudentAddress = (studentData) => async (dispatch) => {
       })
    }
 }
+// APPLY FILE UPLOAD
+export const ApplicationFileUploadAction = (studentData) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: REGISTER_FILES_REQUEST })
+
+      const { data } = await axios.post(`/api/upload/files`, studentData, config)
+
+      dispatch({
+         type: REGISTER_FILES_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: REGISTER_FILES_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+
+
+//get files 
+
+export const GetStudentsFileAction = () => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: GET_FILES_REQUEST })
+
+      const { data } = await axios.get(`/api/get/applyfiles`, config)
+      
+      dispatch({
+         type: GET_FILES_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: GET_FILES_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+
 //get student address
 
 export const GetStudentAddress = () => async (dispatch) => {

@@ -9,12 +9,13 @@ import { useAlert } from 'react-alert'
 import Loader from '../layout/loader/loader'
 import CountUp from 'react-countup';
 import CollegeDataChange from './CollegeDataChange'
+import { Button } from 'antd'
 
 const CollegeProfile = () => {
 
   const alert = useAlert()
   const dispatch = useDispatch()
-  const { myCollege, myCourses, error, loading } = useSelector(state => state.myCollege)
+  const { myCollege, myCourses, clgConfirmApplication, error, loading } = useSelector(state => state.myCollege)
 
   useEffect(() => {
 
@@ -33,19 +34,19 @@ const CollegeProfile = () => {
     <Fragment>
       {/* {loading ? <Loader /> : <Fragment> */}
 
-        <div className='clgdashboard'>
-          <div>
-            <Sidebar />
-          </div>
-          {loading?<Loader/>:(
+      <div className='clgdashboard'>
+        <div>
+          <Sidebar />
+        </div>
+        <CollegeDataChange />
+        {/* {loading ? <Loader /> : (  */}
           <div className='dashboardContainer'>
             <Typography component="h1">Dashboard</Typography>
-            <CollegeDataChange/>
             <div className='dashboardSummery'>
               <div >
                 <p className='dashboardSummeryP'>
-
                   {myCollege && myCollege.collegeName}
+                {loading ?  <Button loading={loading}></Button> : null}
                 </p>
 
               </div>
@@ -59,8 +60,9 @@ const CollegeProfile = () => {
                   <p>Seat Remain</p>
                   {/* <p>{orders && orders.length}</p> */}
                 </Link>
-                <Link to="/admin/users">
+                <Link to="/confirm/admission/college">
                   <p>Admission Confirm</p>
+                  <CountUp end={clgConfirmApplication && clgConfirmApplication.length} duration={5} />
                   {/* <p>{users && users.length}</p> */}
                 </Link>
               </div>
@@ -77,9 +79,9 @@ const CollegeProfile = () => {
             </div>
 
           </div>
-          )}
+        {/* )} */}
 
-        </div>
+      </div>
       {/* </Fragment>} */}
     </Fragment>
   )

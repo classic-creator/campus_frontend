@@ -24,13 +24,15 @@ import DepertmentDetails from './componant/collegeAdmin/DepertmentDetails.js';
 import AddCourse from './componant/collegeAdmin/AddCourse.js';
 import UpdateCourse from './componant/collegeAdmin/UpdateCourse.js';
 import CourseDeashboard from './componant/collegeAdmin/CourseDeashboard.js';
-import CourseAdmissionList from './componant/collegeAdmin/CourseAdmissionList.js';
+import CourseAdmissionList from './componant/collegeAdmin/apply/CourseAdmissionList.js';
 import CollegeCourseList from './componant/collegeAdmin/CollegeCourseList.js';
 import ApplyDetails from './componant/collegeAdmin/apply/ApplyDetails.js';
 import SelectedApplicationList from './componant/collegeAdmin/apply/SelectedApplicationList.js';
 import ConfirmStudentsList from './componant/collegeAdmin/apply/ConfirmStudentsList.js';
+import CollegeConfirmStudentList from './componant/collegeAdmin/apply/CollegeConfirmStudentList.js';
 import AdmissionPayment from './componant/application/AdmissionPayment.js';
-import TestCom from './componant/user/MyApplication';
+import ImageGallery from './componant/college/collegecardAndComponent/ImageGallery.js';
+import FileUpload from './componant/application/ApplicationFileUpload';
 
 import ResetPassword from "./componant/user/ResetPassword.js"
 import MyApplication from "./componant/application/MyApplication.js"
@@ -45,15 +47,15 @@ import Sidebar from './componant/collegeAdmin/sidebar';
 import { RouteWrapper } from './protectedRoute/routeWrapper'
 
 
-function ScrollToTop({ children }) {
-  const location = useLocation();
+// function ScrollToTop({ children }) {
+//   const location = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, [location]);
 
-  return children;
-}
+//   return children;
+// }
 
 function App() {
 
@@ -73,10 +75,9 @@ function App() {
     <BrowserRouter>
 
       <Header />
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Routes>
 
-        <Route exact path='/test' element={<TestCom />} />
         <Route exact path='/' element={<Home />} />
         <Route exact path='/colleges' element={<Colleges />} />
         <Route exact path='/colleges/:keyword' element={<Colleges />} />
@@ -93,9 +94,12 @@ function App() {
         <Route exact path='/apply/address/:id' element={<ProtectedRoute component={ApplyAddress} />} />
         <Route exact path='/apply/education/:id' element={<ProtectedRoute component={ApplyEducationalDetails} />} />
         <Route exact path='/review/application/:id' element={<ProtectedRoute component={ReviewApplication} />} />
+        <Route exact path='/upload/file/:id' element={<ProtectedRoute component={FileUpload} />}  />
         <Route exact path='/myApplication' element={<ProtectedRoute component={MyApplication} />} />
         <Route exact path='/college/register' element={<ProtectedRoute component={RegisterCollege} />} />
         <Route exact path='/admission/payment/:id' element={<ProtectedRoute component={AdmissionPayment} />} />
+        <Route exact path='/college/gallery/:id' element={<ProtectedRoute component={ImageGallery} />} />
+       
 
         <Route exact path='/college/depertment/create' element={<ProtectedRoute isAdmin={true} component={CreateDepertment} />} />
         <Route exact path='/depertments' element={<ProtectedRoute isAdmin={true} component={AllDepertments} />} />
@@ -108,6 +112,7 @@ function App() {
         <Route exact path='/application/selected/:id' element={<ProtectedRoute isAdmin={true} component={SelectedApplicationList} />} />
         <Route exact path='/college/course' element={<ProtectedRoute isAdmin={true} component={CollegeCourseList} />} />
         <Route exact path='/confirm/students/:id' element={<ProtectedRoute isAdmin={true} component={ConfirmStudentsList} />} />
+        <Route exact path='/confirm/admission/college' element={<ProtectedRoute isAdmin={true} component={CollegeConfirmStudentList} />} />
 
 
 

@@ -230,7 +230,16 @@ font-size: 2vmax;
   background-color: rgba(224, 232, 236, 0.548);
   transition: all 0.5s;
   padding-bottom: 0.3vmax;
-}@media only screen and (max-width: 768px) {
+}
+
+.swiper-slide {
+  /* margin-right: 500px !important; */
+}
+.SchemeSlider img{
+  width: 300px;
+  height: 200px;
+}
+@media only screen and (max-width: 768px) {
   .card_body {
     width: 90%;
     margin: 1vmax auto;

@@ -10,11 +10,12 @@ const CoverAndNav = ({ college }) => {
 
     return (
         <Fragment>
-            <Link to={`/college/${college.id}`}>
+            <Link to={`/college/${college.college_id}`}>
             <div className="containers">
-                <img src={college.cover_image_url} alt="Cinque Terre" />
+                <img className='clgCoverimg' src={college.cover_image_url} alt="Cinque Terre" />
                 <div className="bottomleft">
                     <h2>{college.collegeName}</h2>
+                    {/* <h1>{college.college_id}</h1> */}
                     <span><FontAwesomeIcon icon={faLocationPin} />{college.address}</span>
                 </div>
                 <div className="bottomRight">
@@ -24,7 +25,7 @@ const CoverAndNav = ({ college }) => {
             </div>
             </Link>
             <div className='logo'>
-               <Link to={`/college/${college.id}`}>
+               <Link to={`/college/${college.college_id}`}>
                <img src={college.logo_image_url} alt='logo' />
                </Link> 
             </div>
@@ -32,15 +33,14 @@ const CoverAndNav = ({ college }) => {
 
                 <ul>
                     <li>
-                        <Link to={`/college/course/${college.id}`}>Courses</Link>
+                        <Link to={`/college/course/${college.college_id}`}>Courses</Link>
                     </li>
 
-                    <li><a href="/notice">Notice</a> </li>
-                    <li><a href="/notice">Payment</a> </li>
-                    <li><a href="/notice">Gallery</a> </li>
-                    <li><a href="/myaplication">My Application</a> </li>
-                    <li><a href="/myaplication">Contact Us</a> </li>
-                    <li><a href="/aboutCollege">About</a></li>
+                    <li><Link to={'notice'}>Notice</Link> </li>
+                    <li><Link to={'#seatStructure'}>Seat Structure</Link> </li>
+                    <li><Link to={`/college/gallery/${college.college_id}`}>Gallery</Link> </li>
+                    <li><a herf='#FeeStructure'>Fee structure</a> </li>
+                    
                 </ul>
             </div>
 

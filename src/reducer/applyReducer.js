@@ -44,34 +44,41 @@ import {
     CONFIRMED_APPLICATION_REQUEST,
     CONFIRMED_APPLICATION_SUCCESS,
     CONFIRMED_APPLICATION_FAIL,
+    REGISTER_FILES_SUCCESS,
+    REGISTER_FILES_REQUEST,
+    REGISTER_FILES_RESET,
+    REGISTER_FILES_FAIL,
+    GET_FILES_REQUEST,
+    GET_FILES_SUCCESS,
+    GET_FILES_FAIL,
 } from "../constants/applyConstants";
 
 export const applyFormReducer = (state = {}, action) => {
     switch (action.type) {
         case REGISTER_PERSONALDATA_REQUEST:
-      return{ 
+            return {
                 // ...state,
                 loading: true
             }
 
         case REGISTER_PERSONALDATA_SUCCESS:
-       
+
             return {
                 // ...state,
                 loading: false,
                 message: action.payload.message
             }
 
-            case REGISTER_PERSONALDATA_RESET:
-       
+        case REGISTER_PERSONALDATA_RESET:
+
             return {
                 // ...state,
                 loading: false,
-               
+
             }
 
         case REGISTER_PERSONALDATA_FAIL:
-       
+
             return {
                 // ...state,
                 loading: false,
@@ -91,33 +98,33 @@ export const applyFormReducer = (state = {}, action) => {
 
 export const applyFormAddressReducer = (state = {}, action) => {
     switch (action.type) {
-      
+
         case REGISTER_ADDRESS_REQUEST:
-      
+
             return {
                 // ...state,
                 loading: true
             }
 
-       
+
         case REGISTER_ADDRESS_SUCCESS:
-      
+
             return {
                 // ...state,
                 loading: false,
                 message: action.payload.message
             }
 
-            case REGISTER_ADDRESS_RESET:
-       
+        case REGISTER_ADDRESS_RESET:
+
             return {
                 // ...state,
                 loading: false,
-               
+
             }
-      
+
         case REGISTER_ADDRESS_FAIL:
-      
+
             return {
                 // ...state,
                 loading: false,
@@ -134,30 +141,124 @@ export const applyFormAddressReducer = (state = {}, action) => {
     }
 }
 
+
+//file upload 
+export const appyFormfileReducer = (state = {}, action) => {
+    switch (action.type) {
+
+        case REGISTER_FILES_REQUEST:
+
+            return {
+                // ...state,
+                loading: true
+            }
+
+
+        case REGISTER_FILES_SUCCESS:
+
+            return {
+                // ...state,
+                loading: false,
+                message: action.payload.message
+            }
+
+        case REGISTER_FILES_RESET:
+
+            return {
+                // ...state,
+                loading: false,
+
+            }
+
+        case REGISTER_FILES_FAIL:
+
+            return {
+                // ...state,
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }
+}
+
+
+//GET FILESS
+
+// export const GetFormfileReducer = (state = {}, action) => {
+//     switch (action.type) {
+
+//         case GET_FILES_REQUEST:
+
+//             return {
+//                 // ...state,
+//                 loading: true
+//             }
+
+
+//         case GET_FILES_SUCCESS:
+
+//             return {
+//                 // ...state,
+//                 loading: false,
+//                 message: action.payload.message
+//             }
+
+//             case REGISTER_FILES_RESET:
+
+//             return {
+//                 // ...state,
+//                 loading: false,
+
+//             }
+
+//         case REGISTER_FILES_FAIL:
+
+//             return {
+//                 // ...state,
+//                 loading: false,
+//                 error: action.payload
+//             }
+
+//         case CLEAR_ERRORS:
+//             return {
+//                 ...state,
+//                 error: null
+//             }
+//         default:
+//             return state;
+//     }
+// }
 // education 
 
 export const applyFormEducationReducer = (state = {}, action) => {
     switch (action.type) {
-       
+
         case REGISTER_EDUCATION_REQUEST:
             return {
                 // ...state,
                 loading: true
             }
 
-        
+
         case REGISTER_EDUCATION_SUCCESS:
             return {
                 // ...state,
                 loading: false,
                 message: action.payload.message
             }
-            case REGISTER_EDUCATION_RESET:
-       
+        case REGISTER_EDUCATION_RESET:
+
             return {
                 // ...state,
                 loading: false,
-               
+
             }
         case REGISTER_EDUCATION_FAIL:
             return {
@@ -182,26 +283,26 @@ export const applyFormEducationReducer = (state = {}, action) => {
 
 export const applyAdmissionReducer = (state = {}, action) => {
     switch (action.type) {
-       
+
         case APPLY_ADMISSION_REQUEST:
             return {
                 // ...state,
                 loading: true
             }
 
-        
+
         case APPLY_ADMISSION_SUCCESS:
             return {
                 // ...state,
                 loading: false,
                 msg: action.payload.msg
             }
-            case APPLY_ADMISSION_RESET:
-       
+        case APPLY_ADMISSION_RESET:
+
             return {
                 // ...state,
                 loading: false,
-               
+
             }
         case APPLY_ADMISSION_FAIL:
             return {
@@ -222,17 +323,19 @@ export const applyAdmissionReducer = (state = {}, action) => {
 
 //get student personal details
 
-export const studentDetailsReducer = (state = { studentPersonalData: {}, studentAddress: {}, studentEducation: {} }, action) => {
+export const studentDetailsReducer = (state = { studentsFiles: {}, studentPersonalData: {}, studentAddress: {}, studentEducation: {} }, action) => {
     switch (action.type) {
         case GET_PERSONALDATA_REQUEST:
         case GET_ADDRESS_REQUEST:
         case GET_EDUCATION_REQUEST:
+        case GET_FILES_REQUEST:
             return {
                 ...state,
                 loading: true,
-                studentPersonalData:{},
-                studentAddress:{},
-                studentEducation:{}
+                studentPersonalData: {},
+                studentAddress: {},
+                studentEducation: {},
+                studentsFiles: {}
 
             }
 
@@ -254,6 +357,13 @@ export const studentDetailsReducer = (state = { studentPersonalData: {}, student
                 loading: false,
                 studentEducation: action.payload.studentEducation
             }
+        case GET_FILES_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                studentsFiles: action.payload.studentsFiles
+            }
+        case GET_FILES_FAIL:
         case GET_PERSONALDATA_FAIL:
         case GET_ADDRESS_FAIL:
         case GET_EDUCATION_FAIL:
@@ -275,23 +385,23 @@ export const studentDetailsReducer = (state = { studentPersonalData: {}, student
 
 //get  applications for user
 
-export const MyApplicationReducer = (state = {applications:[]}, action) => {
+export const MyApplicationReducer = (state = { applications: [] }, action) => {
     switch (action.type) {
-       
+
         case MY_APPLICATION_REQUEST:
             return {
                 // ...state,
-                loading: true       
+                loading: true
             }
 
-        
+
         case MY_APPLICATION_SUCCESS:
             return {
                 // ...state,
                 loading: false,
                 applications: action.payload.applications
             }
-           
+
         case MY_APPLICATION_FAIL:
             return {
                 // ...state,
@@ -312,26 +422,26 @@ export const MyApplicationReducer = (state = {applications:[]}, action) => {
 
 //GET COURSE APPLICATIONS
 
-export const CourseApplicationReducer = (state = {applications:[]}, action) => {
+export const CourseApplicationReducer = (state = { applications: [] }, action) => {
     switch (action.type) {
-       
+
         case COURSE_APPLICATION_REQUEST:
             return {
                 ...state,
-                loading: true       
+                loading: true
             }
 
-        
+
         case COURSE_APPLICATION_SUCCESS:
             return {
                 // ...state,
                 loading: false,
                 applications: action.payload.applications
             }
-           
+
         case COURSE_APPLICATION_FAIL:
             return {
-              
+
                 loading: false,
                 error: action.payload
             }
@@ -343,152 +453,156 @@ export const CourseApplicationReducer = (state = {applications:[]}, action) => {
             }
         default:
             return state;
-    }}
+    }
+}
 
-    //get application details
+//get application details
 
-    export const applicationDetailsReducer = (state = {application:{}}, action) => {
-        switch (action.type) {
-           
-            case GET_APPLICATION_REQUEST:
-                return {
-                    ...state,
-                    loading: true       
-                }
-    
-            
-            case GET_APPLICATION_SUCCESS:
-                return {
-                    // ...state,
-                    loading: false,
-                    application: action.payload.application
-                }
-               
-            case GET_APPLICATION_FAIL:
-                return {
-                  
-                    loading: false,
-                    error: action.payload
-                }
-    
-            case CLEAR_ERRORS:
-                return {
-                    ...state,
-                    error: null
-                }
-            default:
-                return state;
-        }}
-    
-    //update application status
+export const applicationDetailsReducer = (state = { application: {} }, action) => {
+    switch (action.type) {
 
-    export const ApplicationReducer = (state = {}, action) => {
-        switch (action.type) {
-           
-            case APPLICATION_UPDATE_REQUEST:
-                return {
-                    ...state,
-                    loading: true       
-                }
-    
-            
-            case APPLICATION_UPDATE_SUCCESS:
-                return {
-                    // ...state,
-                    loading: false,
-                    isUpdated: true,
-                    message:action.payload.message
-                }
-            case APPLICATION_UPDATE_RESET:
-                return {
-                    // ...state,
-                    loading: false,
-                    isUpdated: false
-                }
-               
-            case APPLICATION_UPDATE_FAIL:
-                return {
-                  
-                    loading: false,
-                    error: action.payload,
-                    isUpdated:false
-                }
-    
-            case CLEAR_ERRORS:
-                return {
-                    ...state,
-                    error: null
-                }
-            default:
-                return state;
-        }}
-        //get selected applications
+        case GET_APPLICATION_REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
 
-        export const SelectedApplicationReducer = (state = {SelectedApplication:[]}, action) => {
-            switch (action.type) {
-               
-                case SELECTED_APPLICATION_REQUEST:
-                    return {
-                        ...state,
-                        loading: true       
-                    }
-        
-                
-                case SELECTED_APPLICATION_SUCCESS:
-                    return {
-                        // ...state,
-                        loading: false,
-                        SelectedApplication: action.payload.SelectedApplication
-                    }
-                   
-                case SELECTED_APPLICATION_FAIL:
-                    return {
-                      
-                        loading: false,
-                        error: action.payload
-                    }
-        
-                case CLEAR_ERRORS:
-                    return {
-                        ...state,
-                        error: null
-                    }
-                default:
-                    return state;
-            }}
 
-             //get selected applications
+        case GET_APPLICATION_SUCCESS:
+            return {
+                // ...state,
+                loading: false,
+                application: action.payload.application
+            }
 
-        export const ConfirmStudentReducer = (state = {ConfirmStudent:[]}, action) => {
-            switch (action.type) {
-               
-                case CONFIRMED_APPLICATION_REQUEST:
-                    return {
-                        ...state,
-                        loading: true       
-                    }
-        
-                
-                case CONFIRMED_APPLICATION_SUCCESS:
-                    return {
-                        // ...state,
-                        loading: false,
-                        ConfirmStudent: action.payload.ConfirmStudent
-                    }
-                   
-                case CONFIRMED_APPLICATION_FAIL:
-                    return {
-                      
-                        loading: false,
-                        error: action.payload
-                    }
-        
-                case CLEAR_ERRORS:
-                    return {
-                        ...state,
-                        error: null
-                    }
-                default:
-                    return state;
-            }}
-        
+        case GET_APPLICATION_FAIL:
+            return {
+
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }
+}
+
+//update application status
+
+export const ApplicationReducer = (state = {}, action) => {
+    switch (action.type) {
+
+        case APPLICATION_UPDATE_REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
+
+
+        case APPLICATION_UPDATE_SUCCESS:
+            return {
+                // ...state,
+                loading: false,
+                isUpdated: true,
+                message: action.payload.message
+            }
+        case APPLICATION_UPDATE_RESET:
+            return {
+                // ...state,
+                loading: false,
+                isUpdated: false
+            }
+
+        case APPLICATION_UPDATE_FAIL:
+            return {
+
+                loading: false,
+                error: action.payload,
+                isUpdated: false
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }
+}
+//get selected applications
+
+export const SelectedApplicationReducer = (state = { SelectedApplication: [] }, action) => {
+    switch (action.type) {
+
+        case SELECTED_APPLICATION_REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
+
+
+        case SELECTED_APPLICATION_SUCCESS:
+            return {
+                // ...state,
+                loading: false,
+                SelectedApplication: action.payload.SelectedApplication
+            }
+
+        case SELECTED_APPLICATION_FAIL:
+            return {
+
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }
+}
+
+//get selected applications
+
+export const ConfirmStudentReducer = (state = { ConfirmStudent: [] }, action) => {
+    switch (action.type) {
+
+        case CONFIRMED_APPLICATION_REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
+
+
+        case CONFIRMED_APPLICATION_SUCCESS:
+            return {
+                // ...state,
+                loading: false,
+                ConfirmStudent: action.payload.ConfirmStudent
+            }
+
+        case CONFIRMED_APPLICATION_FAIL:
+            return {
+
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }
+}

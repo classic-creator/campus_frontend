@@ -1,12 +1,23 @@
 .form-div-container{
-    display:flex
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .form-input-container {
 
 }
 .form-input-container{
-    width: 50%;
+    width: 90%;
+    margin: 1px auto;
+  
 }
+.form-input-button {
+    width: 90%;
+    margin-top: 5px;
+}
+
+
 .form-input-container input{
    border: none !important;
 }

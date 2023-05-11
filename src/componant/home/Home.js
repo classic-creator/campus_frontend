@@ -2,7 +2,15 @@ import React, { Fragment, useEffect, useState } from 'react'
 import MetaData from '../layout/MetaData.js'
 
 import "./home.css"
-
+import SchemesCarusol from '../application/ApplicationFileUpload.js';
+import SchemesCarusolMemoized from '../application/ApplicationFileUpload.js';
+import './seaccarusol.css'
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -17,15 +25,15 @@ const Home = () => {
     setActiveIndex((activeIndex + 1) % images.length);
   };
   const images = [
-    'https://assets.sentinelassam.com/h-upload/2020/11/11/172257-assam-government.jpg',
-    'https://yt3.ggpht.com/a/AATXAJzoKjsscbsknY5-d43HqovorX2sC4VGxVfgew=s900-c-k-c0xffffffff-no-rj-mo',
-    'https://3.bp.blogspot.com/-cFllAAzc4Tk/XN6YxW3LyuI/AAAAAAAACFU/Kc-483lCEwkoK-TM6C4WyWxEDcFZdTLkwCLcBGAs/s1600/256a.png',
+    'https://s3.ap-south-1.amazonaws.com/assets.reflections.live/1596600285014-kdgubww5.jpeg',
+    "https://www.brainbuxa.com/uploads/blogs/Education%20System%20in%20India_%20Govt's%20role,%20advantages,%20disadvantages.jpeg?w=873&timestamp=20-14-36&fit=crop",
+    'https://assets.telegraphindia.com/telegraph/2022/Apr/1650477688_school.jpg',
 
     // Add more image URLs here as needed
   ];
   return (
     <Fragment>
-      <div className="container-fluid homediv">
+      <div id='home' className="container-fluid homediv">
         <div id="carouselExampleIndicators" className="carousel slide " data-bs-ride="carousel">
           <div className="carousel-indicators">
             {images.map((_, index) => (
@@ -91,42 +99,102 @@ const Home = () => {
           </div>
         </div>
         <div className="boxes">
-          <div className="box1   box ">
-            <h3>Registered College</h3>
-            <span>3000</span>
+          {/* <div className="box1   box "> */}
+          <div class="card  text-dark bg-primary mb-3" style={{ maxWidth: '18rem', }}>
+            <div class="card-header"><h2>Registered Colleges</h2> </div>
+            <div class="card-body">
+              <h2 class="card-title text-center">420</h2>
+             
+            </div>
           </div>
-          <div className="box2   box">
-            <h3>Application Count</h3>
-            <span>4000</span>
-          </div>
-          <div className="box3   box">
+          {/* </div> */}
+          {/* <div className="box2   box"> */}
+            <div class="card text-dark bg-warning mb-3" style={{ maxWidth: '18rem', }}>
+              <div class="card-header" style={{ minHeight: '6.2rem', }}><h2>Registered User</h2></div>
+              <div class="card-body">
+                <h2 class="card-title text-center">440</h2>
+               
+              </div>
+            </div>
+          {/* </div> */}
+          {/* <div className="box3   box">
             <h3>User Count</h3>
             <span>5000</span>
-          </div>
+          </div> */}
+          <div class="card text-dark bg-warning mb-3" style={{ maxWidth: '18rem', }}>
+              <div class="card-header"><h2>Applied Application</h2></div>
+              <div class="card-body">
+                <h2 class="card-title text-center">770</h2>
+               
+              </div>
+            </div>
         </div>
 
+        <div className='SchemeSlider mt-5'>
+          <h3 className='ms-3'> Scheme</h3>
+          <span className='ms-3'>Some educational scheme and scholarship provided by government </span>
+          <Swiper
+            slidesPerView={4}
+            // centeredSlides={true}
+            spaceBetween={30}
+            grabCursor={true}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            // hashNavigation={{
+            //     watchState: true,
+            //   }}
+            modules={[Pagination, Navigation, Autoplay]}
+            className="mySwiper mt-3"
+          >
 
-        <div className="schemes">
-            <h2>SCHEMES</h2>
-            <p>Some education related Schemes/Scholarship to making higher education more accessible</p>
-          <div className='schemes_body'>
-            <div className='schemesCard'>
-              <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="" />
-              <span>UGC Scholarships</span>
+            <SwiperSlide  style={{ width: "300px" }}>
+            <div>
+              <Link>
+                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
+              
+                <span>Anandaram baruah award</span>
+              </Link>
             </div>
-            <div className='schemesCard'>
-              <img src="https://i0.wp.com/www.dailylifeinformation.com/wp-content/uploads/2017/08/20200901_141044-e1598950100519.jpg?resize=527%2C296&ssl=1" alt="" />
-              <span>Anundoram Barooah Award</span>
-            </div>
-            <div className='schemesCard'>
-              <img src="https://i0.wp.com/www.dailylifeinformation.com/wp-content/uploads/2017/08/20200901_141044-e1598950100519.jpg?resize=527%2C296&ssl=1" alt="" />
-              <span>Anundoram Barooah Award</span>
-            </div>
-            <div className='schemesCard'>
-              <img src="https://i0.wp.com/www.dailylifeinformation.com/wp-content/uploads/2017/08/20200901_141044-e1598950100519.jpg?resize=527%2C296&ssl=1" alt="" />
-              <span>Anundoram Barooah Award</span>
-            </div>
-          </div>
+            </SwiperSlide>
+            <SwiperSlide  style={{ width: "300px" }}>
+              <Link>
+                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
+                <span>Anandaram baruah award</span>
+              </Link>
+            </SwiperSlide>
+            <SwiperSlide  style={{ width: "300px" }}>
+              <Link>
+                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
+                <span>Anandaram baruah award</span>
+              </Link>
+            </SwiperSlide>
+            <SwiperSlide  style={{ width: "300px" }}>
+              <Link>
+                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
+                <span>Anandaram baruah award</span>
+              </Link>
+            </SwiperSlide>
+            <SwiperSlide  style={{ width: "300px" }}>
+              <Link>
+                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
+                <span>Anandaram baruah award</span>
+              </Link>
+            </SwiperSlide>
+
+
+          </Swiper>
+
+        </div>
+        
+        <div className='govPartner'>
+
+
         </div>
       </div>
     </Fragment>

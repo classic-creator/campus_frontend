@@ -183,6 +183,7 @@ export const mycollegesReducer = (state = { myCollege: {}, myCourses: [] }, acti
                 loading: false,
                 myCollege: action.payload.myCollege,
                 myCourses: action.payload.myCourses,
+                clgConfirmApplication: action.payload.clgConfirmApplication,
 
 
             }

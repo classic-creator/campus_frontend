@@ -10,6 +10,7 @@ import CoverAndNav from './collegecardAndComponent/coverAndNav'
 import { DataGrid } from '@material-ui/data-grid'
 import ImportantLinkCard from './collegecardAndComponent/importantLinkCard'
 import Imgcarousel from './collegecardAndComponent/Imgcarousel'
+import TableComponent from '../layout/TableComponent'
 
 
 const CourseDetails = () => {
@@ -33,38 +34,39 @@ const CourseDetails = () => {
   //course list table
   const columns = [
     {
-      field: "Fees", headerName: "Header",
-      minWidth: 100,
+      dataIndex: "Fees",
+      headerName: "Header",
+      // minWidth: 100,
 
-      flex: 0.3
+      // flex: 0.3
     },
 
     {
-      field: "name",
+      dataIndex: "name",
       headerName: "1st Year",
-      minWidth: 100,
-      flex: 0.3,
+      // minWidth: 100,
+      // flex: 0.3,
     },
     {
-      field: "eligibility",
+      dataIndex: "eligibility",
       headerName: "2st Year",
 
-      minWidth: 100,
-      flex: 0.3,
+      // minWidth: 100,
+      // flex: 0.3,
 
     },
     {
-      field: "duration",
+      dataIndex: "duration",
       headerName: "3st Year",
 
-      minWidth: 100,
-      flex: 0.3,
+      // minWidth: 100,
+      // flex: 0.3,
     },
     {
-      field: "fees",
+      dataIndex: "fees",
       headerName: "4st Year",
-      minWidth: 100,
-      flex: 0.3,
+      // minWidth: 100,
+      // flex: 0.3,
     },
   ];
 
@@ -73,61 +75,67 @@ const CourseDetails = () => {
   const seatcolumns = [
 
     {
-      field: "Fees", headerName: "Total",
-      // minWidth:100,
-
-      flex: 0.3
+      dataIndex: "total_seat", title: "Total Seat",
+      
     },
-
+    
     {
-      field: "General",
-      headerName: "General",
-      // minWidth: 100,
-      flex: 0.3,
+      dataIndex: "EWS",
+      title: "EWS",
+      
     },
     {
-      field: "EWS",
-      headerName: "EWS",
-      // minWidth: 100,
-      flex: 0.3,
+      dataIndex: "EWS",
+      title: "EWS",
+      
+      
     },
     {
-      field: "St",
-      headerName: "St",
-
-      // minWidth: 100,
-      flex: 0.3,
-
+      dataIndex: "SC",
+      title: "SC",
+      
+      
     },
     {
-      field: "Sc",
-      headerName: "Sc",
-
-      // minWidth: 100,
-      flex: 0.3,
+      dataIndex: "OBC",
+      title: "OBC",
+      
     },
     {
-      field: "Obc",
-      headerName: "Obc",
-      // minWidth: 100,
-      flex: 0.2,
+      dataIndex: "other",
+      title: "Others",
+      
     },
     {
-      field: "Obc",
-      headerName: "Others",
-      // minWidth: 120,
-      flex: 0.3,
+      dataIndex: "open",
+      title: "Open",
+     
     },
   ]
-  const seatrows = [];
+  const seatrows = [{
+
+    total_seat:course.total_seat,
+    open:course.open,
+    other:course.other,
+    SC:course.SC,
+    ST:course.ST,
+    EWS:course.EWS,
+    OBC:course.OBC,
+    
+    
+  }
+  ];
   return (
 
 
 
     <Fragment>
       <CoverAndNav college={course} />
-      <h2 className='courseHeader'>{course.courseName}</h2>
+      <div className='courseHeader'>
 
+      <h2 className='courseHeaderh2'>{course.courseName}</h2>
+      <Link to={`/apply/${id}`} className="btn btn-primary item-center" >Apply</Link>
+      </div>
       <div className="detailContainer">
 
         <div className='detailsdiv-1 p-edit pl-3 flex-column' >
@@ -149,7 +157,7 @@ const CourseDetails = () => {
       </div>
 
 
-      <div className=" courseTable table container">
+      <div className=" courseTable table container" id='FeeStructure'>
         <h3>Fees Structure</h3>
         <DataGrid
           rows={rows}
@@ -163,22 +171,15 @@ const CourseDetails = () => {
 
         />
       </div>
-      <div className="courseTable table container">
+      <div className="container " id='seatStructure'>
         <h3>Seat Structure</h3>
-        <DataGrid
-          rows={seatrows}
-          columns={seatcolumns}
-          pageSize={2}
-          rowsPerPageOptions={[2]}
-          disableSelectionOnClick
+      
 
-          className='courseListTable'
-          autoHeight
-
-        />
+                    <TableComponent columns={seatcolumns}
+                        dataSource={seatrows} />
       </div>
 
-      <Link to={`/apply/${id}`} className="btn btn-primary item-center" >Apply</Link>
+      
 
     </Fragment>
 

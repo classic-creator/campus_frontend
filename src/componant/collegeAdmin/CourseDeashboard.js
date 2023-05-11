@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ConfirmStudentAction, GetCourseApplications, getSelectedApplication } from '../../action/applyAction';
 import CountUp from 'react-countup';
 import { getCourseDetails } from '../../action/courseAction';
-import { Button, Typography } from '@material-ui/core';
+import {  Typography } from '@material-ui/core';
+import { Button } from 'antd';
 import CourseDataChange from './CourseDataChange';
 
 const CourseDeashboard = () => {
@@ -17,7 +18,7 @@ const CourseDeashboard = () => {
     const dispatch = useDispatch()
     const { applications } = useSelector(state => state.courseApplyList)
     const { SelectedApplication } = useSelector(state => state.selectedApplication)
-    const {  course } = useSelector(state => state.courseDetails)
+    const {  course ,loading } = useSelector(state => state.courseDetails)
     const {ConfirmStudent} =useSelector(state=>state.confirmStudent)
 
     useEffect(() => {
@@ -49,13 +50,15 @@ const CourseDeashboard = () => {
             <div className='clgdashboard'>
                <div> <Sidebar /></div>
                 <div className="dashboardContainer">
-                    <CourseDataChange />
+                    {/* <CourseDataChange /> */}
                 <Typography component="h1">Course Dashboard</Typography>
                 <div className='dashboardSummery'>
                     <div>
                         <p className='dashboardSummeryP'>
 
-                            {course && course.courseName}
+                         {loading ? <Button loading={loading}></Button> :  course && course.courseName}
+
+                    <Link className='btn btn-secondary ms-3 setting-btn' to={`/course/update/${id}`}>Settings</Link>
                         </p>
 
                     </div>

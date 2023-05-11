@@ -1,11 +1,16 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import Search from '../../layout/Search/search'
 
 const SidebarOfcave = () => {
+
+
   return (
    <Fragment>
+
+
+
  <button class="btn btn-primary shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
    <FontAwesomeIcon icon={faBars}/>
  </button>
@@ -43,7 +48,10 @@ const SidebarOfcave = () => {
        </ul>
      </div>
    </div>
- </div></Fragment>    
+ </div> 
+
+
+ </Fragment>    
   )
 }
 

@@ -1,16 +1,17 @@
 import { Space, Table,Button } from 'antd'
 import React, { Fragment, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import Sidebar from './sidebar'
+import Sidebar from '../sidebar'
 
 import {useDispatch, useSelector} from 'react-redux'
-import { GetCourseApplications } from '../../action/applyAction'
+import { GetCourseApplications } from '../../../action/applyAction'
+import TableComponent from '../../layout/TableComponent'
 
 const CourseAdmissionList = () => {
  
     const {id}=useParams()
     const dispatch =useDispatch()
-    const {applications} =useSelector(state=>state.courseApplyList)
+    const {applications,loading} =useSelector(state=>state.courseApplyList)
 
     useEffect(() => {
       dispatch(GetCourseApplications(id))
@@ -66,13 +67,13 @@ const CourseAdmissionList = () => {
         },
         {
             title: 'Payment Status',
-            dataIndex: "payment_status",
+            dataIndex: "admission_payment_status",
             align: "center",
             editable: true,
             render(text, record) {
                 return {
                   props: {
-                    style: { color: record.payment_status==='paid'? "green" : "red" }
+                    style: { color: record.admission_payment_status==='paid'? "green" : "red" }
                   },
                   children: <div>{text}</div>
                 };
@@ -101,7 +102,7 @@ const CourseAdmissionList = () => {
             name: item.first_name + ' '+item.middle_name+' ' + item.last_name,
             mark_obtain_lastExam: item.mark_obtain_lastExam,
             admission_status: item.admission_status,
-            payment_status: item.payment_status,
+            admission_payment_status: item.admission_payment_status,
             circle_office:item.circle_office,
             dob:item.dob
 
@@ -112,23 +113,20 @@ const CourseAdmissionList = () => {
 
     return (
         <Fragment>
-            <div className='dashboard'>
-
-
-                <Sidebar />
-                <div className="container allCourseTable" style={{ maxWidth: '100%' }}>
-
-                    <Table
-                        columns={columns}
-                        dataSource={rows}
-                        bordered
-                        rowSelection={true}
-                    />
-
-                </div>
-          
-            </div>
-        </Fragment>
+    <div className="depertmentDeash">
+      <Sidebar />
+      <div className="dashboard">
+      <div className='headdept'>
+        
+          <h2>Application request</h2>
+          {applications && applications.length>0?  <span>{applications[0].courseName}</span>:null}
+      </div>
+        
+        <TableComponent columns={columns}
+            dataSource={rows} loading={loading} />
+      </div>
+    </div>
+    </Fragment>
     )
 }
 

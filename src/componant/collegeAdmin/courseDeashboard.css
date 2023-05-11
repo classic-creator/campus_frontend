@@ -3,3 +3,7 @@
     flex-direction: column;
     justify-content: center;
 };
+.dashboardContainer a{
+    position: absolute;
+    right: 0;
+}

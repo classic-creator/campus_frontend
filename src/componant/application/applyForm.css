@@ -27,8 +27,8 @@
 }
 
 .applyForm button{
-    width: 20vw;
-    height: 3vmax;
+    /* width: 20vw; */
+    /* height: 3vmax; */
     background-color: #4CAF50;
     /* transition: all 0.5s; */
 }
@@ -68,4 +68,16 @@
 .applyinput input:focus
 {
   border-color: rgb(71, 172, 255);
+}
+.formFileContainer div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    align-items: center;
+}
+.formFileContainer div img{
+    height: 80px;
+    width: 80px;
+    border-radius:10px ;
 }

@@ -7,9 +7,10 @@ import Sidebar from '../sidebar'
 import { Link } from 'react-router-dom'
 
 import { Button, Table, Space, Form, Input } from 'antd'
+import TableComponent from '../../layout/TableComponent'
 
 const SelectedApplicationList = () => {
-
+ 
   const { SelectedApplication, loading } = useSelector(state => state.selectedApplication)
   const { id } = useParams()
   const dispatch = useDispatch()
@@ -26,7 +27,7 @@ const SelectedApplicationList = () => {
     {
       title: 'Id',
       dataIndex: 'id',
-      width: 50,
+      // width: 50,
       fixed: 'left'
     },
     {
@@ -61,13 +62,13 @@ const SelectedApplicationList = () => {
   },
   {
       title: 'Payment Status',
-      dataIndex: "payment_status",
+      dataIndex: "admission_payment_status",
       align: "center",
       editable: true,
       render(text, record) {
           return {
             props: {
-              style: { color: record.payment_status==='Selected'? "green" : "red" }
+              style: { color: record.admission_payment_status==='Selected'? "green" : "red" }
             },
             children: <div>{text}</div>
           };
@@ -95,7 +96,7 @@ const SelectedApplicationList = () => {
       id: item.id,
       name: item.first_name + ' '+item.middle_name+' ' + item.last_name,
       admission_status: item.admission_status,
-      payment_status:item.payment_status,
+      admission_payment_status:item.admission_payment_status,
       district: item.district,
       mark_obtain_lastExam: item.mark_obtain_lastExam
 
@@ -105,31 +106,18 @@ const SelectedApplicationList = () => {
 
   return (
     <Fragment>
-      <div className='dashboard'>
-        <Sidebar />
-        {/* //courseTable */}
-        <div className="container">
-
-          <h2>Selected students</h2>
-          <div className=" allCourseTable" style={{ overflowX: 'auto' }}>
-
-            <Table
-              columns={columns}
-              dataSource={rows}
-              bordered
-              loading={loading}
-              scroll={{
-                x: 1000,
-                y: 400,
-              }}
-
-            />
-
-          </div>
-        </div>
-
+    <div className="depertmentDeash">
+      <Sidebar />
+      <div className="dashboard">
+      <div className='headdept'>
+        
+          <h2>Selected Students</h2>
       </div>
-
+        
+        <TableComponent  columns={columns}
+            dataSource={rows} loading={loading}/>
+      </div>
+    </div>
     </Fragment>
   )
 }

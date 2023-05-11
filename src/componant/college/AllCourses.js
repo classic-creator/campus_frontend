@@ -12,6 +12,8 @@ import PreferenceCourses from './PreferenceCourses';
 
 import { getPreferences } from '../../action/preferenceAction';
 import SidebarOfcave from './collegecardAndComponent/sidebarOfcave';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faMultiply } from '@fortawesome/free-solid-svg-icons';
 
 const AllCourses = () => {
 
@@ -31,12 +33,7 @@ const AllCourses = () => {
   const dispatch = useDispatch();
   const { keyword } = useParams()
 
-
-
   const { preferCourses } = useSelector(state => state.preferedCourse)
-
-
-
 
 
   useEffect(() => {
@@ -44,7 +41,7 @@ const AllCourses = () => {
     dispatch(getPreferences());
     dispatch(getAllCourses(keyword))
 
-  }, [dispatch])
+  }, [dispatch ,keyword])
 
 
   return (
@@ -63,7 +60,7 @@ const AllCourses = () => {
           {/* </div> */}
         </div>
         <div className='allcourse '>
-          <Link  onClick={courseToggle}>Show all courses</Link>
+          <Link  onClick={courseToggle}>Show all courses {showResults? <FontAwesomeIcon icon={faMultiply}/> :  <FontAwesomeIcon icon={faEye}/>} </Link>
           
             {showResults ? <All /> : null}
             
@@ -94,7 +91,7 @@ const All = () => {
     <Fragment>
       {loading ? <Loader /> : <Fragment>
 
-        <p id='allCourse'>All courses</p>
+        <p id='allCourse'>All courses </p>
         <div className="container ">
           {courses && courses.map(course => (<CourseCard course={course} />))}
         </div>

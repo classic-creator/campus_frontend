@@ -122,7 +122,7 @@ const AddPreference = () => {
 
 
                 <div className="container-fluide ">
-                  <div className="row form-div-container">
+                  <div className="row form-div-container ">
                     <div className=" input-box form-input-container">
                       <label className="form-label"></label>
                       <Autocomplete
@@ -139,38 +139,7 @@ const AddPreference = () => {
                           label="College Preference 1" />}
                       />
                     </div>
-                    <div className="input-box form-input-container">
-                      <label className="form-label"></label>
-                      <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        options={clgoption}
-                        sx={{ width: 300 }}
-                        onChange={(event, value) => {
-                          setPreferences({ ...preferences, college2: value })
-                        }}
-                        value={college2}
-                        renderInput={(params) => <TextField {...params} name="college2"
-
-                          label="College Preference 2" />}
-                      />
-                    </div>
-                    <div className=" input-box form-input-container">
-                      {/* <label className="form-label">College Preference 3</label> */}
-                      <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        options={clgoption}
-                        sx={{ width: 300 }}
-                        onChange={(event, value) => {
-                          setPreferences({ ...preferences, college3: value })
-                        }}
-                        value={college3}
-                        renderInput={(params) => <TextField {...params} name="college3"
-
-                          label="College Preference 3" />}
-                      />
-                    </div>
+                 
                     <div className=" input-box form-input-container">
                       {/* <label className="form-label">Course Preference 1</label> */}
                       <Autocomplete
@@ -188,39 +157,7 @@ const AddPreference = () => {
                       />
 
                     </div>
-                    <div className=" input-box form-input-container">
-                      {/* <label className="form-label">Course Preference 2</label> */}
-                      <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        options={courseoption}
-                        sx={{ width: 300 }}
-                        onChange={(event, value) => {
-                          setPreferences({ ...preferences, course2: value })
-                        }}
-                        value={course2}
-                        renderInput={(params) => <TextField {...params} name="course2"
-
-                          label="Course Preference 2" />}/>
-                      
-
-                    </div>
-                    <div className="input-box form-input-container">
-                      {/* <label className="form-label">Course Preference 3</label> */}
-                      <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        options={courseoption}
-                        sx={{ width: 300 }}
-                        onChange={(event, value) => {
-                          setPreferences({ ...preferences, course3: value })
-                        }}
-                        value={course3}
-                        renderInput={(params) => <TextField {...params} name="course3"
-
-                          label="Course Preference 3" />}
-                      />
-                    </div>
+                   
 
                     <div className="input-box form-input-container" >
                       {/* <label className="form-label">Depertment Preference 1</label> */}
@@ -238,44 +175,13 @@ const AddPreference = () => {
                           label="Depertment Preference 1" />}
                       />
                     </div>
-                    <div className="input-box form-input-container">
-                      {/* <label className="form-label">Depertment Preference 2</label> */}
-                      <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        sx={{ width: 300 }}
-                        options={deptoption}
-                        onChange={(event, value) => {
-                          setPreferences({ ...preferences, depertment2: value })
-                        }}
-                        value={depertment2}
-                        renderInput={(params) => <TextField {...params} name="depertment2"
-
-                          label="Depertment Preference 2" />}
-                      />
-                    </div>
-                    <div className="input-box form-input-container">
-                      {/* <label className="form-label">Depertment Preference 3</label> */}
-                      <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        sx={{ width: 300 }}
-                        options={deptoption}
-                        onChange={(event, value) => {
-                          setPreferences({ ...preferences, depertment3: value })
-                        }}
-                       
-                        value={depertment3}
-                        renderInput={(params) => <TextField {...params} name="depertment3"
-
-                          label="Depertment Preference 3" />}
-                      /></div>
+                  
                      
                     </div>
-                  </div>
                   <div className="alighn-center my-1">
                     <Button type="primary" loading={loading} onClick={PreferenceFunction} >Submit</Button>
                    
+                  </div>
                   </div>
 
 

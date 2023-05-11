@@ -6,6 +6,7 @@ import Sidebar from './sidebar'
 import { Link } from 'react-router-dom'
 import './depertment.css'
 import { Button, Table, Space, Form, Input } from 'antd'
+import TableComponent from '../layout/TableComponent'
 
 const AllDepertments = () => {
 
@@ -23,7 +24,7 @@ const AllDepertments = () => {
     {
       title: 'Id',
       dataIndex: 'id',
-      width: 50,
+      // width: 50,
       fixed: 'left'
     },
     {
@@ -79,54 +80,19 @@ const AllDepertments = () => {
 
 
   return (
-    // <Fragment>
-    //     <Sidebar />
-    //   <div className='dashboard '>
-    //     {/* //courseTable */}
-    //     <div className="container-fluid">
-
-    //       <h2>Depertment</h2>
-    //       <div className=" allCourseTable" style={{ overflowX: 'auto' }}>
-
-    //         <Table
-    //           columns={columns}
-    //           dataSource={rows}
-    //           bordered
-    //           loading={loading}
-    //           scroll={{
-    //             x: 1000,
-    //             y: 400,
-    //           }}
-
-    //         />
-
-    //       </div>
-    //     </div>
-
-    //   </div>
-
-    // </Fragment>
+    
     <Fragment>
     <div className="depertmentDeash">
       <Sidebar />
       <div className="dashboard">
       <div className='headdept'>
         
-          <h2>Depertment</h2>
+          <h2>Depertments</h2>
       </div>
-        
-        <div className="allCourseTable" style={{ overflowX: 'auto' }}>
-          <Table
-            columns={columns}
+       
+        <TableComponent  columns={columns}
             dataSource={rows}
-            bordered
-            loading={loading}
-          // scroll={{
-          //   x: 1000,
-          //   y: 400,
-          // }}
-          />
-        </div>
+            loading={loading}/>
       </div>
     </div>
     </Fragment>)
