@@ -55,10 +55,12 @@
   background:  #0275d8 ;
   min-height: 4vmax;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   color: white;
   border: none;
+  width: 100vw;
+  max-width: 100%;
 }
 .bar div{
   border: none;
@@ -70,15 +72,17 @@
   padding-left: 10px;
 }
 .bar img{
-  height: 7rem;
-  width: 7rem;
+  height: 6rem;
+  width: 6rem;
   border-radius: 100%;
 }
 .minister{
   background:rgba(231, 84, 26, 0.925) ;
+  
 }
 .bar h3,.bar span{
   padding-left: 5px;
+  font-size: 17px;
 }
 .card_body {
     display: flex;
@@ -172,6 +176,14 @@
   margin-top: 4vmax;
   display: flex;
   justify-content: space-evenly;
+  width: 100vw;
+}
+.boxes div:first-child{
+  background: linear-gradient(110deg, #80b193 60%, #45cf7f 60%);
+}
+.boxes div:last-child{
+
+  background: linear-gradient(110deg, #697197 60%, #4571ac 60%);
 }
 .box{
   
@@ -287,5 +299,16 @@ font-size: 2vmax;
     font-size: 1.5vmax;
     margin-left: 0;
     margin-top: 1vmax;
+  }
+  .bar{
+    flex-direction: column;
+  }
+  .boxes{
+    flex-direction: column;
+    margin: 1px auto;
+  }
+  .boxes .card{
+    
+    margin: 10px auto;
   }
 }

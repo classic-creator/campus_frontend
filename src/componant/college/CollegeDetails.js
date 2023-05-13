@@ -5,16 +5,14 @@ import { Link, useParams } from 'react-router-dom';
 import { clearErrors, getCollegesDetails } from '../../action/collegeAction';
 import Loader from '../layout/loader/loader';
 import "./collegeDetails.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 
 
-import { DataGrid } from "@material-ui/data-grid"
+
 
 import CoverAndNav from './collegecardAndComponent/coverAndNav';
 import ImportantLinkCard from './collegecardAndComponent/importantLinkCard';
 import Imgcarousel from './collegecardAndComponent/Imgcarousel';
-import { Button, Popconfirm, Table, Space, Form, Input } from 'antd'
+import { Button, Space, } from 'antd'
 import TableComponent from '../layout/TableComponent';
 
 const CollegeDetails = () => {
@@ -147,9 +145,7 @@ const CollegeDetails = () => {
 
   const seatrows = []
 
-
-  {
-    courses && courses.forEach(course => {
+ courses && courses.forEach(course => {
 
       seatrows.push({
         courseName: course.courseName,
@@ -163,7 +159,7 @@ const CollegeDetails = () => {
       })
 
     })
-  }
+  
 
 
 

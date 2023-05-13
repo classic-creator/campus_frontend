@@ -10,7 +10,9 @@ const CollegeCard = ({ college }) => {
 
 <div className="container">
 
-        <Link className='card_body' to={`/college/${college.id}`}>
+        <div className='card_body' > 
+        
+            {/* to={`/college/${college.id}` */}
                  
                    
                 
@@ -34,7 +36,7 @@ const CollegeCard = ({ college }) => {
                     </div>
              
             
-        </Link>
+        </div>
 </div>
     )
 }

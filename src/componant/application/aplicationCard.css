@@ -103,4 +103,9 @@
     margin-top: 10px;
     color: tomato;
   }
-  
+  @media (max-width: 640px) {
+    .MyApplication
+    {
+      flex-direction: column;
+    }
+  }

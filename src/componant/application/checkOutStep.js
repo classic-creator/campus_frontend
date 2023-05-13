@@ -26,6 +26,12 @@ const CheckoutSteps = ({ activeStep }) => {
 
         },
         {
+            label: <Typography>Upload Files</Typography>,
+            // icon: <MdAccountBalance />
+            icon:  <FontAwesomeIcon icon={faAddressBook} />
+
+        },
+        {
             label: <Typography>Confirm Application</Typography>,
             // icon: <MdAccountBalance />
             icon:  <FontAwesomeIcon icon={faCheckCircle} />
@@ -34,7 +40,8 @@ const CheckoutSteps = ({ activeStep }) => {
     ]
 
     const stepStyles = {
-        boxSizing: "border-box"
+        boxSizing: "border-box",
+        backgroundColor:'#cce5ff'
     };
 
     return (

@@ -390,7 +390,7 @@ export const MyApplicationReducer = (state = { applications: [] }, action) => {
 
         case MY_APPLICATION_REQUEST:
             return {
-                // ...state,
+                ...state,
                 loading: true
             }
 

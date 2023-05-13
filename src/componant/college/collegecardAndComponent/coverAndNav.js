@@ -4,7 +4,7 @@ import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
 
-const CoverAndNav = ({ college }) => {
+const CoverAndNav = ( {college} ) => {
 
     
 
@@ -12,7 +12,7 @@ const CoverAndNav = ({ college }) => {
         <Fragment>
             <Link to={`/college/${college.college_id}`}>
             <div className="containers">
-                <img className='clgCoverimg' src={college.cover_image_url} alt="Cinque Terre" />
+                <img className='clgCoverimg' src={college.cover_image_url} alt="College Cover" />
                 <div className="bottomleft">
                     <h2>{college.collegeName}</h2>
                     {/* <h1>{college.college_id}</h1> */}

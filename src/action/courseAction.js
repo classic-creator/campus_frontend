@@ -15,12 +15,21 @@ import {
 
 
 export const getAllCourses=(keyword="",cl="",co="",ad="",fe="")=>async(dispatch)=>{
+    const token=localStorage.getItem('token')
 try {
 
-  
+    const config = {
+       
+        baseURL: process.env.REACT_APP_API_BASE_URL,
+        headers: {
+            // 'Accept' : 'application/json',
+            'Content-Type' : 'multipart/form-data',
+            Authorization: `Bearer ${token}`
+        }
+    };
     dispatch({type:ALL_COURSES_REQUEST })
 
-    const {data}=await axios.get(`/api/courses?keyword=${keyword}&cl=${cl}&co=${co}&ad=${ad}&fe=${fe}`)
+    const {data}=await axios.get(`/api/courses?keyword=${keyword}&cl=${cl}&co=${co}&ad=${ad}&fe=${fe}`,config)
 
     dispatch({
         type:ALL_COURSES_SUCCESS,
@@ -38,13 +47,13 @@ try {
 
 export const GetPreferedCourses=()=>async(dispatch)=>{
     try {
-    
         const token=localStorage.getItem('token')
+    
     
         const config = {
             baseURL: process.env.REACT_APP_API_BASE_URL,
             headers: {
-                
+                'Content-Type' : 'multipart/form-data',
                 Authorization: `Bearer ${token}`
             }
         };

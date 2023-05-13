@@ -79,13 +79,16 @@ const Home = () => {
           </button>
         </div>
         <div className="bar">
-          <div className="bar1">
-            <img src="https://assets.sentinelassam.com/h-upload/2020/11/11/172257-assam-government.jpg" alt="img" />
-            <h3>Goverment Of Assam</h3>
-          </div>
-          <div className="bar1">
-            <img src="https://cache.careers360.mobi/media/article_images/2022/7/29/school-students.jpg" alt="img" />
-            <h3>Education Depertment Of Assam</h3>
+          <div className='edu'>
+
+            <div className="bar1">
+              <img src="https://assets.sentinelassam.com/h-upload/2020/11/11/172257-assam-government.jpg" alt="img" />
+              <h3>Goverment Of Assam</h3>
+            </div>
+            <div className="bar1">
+              <img src="https://cache.careers360.mobi/media/article_images/2022/7/29/school-students.jpg" alt="img" />
+              <h3>Education Depertment Of Assam</h3>
+            </div>
           </div>
           <div className="minister">
             <div className="minister1">
@@ -101,33 +104,33 @@ const Home = () => {
         <div className="boxes">
           {/* <div className="box1   box "> */}
           <div class="card  text-dark bg-primary mb-3" style={{ maxWidth: '18rem', }}>
-            <div class="card-header"><h2>Registered Colleges</h2> </div>
+            <div class="card-header"><h2>Institute</h2> </div>
             <div class="card-body">
-              <h2 class="card-title text-center">420</h2>
-             
+              <h2 class="card-title text-center">420+</h2>
+
             </div>
           </div>
           {/* </div> */}
           {/* <div className="box2   box"> */}
-            <div class="card text-dark bg-warning mb-3" style={{ maxWidth: '18rem', }}>
-              <div class="card-header" style={{ minHeight: '6.2rem', }}><h2>Registered User</h2></div>
-              <div class="card-body">
-                <h2 class="card-title text-center">440</h2>
-               
-              </div>
+          <div class="card text-dark bg-warning mb-3" style={{ maxWidth: '18rem', }}>
+            <div class="card-header"><h2>Applicant</h2></div>
+            <div class="card-body">
+              <h2 class="card-title text-center">440+</h2>
+
             </div>
+          </div>
           {/* </div> */}
           {/* <div className="box3   box">
             <h3>User Count</h3>
             <span>5000</span>
           </div> */}
           <div class="card text-dark bg-warning mb-3" style={{ maxWidth: '18rem', }}>
-              <div class="card-header"><h2>Applied Application</h2></div>
-              <div class="card-body">
-                <h2 class="card-title text-center">770</h2>
-               
-              </div>
+            <div class="card-header"><h2>Applications</h2></div>
+            <div class="card-body">
+              <h2 class="card-title text-center">770+</h2>
+
             </div>
+          </div>
         </div>
 
         <div className='SchemeSlider mt-5'>
@@ -153,34 +156,34 @@ const Home = () => {
             className="mySwiper mt-3"
           >
 
-            <SwiperSlide  style={{ width: "300px" }}>
-            <div>
-              <Link>
-                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
-              
-                <span>Anandaram baruah award</span>
-              </Link>
-            </div>
+            <SwiperSlide style={{ width: "300px" }}>
+              <div>
+                <Link>
+                  <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
+
+                  <span>Anandaram baruah award</span>
+                </Link>
+              </div>
             </SwiperSlide>
-            <SwiperSlide  style={{ width: "300px" }}>
-              <Link>
-                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
-                <span>Anandaram baruah award</span>
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide  style={{ width: "300px" }}>
+            <SwiperSlide style={{ width: "300px" }}>
               <Link>
                 <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
                 <span>Anandaram baruah award</span>
               </Link>
             </SwiperSlide>
-            <SwiperSlide  style={{ width: "300px" }}>
+            <SwiperSlide style={{ width: "300px" }}>
               <Link>
                 <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
                 <span>Anandaram baruah award</span>
               </Link>
             </SwiperSlide>
-            <SwiperSlide  style={{ width: "300px" }}>
+            <SwiperSlide style={{ width: "300px" }}>
+              <Link>
+                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
+                <span>Anandaram baruah award</span>
+              </Link>
+            </SwiperSlide>
+            <SwiperSlide style={{ width: "300px" }}>
               <Link>
                 <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
                 <span>Anandaram baruah award</span>
@@ -191,7 +194,7 @@ const Home = () => {
           </Swiper>
 
         </div>
-        
+
         <div className='govPartner'>
 
 

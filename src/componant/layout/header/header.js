@@ -13,17 +13,17 @@ const header = () => {
                 <div className="left1">
                     <a href="">
                         <span>GOVERNMENT OF INDIA </span>
-                        <span>भारत सरकार</span>
+                        <span className='spanhindi'>भारत सरकार</span>
                     </a>
                     <a href="">
                         <span>Ministry of Electronics and Information Technology </span>
-                        <span>इलेक्ट्रॉनिकी और सूचना प्रौद्योगिकी मंत्रालय</span>
+                        <span className='spanhindi' >इलेक्ट्रॉनिकी और सूचना प्रौद्योगिकी मंत्रालय</span>
                     </a>
                 </div>
-                <div className="middle1">
+                {/* <div className="middle1">
                     <a href='#home'>Skip to Main Contatent</a>
 
-                </div>
+                </div> */}
                 <div className="right1 ">
                 
                         <Link to={'/college/register'} >College Exicutive</Link>
@@ -36,10 +36,10 @@ const header = () => {
             <header className='upperHeader'>
 
                 <div className='rigt'>
-                    <div>
+                  
                         <img className='rigtfirst' src='https://indtoday.com/wp-content/uploads/2019/10/india-govt.jpg' alt='aslkfjd' />
                         <img className='rigtsecond' src="https://static.javatpoint.com/fullformpages/images/nic.png" alt="img" />
-                    </div>
+                   
                 </div>
 
                 <div className="middle">

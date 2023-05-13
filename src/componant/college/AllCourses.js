@@ -93,7 +93,7 @@ const All = () => {
 
         <p id='allCourse'>All courses </p>
         <div className="container ">
-          {courses && courses.map(course => (<CourseCard course={course} />))}
+          {courses && courses.map(course => (<CourseCard key={course.id} course={course} />))}
         </div>
       </Fragment>}
     </Fragment>

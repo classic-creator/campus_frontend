@@ -26,7 +26,7 @@ const ConfirmStudentsList = () => {
       {
         title: 'Id',
         dataIndex: 'id',
-        width: 50,
+        // width: 50,
         fixed: 'left'
       },
       {

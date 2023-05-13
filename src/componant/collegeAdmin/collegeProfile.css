@@ -89,6 +89,27 @@
 .Settingbtn{
     position: absolute;
     left: 90%;
+    /* background: gray;
+    color: black;
+    border: none;
+    border-radius: 10px; */
+}
+.tableHeader-with-button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.tableHeader-with-button a,.setting-btn{
+   margin-left: 2vmax;
+   background: gray;
+   color: black;
+   /* border: none; */
+   border-radius: 10px;
+}
+.tableHeader-with-button a:hover,.setting-btn:hover{
+    background-color: white;
+    border: 0.5px solid black;
+    color: black;
 }
 @media screen and (max-width:600px) {
     .dashboard{

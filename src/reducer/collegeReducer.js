@@ -53,9 +53,9 @@ export const collegeDetailsReducer= ((state={college:{},courses:[],photos:[]},ac
         case COLLEGE_DETAILS_REQUEST:
             
           return{
+            ...state,
             loading:true,
-           ...state,
-           college:{}
+            college:{}
           
           };
         case COLLEGE_DETAILS_SUCCESS:

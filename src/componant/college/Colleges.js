@@ -30,7 +30,7 @@ const Colleges = () => {
         <MetaData title="CAMPUS-Home" />
         <div className='container'>
           {colleges && colleges.map(college => (
-            <CollegeCard college={college} />
+            <CollegeCard  key={college.id} college={college} />
           ))}
         </div>
       </Fragment>}

@@ -22,7 +22,7 @@
     font: "Roboto";
     outline: none;
     border: none;
-    z-index: 99999;
+    z-index: 1;
    background: none;
     position: absolute;
     float: right;
@@ -39,7 +39,7 @@
     /* max-width: 100%; */
     display: flex;
     /* border: 1px solid black; */
-    width: 19rem;
+    /* width: 19rem; */
     /* border-radius: 4px; */
     margin-top: 5px;
 }

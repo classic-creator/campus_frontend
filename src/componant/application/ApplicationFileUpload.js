@@ -1,22 +1,22 @@
-import { Field, Form, Formik } from 'formik'
+import {  Form, Formik } from 'formik'
 import React, { Fragment, useEffect, useState } from 'react'
-import TextField from './textField'
+
 import Modal from 'react-modal'
 import './fileform.css'
 import { Button } from 'antd'
-import { ApplicationFileUploadAction, GetStudentsFileAction } from '../../action/applyAction'
+import { ApplicationFileUploadAction, GetStudentsFileAction, clearErrors } from '../../action/applyAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert'
 import { REGISTER_FILES_RESET } from '../../constants/applyConstants'
 import { useNavigate, useParams } from 'react-router-dom'
-
+import CheckoutSteps from './checkOutStep'
 const FileUpload = () => {
   const dispatch = useDispatch()
   const navigate=useNavigate()
   const alert =useAlert()
   const {id}=useParams()
-   const {message,error}= useSelector(state=>state.applyfiles)
-   const {studentsFiles}=useSelector(state=>state.studentDetails)
+   const {loading,message,error}= useSelector(state=>state.applyfiles)
+  //  const {studentsFiles}=useSelector(state=>state.studentDetails)
 
   const [selectedFiles, setSelectedFiles] = useState({})
   const [previewModalIsOpen, setPreviewModalIsOpen] = useState(false)
@@ -89,35 +89,40 @@ const FileUpload = () => {
   }
  useEffect(() => {
 
+  if(error){
+    alert.error(error);
+    dispatch(clearErrors())
+  }
 if(message){
      alert.success(message)
     navigate(`/review/application/${id}`)
     dispatch({type:REGISTER_FILES_RESET})
 }
    dispatch(GetStudentsFileAction())
- }, [message,alert,dispatch,id,navigate])
+ }, [message,alert,dispatch,id,navigate,error])
  
-//  const initialvalue={
-//   profile_photo: studentsFiles.passport_image_url ? studentsFiles.passport_image_url : '',
-//   signature: studentsFiles.signature ? studentsFiles.signature : '',
-//   prc: studentsFiles.prc ? studentsFiles.prc : '',
-//   aadhar: studentsFiles.aadhar_image_url ? studentsFiles.aadhar_image_url : '',
-//   hslc_admit: studentsFiles.signature_image_url ? studentsFiles.signature_image_url : '',
-//   hslc_registation: studentsFiles.hslc_registation_image_url ? studentsFiles.hslc_registation_image_url : '',
-//   hslc_marksheet: studentsFiles.hslc_marksheet_image_url ? studentsFiles.hslc_marksheet_image_url : '',
-//   hslc_certificate: studentsFiles.hslc_certificate_image_url ? studentsFiles.hslc_certificate_image_url : '',
-//   hsslc_admit: studentsFiles.hsslc_admit_image_url ? studentsFiles.hsslc_admit_image_url : '',
-//   hsslc_registation: studentsFiles.hsslc_registation_image_url ? studentsFiles.hsslc_registation_image_url : '',
-//   hsslc_marksheet: studentsFiles.hsslc_marksheet_image_url ? studentsFiles.hsslc_marksheet_image_url : '',
-//   hsslc_certificate: studentsFiles.hsslc_certificate_image_url ? studentsFiles.hsslc_certificate_image_url : '',
+ const initialvalue={
+  profile_photo:'',
+  signature: '',
+  prc: '',
+  aadhar:  '',
+  hslc_admit: '',
+  hslc_registation:'',
+  hslc_marksheet:  '',
+  hslc_certificate:  '',
+  hsslc_admit:  '',
+  hsslc_registation: '',
+  hsslc_marksheet:  '',
+  hsslc_certificate:  '',
  
-// }
+}
 
   return (
     <Fragment>
+       <CheckoutSteps activeStep={3}/>
       <Formik
         // enableReinitialize={true}
-        // initialValues={initialvalue}
+        initialValues={initialvalue}
       
         // validationSchema={validate}
         onSubmit={values => { dispatch(ApplicationFileUploadAction(values)) }}
@@ -316,7 +321,7 @@ if(message){
 
 
             <div className='but'>
-              <button type='submit' className='btn '>Submit</button>
+             {loading ? <Button loading={loading}></Button> :<button type='submit' className='btn '>Submit</button>}
             </div>
 
 

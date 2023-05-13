@@ -99,7 +99,7 @@ const AddPreference = () => {
 
     <Fragment>
 
-      <Button  type="primary" loading={loading} data-bs-toggle="modal" data-bs-target="#preferenceModal">
+      <Button  type="primary"  data-bs-toggle="modal" data-bs-target="#preferenceModal">
         Add Preference
       </Button>
 

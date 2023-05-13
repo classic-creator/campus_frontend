@@ -9,6 +9,7 @@ import Loader from '../layout/loader/loader'
 import { useNavigate, useParams } from 'react-router-dom'
 import { REGISTER_PERSONALDATA_RESET } from '../../constants/applyConstants'
 import CheckoutSteps from './checkOutStep'
+import { Button } from 'antd'
 
 
 const StudentDetailsApply = () => {
@@ -20,7 +21,7 @@ const StudentDetailsApply = () => {
   const { id } = useParams()
 
   const { error, message, loading } = useSelector(state => state.applyForm)
-  const { studentPersonalData } = useSelector(state => state.studentDetails)
+  const { studentPersonalData ,loading:detailsloading} = useSelector(state => state.studentDetails)
 
   const initialvalue = {
     first_name: studentPersonalData.first_name ? studentPersonalData.first_name : '',
@@ -101,7 +102,7 @@ const StudentDetailsApply = () => {
           >
             {Formik => (
               <div>
-              
+               {detailsloading? <Button loading={detailsloading}></Button>:null}
 
                 <div className='applyFor  '>
                   <Form className='applyForm applyform '>
@@ -119,7 +120,7 @@ const StudentDetailsApply = () => {
                     <TextField label='Qualification' name='qualification' type='text' />
                     <TextField label='Mark Obtain LastExam' name='mark_obtain_lastExam' type='number' />
                     <div className='but'>
-                      <button type='submit' className='btn '>Submit</button>
+                  {loading ?<Button loading={loading}></Button>:    <button type='submit' className='btn '>Submit</button>}
                     </div>
                   </Form>
                 </div>

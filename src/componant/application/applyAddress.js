@@ -6,7 +6,8 @@ import { useAlert } from 'react-alert'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AddStudentAddress, GetStudentAddress, clearErrors } from '../../action/applyAction'
 import * as Yup from 'yup'
-import Loader from '../layout/loader/loader'
+import { Button } from 'antd'
+// import Loader from '../layout/loader/loader'
 import { REGISTER_ADDRESS_RESET } from '../../constants/applyConstants'
 import CheckoutSteps from './checkOutStep'
 
@@ -20,7 +21,7 @@ const ApplyAddress = () => {
     const {id} = useParams()
   
     const { error, message, loading } = useSelector(state => state.applystudentAddress)
-    const {studentAddress}=useSelector(state=>state.studentDetails)
+    const {studentAddress ,loading:detailsloading}=useSelector(state=>state.studentDetails)
 
     const initialvalue={
         state: studentAddress.state ? studentAddress.state : '',
@@ -77,8 +78,8 @@ const ApplyAddress = () => {
     
     
       return (
-       <Fragment>
-        {loading ? <Loader/> :  
+      //  <Fragment>
+      //   {loading ? <Loader/> :  
         <Fragment>
           <CheckoutSteps activeStep={1}/>
           <Formik
@@ -94,7 +95,7 @@ const ApplyAddress = () => {
     
                 <div className='applyFor '>
                   <Form className='applyForm applyform'>
-                   
+                   {detailsloading? <Button loading={detailsloading}></Button>:null}
 
                     <TextField label='State' name='state' type='text' />
                     <TextField label='District' name='district' type='text' />
@@ -106,7 +107,7 @@ const ApplyAddress = () => {
                   
                     
                    <div className='but'>
-                    <button type='submit' className='btn '>Submit</button>
+                   {loading ? <Button loading={loading}></Button> :<button type='submit' className='btn '>Submit</button>}
                    </div>
                   
                     
@@ -117,8 +118,8 @@ const ApplyAddress = () => {
     
           </Formik>
     
-        </Fragment>}
        </Fragment>)
+        // </Fragment>}
 }
 
 export default ApplyAddress

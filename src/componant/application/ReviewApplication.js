@@ -7,7 +7,7 @@ import { GetStudentAddress, GetStudentEducation, GetStudentPersonalData, GetStud
 import CheckoutSteps from './checkOutStep'
 import { APPLY_ADMISSION_RESET } from '../../constants/applyConstants'
 import { useAlert } from 'react-alert'
-import Loader from '../layout/loader/loader'
+// import Loader from '../layout/loader/loader'
 import { Button } from 'antd'
 import Modal from 'react-modal'
 
@@ -143,7 +143,7 @@ const ReviewApplication = () => {
 
   return (
     <Fragment>
-      <CheckoutSteps activeStep={3} />
+      <CheckoutSteps activeStep={4} />
       <Formik
         enableReinitialize={true}
         initialValues={initialvalue}
@@ -282,7 +282,7 @@ const ReviewApplication = () => {
                 </Modal>
 
                 <div className='but'>
-                  <button type='submit' className='btn '>Submit</button>
+                {loading ? <Button loading={loading}></Button> :<button type='submit' className='btn '>Submit</button>}
                 </div>
               </Form>
             </div>

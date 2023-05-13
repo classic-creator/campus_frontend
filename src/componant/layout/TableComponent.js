@@ -8,7 +8,8 @@ const TableComponent = ({columns,dataSource,loading}) => {
     width: '100%',
     // maxHeight: '400px',
     overflow: 'auto',
-    backgroundColor: '#f2f2f2',
+    // backgroundColor: '#f2f2f2',
+    backgroundColor: 'white',
   };
   const pagination = {
     pageSize: 5, // number of items per page

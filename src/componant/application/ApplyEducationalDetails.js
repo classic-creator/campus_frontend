@@ -9,6 +9,7 @@ import * as Yup from 'yup'
 import Loader from '../layout/loader/loader'
 import { REGISTER_EDUCATION_RESET } from '../../constants/applyConstants'
 import CheckoutSteps from './checkOutStep'
+import { Button } from 'antd'
 
 const ApplyEducationalDetails = () => {
 
@@ -20,7 +21,7 @@ const ApplyEducationalDetails = () => {
     const {id} = useParams()
   
     const { error, message, loading } = useSelector(state => state.applyEducation)
-    const {studentEducation}=useSelector(state=>state.studentDetails)
+    const {studentEducation,loading:detailsloading}=useSelector(state=>state.studentDetails)
     
 
     const initialvalue={
@@ -96,8 +97,8 @@ const ApplyEducationalDetails = () => {
     
     
       return (
-       <Fragment>
-        {loading ? <Loader/> :  
+      //  <Fragment>
+      //   {loading ? <Loader/> :  
         <Fragment>
             <CheckoutSteps activeStep={2}/>
           <Formik
@@ -110,7 +111,7 @@ const ApplyEducationalDetails = () => {
             {Formik => (
               <div> 
                   <Form className='applyForm  applyform'>
-                   
+                  {detailsloading? <Button loading={detailsloading}></Button>:null}
                     <div className='but'> 
                          <h3>Class 10 exam details</h3>
                      </div>  
@@ -135,7 +136,7 @@ const ApplyEducationalDetails = () => {
                     <TextField label='Mark Obtain' name='class12_markObtain' type='number' />
                     
                    <div className='but'>
-                    <button type='submit' className='btn '>Submit</button>
+                   {loading ? <Button loading={loading}></Button> :<button type='submit' className='btn '>Submit</button>}
                    </div>
                   
                     
@@ -146,7 +147,7 @@ const ApplyEducationalDetails = () => {
     
           </Formik>
     
-        </Fragment>}
+        {/* </Fragment>} */}
        </Fragment>)
 }
 

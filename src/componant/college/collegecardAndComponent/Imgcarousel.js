@@ -10,9 +10,9 @@ const Imgcarousel = () => {
       <Carousel className='carouselImg me-3' autoPlay infiniteLoop >
         {/*  */}
         {photos && photos.map(photo => (
-          <div className='image'>
+          <div key={photo.image_url} className='image'>
 
-            <img src={photo.image_url} alt='img' />
+            <img src={photo.image_url}  alt='img' />
 
           </div>))}
 

@@ -8,8 +8,10 @@ import { ConfirmStudentAction, GetCourseApplications, getSelectedApplication } f
 import CountUp from 'react-countup';
 import { getCourseDetails } from '../../action/courseAction';
 import {  Typography } from '@material-ui/core';
-import { Button } from 'antd';
+import { Button, Space } from 'antd';
 import CourseDataChange from './CourseDataChange';
+import TableComponent from '../layout/TableComponent';
+import { getCoursePaymenthistoryAction } from '../../action/paymentAction';
 
 const CourseDeashboard = () => {
 
@@ -20,14 +22,9 @@ const CourseDeashboard = () => {
     const { SelectedApplication } = useSelector(state => state.selectedApplication)
     const {  course ,loading } = useSelector(state => state.courseDetails)
     const {ConfirmStudent} =useSelector(state=>state.confirmStudent)
-
-    useEffect(() => {
-        dispatch(GetCourseApplications(id))
-        dispatch(getSelectedApplication(id))
-        dispatch(getCourseDetails(id))
-        dispatch(ConfirmStudentAction(id))
-    }, [dispatch, id])
-
+    const {payments,loading:feesLoading} =useSelector(state=>state.payments)
+   
+  
     ChartJS.register(...registerables);
 
     // const admission = 4;
@@ -44,6 +41,86 @@ const CourseDeashboard = () => {
             }
         ]
     }
+
+    const columns = [
+        {
+          title: 'Id',
+          dataIndex: 'id',
+          editable: true,
+          fixed: 'left'
+        },
+        {
+          title: 'Fees Type',
+          dataIndex: 'fees_type',
+          align: "center",
+        
+        
+        },
+        {
+          title: 'Amount'
+          , dataIndex: 'amount',
+          align: "center",
+      
+        },
+        {
+          title: 'Last Date',
+          dataIndex: "last_date",
+          align: "center", 
+      },
+        {
+          title: 'Status',
+          dataIndex: "status",
+          align: "center", 
+          editable: true,
+          render(text, record) {
+            return {
+              props: {
+                style: { color: record.status==='active'? "green" : "red"  }
+              },
+              children: <div>{text}</div>
+            };
+          }
+      },
+
+      {
+          title: 'Total Student/Registrant',
+          dataIndex: "StudentDetails",
+          align: "center",  
+      },
+        {
+          title: 'Action',
+          dataIndex: "action",
+          align: "center"
+          , render: (_, record) =>
+            rows.length >= 1 ? (
+              <Space>
+                <Link to={`/apply/update/${record.id}`}> <Button type='primary'> Open</Button></Link>
+              </Space>
+            ) : null
+        }
+      ]
+    
+      const rows = []
+    
+    
+      payments && payments.forEach((item) => {
+        rows.push({
+          id: item.id,
+          fees_type: item.fees_type,
+          amount: '₹'+ item.amount,
+          last_date:item.last_date,
+          status:item.active_status
+        
+        })
+      })
+
+    useEffect(() => {
+        dispatch(GetCourseApplications(id))
+        dispatch(getSelectedApplication(id))
+        dispatch(getCourseDetails(id))
+        dispatch(ConfirmStudentAction(id))
+        dispatch(getCoursePaymenthistoryAction(id))
+    }, [dispatch, id])
 
     return (
         < Fragment>
@@ -91,6 +168,13 @@ const CourseDeashboard = () => {
                     </div>
                     </div>
                 </div>
+            </div>
+            <div className="container-fluid">
+                <div className='tableHeader-with-button ' >
+                <h3 className='m-3 text-center'>Active Fees / Fees History</h3>
+                 <Link className='btn btn-paimary' to={`/add/new/fees/${id}`}> New Fees Request </Link>
+                </div>
+                <TableComponent columns={columns} loading={feesLoading} dataSource={rows}/>
             </div>
         </Fragment>
     )

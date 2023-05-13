@@ -60,7 +60,7 @@ const Courses = () => {
           {courses &&
             courses
               .filter((course) => course.depertment_name === selectedDepartment || selectedDepartment === "")
-              .map((course) => <CourseCard course={course} college={college} />)}
+              .map((course) => <CourseCard course={course}  college={college} />)}
         </div>
         <div>
 

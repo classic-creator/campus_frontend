@@ -43,19 +43,21 @@ import Footer from "./componant/layout/footer/Footer.js"
 import WebFont from "webfontloader"
 import { loadUser } from './action/userAction';
 import ProtectedRoute from './protectedRoute/protectedRoute';
-import Sidebar from './componant/collegeAdmin/sidebar';
-import { RouteWrapper } from './protectedRoute/routeWrapper'
+// import Sidebar from './componant/collegeAdmin/sidebar';
+// import { RouteWrapper } from './protectedRoute/routeWrapper'
+import AddNewPayment from './componant/collegeAdmin/Payment/addNewPayment';
+import StudentNew_old_payments from './componant/payment/studentNew_old_payments';
 
 
-// function ScrollToTop({ children }) {
-//   const location = useLocation();
+function ScrollToTop({ children }) {
+  const location = useLocation();
 
-//   useEffect(() => {
-//     window.scrollTo(0, 0);
-//   }, [location]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
-//   return children;
-// }
+  return children;
+}
 
 function App() {
 
@@ -75,7 +77,7 @@ function App() {
     <BrowserRouter>
 
       <Header />
-      {/* <ScrollToTop /> */}
+      <ScrollToTop />
       <Routes>
 
         <Route exact path='/' element={<Home />} />
@@ -99,6 +101,7 @@ function App() {
         <Route exact path='/college/register' element={<ProtectedRoute component={RegisterCollege} />} />
         <Route exact path='/admission/payment/:id' element={<ProtectedRoute component={AdmissionPayment} />} />
         <Route exact path='/college/gallery/:id' element={<ProtectedRoute component={ImageGallery} />} />
+        <Route exact path='/view/newpayment/:id' element={<ProtectedRoute component={StudentNew_old_payments} />} />
        
 
         <Route exact path='/college/depertment/create' element={<ProtectedRoute isAdmin={true} component={CreateDepertment} />} />
@@ -113,6 +116,7 @@ function App() {
         <Route exact path='/college/course' element={<ProtectedRoute isAdmin={true} component={CollegeCourseList} />} />
         <Route exact path='/confirm/students/:id' element={<ProtectedRoute isAdmin={true} component={ConfirmStudentsList} />} />
         <Route exact path='/confirm/admission/college' element={<ProtectedRoute isAdmin={true} component={CollegeConfirmStudentList} />} />
+        <Route exact path='/add/new/fees/:id' element={<ProtectedRoute isAdmin={true} component={AddNewPayment} />} />
 
 
 

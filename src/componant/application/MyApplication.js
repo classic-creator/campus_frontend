@@ -8,6 +8,7 @@ import { useAlert } from 'react-alert'
 const MyApplication = () => {
 
   const { loading, error, applications } = useSelector(state => state.application)
+  // const {new_payments}=useSelector(state=>state.stdNewPayments)
   const alert = useAlert()
 
   const dispatch = useDispatch()
@@ -25,17 +26,18 @@ const MyApplication = () => {
   return (
 
     <Fragment>
-      {loading ? <Loader /> : <Fragment>
+      {loading ? <Loader /> :null}
+       {/* <Fragment> */}
         {applications.length > 0 ? (<Fragment>
 
           <div>
 
-            {applications && applications.map(data => (<ApplicationCard data={data} />))}
+            {applications && applications.map(data => (<ApplicationCard key={data.id} data={data} />))}
 
 
           </div></Fragment>) : <div className='container text-aline-center mt-5 pt-5'><p >No record found</p></div>}
 
-      </Fragment>}
+      {/* </Fragment> */}
     </Fragment>
   )
 }
