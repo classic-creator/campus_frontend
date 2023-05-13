@@ -11,7 +11,7 @@ import { ApplicationReducer, ConfirmStudentReducer, CourseApplicationReducer, My
 import { GetDepertmentReducer, addCourseReducer, collegeCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer } from './reducer/collegeAdminReducer';
 import thunk from 'redux-thunk';
 import { courseImageReducer } from './reducer/imageReducer';
-import { AddPaymentReducer, ProcessPaymentReducer, getCoursePaymentHistoryReducer, getStudentNewPaymentReducer, getStudentPaymentHistorryReducer } from './reducer/paymentReducer';
+import { AddPaymentReducer, CoursePaymentDetailsReducer, ProcessPaymentReducer, getCoursePaymentHistoryReducer, getStudentNewPaymentReducer, getStudentPaymentHistorryReducer } from './reducer/paymentReducer';
 
 
 
@@ -65,6 +65,7 @@ const reducers = combineReducers({
             payments:getCoursePaymentHistoryReducer,
             stdNewPayments:getStudentNewPaymentReducer,
             paymentData:getStudentPaymentHistorryReducer,
+            coursePayData:CoursePaymentDetailsReducer
 })
 
 const middleWare= [thunk]

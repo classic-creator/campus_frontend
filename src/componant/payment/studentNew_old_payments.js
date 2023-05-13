@@ -19,6 +19,7 @@ const {id}=useParams()
 
 const hendelPayment=async (datas)=>{
   
+  const {data:{key}}= await axios.get('/api/get/razorpay/key')
   const token = localStorage.getItem('token');
   const config = {
     baseURL: process.env.REACT_APP_API_BASE_URL,
@@ -27,7 +28,6 @@ const hendelPayment=async (datas)=>{
       Authorization: `Bearer ${token}`
     },
   };
-const {data:{key}}= await axios.get('/api/get/razorpay/key',config)
 
 const {data:{orderId,orderAmount}}=  await axios.post(`/api/process/payment/${datas.id}`, datas, config)
  

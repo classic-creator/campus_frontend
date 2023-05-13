@@ -4,6 +4,9 @@ import {
     ADD_PAYMENT_RESET,
     ADD_PAYMENT_SUCCESS,
     CLEAR_ERRORS,
+    COURSE_PAYMENT_DETAILS_FAIL,
+    COURSE_PAYMENT_DETAILS_REQUEST,
+    COURSE_PAYMENT_DETAILS_SUCCESS,
     COURSE_PAYMENT_HISTORY_FAIL,
     COURSE_PAYMENT_HISTORY_REQUEST,
     COURSE_PAYMENT_HISTORY_SUCCESS,
@@ -144,6 +147,40 @@ export const getStudentPaymentHistorryReducer = (state = { paymentsHistory: [] }
             }
 
         case STUDENT_PAYMENT_HISTORY_FAIL:
+
+            return {
+
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }}
+// COURSES PAYMENT DETAILS
+export const CoursePaymentDetailsReducer = (state = { payment_Data: [] }, action) => {
+    switch (action.type) {
+        case COURSE_PAYMENT_DETAILS_REQUEST:
+
+            return {
+                ...state,
+                loading: true,
+                payment_Data: []
+            }
+
+        case COURSE_PAYMENT_DETAILS_SUCCESS:
+            return {
+
+                loading: false,
+                payment_Data: action.payload.payment_Data
+            }
+
+        case COURSE_PAYMENT_DETAILS_FAIL:
 
             return {
 

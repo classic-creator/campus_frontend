@@ -94,7 +94,7 @@ const CourseDeashboard = () => {
           , render: (_, record) =>
             rows.length >= 1 ? (
               <Space>
-                <Link to={`/apply/update/${record.id}`}> <Button type='primary'> Open</Button></Link>
+                <Link to={`/payment/details/${record.id}`}> <Button type='primary'> Open</Button></Link>
               </Space>
             ) : null
         }
@@ -109,7 +109,8 @@ const CourseDeashboard = () => {
           fees_type: item.fees_type,
           amount: '₹'+ item.amount,
           last_date:item.last_date,
-          status:item.active_status
+          status:item.active_status,
+          StudentDetails:item.totalStudents +'/'+item.feePaymentStudent
         
         })
       })

@@ -46,6 +46,7 @@ import ProtectedRoute from './protectedRoute/protectedRoute';
 // import Sidebar from './componant/collegeAdmin/sidebar';
 // import { RouteWrapper } from './protectedRoute/routeWrapper'
 import AddNewPayment from './componant/collegeAdmin/Payment/addNewPayment';
+import CoursePaymentDetails from './componant/collegeAdmin/Payment/CoursePaymentDetails.js';
 import StudentNew_old_payments from './componant/payment/studentNew_old_payments';
 
 
@@ -117,6 +118,7 @@ function App() {
         <Route exact path='/confirm/students/:id' element={<ProtectedRoute isAdmin={true} component={ConfirmStudentsList} />} />
         <Route exact path='/confirm/admission/college' element={<ProtectedRoute isAdmin={true} component={CollegeConfirmStudentList} />} />
         <Route exact path='/add/new/fees/:id' element={<ProtectedRoute isAdmin={true} component={AddNewPayment} />} />
+        <Route exact path='/payment/details/:id' element={<ProtectedRoute isAdmin={true} component={CoursePaymentDetails} />} />
 
 
 

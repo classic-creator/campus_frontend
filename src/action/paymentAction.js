@@ -3,6 +3,9 @@ import { ADD_PAYMENT_FAIL,
     ADD_PAYMENT_REQUEST,
     ADD_PAYMENT_SUCCESS ,
    CLEAR_ERRORS,
+    COURSE_PAYMENT_DETAILS_FAIL,
+    COURSE_PAYMENT_DETAILS_REQUEST,
+    COURSE_PAYMENT_DETAILS_SUCCESS,
     COURSE_PAYMENT_HISTORY_FAIL,
     COURSE_PAYMENT_HISTORY_REQUEST,
     COURSE_PAYMENT_HISTORY_SUCCESS,
@@ -150,6 +153,33 @@ export const getStudentPayHistory = (id) => async (dispatch) => {
    } catch (error) {
       dispatch({
          type: STUDENT_PAYMENT_HISTORY_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+//get course   payment details
+export const getCoursePaymentDetailsAction = (id) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": 'application/json',
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: COURSE_PAYMENT_DETAILS_REQUEST })
+
+      const { data } = await axios.get(`/api/course/payments/details/${id}`,  config)
+
+      dispatch({
+         type: COURSE_PAYMENT_DETAILS_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: COURSE_PAYMENT_DETAILS_FAIL,
          payload: error.response.data.message
       })
    }
