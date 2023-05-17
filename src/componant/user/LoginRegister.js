@@ -19,7 +19,7 @@ const LoginRegister = () => {
 
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('')
-    
+    const [profile, setProfile] = useState()
 
 
     const [user, setUser] = useState({
@@ -27,14 +27,18 @@ const LoginRegister = () => {
         email: '',
         password: '',
         confirm_password: '',
+        phon_no:'',
+        gender:'',
+        user_role:'',
+        // profile:'',
     })
-    const { name, email, password, confirm_password } = user
+    const { name, email, password, confirm_password,phon_no,gender,user_role } = user
 
     const { error, isAuthenticated, loading } = useSelector(state => state.user)
     const {loading:forgetLoading, message, error:forgetError} = useSelector(state => state.forgetPassword)
 
 
-    const [forgetEmail, setForgetEmail] = useState('')
+    const [forgetEmail, setForgetEmail] = useState()
 
 
     const forgetPasswordFunction = (e) => {
@@ -74,16 +78,30 @@ const LoginRegister = () => {
         e.preventDefault()
         const myForm = new FormData()
 
-        myForm.set('name', name)
-        myForm.set('email', email)
-        myForm.set('password', password)
-        myForm.set('confirm_password', confirm_password)
+        myForm.append('name', name)
+        myForm.append('email', email)
+        myForm.append('password', password)
+        myForm.append('confirm_password', confirm_password)
+        myForm.append('phon_no', phon_no)
+        myForm.append('gender', gender)
+        myForm.append('user_role', user_role)
+        myForm.append('profile', profile)
+
+        // console.log(myForm)
         dispatch(registerUser(myForm))
 
     }
     const regisDataChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
     }
+    const handleImageChange = (event) => {
+        // setImage(event.target.files[0]);
+        const file = event.target.files[0];
+        if (file) {
+            setProfile(file);
+           
+        }
+    };
 
     const redirect = location.search ? location.search.split("=")[1] : "/account";
 
@@ -152,7 +170,7 @@ const LoginRegister = () => {
                                 <input type="submit" value="Login" />
                             </div>
 
-                          { forgetLoading ? <Loader/> : <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Forget_pass">
+                          { forgetLoading ? <Loader/> : <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Forget_pass">
                                 forget password?
                             </button>}  
                         </form>
@@ -171,10 +189,10 @@ const LoginRegister = () => {
                                         required
                                         onChange={regisDataChange} />
                                 </div>
-                                <div className="input-box">
+                                {/* <div className="input-box">
                                     <span className="details">Username</span>
                                     <input type="text" placeholder="Enter your username" />
-                                </div>
+                                </div> */}
                                 <div className="input-box">
                                     <span className="details">Email</span>
                                     <input type="email"
@@ -186,7 +204,7 @@ const LoginRegister = () => {
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Phone Number</span>
-                                    <input type="text" placeholder="Enter your number" />
+                                    <input type="number"   onChange={regisDataChange} name='phon_no' value={phon_no} placeholder="Enter your number" />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Password</span>
@@ -208,41 +226,56 @@ const LoginRegister = () => {
                                 </div>
                             </div>
                             <div className="gender-details">
-                                <input type="radio" name="gender" id="dot-1" />
-                                <input type="radio" name="gender" id="dot-2" />
-                                <input type="radio" name="gender" id="dot-3" />
+                                <input type="radio" onChange={regisDataChange}  value='male' name="gender" id="dot-1" />
+                                <input type="radio" onChange={regisDataChange} value='female' name="gender" id="dot-2" />
+                                <input type="radio" onChange={regisDataChange} value='other' name="gender" id="dot-3" />
                                 <span className="gender-title">Gender</span>
                                 <div className="category">
-                                    <label for="dot-1">
+                                    <label htmlFor="dot-1">
                                         <span className="dot one"></span>
                                         <span className="gender">Male</span>
                                     </label>
-                                    <label for="dot-2">
+                                    <label htmlFor="dot-2">
                                         <span className="dot two"></span>
                                         <span className="gender">Female</span>
                                     </label>
-                                    <label for="dot-3">
+                                    <label htmlFor="dot-3">
                                         <span className="dot three"></span>
-                                        <span className="gender">Prefer not to say</span>
+                                        <span className="gender">Other</span>
                                     </label>
                                 </div>
                             </div>
+                            <div className="input-box">
+                                    <span className="details">Registation Type</span>
+                                  <select  onChange={regisDataChange} name="user_role" value={user_role}  >
+                                    <option   value=''>Select</option>
+                                    <option   name="user_role" value='student'>Student Registation</option>
+                                    <option  name="user_role"  value='instituteAdmin'>User Registation for college</option>
+                                  </select>
+                                </div>
+                            <div className="input-box">
+                                    <span className="details">Profile photo</span>
+                                    <input type="file" onChange={handleImageChange} />
+                                   
+                                </div>
+
+                                
                             <div className="button">
                                 <input type="submit" value="Register" />
                             </div>
                         </form>
                         <form onSubmit={forgetPasswordFunction}>
-                        <div class="modal fade" id="Forget_pass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Enter Your Email</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div className="modal fade" id="Forget_pass" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div className="modal-dialog">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <h5 className="modal-title" id="staticBackdropLabel">Enter Your Email</h5>
+                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="input-group flex-nowrap">
+                                        <div className="modal-body">
+                                            <div className="input-group flex-nowrap">
                                                 <input type="email" 
-                                                class="form-control"                                            onChange={e => setForgetEmail(e.target.value)}
+                                                className="form-control"                                            onChange={e => setForgetEmail(e.target.value)}
                                                 value={forgetEmail}
                                                 required
                                                 name='forgetEmail'
@@ -251,8 +284,8 @@ const LoginRegister = () => {
                                                 
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <input type="submit" data-bs-dismiss="modal" class="btn btn-primary" value='Get Link'/>
+                                        <div className="modal-footer">
+                                            <input type="submit" data-bs-dismiss="modal" className="btn btn-primary" value='Get Link'/>
                                         </div>
                                     </div>
                                 </div>

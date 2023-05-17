@@ -50,20 +50,28 @@ const DepertmentDetails = () => {
             editable: true,
             // width:23
         },
-        {
-            title: 'Fees',
-            dataIndex: 'fees',
-            align: "center",
-            editable: true,
-            // width:23
-        },
+        // {
+        //     title: 'Fees',
+        //     dataIndex: 'fees',
+        //     align: "center",
+        //     editable: true,
+        //     // width:23
+        // },
         {
             title: 'Eligibility',
             dataIndex: "eligibility",
             align: "center",
             editable: true,
             // width:90
-        }, {
+        },
+        {
+            title: 'Total Seat/vacent',
+            dataIndex: "seat",
+            align: "center",
+            editable: true,
+            // width:90
+        },
+         {
             title: 'Action',
             dataIndex: "action",
             align: "center",
@@ -72,10 +80,11 @@ const DepertmentDetails = () => {
                 rows.length >= 1 ? (
                     <Space>
                          <Link to={`/course/deashboard/${record.id}`}> <Button  type='primary'> Go</Button></Link>
+                         {/* <Link to={`/course/update/${record.id}`}> <Button danger type='primary'> Edit</Button></Link> */}
                         {/* <Link to={`/course/update/${record.id}`}> <Button type='primary'> Edit</Button></Link> */}
-                        <Popconfirm title='Are you sure you want to delete ?' onConfirm={() => handleDelete(record)}>
+                        {/* <Popconfirm title='Are you sure you want to delete ?' onConfirm={() => handleDelete(record)}>
                             <Button danger type='primary'> Delete</Button>
-                        </Popconfirm>
+                        </Popconfirm> */}
                     </Space>
                 ) : null
         },
@@ -89,9 +98,10 @@ const DepertmentDetails = () => {
         rows.push({
             id: item.id,
             name: item.courseName,
-            duration: item.duration,
-            fees: item.fees,
-            eligibility: item.eligibility
+            duration: item.duration + ' year',
+            // fees: item.fees,
+            eligibility: item.eligibility,
+            seat:item.seat_capacity +'/'+item.vacent_seat
 
 
         })

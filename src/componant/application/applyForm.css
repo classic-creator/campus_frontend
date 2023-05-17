@@ -47,7 +47,7 @@
     /* border: 2px solid black; */
 }
 
-.applyinput input{
+.applyinput input,.applyinput select{
    
     height: 45px;
     width: 100%;

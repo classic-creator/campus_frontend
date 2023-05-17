@@ -8,10 +8,10 @@ import { courseReducer ,courseDetailsReducer, preferedCourseReducer} from './red
 import { preferenceReducer, updatePreferenceReducer } from './reducer/preferenceReducer';
 import { ForgetPasswordReducer, profileReducer, userReducer } from './reducer/userReducer';
 import { ApplicationReducer, ConfirmStudentReducer, CourseApplicationReducer, MyApplicationReducer, SelectedApplicationReducer, applicationDetailsReducer, applyAdmissionReducer, applyFormAddressReducer, applyFormEducationReducer, applyFormReducer, appyFormfileReducer, studentDetailsReducer } from './reducer/applyReducer';
-import { GetDepertmentReducer, addCourseReducer, collegeCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer } from './reducer/collegeAdminReducer';
+import { AddnoticReducer, DeleteNoticReducer, GetDepertmentReducer, GetNoticReducer, addCourseReducer, collegeCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer } from './reducer/collegeAdminReducer';
 import thunk from 'redux-thunk';
 import { courseImageReducer } from './reducer/imageReducer';
-import { AddPaymentReducer, CoursePaymentDetailsReducer, ProcessPaymentReducer, getCoursePaymentHistoryReducer, getStudentNewPaymentReducer, getStudentPaymentHistorryReducer } from './reducer/paymentReducer';
+import { AddPaymentReducer, CoursePaymentDetailsReducer, ProcessPaymentReducer, closePaymentsReducer, getCoursePaymentHistoryReducer, getStudentNewPaymentReducer, getStudentPaymentHistorryReducer } from './reducer/paymentReducer';
 
 
 
@@ -65,7 +65,11 @@ const reducers = combineReducers({
             payments:getCoursePaymentHistoryReducer,
             stdNewPayments:getStudentNewPaymentReducer,
             paymentData:getStudentPaymentHistorryReducer,
-            coursePayData:CoursePaymentDetailsReducer
+            coursePayData:CoursePaymentDetailsReducer,
+            closePayment:closePaymentsReducer,
+            notic:AddnoticReducer,
+            getNotic:GetNoticReducer,
+            dltNotic:DeleteNoticReducer,
 })
 
 const middleWare= [thunk]

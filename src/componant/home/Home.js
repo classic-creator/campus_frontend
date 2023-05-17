@@ -103,7 +103,7 @@ const Home = () => {
         </div>
         <div className="boxes">
           {/* <div className="box1   box "> */}
-          <div class="card  text-dark bg-primary mb-3" style={{ maxWidth: '18rem', }}>
+          <div class="card  text-dark bg-primary mb-3" style={{ width: '18rem', }}>
             <div class="card-header"><h2>Institute</h2> </div>
             <div class="card-body">
               <h2 class="card-title text-center">420+</h2>
@@ -112,7 +112,7 @@ const Home = () => {
           </div>
           {/* </div> */}
           {/* <div className="box2   box"> */}
-          <div class="card text-dark bg-warning mb-3" style={{ maxWidth: '18rem', }}>
+          <div class="card text-dark bg-warning mb-3" style={{ width: '18rem', }}>
             <div class="card-header"><h2>Applicant</h2></div>
             <div class="card-body">
               <h2 class="card-title text-center">440+</h2>
@@ -124,7 +124,7 @@ const Home = () => {
             <h3>User Count</h3>
             <span>5000</span>
           </div> */}
-          <div class="card text-dark bg-warning mb-3" style={{ maxWidth: '18rem', }}>
+          <div class="card text-dark bg-warning mb-3" style={{ width: '18rem', }}>
             <div class="card-header"><h2>Applications</h2></div>
             <div class="card-body">
               <h2 class="card-title text-center">770+</h2>

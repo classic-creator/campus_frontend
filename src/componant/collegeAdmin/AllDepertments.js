@@ -57,8 +57,8 @@ const AllDepertments = () => {
             {/* <Popconfirm title='Are you sure you want to delete ?'> */}
             <Link to={`/depertment/${record.id}`}> <Button type='primary'> Go</Button></Link>
             {/* </Popconfirm> */}
-            <Button onClick={() => console.log('edit')} type='primary'>Edit</Button>
-            <Button onClick={() => console.log('edit')} danger type='primary'>Delete</Button>
+            {/* <Button onClick={() => console.log('edit')} type='primary'>Edit</Button>
+            <Button onClick={() => console.log('edit')} danger type='primary'>Delete</Button> */}
           </Space>
         ) : null
     }

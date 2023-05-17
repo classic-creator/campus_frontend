@@ -15,6 +15,7 @@ const CollegeProfile = () => {
 
   const alert = useAlert()
   const dispatch = useDispatch()
+
   const { myCollege, myCourses, clgConfirmApplication, error, loading } = useSelector(state => state.myCollege)
 
   useEffect(() => {
@@ -38,47 +39,51 @@ const CollegeProfile = () => {
         <div>
           <Sidebar />
         </div>
-        <CollegeDataChange />
+      
+
+       
+
+
         {/* {loading ? <Loader /> : (  */}
-          <div className='dashboardContainer'>
-            <Typography component="h1">Dashboard</Typography>
-            <div className='dashboardSummery'>
-              <div >
-                <p className='dashboardSummeryP'>
-                  {myCollege && myCollege.collegeName}
-                {loading ?  <Button loading={loading}></Button> : null}
-                </p>
-
-              </div>
-              <div className="dashboardSummeryBox2">
-                <Link to="/college/course">
-                  <p>Registered Courses</p>
-                  {/* <p>{myCourses && myCourses.length}</p> */}
-                  <CountUp end={myCourses && myCourses.length} duration={5} />
-                </Link>
-                <Link to="/admin/orders">
-                  <p>Seat Remain</p>
-                  {/* <p>{orders && orders.length}</p> */}
-                </Link>
-                <Link to="/confirm/admission/college">
-                  <p>Admission Confirm</p>
-                  <CountUp end={clgConfirmApplication && clgConfirmApplication.length} duration={5} />
-                  {/* <p>{users && users.length}</p> */}
-                </Link>
-              </div>
-            </div>
-
-            <div className="lineChart">
-
-
+        <div className='dashboardContainer'>
+          <Typography component="h1">Dashboard</Typography>
+          <div className='dashboardSummery'>
+            <div >
+              <p className='dashboardSummeryP'>
+                {myCollege && myCollege.collegeName}
+                {loading ? <Button loading={loading}></Button> : null}
+              </p>
 
             </div>
-            <div className="doughnutChat">
-              {/* <Doughnut
-       data={doughnutState} /> */}
+            <div className="dashboardSummeryBox2">
+              <Link to="/college/course">
+                <p>Courses</p>
+                {/* <p>{myCourses && myCourses.length}</p> */}
+                <CountUp end={myCourses && myCourses.length} duration={5} />
+              </Link>
+              <Link to="/admin/orders">
+                <p>Seat Remain</p>
+                {/* <p>{orders && orders.length}</p> */}
+              </Link>
+              <Link to="/confirm/admission/college">
+                <p>Enrolled Students</p>
+                <CountUp end={clgConfirmApplication && clgConfirmApplication.length} duration={5} />
+                {/* <p>{users && users.length}</p> */}
+              </Link>
             </div>
+          </div>
+
+          <div className="lineChart">
+
+
 
           </div>
+          <div className="doughnutChat">
+            {/* <Doughnut
+       data={doughnutState} /> */}
+          </div>
+
+        </div>
         {/* )} */}
 
       </div>

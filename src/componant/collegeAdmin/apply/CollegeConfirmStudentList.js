@@ -29,8 +29,10 @@ const columns = [
     {
       title: 'Id',
       dataIndex: 'id',
-      width: 50,
-      fixed: 'left'
+      // width: 50,
+      fixed: 'left',
+      key:'id'
+
     },
     {
       title: 'Name',
@@ -73,7 +75,7 @@ const columns = [
         rows.length >= 1 ? (
           <Space>
             {/* <Popconfirm title='Are you sure you want to delete ?'> */}
-            <Link to={`/depertment/${record.id}`}> <Button type='primary'> Go</Button></Link>
+            <Link to={`/apply/update/${record.id}`}> <Button type='primary'> Go</Button></Link>
             {/* </Popconfirm> */}
            
           </Space>
@@ -103,7 +105,7 @@ const columns = [
       <div className="dashboard">
       <div className='headdept'>
         
-          <h2>Depertment</h2>
+          <h2>Enrolled students</h2>
       </div>
         
         <TableComponent  columns={columns}

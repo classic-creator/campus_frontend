@@ -9,10 +9,8 @@ import { Formik, Form } from 'formik'
 import { getCourseDetails } from '../../action/courseAction'
 import { UPDATE_COURSES_RESET } from '../../constants/collegeAdminConstants'
 import { clearErrors, updateCourseAction } from '../../action/collegeAdminAction'
-import CourseBar from './courseBar'
-import { Button } from 'antd'
 
-export const UpdateCourse = () => {
+export const ClosedPayment = () => {
 
     const dispatch = useDispatch()
     const alert = useAlert()
@@ -42,11 +40,11 @@ export const UpdateCourse = () => {
     const validate = Yup.object({
 
         courseName: Yup.string().required('required'),
-        duration: Yup.number().max(15, 'Must be characters or less').required('required'),
+        duration: Yup.string().max(15, 'Must be characters or less').required('required'),
         eligibility: Yup.string().required('required'),
-        admission_fees: Yup.number().required('required'),
-        application_fees: Yup.number().required('required'),
-        seat_capacity: Yup.number().required('required'),
+        admission_fees: Yup.string().required('required'),
+        application_fees: Yup.string().required('required'),
+        seat_capacity: Yup.string().required('required'),
 
     })
 
@@ -65,9 +63,8 @@ export const UpdateCourse = () => {
     return (
 
         <Fragment>
-            <CourseBar course={details} id={id}  header={'Payment Details'} />
-            {/* {
-                loading ? <Loader /> : <Fragment> */}
+            {
+                loading ? <Loader /> : <Fragment>
 
                     <Formik
                         enableReinitialize={true}
@@ -84,21 +81,13 @@ export const UpdateCourse = () => {
                                 <div className='applyFor '>
                                     <Form className='applyForm registerClg'>
                                         <div className='but'>
-                                            <h3>Update Course</h3>
+                                            <h3>Closed Payment Active Status</h3>
                                         </div>
 
                                         <TextField label='Course Name' name='courseName' type='text' />
-                                        <TextField label='Duration' name='duration' type='text' />
-                                        <TextField label='Eligibility' name='eligibility' type='text' />
-                                        <TextField label='Seat Capacity' name='seat_capacity' type='number' />
-                                        <TextField label='Admission_fees' name='admission_fees' type='number' />
-                                        <TextField label='Application_fees' name='application_fees' type='number' />
-
-
-
-
+                                    
                                         <div className='but'>
-                                         {loading? <Button loading={loading}></Button> :   <button type='submit' className='btn '>Update</button>}
+                                            <button type='submit' className='btn '>Update</button>
                                         </div>
 
 
@@ -110,10 +99,10 @@ export const UpdateCourse = () => {
 
                     </Formik>
 
-                {/* </Fragment>
-            } */}
+                </Fragment>
+            }
         </Fragment>
 
     )
 }
-export default UpdateCourse
+export default ClosedPayment

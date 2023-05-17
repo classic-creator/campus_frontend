@@ -18,29 +18,13 @@ const CollegeCourseList = () => {
 
     const columns = [
         {
-            title: 'Id',
+            title: 'Course Id',
             dataIndex: 'id',
             style: { background: '#1890ff', color: '#fff' },
             fixed: 'left',
             // width:10
         },
-        {
-            title: 'Action',
-            dataIndex: "action",
-            align: "center",
-            // fixed:"right",
-            // width:40,
-            render: (_, record) =>
-                rows.length >= 1 ? (
-                    <Space>
-                        <Link to={`/course/deashboard/${record.id}`}> <Button type='primary'> Go</Button></Link>
-                        <Link to={`/course/update/${record.id}`}> <Button type='primary'> Edit</Button></Link>
-                        {/* <Popconfirm title='Are you sure you want to delete ?' onConfirm={() => handleDelete(record)}>
-                        <Button danger type='primary'> Delete</Button>
-                    </Popconfirm> */}
-                    </Space>
-                ) : null
-        },
+    
         {
             title: 'Name',
             dataIndex: 'name',
@@ -59,19 +43,19 @@ const CollegeCourseList = () => {
             editable: true,
             // width:23
         },
+        // {
+        //     title: 'Fees',
+        //     dataIndex: 'fees',
+        //     align: "center",
+        //     editable: true,
+        //     // width:23
+        // },
         {
-            title: 'Fees',
-            dataIndex: 'fees',
+            title: 'Total Seat/vacent',
+            dataIndex: "seat",
             align: "center",
             editable: true,
-            // width:23
-        },
-        {
-            title: 'Seat Capacity',
-            dataIndex: 'seat_capacity',
-            align: "center",
-            editable: true,
-            // width:23
+            // width:90
         },
         {
             title: 'Eligibility',
@@ -79,7 +63,24 @@ const CollegeCourseList = () => {
             align: "center",
             editable: true,
             // width:90
-        },
+        } ,
+        {
+            title: 'Action',
+            dataIndex: "action",
+            align: "center",
+            // fixed:"right",
+            // width:40,
+            render: (_, record) =>
+                rows.length >= 1 ? (
+                    <Space>
+                        <Link to={`/course/deashboard/${record.id}`}> <Button type='primary'> Go</Button></Link>
+                        {/* <Link to={`/course/update/${record.id}`}> <Button type='primary'> Edit</Button></Link> */}
+                        {/* <Popconfirm title='Are you sure you want to delete ?' onConfirm={() => handleDelete(record)}>
+                        <Button danger type='primary'> Delete</Button>
+                    </Popconfirm> */}
+                    </Space>
+                ) : null
+        }
 
     ]
 
@@ -91,9 +92,9 @@ const CollegeCourseList = () => {
             id: item.id,
             name: item.courseName,
             duration: item.duration,
-            fees: item.fees,
+            // fees: item.fees,
             eligibility: item.eligibility,
-            seat_capacity:item.seat_capacity
+            seat:item.seat_capacity +'/'+item.vacent_seat
 
 
         })

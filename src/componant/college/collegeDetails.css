@@ -100,7 +100,7 @@
 
 }
 
-.collegeNav ul li a {
+.collegeNav ul li a ,.collegeNav ul li span {
     text-decoration: none;
     color: black;
     font: 1.2vmax "Roboto";
@@ -108,9 +108,10 @@
     transition: all 0.5s;
     padding-left: 1vmax;
     border-left: 2px solid white;
+   cursor: pointer;
 }
 
-.collegeNav ul li a:hover {
+.collegeNav ul li a:hover,.collegeNav ul li span:hover {
     color: tomato;
 }
 

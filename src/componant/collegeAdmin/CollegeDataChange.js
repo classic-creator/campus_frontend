@@ -1,14 +1,14 @@
 
 import React, { Fragment, useEffect, useState } from 'react'
 import './courseDataChange.css'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { CollegeCoverimgAction, CollegeLogoimgAction, CollegeOtherimgAction, CourseCoverimgAction, clearErrors } from '../../action/imageAction'
 import { faEye, faMultiply, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAlert } from 'react-alert'
 import { Button } from 'antd'
-import { ADD_COURSECOVER_RESET, COLLEGE_COVERIMG_UPLOAD_RESET, COLLEGE_OTHERIMG_UPLOAD_RESET, OTHER_COURSEPHOTO_RESET } from '../../constants/imageConstants'
+import { COLLEGE_COVERIMG_UPLOAD_RESET, COLLEGE_OTHERIMG_UPLOAD_RESET } from '../../constants/imageConstants'
 
 const CollegeDataChange = () => {
 
@@ -79,7 +79,7 @@ const CollegeDataChange = () => {
         const formData = new FormData();
         formData.append('image_path', image);
         formData.append('image_name', imageName);
-      
+
         dispatch(CollegeCoverimgAction(formData));
     };
 
@@ -114,7 +114,7 @@ const CollegeDataChange = () => {
             formData.append(`image_${index}`, image);
         });
 
-       
+
 
 
         dispatch(CollegeOtherimgAction(formData));
@@ -139,7 +139,7 @@ const CollegeDataChange = () => {
         const formData = new FormData();
         formData.append('image_path', logo);
         formData.append('image_name', logoName);
-       
+
         dispatch(CollegeLogoimgAction(formData));
     }
 
@@ -239,6 +239,7 @@ const CollegeDataChange = () => {
                                             type="primary"
                                             onClick={handleLogoUpload}
                                             loading={loading}
+                                            disabled={logo?false:true}
                                         >
                                             Upload</Button>
                                     </div>
@@ -265,7 +266,7 @@ const CollegeDataChange = () => {
                                     <div className="button ">
                                         <button
                                             type='button'
-                                            disabled={previewOtherImage.length > 0 ? false : true}
+                                            disabled={previewOtherImage && previewOtherImage.length > 0 ? false : true}
                                             onClick={otherviewHide}
                                             className='btn btn-light viewIcon'
                                         >
@@ -276,7 +277,7 @@ const CollegeDataChange = () => {
 
                                         <Button
                                             type="primary"
-                                            disabled={otherImage.length > 0 ? false : true}
+                                            disabled={otherImage && otherImage.length > 0 ? false : true}
                                             onClick={handleOtherImageUpload}
                                             loading={loading}
                                         >
@@ -298,16 +299,7 @@ const CollegeDataChange = () => {
                                     </div>
                                 }
                             </div>
-                            <div>
-                                <div className='bg-dark text-light p-2'>
-                                    <h5 className='text-center  '>Change Course About</h5></div>
-                                <div className="p-3 imgUploadbox">
-                                    <textarea type='text' />
 
-                                    <button type='button' className='btn btn-success m-1'>Submit</button>
-                                </div>
-
-                            </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>

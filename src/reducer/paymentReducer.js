@@ -4,6 +4,10 @@ import {
     ADD_PAYMENT_RESET,
     ADD_PAYMENT_SUCCESS,
     CLEAR_ERRORS,
+    CLOSED_PAYMENT_FAIL,
+    CLOSED_PAYMENT_REQUEST,
+    CLOSED_PAYMENT_RESET,
+    CLOSED_PAYMENT_SUCCESS,
     COURSE_PAYMENT_DETAILS_FAIL,
     COURSE_PAYMENT_DETAILS_REQUEST,
     COURSE_PAYMENT_DETAILS_SUCCESS,
@@ -181,6 +185,51 @@ export const CoursePaymentDetailsReducer = (state = { payment_Data: [] }, action
             }
 
         case COURSE_PAYMENT_DETAILS_FAIL:
+
+            return {
+
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }
+}
+
+
+//CLOSE PAYMENTS REQUEST
+
+export const closePaymentsReducer = (state = {  }, action) => {
+    switch (action.type) {
+        case CLOSED_PAYMENT_REQUEST:
+
+            return {
+                ...state,
+                loading: true,
+                
+            }
+
+        case CLOSED_PAYMENT_SUCCESS:
+            return {
+
+                loading: false,
+                messege: action.payload.messege,
+                isUpdated:true
+            }
+        case CLOSED_PAYMENT_RESET:
+            return {
+
+                loading: false,
+                isUpdated:false
+            }
+
+        case CLOSED_PAYMENT_FAIL:
 
             return {
 

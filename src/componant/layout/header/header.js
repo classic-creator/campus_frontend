@@ -4,31 +4,47 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookAtlas, faBuilding, faCheck, faHomeAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 import { NavLink, Link } from 'react-router-dom'
 import "./header.css"
+import { useSelector } from 'react-redux'
+import { Button } from 'antd'
 
-const header = () => {
+const Header = () => {
+
+    const {user,loading}=useSelector(state=>state.user)
     return (
         <Fragment>
-            <header className='upperHeader1'>
+            <header className='upperHeader1 container-fluid'>
 
                 <div className="left1">
-                    <a href="">
+                    <a href="/">
                         <span>GOVERNMENT OF INDIA </span>
                         <span className='spanhindi'>भारत सरकार</span>
                     </a>
-                    <a href="">
+                    <a href="/">
                         <span>Ministry of Electronics and Information Technology </span>
                         <span className='spanhindi' >इलेक्ट्रॉनिकी और सूचना प्रौद्योगिकी मंत्रालय</span>
                     </a>
                 </div>
-                {/* <div className="middle1">
-                    <a href='#home'>Skip to Main Contatent</a>
+                <div className="middle1">
+                  {loading ? <Button loading={loading}></Button>  : null}
 
-                </div> */}
-                <div className="right1 ">
+                </div>
+                {/* <div className="right1 ">
                 
                         <Link to={'/college/register'} >College Exicutive</Link>
                         <Link className='leftBorder'>Government Exicutive</Link>
                   
+                </div> */}
+                <div className="right1">
+                    {user && user.user_role !== 'student' ? (
+                        <Link to="/college/register">College Executive</Link>
+                        ) : (
+                        <Link >College Executive</Link>
+                       
+                    )}
+                      {user && user.user_role !== 'student' ? (
+                        <Link to="/college/register">Government Executive</Link>
+                        ) : (
+                    <Link className='leftBorder'>Government Executive</Link>   )}
                 </div>
 
             </header>
@@ -36,20 +52,20 @@ const header = () => {
             <header className='upperHeader'>
 
                 <div className='rigt'>
-                  
-                        <img className='rigtfirst' src='https://indtoday.com/wp-content/uploads/2019/10/india-govt.jpg' alt='aslkfjd' />
-                        <img className='rigtsecond' src="https://static.javatpoint.com/fullformpages/images/nic.png" alt="img" />
-                   
+
+                    <img className='rigtfirst' src='https://indtoday.com/wp-content/uploads/2019/10/india-govt.jpg' alt='aslkfjd' />
+                    <img className='rigtsecond' src="https://static.javatpoint.com/fullformpages/images/nic.png" alt="img" />
+
                 </div>
 
                 <div className="middle">
-                    
+
                     <h3>Common Admission Management Plateform For Undergraduate Studies</h3>
 
                 </div>
 
                 <div className="left">
-                  
+
                     <Search link='colleges' placeholder='Search Colleges' />
 
                 </div>
@@ -123,4 +139,4 @@ const header = () => {
     )
 }
 
-export default header
+export default Header

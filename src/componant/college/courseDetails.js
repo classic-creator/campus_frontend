@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useRef } from 'react'
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
@@ -125,12 +125,24 @@ const CourseDetails = () => {
     
   }
   ];
+
+  const scrollRef = useRef(null);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+
+
   return (
 
 
 
     <Fragment>
-      <CoverAndNav college={course} />
+      <CoverAndNav  scrollToSection={scrollToSection} eligibility seatStructure duration college={course} />
       <div className='courseHeader'>
 
       <h2 className='courseHeaderh2'>{course.courseName}</h2>
@@ -139,12 +151,12 @@ const CourseDetails = () => {
       <div className="detailContainer">
 
         <div className='detailsdiv-1 p-edit pl-3 flex-column' >
-          <h4 >About course :</h4>
+          <h4  className='m-3' >About course :</h4>
           <p className='m-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium alias non facere quae? Corrupti molestias repellendus beatae, cum dolore inventore unde commodi eius corporis, nemo, maiores ad quam autem assumenda quia! Illum itaque, iure inventore voluptate natus minus vel nam voluptatibus mollitia, qui, ex aliquid perferendis magnam recusandae cupiditate libero.</p>
 
-          <h4 >Eligibility :</h4>
-          <p className='m-3'>{course.eligibility}</p>
-          <h4 >Duration :</h4>
+          <h4 className='m-3' id="eligibility" ref={scrollRef}>Eligibility :</h4>
+          <p className='m-3'  id="duration" ref={scrollRef}>{course.eligibility}</p>
+          <h4  className='m-3' >Duration :</h4>
           <p className='m-3'>{course.duration},Number of semister : 6</p>
         </div>
         
@@ -157,7 +169,7 @@ const CourseDetails = () => {
       </div>
 
 
-      <div className=" courseTable table container" id='FeeStructure'>
+      {/* <div className=" courseTable table container" id='FeeStructure'>
         <h3>Fees Structure</h3>
         <DataGrid
           rows={rows}
@@ -170,9 +182,9 @@ const CourseDetails = () => {
           autoHeight
 
         />
-      </div>
-      <div className="container " id='seatStructure'>
-        <h3>Seat Structure</h3>
+      </div> */}
+      <div className="container " id="section1" ref={scrollRef} >
+        <h3  >Seat Structure</h3>
       
 
                     <TableComponent columns={seatcolumns}

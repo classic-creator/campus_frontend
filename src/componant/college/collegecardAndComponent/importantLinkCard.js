@@ -9,9 +9,11 @@ const ImportantLinkCard = () => {
               <h3>Important links</h3>
               <Marquee className='marqueeText'> 
 
-              <ul>
-                <Link to={"/links"}>http://link.com</Link>
-              </ul>
+             
+                <a href={"/links"}>http://link.com</a>
+                <a href={"/links"}>http://link.com</a>
+                <a href={"/links"}>http://link.com</a>
+           
             
               </Marquee>
               <span><Link to={"/course/notice"}>read more...</Link></span>

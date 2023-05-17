@@ -71,7 +71,7 @@ custom_fields: [
 
   const columns = [
     {
-      title: 'Id',
+      title: 'Fees Id',
       dataIndex: 'id',
       
       editable: true,
@@ -158,6 +158,14 @@ custom_fields: [
 
     },
     {
+      title: 'Fees Type',
+      dataIndex: 'fees_type',
+      // key: 'status',
+      align: "center",
+
+
+    },
+    {
       title: 'Amount'
       , dataIndex: 'amount',
       // , key: 'amount',
@@ -195,7 +203,9 @@ custom_fields: [
       payment_id: item.payment_id,
       fees_id:item.fees_id,
       status:item.payment_status,
-      date:item.created_at
+      date:item.created_at,
+      amount:item.amount,
+      fees_type:item.fees_type,
 
   })
 

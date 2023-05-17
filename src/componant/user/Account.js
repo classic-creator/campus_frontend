@@ -41,8 +41,8 @@ const Account = () => {
         <div className='profileContainer'>
             <div>
                 <h1>MY PROFILE</h1>
-                <img src='/logo192.png' alt={user.name} />
-                <Link to="/me/update">Edit Profile</Link>
+                <img src={user.image_url} alt={user.name} />
+                <Link to="/profile/update">Edit Profile</Link>
             </div>
             <div>
                 <div>

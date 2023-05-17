@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useRef } from 'react'
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom';
@@ -160,18 +160,26 @@ const CollegeDetails = () => {
 
     })
   
+    const scrollRef = useRef(null);
 
+    const scrollToSection = (id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
 
 
 
   return (
     <Fragment>
-      {loading ? <Loader /> : <Fragment>
-        <CoverAndNav college={college} />
+      {/* {loading ? <Loader /> : <Fragment> */}
+        <CoverAndNav  scrollToSection={scrollToSection} seatStructure courses college={college} />
 
 
         <div className="detailContainer">
-
+      {loading ?    <Button loading={loading}></Button> :null}
+ 
           <div className='detailsdiv-1'>
 
             <p>
@@ -181,7 +189,7 @@ const CollegeDetails = () => {
 
 
           <div >
-            <ImportantLinkCard />
+            {/* <ImportantLinkCard /> */}
             <Imgcarousel />
           </div>
 
@@ -189,13 +197,13 @@ const CollegeDetails = () => {
 
         <div className="container-fluid">
 
-          <h2 className='m-3 text-center'>Courses</h2>
+          <h2 className='m-3 text-center' id="courses" ref={scrollRef} >Courses</h2>
 
           <TableComponent columns={columns}
             dataSource={rows}
             loading={loading} />
         </div>
-        <div className='container-fluid' id='seatStructure'>
+        <div className='container-fluid' id="section1" ref={scrollRef}  >
           <h2 className='m-3 text-center'>Seat Structure</h2>
 
           <TableComponent columns={seatcolumns}
@@ -203,7 +211,7 @@ const CollegeDetails = () => {
             loading={loading} />
         </div>
 
-      </Fragment>}
+      {/* </Fragment>} */}
     </Fragment>
   )
 }

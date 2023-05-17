@@ -22,6 +22,7 @@ import CreateDepertment from './componant/collegeAdmin/CreateDepertment.js';
 import AllDepertments from './componant/collegeAdmin/AllDepertments.js';
 import DepertmentDetails from './componant/collegeAdmin/DepertmentDetails.js';
 import AddCourse from './componant/collegeAdmin/AddCourse.js';
+import CollegeImages from './componant/collegeAdmin/CollegeImages.js';
 import UpdateCourse from './componant/collegeAdmin/UpdateCourse.js';
 import CourseDeashboard from './componant/collegeAdmin/CourseDeashboard.js';
 import CourseAdmissionList from './componant/collegeAdmin/apply/CourseAdmissionList.js';
@@ -34,7 +35,8 @@ import AdmissionPayment from './componant/application/AdmissionPayment.js';
 import ImageGallery from './componant/college/collegecardAndComponent/ImageGallery.js';
 import FileUpload from './componant/application/ApplicationFileUpload';
 
-import ResetPassword from "./componant/user/ResetPassword.js"
+import ResetPassword from "./componant/user/ResetPassword.js";
+import UpdateProfile from './componant/user/updateProfile';
 import MyApplication from "./componant/application/MyApplication.js"
 import store from "./store"
 
@@ -48,6 +50,9 @@ import ProtectedRoute from './protectedRoute/protectedRoute';
 import AddNewPayment from './componant/collegeAdmin/Payment/addNewPayment';
 import CoursePaymentDetails from './componant/collegeAdmin/Payment/CoursePaymentDetails.js';
 import StudentNew_old_payments from './componant/payment/studentNew_old_payments';
+import AddLinks from './componant/collegeAdmin/addLinks';
+import Links from './componant/collegeAdmin/Links.js';
+import Notice from './componant/college/Notice';
 
 
 function ScrollToTop({ children }) {
@@ -90,9 +95,11 @@ function App() {
         <Route exact path='college/course/:id' element={<Courses />} />
         <Route exact path='/course/:id' element={<CourseDetails />} />
         <Route exact path='/login' element={<LoginRegister />} />
+        <Route exact path='/college/links/:id' element={<Notice />} />
         <Route exact path='/user/reset/:token' element={<ResetPassword />} />
         <Route exact path='/account' element={<ProtectedRoute component={Account} />} />
         <Route exact path='/password/update' element={<ProtectedRoute component={ChangePassword} />} />
+        <Route exact path='/profile/update' element={<ProtectedRoute component={UpdateProfile} />} />
         <Route exact path='/apply/:id' element={<ProtectedRoute component={StudentDetailsApply} />} />
         <Route exact path='/apply/address/:id' element={<ProtectedRoute component={ApplyAddress} />} />
         <Route exact path='/apply/education/:id' element={<ProtectedRoute component={ApplyEducationalDetails} />} />
@@ -119,6 +126,9 @@ function App() {
         <Route exact path='/confirm/admission/college' element={<ProtectedRoute isAdmin={true} component={CollegeConfirmStudentList} />} />
         <Route exact path='/add/new/fees/:id' element={<ProtectedRoute isAdmin={true} component={AddNewPayment} />} />
         <Route exact path='/payment/details/:id' element={<ProtectedRoute isAdmin={true} component={CoursePaymentDetails} />} />
+        <Route exact path='/add/links' element={<ProtectedRoute isAdmin={true} component={AddLinks} />} />
+        <Route exact path='/links' element={<ProtectedRoute isAdmin={true} component={Links} />} />
+        <Route exact path='/college/images' element={<ProtectedRoute isAdmin={true} component={CollegeImages} />} />
 
 
 

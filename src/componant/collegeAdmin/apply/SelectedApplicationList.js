@@ -8,10 +8,12 @@ import { Link } from 'react-router-dom'
 
 import { Button, Table, Space, Form, Input } from 'antd'
 import TableComponent from '../../layout/TableComponent'
+import CourseBar from '../courseBar'
 
 const SelectedApplicationList = () => {
  
   const { SelectedApplication, loading } = useSelector(state => state.selectedApplication)
+  const { course } = useSelector(state => state.courseDetails)
   const { id } = useParams()
   const dispatch = useDispatch()
 
@@ -109,10 +111,7 @@ const SelectedApplicationList = () => {
     <div className="depertmentDeash">
       <Sidebar />
       <div className="dashboard">
-      <div className='headdept'>
-        
-          <h2>Selected Students</h2>
-      </div>
+      <CourseBar course={course} id={id} header={'Selected Students'} />
         
         <TableComponent  columns={columns}
             dataSource={rows} loading={loading}/>

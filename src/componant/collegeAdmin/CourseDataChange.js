@@ -198,7 +198,7 @@ const CourseDataChange = () => {
 
 
                                         <Button type="primary"
-                                            disabled={image ? false : true}
+                                            disabled={ image ? false : true}
                                             //  className='btn btn-success' 
                                             onClick={handleImageUpload}
                                             loading={loading}
@@ -226,7 +226,7 @@ const CourseDataChange = () => {
                                     </div>
                                     <div className="button ">
                                         <button type='button'
-                                            disabled={logopreview ? false : true}
+                                            disabled={logopreview && logopreview ? false : true}
                                             onClick={logoviewHide}
                                             className='btn btn-light viewIcon'
                                         >
@@ -265,7 +265,7 @@ const CourseDataChange = () => {
                                     <div className="button ">
                                         <button
                                             type='button'
-                                            disabled={previewOtherImage.length > 0 ? false : true}
+                                            disabled={ previewOtherImage && previewOtherImage.length > 0 ? false : true}
                                             onClick={otherviewHide}
                                             className='btn btn-light viewIcon'
                                         >
@@ -276,7 +276,7 @@ const CourseDataChange = () => {
 
                                         <Button
                                             type="primary"
-                                            disabled={otherImage.length > 0 ? false : true}
+                                            disabled={otherImage && otherImage.length > 0 ? false : true}
                                             onClick={handleOtherImageUpload}
                                             loading={loading}
                                         >

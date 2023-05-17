@@ -385,7 +385,7 @@ export const studentDetailsReducer = (state = { studentsFiles: {}, studentPerson
 
 //get  applications for user
 
-export const MyApplicationReducer = (state = { applications: [] }, action) => {
+export const MyApplicationReducer = (state = { applications: []}, action) => {
     switch (action.type) {
 
         case MY_APPLICATION_REQUEST:
@@ -399,7 +399,8 @@ export const MyApplicationReducer = (state = { applications: [] }, action) => {
             return {
                 // ...state,
                 loading: false,
-                applications: action.payload.applications
+                applications: action.payload.applications,
+              
             }
 
         case MY_APPLICATION_FAIL:
@@ -422,7 +423,7 @@ export const MyApplicationReducer = (state = { applications: [] }, action) => {
 
 //GET COURSE APPLICATIONS
 
-export const CourseApplicationReducer = (state = { applications: [] }, action) => {
+export const CourseApplicationReducer = (state = { course_applications: [] }, action) => {
     switch (action.type) {
 
         case COURSE_APPLICATION_REQUEST:
@@ -436,7 +437,7 @@ export const CourseApplicationReducer = (state = { applications: [] }, action) =
             return {
                 // ...state,
                 loading: false,
-                applications: action.payload.applications
+                course_applications: action.payload.course_applications
             }
 
         case COURSE_APPLICATION_FAIL:
@@ -458,7 +459,7 @@ export const CourseApplicationReducer = (state = { applications: [] }, action) =
 
 //get application details
 
-export const applicationDetailsReducer = (state = { application: {} }, action) => {
+export const applicationDetailsReducer = (state = { application: {} ,payment_history:[] }, action) => {
     switch (action.type) {
 
         case GET_APPLICATION_REQUEST:
@@ -472,7 +473,8 @@ export const applicationDetailsReducer = (state = { application: {} }, action) =
             return {
                 // ...state,
                 loading: false,
-                application: action.payload.application
+                application: action.payload.application,
+                payment_history: action.payload.payment_history
             }
 
         case GET_APPLICATION_FAIL:

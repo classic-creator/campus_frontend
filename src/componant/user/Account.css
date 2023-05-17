@@ -1,7 +1,8 @@
 
 .profileContainer {
     display: flex;
-    height: 100vh;
+    /* height: 100vh; */
+    min-height: 100%;
     width: 100vw;
     /* position: fixed; */
     top: 0%;
@@ -29,7 +30,8 @@
   }
   
   .profileContainer > div:first-child > img {
-    width: 20vmax;
+    width: 22vmax;
+    height: 22vmax;
     border-radius: 100%;
     transition: all 0.5s;
   }
@@ -85,7 +87,8 @@
     font: 400 1vmax "Roboto";
     color: white;
     text-decoration: none;
-    padding: 0.5vmax;
+    padding: 0.7vmax;
+    border-radius:9px;
     text-align: center;
     transition: all 0.5s;
     margin: 1vmax 0;

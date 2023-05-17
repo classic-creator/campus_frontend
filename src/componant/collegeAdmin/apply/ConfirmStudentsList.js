@@ -6,11 +6,13 @@ import { useParams } from 'react-router-dom'
 import { ConfirmStudentAction } from '../../../action/applyAction'
 import { Link } from 'react-router-dom'
 import TableComponent from '../../layout/TableComponent'
+import CourseBar from '../courseBar'
 
 
 const ConfirmStudentsList = () => {
 
     const {ConfirmStudent,loading} =useSelector(state=>state.confirmStudent)
+    const { course } = useSelector(state => state.courseDetails)
     const { id } = useParams()
     const dispatch = useDispatch()
   
@@ -45,7 +47,7 @@ const ConfirmStudentsList = () => {
         editable: true
       },
       {
-        title: 'Application Status',
+        title: 'Admission Status',
         dataIndex: "admission_status",
         align: "center",
         editable: true,
@@ -60,18 +62,19 @@ const ConfirmStudentsList = () => {
        
     },
     {
-        title: 'Payment Status',
-        dataIndex: "admission_payment_status",
+        title: 'Phon No',
+        dataIndex: "phon_no",
         align: "center",
         editable: true,
-        render(text, record) {
-            return {
-              props: {
-                style: { color: record.admission_payment_status==='paid'? "green" : "red" }
-              },
-              children: <div>{text}</div>
-            };
-          }
+       
+       
+    },
+    {
+        title: 'Email',
+        dataIndex: "email",
+        align: "center",
+        editable: true,
+       
        
     },
       {
@@ -97,7 +100,9 @@ const ConfirmStudentsList = () => {
         admission_status: item.admission_status,
         admission_payment_status:item.admission_payment_status,
         district: item.district,
-        mark_obtain_lastExam: item.mark_obtain_lastExam
+        mark_obtain_lastExam: item.mark_obtain_lastExam,
+        phon_no: item.phon_no,
+        email: item.email
   
   
       })
@@ -108,12 +113,7 @@ const ConfirmStudentsList = () => {
          <div className="depertmentDeash">
       <Sidebar />
       <div className="dashboard">
-      <div className='headdept'>
-        
-          <h2>Confirm Students </h2>
-          {ConfirmStudent && ConfirmStudent.length>0 ?  <span>{ConfirmStudent[0].courseName}</span> :null}
-      </div>
-           
+      <CourseBar course={course} id={id}  header={'Enrolled Students'} />
               <TableComponent 
               columns={columns}
               dataSource={rows}

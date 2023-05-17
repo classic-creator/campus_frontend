@@ -1,5 +1,9 @@
 
 import {
+    ADD_NOTIC_FAIL,
+    ADD_NOTIC_REQUEST,
+    ADD_NOTIC_RESET,
+    ADD_NOTIC_SUCCESS,
     CLEAR_ERRORS,
     COLLEGE_COURSES_FAIL,
     COLLEGE_COURSES_REQUEST,
@@ -12,12 +16,19 @@ import {
     CREATE_DEPERTMENT_REQUEST,
     CREATE_DEPERTMENT_RESET,
     CREATE_DEPERTMENT_SUCCESS,
+    DELETE_NOTIC_FAIL,
+    DELETE_NOTIC_REQUEST,
+    DELETE_NOTIC_RESET,
+    DELETE_NOTIC_SUCCESS,
     DEPERTMENT_COURSES_FAIL,
     DEPERTMENT_COURSES_REQUEST,
     DEPERTMENT_COURSES_SUCCESS,
     GET_DEPERTMENT_FAIL,
     GET_DEPERTMENT_REQUEST,
     GET_DEPERTMENT_SUCCESS,
+    GET_NOTIC_FAIL,
+    GET_NOTIC_REQUEST,
+    GET_NOTIC_SUCCESS,
     MY_COLLEGE_FAIL,
     MY_COLLEGE_REQUEST,
     MY_COLLEGE_SUCCESS,
@@ -184,8 +195,11 @@ export const mycollegesReducer = (state = { myCollege: {}, myCourses: [] }, acti
                 myCollege: action.payload.myCollege,
                 myCourses: action.payload.myCourses,
                 clgConfirmApplication: action.payload.clgConfirmApplication,
+                photos: action.payload.photos,
+                cover_image: action.payload.cover_image,
+                logo_image: action.payload.logo_image,
 
-
+               
             }
 
         case MY_COLLEGE_FAIL:
@@ -324,6 +338,155 @@ export const updateCourseReducer = ((state = {}, action) => {
                 loading: false,
                 error: action.payload
             }
+
+        case CLEAR_ERRORS:
+
+            return {
+                ...state,
+                error: null,
+            };
+
+        default:
+            return state;
+    }
+
+})
+
+export const AddnoticReducer = ((state = {}, action) => {
+
+    switch (action.type) {
+
+        case ADD_NOTIC_REQUEST:
+         
+
+            return {
+               
+                loading: true,
+
+            };
+        case ADD_NOTIC_SUCCESS:
+
+
+            return {
+
+                loading: false,
+                message: action.payload.message
+
+            };
+       
+        case ADD_NOTIC_RESET:
+
+
+            return {
+
+                loading: false,
+               
+
+            };
+       
+
+        case ADD_NOTIC_FAIL:
+         
+
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+
+            return {
+                ...state,
+                error: null,
+            };
+
+        default:
+            return state;
+    }
+
+})
+
+
+
+
+export const GetNoticReducer = ((state = {   notic:[]}, action) => {
+
+    switch (action.type) {
+
+        case GET_NOTIC_REQUEST:
+
+            return {
+                loading: true,
+               
+
+            };
+        case GET_NOTIC_SUCCESS:
+
+            return {
+
+                loading: false,
+                notic: action.payload.notic
+
+            };
+        case GET_NOTIC_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            };
+
+        case CLEAR_ERRORS:
+
+            return {
+                ...state,
+                error: null,
+            };
+
+        default:
+            return state;
+    }
+
+})
+
+
+//delete notic reducer
+
+
+
+
+export const DeleteNoticReducer = ((state = {}, action) => {
+
+    switch (action.type) {
+
+        case DELETE_NOTIC_REQUEST:
+
+            return {
+                loading: true,
+              
+
+            };
+        case DELETE_NOTIC_SUCCESS:
+
+            return {
+
+                loading: false,
+                message: action.payload.message,
+                isDeleted:true,
+
+            };
+        case DELETE_NOTIC_RESET:
+
+            return {
+
+                loading: false,
+      
+                isDeleted:false,
+
+            };
+        case DELETE_NOTIC_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            };
 
         case CLEAR_ERRORS:
 

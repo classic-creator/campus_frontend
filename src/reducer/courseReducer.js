@@ -66,7 +66,7 @@ export const courseReducer= ((state={courses:[],initialState},action)=> {
           case PREFERED_COURSES_REQUEST:
                          
             return{
-            
+            ...state,
               loading:true,
               preferCourses:[]
             };

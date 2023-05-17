@@ -3,6 +3,9 @@ import { ADD_PAYMENT_FAIL,
     ADD_PAYMENT_REQUEST,
     ADD_PAYMENT_SUCCESS ,
    CLEAR_ERRORS,
+    CLOSED_PAYMENT_FAIL,
+    CLOSED_PAYMENT_REQUEST,
+    CLOSED_PAYMENT_SUCCESS,
     COURSE_PAYMENT_DETAILS_FAIL,
     COURSE_PAYMENT_DETAILS_REQUEST,
     COURSE_PAYMENT_DETAILS_SUCCESS,
@@ -184,6 +187,35 @@ export const getCoursePaymentDetailsAction = (id) => async (dispatch) => {
       })
    }
 }
+
+//close payments status
+export const updateFeesStatusAction = (id) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": 'application/json',
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: CLOSED_PAYMENT_REQUEST })
+
+      const { data } = await axios.post(`/api/course/payments/close`,{id},  config)
+
+      dispatch({
+         type: CLOSED_PAYMENT_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: CLOSED_PAYMENT_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+
  export const clearErrors = () => async (dispatch) => {
    dispatch({
        type: CLEAR_ERRORS

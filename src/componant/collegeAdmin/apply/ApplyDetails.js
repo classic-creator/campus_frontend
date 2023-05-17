@@ -14,7 +14,7 @@ import Modal from 'react-modal'
 const ApplyDetails = () => {
 
     const { loading, error, isUpdated } = useSelector(state => state.applicationAction)
-    const { application ,loading:fileLoading} = useSelector(state => state.applicationDetails)
+    const {payment_history, application ,loading:fileLoading} = useSelector(state => state.applicationDetails)
     const { id } = useParams()
     const [status, setStatus] = useState('')
     const dispatch = useDispatch()
@@ -162,44 +162,44 @@ const ApplyDetails = () => {
 
     const feesColumns = [
         {
-            title: 'Id',
-            dataIndex: 'id',
-            style: { background: '#1890ff', color: '#fff' },
+            title: 'Payment id',
+            dataIndex: 'payment_id',
+            // style: { background: '#1890ff', color: '#fff' },
+        },
+        {
+            title: 'Fees id',
+            dataIndex: 'fees_id',
+            align: "center",
+            editable: true,
+           
         },
         {
             title: 'Fees type',
-            dataIndex: 'exam',
+            dataIndex: 'fees_type',
             align: "center",
             editable: true,
-            render: (_, record) => (
-                <Link to={`/course/deashboard/${record.id}`}>{record.name}</Link>
-            ),
+           
         },
         {
             title: 'Amount'
-            , dataIndex: 'mark_obtain_lastExam',
+            , dataIndex: 'amount',
             align: "center",
             editable: true
         },
+       
         {
             title: 'Payment Status',
-            dataIndex: "eligibility",
+            dataIndex: "payment_status",
             align: "center",
             editable: true
         },
         {
-            title: 'Date',
-            dataIndex: 'district',
+            title: 'Pay Date',
+            dataIndex: 'date',
             align: "center",
             editable: true
         },
-        {
-            title: 'Payment Method',
-            dataIndex: "admission_status",
-            align: "center",
-            editable: true,
-
-        },
+       
         {
             title: 'Recept',
             dataIndex: "action",
@@ -213,28 +213,44 @@ const ApplyDetails = () => {
         },
 
     ]
+    const historyrows=[];
+
+    payment_history && payment_history.forEach((item)=>{
+        historyrows.push({
+
+            payment_id:item.payment_id,
+            fees_type:item.fees_type,
+            fees_id:item.fees_id,
+            amount:item.amount,
+            date:item.created_at,
+            payment_status:item.payment_status,
+
+
+            
+        })
+    })
 
     return (
         //    <Fragment>
         //     {applicationLoading ? <Loader/> : 
         <Fragment>
             <div className="ApplicatinInfo">
-
+{fileLoading ? <Button loading={fileLoading}></Button>:null}
                 <div className="profile1">
                     <div className="profile11">
 
                         <h2>{application && application.first_name}{' '}{application && application.middle_name}{' '}{application && application.last_name}</h2>
                         <span className='smlspan'>#{application && application.id}</span>
                         <span className='smlspan'>{application && application.email}</span>
-                        <p>Application Status :<span className={application.admission_status === 'Selected' || application.admission_status === 'confirmed' ? 'greenColor' : 'redColor'}>  {application && application.admission_status}</span></p>
+                        <p>Application Status :<span className={application && application.admission_status === 'Selected' ||application && application.admission_status === 'confirmed' ? 'greenColor' : 'redColor'}>  {application && application.admission_status}</span></p>
                         <p>Payment Status : <span className={application && application.admission_payment_status === 'paid' ? 'greenColor' : 'redColor'}>{application && application.admission_payment_status}</span> </p>
 
                     </div>
                     <div className="profile12">
 
                         <h3>{application && application.mark_obtain_lastExam}% in last exam</h3>
-                        <span>{application && application.qualification === 'hs' ? application.class12_strem : ''}</span>
-                        <span>{application && application.qualification === 'hs' ? (application && application.class12_college) : (application && application.class10_school)}</span>
+                        <span>  {application && application.qualification === 'hs' ? application.class12_strem : ''}</span>
+                        <span>School/College : {application && application.qualification === 'hs' ? (application && application.class12_college) : (application && application.class10_school)}</span>
                     </div>
 
                 </div>
@@ -274,16 +290,16 @@ const ApplyDetails = () => {
             </div>
             <div className="deabord">
                 <div className="profile2 container">
-                    <h2>Acadamic</h2>
+                    <h2 className='p-3'>Acadamic</h2>
 
 
-                    <TableComponent columns={columns}
+                    <TableComponent loading={fileLoading} columns={columns}
                         dataSource={rows} />
 
-                    <h2>Payment History</h2>
+                    <h2 className='p-3'>Payment History</h2>
 
-                    <TableComponent columns={feesColumns}
-                        dataSource={rows} />
+                    <TableComponent loading={fileLoading} columns={feesColumns}
+                        dataSource={historyrows} />
 
                 </div>
 
@@ -292,59 +308,59 @@ const ApplyDetails = () => {
 
 
                     <div>
-                        <img src={application.passport_image_url} alt='img' />
+                        <img src={application && application.passport_image_url} alt='img' />
                         <span>Passport Image</span>
-                        <Button loading={fileLoading} onClick={() => openModal(application.passport_image_url)}>Preview</Button>
+                        <Button loading={fileLoading} onClick={() => openModal(application && application.passport_image_url)}>Preview</Button>
                     </div>
                     <div>
-                        <img src={application.signature_image_url} alt='img' />
+                        <img src={application && application.signature_image_url} alt='img' />
                         <span>Signature</span>
-                        <Button loading={fileLoading} onClick={() => openModal(application.signature_image_url)}>Preview</Button>
+                        <Button loading={fileLoading} onClick={() => openModal(application && application.signature_image_url)}>Preview</Button>
                     </div>
                     <div>
-                        <img src={application.aadhar_image_url} alt='img' />
+                        <img src={application && application.aadhar_image_url} alt='img' />
                         <span>Aadhar</span>
-                        <Button loading={fileLoading} onClick={() => openModal(application.aadhar_image_url)}>Preview</Button>
+                        <Button loading={fileLoading} onClick={() => openModal(application && application.aadhar_image_url)}>Preview</Button>
                     </div>
                     <div>
-                        <img src={application.hslc_registation_image_url} alt='img' />
+                        <img src={application && application.hslc_registation_image_url} alt='img' />
                         <span>HSLC Registation Card</span>
-                        <Button loading={fileLoading} onClick={() => openModal(application.hslc_registation_image_url)}>Preview</Button>
+                        <Button loading={fileLoading} onClick={() => openModal(application && application.hslc_registation_image_url)}>Preview</Button>
                     </div>
                     <div>
-                        <img src={application.hslc_marksheet_image_url} alt='img' />
+                        <img src={application && application.hslc_marksheet_image_url} alt='img' />
                         <span>HSLC Marksheet Card</span>
-                        <Button loading={fileLoading} onClick={() => openModal(application.hslc_marksheet_image_url)}>Preview</Button>
+                        <Button loading={fileLoading} onClick={() => openModal(application && application.hslc_marksheet_image_url)}>Preview</Button>
                     </div>
                     <div>
-                        <img src={application.hslc_certificate_image_url} alt='img' />
+                        <img src={application && application.hslc_certificate_image_url} alt='img' />
                         <span>HSLC Certificate</span>
-                        <Button loading={fileLoading} onClick={() => openModal(application.hslc_certificate_image_url)}>Preview</Button>
+                        <Button loading={fileLoading} onClick={() => openModal(application && application.hslc_certificate_image_url)}>Preview</Button>
                     </div>
                     <div>
-                        <img src={application.hslc_admit_image_url} alt='img' />
+                        <img src={application && application.hslc_admit_image_url} alt='img' />
                         <span>HSLC Admit Card</span>
-                        <Button loading={fileLoading} onClick={() => openModal(application.hslc_admit_image_url)}>Preview</Button>
+                        <Button loading={fileLoading} onClick={() => openModal(application && application.hslc_admit_image_url)}>Preview</Button>
                     </div>
                     <div>
-                        <img src={application.hsslc_registation_image_url} alt='img' />
+                        <img src={application && application.hsslc_registation_image_url} alt='img' />
                         <span>HSSLC Registation Card</span>
-                        <Button loading={fileLoading} onClick={() => openModal(application.hsslc_registation_image_url)}>Preview</Button>
+                        <Button loading={fileLoading} onClick={() => openModal(application && application.hsslc_registation_image_url)}>Preview</Button>
                     </div>
                     <div>
-                        <img src={application.hsslc_marksheet_image_url} alt='img' />
+                        <img src={application && application.hsslc_marksheet_image_url} alt='img' />
                         <span>HSSLC Marksheet Card</span>
-                        <Button loading={fileLoading} onClick={() => openModal(application.hsslc_marksheet_image_url)}>Preview</Button>
+                        <Button loading={fileLoading} onClick={() => openModal(application && application.hsslc_marksheet_image_url)}>Preview</Button>
                     </div>
                     <div>
-                        <img src={application.hsslc_certificate_image_url} alt='img' />
+                        <img src={application && application.hsslc_certificate_image_url} alt='img' />
                         <span>HSSLC Certificate</span>
-                        <Button loading={fileLoading} onClick={() => openModal(application.hsslc_certificate_image_url)}>Preview</Button>
+                        <Button loading={fileLoading} onClick={() => openModal(application && application.hsslc_certificate_image_url)}>Preview</Button>
                     </div>
                     <div>
-                        <img src={application.hsslc_admit_image_url} alt='img' />
+                        <img src={application && application.hsslc_admit_image_url} alt='img' />
                         <span>HSSLC Admit Card</span>
-                        <Button loading={fileLoading} onClick={() => openModal(application.hsslc_admit_image_url)}>Preview</Button>
+                        <Button loading={fileLoading} onClick={() => openModal(application && application.hsslc_admit_image_url)}>Preview</Button>
                     </div>
                 </div>
 

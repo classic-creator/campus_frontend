@@ -8,21 +8,27 @@ import { ConfirmStudentAction, GetCourseApplications, getSelectedApplication } f
 import CountUp from 'react-countup';
 import { getCourseDetails } from '../../action/courseAction';
 import {  Typography } from '@material-ui/core';
-import { Button, Space } from 'antd';
+import { Button, Popconfirm, Space, Tag } from 'antd';
 import CourseDataChange from './CourseDataChange';
 import TableComponent from '../layout/TableComponent';
-import { getCoursePaymenthistoryAction } from '../../action/paymentAction';
+import { getCoursePaymenthistoryAction, updateFeesStatusAction } from '../../action/paymentAction';
+import { CLOSED_PAYMENT_RESET } from '../../constants/paymentConsttants';
+import { useAlert } from 'react-alert';
+import CourseBar from './courseBar';
 
 const CourseDeashboard = () => {
 
 
     const { id } = useParams()
     const dispatch = useDispatch()
-    const { applications } = useSelector(state => state.courseApplyList)
+    const alert=useAlert()
+    const { course_applications } = useSelector(state => state.courseApplyList)
     const { SelectedApplication } = useSelector(state => state.selectedApplication)
     const {  course ,loading } = useSelector(state => state.courseDetails)
     const {ConfirmStudent} =useSelector(state=>state.confirmStudent)
     const {payments,loading:feesLoading} =useSelector(state=>state.payments)
+
+    const {isUpdated,messege,error:updateError,loading:updateLoading}=useSelector(state=>state.closePayment)
    
   
     ChartJS.register(...registerables);
@@ -34,13 +40,19 @@ const CourseDeashboard = () => {
         datasets: [
             {
 
-                backgroundColor: ["#00A6B4", "#6800B4"],
+                backgroundColor: ["#00FF00", "#FF0000"],
                 hoverBackgroundColor: ["#4B5000", "#35014F"],
                 data: [ConfirmStudent.length,course['seat_capacity']]
 
             }
         ]
     }
+
+const ClodePayment=(record)=>{
+
+  dispatch(updateFeesStatusAction(record.id))
+
+}
 
     const columns = [
         {
@@ -72,18 +84,15 @@ const CourseDeashboard = () => {
           dataIndex: "status",
           align: "center", 
           editable: true,
-          render(text, record) {
-            return {
-              props: {
-                style: { color: record.status==='active'? "green" : "red"  }
-              },
-              children: <div>{text}</div>
-            };
+        
+          render:(_, { status }) => {
+            let color = status === 'active' ? 'green' : 'red';
+            return <Tag color={color} key={status}>{status}</Tag>;
           }
       },
 
       {
-          title: 'Total Student/Registrant',
+          title: 'Registrant/Total Student',
           dataIndex: "StudentDetails",
           align: "center",  
       },
@@ -95,6 +104,9 @@ const CourseDeashboard = () => {
             rows.length >= 1 ? (
               <Space>
                 <Link to={`/payment/details/${record.id}`}> <Button type='primary'> Open</Button></Link>
+                  <Popconfirm  onConfirm={() => ClodePayment(record)} title='Are you sure you want to Closed ?'>
+                  <Button loading={updateLoading} type='primary' danger > Closed</Button>
+                </Popconfirm>
               </Space>
             ) : null
         }
@@ -110,7 +122,7 @@ const CourseDeashboard = () => {
           amount: '₹'+ item.amount,
           last_date:item.last_date,
           status:item.active_status,
-          StudentDetails:item.totalStudents +'/'+item.feePaymentStudent
+          StudentDetails:item.feePaymentStudent +'/'+item.totalStudents
         
         })
       })
@@ -121,7 +133,12 @@ const CourseDeashboard = () => {
         dispatch(getCourseDetails(id))
         dispatch(ConfirmStudentAction(id))
         dispatch(getCoursePaymenthistoryAction(id))
-    }, [dispatch, id])
+
+        if(isUpdated){
+          dispatch({type:CLOSED_PAYMENT_RESET})
+          alert.success('Closed Payment Request Successfully')
+        }
+    }, [dispatch, id,alert,isUpdated])
 
     return (
         < Fragment>
@@ -129,17 +146,9 @@ const CourseDeashboard = () => {
                <div> <Sidebar /></div>
                 <div className="dashboardContainer">
                     {/* <CourseDataChange /> */}
-                <Typography component="h1">Course Dashboard</Typography>
+                
+                <CourseBar course={course} header={'Deashboard'} id={id} loading={loading}/>
                 <div className='dashboardSummery'>
-                    <div>
-                        <p className='dashboardSummeryP'>
-
-                         {loading ? <Button loading={loading}></Button> :  course && course.courseName}
-
-                    <Link className='btn btn-secondary ms-3 setting-btn' to={`/course/update/${id}`}>Settings</Link>
-                        </p>
-
-                    </div>
 
                     <div className="doughnutChat">
                         <Doughnut
@@ -150,8 +159,8 @@ const CourseDeashboard = () => {
                     <div className="dashboardSummeryBox2">
                         <Link to={`/course/apply/${id}`}>
                             <p>admission requests</p>
-                            <CountUp end={applications && applications.length} duration={5} />
-                            {/* <p>{applications && applications.length}</p> */}
+                            <CountUp end={course_applications && course_applications.length>1 && course_applications.length} duration={5} />
+                            {/* <p>{course_applications && course_applications.length}</p> */}
                         </Link>
 
                         <Link to={`/application/selected/${id}`}>

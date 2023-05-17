@@ -24,6 +24,9 @@ import {
     RESET_PASSWORD_REQUEST,
     RESET_PASSWORD_SUCCESS,
     RESET_PASSWORD_FAIL,
+    CHANGE_PROFILE_REQUEST,
+    CHANGE_PROFILE_SUCCESS,
+    CHANGE_PROFILE_FAIL,
 } from "../constants/userConstants";
 
 import axios from "axios";
@@ -65,7 +68,7 @@ export const login = (email, password) => async (dispatch) => {
 
 export const registerUser = (userData) => async (dispatch) => {
     try {
-        const config = { headers: { "Content-Type": "application/json" } };
+        const config = { headers: { "Content-Type":"multipart/form-data" } };
         dispatch({ type: REGISTER_USER_REQUEST })
 
         const { data } = await axios.post(
@@ -113,6 +116,36 @@ export const loadUser = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: LOAD_USER_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+//LOAD USER
+
+export const UpdateProfileAction = (formData) => async (dispatch) => {
+    try {
+
+        const token=localStorage.getItem('token')
+
+        const config = {
+            baseURL: process.env.REACT_APP_API_BASE_URL,
+            headers: {
+                "Content-Type": "multipart/form-data" ,
+                Authorization: `Bearer ${token}`
+            }
+        };
+
+        dispatch({ type: CHANGE_PROFILE_REQUEST })
+
+        const { data } = await axios.post("/api/Profile/update",formData, config)
+
+        dispatch({
+            type: CHANGE_PROFILE_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: CHANGE_PROFILE_FAIL,
             payload: error.response.data.message
         })
     }

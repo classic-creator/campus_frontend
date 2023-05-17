@@ -1,0 +1,106 @@
+import { Button, Space, Popconfirm, Table } from 'antd'
+import React, { Fragment, useEffect } from 'react'
+import TableComponent from '../layout/TableComponent'
+import { Link, useNavigate } from 'react-router-dom'
+import { DeleteNoticAction, clearErrors, getNotsAction } from '../../action/collegeAdminAction'
+import { useDispatch, useSelector } from 'react-redux'
+import { useAlert } from 'react-alert'
+import Sidebar from './sidebar'
+import { DELETE_NOTIC_RESET } from '../../constants/collegeAdminConstants'
+
+const Links = () => {
+
+  const dispatch = useDispatch()
+  const alert = useAlert()
+  const navigate = useNavigate()
+
+  const { notic, loading } = useSelector(state => state.getNotic)
+  const { loading: deleteLoad, error: deleteErr, isDeleted } = useSelector(state => state.dltNotic)
+
+const handelDelete=(id)=>{
+
+  dispatch(DeleteNoticAction(id))
+}
+
+  const columns = [
+    {
+      title: 'Id',
+      dataIndex: 'id',
+      // width: 50,
+      fixed: 'left',
+      key:'id'
+    },
+    {
+      title: 'Title',
+      dataIndex: 'title',
+      align: "center",
+      editable: true,
+
+    },
+    {
+      title: 'Links',
+      dataIndex: 'link',
+      align: "center",
+      editable: true,
+      //   render: (_, record) => (
+      //     <Link to={`/depertment/${record.id}`}>{record.link}</Link>
+      //   ),
+    },
+    {
+      title: 'Action',
+      dataIndex: "action",
+      align: "center"
+      , render: (_, record) =>
+        rows.length >= 1 ? (
+          <Space>
+            <Popconfirm onConfirm={()=>handelDelete(record.id)} title='Are you sure you want to delete ?'  >
+              <Button danger loading={deleteLoad} type='primary'> Delete</Button>
+            </Popconfirm>
+            {/* <Button onClick={() => console.log('edit')} type='primary'>Edit</Button>
+            <Button onClick={() => console.log('edit')} danger type='primary'>Delete</Button> */}
+          </Space>
+        ) : null
+    }
+  ]
+
+  const rows = []
+
+
+  notic && notic.forEach((item) => {
+    rows.push({
+      id: item.id,
+      title: item.title,
+      link: item.link,
+    })
+  })
+  useEffect(() => {
+    if (isDeleted) {
+      alert.success('Delete Links Successfully')
+      dispatch({ type: DELETE_NOTIC_RESET })
+      navigate('/links')
+    }
+    if (deleteErr) {
+      alert.error(deleteErr)
+      dispatch(clearErrors())
+    }
+    dispatch(getNotsAction())
+  }, [dispatch, isDeleted, alert, deleteErr, navigate])
+
+  return (
+    <Fragment>
+      <div className="depertmentDeash">
+        <Sidebar />
+        <div className="dashboard">
+          <div className='headdept'>
+
+            <h2>Links</h2>
+          </div>
+          <TableComponent columns={columns} loading={loading}  dataSource={rows} />
+          <Link to={`/add/links`}>Add Links</Link>
+        </div>
+      </div>
+    </Fragment>
+  )
+}
+
+export default Links

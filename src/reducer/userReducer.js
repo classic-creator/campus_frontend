@@ -26,6 +26,10 @@ import {
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAIL,
+  CHANGE_PROFILE_REQUEST,
+  CHANGE_PROFILE_SUCCESS,
+  CHANGE_PROFILE_FAIL,
+  CHANGE_PROFILE_RESET,
 } from "../constants/userConstants";
 
 const initialState = {
@@ -106,12 +110,14 @@ export const profileReducer=((state={},action)=>{
 
   switch (action.type) {
     case CHANGE_PASSWORD_REQUEST:
+      case CHANGE_PROFILE_REQUEST:
           return{
      ...state,
       loading:true
      };
   
     case CHANGE_PASSWORD_SUCCESS:
+      case CHANGE_PROFILE_SUCCESS:
      return{
 
       ...state,
@@ -121,6 +127,7 @@ export const profileReducer=((state={},action)=>{
      };
   
     case CHANGE_PASSWORD_FAIL: 
+    case   CHANGE_PROFILE_FAIL:
      return{
 
       ...state,
@@ -128,7 +135,8 @@ export const profileReducer=((state={},action)=>{
       error:action.payload
 
      };
-    case CHANGE_PASSWORD_RESET:    
+    case CHANGE_PASSWORD_RESET:  
+    case CHANGE_PROFILE_RESET:  
      return{
 
       ...state,

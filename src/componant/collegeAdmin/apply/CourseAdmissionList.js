@@ -6,12 +6,14 @@ import Sidebar from '../sidebar'
 import {useDispatch, useSelector} from 'react-redux'
 import { GetCourseApplications } from '../../../action/applyAction'
 import TableComponent from '../../layout/TableComponent'
+import CourseBar from '../courseBar'
 
 const CourseAdmissionList = () => {
  
     const {id}=useParams()
     const dispatch =useDispatch()
-    const {applications,loading} =useSelector(state=>state.courseApplyList)
+    const {course_applications,loading} =useSelector(state=>state.courseApplyList)
+    const { course } = useSelector(state => state.courseDetails)
 
     useEffect(() => {
       dispatch(GetCourseApplications(id))
@@ -96,7 +98,7 @@ const CourseAdmissionList = () => {
     const rows = []
 
 
-    applications && applications.forEach((item) => {
+    course_applications && course_applications.forEach((item) => {
         rows.push({
             id: item.id,
             name: item.first_name + ' '+item.middle_name+' ' + item.last_name,
@@ -116,12 +118,13 @@ const CourseAdmissionList = () => {
     <div className="depertmentDeash">
       <Sidebar />
       <div className="dashboard">
-      <div className='headdept'>
+      {/* <div className='headdept'>
         
           <h2>Application request</h2>
-          {applications && applications.length>0?  <span>{applications[0].courseName}</span>:null}
-      </div>
+          {course_applications && course_applications.length>0?  <span>{course_applications[0].courseName}</span>:null}
+      </div> */}
         
+          <CourseBar course={course} id={id} header={'Application List'} />
         <TableComponent columns={columns}
             dataSource={rows} loading={loading} />
       </div>

@@ -1,9 +1,12 @@
 *{
     margin: 0;
+    padding: 0;
     scroll-behavior: smooth;
 }
 body{
     /* background:linear-gradient(to right,#36d5f1,#cf9dcd); */
+    overflow-x: hidden;
+  
     background-color: #cce5ff;
 }
 input::-webkit-outer-spin-button,
