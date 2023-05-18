@@ -11,32 +11,42 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { GetCarouselimage } from '../../action/imageAction.js';
 
 const Home = () => {
 
+  const {photos}=useSelector(state=>state.getCarousel)
+  const dispatch=useDispatch()
 
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handlePrevClick = () => {
-    setActiveIndex((activeIndex - 1 + images.length) % images.length);
+    setActiveIndex((activeIndex - 1 + photos.length) % photos.length);
   };
 
   const handleNextClick = () => {
-    setActiveIndex((activeIndex + 1) % images.length);
+    setActiveIndex((activeIndex + 1) % photos.length);
   };
-  const images = [
-    'https://s3.ap-south-1.amazonaws.com/assets.reflections.live/1596600285014-kdgubww5.jpeg',
-    "https://www.brainbuxa.com/uploads/blogs/Education%20System%20in%20India_%20Govt's%20role,%20advantages,%20disadvantages.jpeg?w=873&timestamp=20-14-36&fit=crop",
-    'https://assets.telegraphindia.com/telegraph/2022/Apr/1650477688_school.jpg',
+  // const images = [
+  //   'https://s3.ap-south-1.amazonaws.com/assets.reflections.live/1596600285014-kdgubww5.jpeg',
+  //   "https://www.brainbuxa.com/uploads/blogs/Education%20System%20in%20India_%20Govt's%20role,%20advantages,%20disadvantages.jpeg?w=873&timestamp=20-14-36&fit=crop",
+  //   'https://assets.telegraphindia.com/telegraph/2022/Apr/1650477688_school.jpg',
 
-    // Add more image URLs here as needed
-  ];
+  //   // Add more image URLs here as needed
+  // ];
+
+  useEffect(() => {
+   dispatch(GetCarouselimage())
+  }, [dispatch])
+  
+
   return (
     <Fragment>
       <div id='home' className="container-fluid homediv">
         <div id="carouselExampleIndicators" className="carousel slide " data-bs-ride="carousel">
           <div className="carousel-indicators">
-            {images.map((_, index) => (
+            {photos &&  photos.map((_, index) => (
               <button
                 type="button"
 
@@ -51,9 +61,9 @@ const Home = () => {
             ))}
           </div>
           <div className="carousel-inner  ">
-            {images.map((imageUrl, index) => (
+            { photos && photos.map((imageUrl, index) => (
               <div className={`carousel-item  ${activeIndex === index ? 'active' : ''}`} key={index}>
-                <img src={imageUrl} className="d-block w-100 " alt={`Slide ${index + 1}`} />
+                <img src={imageUrl.image_url} className="d-block w-100 " alt={`Slide ${index + 1}`} />
               </div>
             ))}
           </div>

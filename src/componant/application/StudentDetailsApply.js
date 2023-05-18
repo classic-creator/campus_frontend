@@ -10,6 +10,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { REGISTER_PERSONALDATA_RESET } from '../../constants/applyConstants'
 import CheckoutSteps from './checkOutStep'
 import { Button } from 'antd'
+import SelectField from './SelectField'
 
 
 const StudentDetailsApply = () => {
@@ -21,7 +22,7 @@ const StudentDetailsApply = () => {
   const { id } = useParams()
 
   const { error, message, loading } = useSelector(state => state.applyForm)
-  const { studentPersonalData ,loading:detailsloading} = useSelector(state => state.studentDetails)
+  const { studentPersonalData, loading: detailsloading } = useSelector(state => state.studentDetails)
 
   const initialvalue = {
     first_name: studentPersonalData.first_name ? studentPersonalData.first_name : '',
@@ -45,7 +46,7 @@ const StudentDetailsApply = () => {
     if (hasChanged) {
       // Make API call to save data to database
       dispatch(StudentPersonalData(values));
-      
+
     }
     else {
 
@@ -65,7 +66,7 @@ const StudentDetailsApply = () => {
     if (message) {
       alert.success(message)
       navigate(`/apply/address/${id}`)
-      dispatch({type:REGISTER_PERSONALDATA_RESET})
+      dispatch({ type: REGISTER_PERSONALDATA_RESET })
     }
 
     dispatch(GetStudentPersonalData())
@@ -87,12 +88,26 @@ const StudentDetailsApply = () => {
     mark_obtain_lastExam: Yup.string().required('required'),
   })
 
+  const qualificationOptions = [
+    { value: '10th', label: '10th' },
+    { value: '12(science)', label: '12 (Science)' },
+    { value: '12(arts)', label: '12 (Arts)' },
+    { value: '12(commerce)', label: '12 (Commerce)' },
+  ];
+
+const identificationOptions = [
+  { value: 'aadhar', label: 'Aadhar' },
+  { value: 'pan_card', label: 'Pan Card' },
+  { value: 'votar', label: 'Voter ID' },
+  { value: 'driving_license', label: 'Driving License' },
+  { value: 'passport', label: 'Passport' },
+];
 
   return (
     <Fragment>
       {loading ? <Loader /> :
         <Fragment>
-          <CheckoutSteps activeStep={0}/>
+          <CheckoutSteps activeStep={0} />
           <Formik
             enableReinitialize={true}
             initialValues={initialvalue}
@@ -102,7 +117,7 @@ const StudentDetailsApply = () => {
           >
             {Formik => (
               <div>
-               {detailsloading? <Button loading={detailsloading}></Button>:null}
+                {detailsloading ? <Button loading={detailsloading}></Button> : null}
 
                 <div className='applyFor  '>
                   <Form className='applyForm applyform '>
@@ -115,12 +130,18 @@ const StudentDetailsApply = () => {
                     <TextField label='Date of Birth' name='dob' type='date' />
                     <TextField label='Phon Number' name='phon_no' type='number' />
 
-                    <TextField label='Identification' name='identification' type='text' />
-                    <TextField label='Identification Number' name='identification_no' type='number' />
-                    <TextField label='Qualification' name='qualification' type='text' />
-                    <TextField label='Mark Obtain LastExam' name='mark_obtain_lastExam' type='number' />
+                    {/* <TextField label='Identification' name='identification' type='text' /> */}
+
+                    <SelectField label="Identification" name="identification" options={identificationOptions} />
+
+                
+                    <TextField label='Identification No' name='identification_no' type='text' />
+                    {/* <TextField label='Qualification' name='qualification' type='text' /> */}
+                    <SelectField label="Qualification" name="qualification" options={qualificationOptions} />
+
+                    <TextField label='Last exam percentage ' name='mark_obtain_lastExam' type='number' />
                     <div className='but'>
-                  {loading ?<Button loading={loading}></Button>:    <button type='submit' className='btn '>Submit</button>}
+                      {loading ? <Button loading={loading}></Button> : <button type='submit' className='btn '>Submit</button>}
                     </div>
                   </Form>
                 </div>

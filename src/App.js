@@ -54,6 +54,9 @@ import AddLinks from './componant/collegeAdmin/addLinks';
 import Links from './componant/collegeAdmin/Links.js';
 import Notice from './componant/college/Notice';
 
+import SuperAdminDashboard from './componant/SuperAdmin/SuperAdminDashboard';
+import SuperAdminimages from './componant/SuperAdmin/SuperAdminimages.js';
+
 
 function ScrollToTop({ children }) {
   const location = useLocation();
@@ -129,10 +132,9 @@ function App() {
         <Route exact path='/add/links' element={<ProtectedRoute isAdmin={true} component={AddLinks} />} />
         <Route exact path='/links' element={<ProtectedRoute isAdmin={true} component={Links} />} />
         <Route exact path='/college/images' element={<ProtectedRoute isAdmin={true} component={CollegeImages} />} />
-
-
-
         <Route exact path='/college/manager/profile' element={<ProtectedRoute isAdmin={true} component={CollegeProfile} />} />
+        <Route exact path='/admin' element={<ProtectedRoute isAdmin={true} component={SuperAdminDashboard} />} />
+        <Route exact path='/admin/images' element={<ProtectedRoute isAdmin={true} component={SuperAdminimages} />} />
         <Route exact path='/about' element={<About />} />
 
       </Routes>

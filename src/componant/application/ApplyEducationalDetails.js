@@ -10,6 +10,7 @@ import Loader from '../layout/loader/loader'
 import { REGISTER_EDUCATION_RESET } from '../../constants/applyConstants'
 import CheckoutSteps from './checkOutStep'
 import { Button } from 'antd'
+import SelectField from './SelectField'
 
 const ApplyEducationalDetails = () => {
 
@@ -94,6 +95,14 @@ const ApplyEducationalDetails = () => {
         class12_markObtain: Yup.string().required('required'),
        
       })
+
+     const stremOptions =[
+
+     
+      { value: 'science', label: 'Science' },
+      { value: 'arts', label: 'Arts' },
+      { value: 'commerce', label: 'Commerce' },
+     ]
     
     
       return (
@@ -116,9 +125,10 @@ const ApplyEducationalDetails = () => {
                          <h3>Class 10 exam details</h3>
                      </div>  
                     <TextField label='Passing year' name='class10_passingYear' type='number' />
-                    <TextField label='Roll' name='class10_roll' type='number' />
+                    <TextField label='Roll' name='class10_roll' type='taxt' />
                     <TextField label='No' name='class10_no' type='number' />
                     <TextField label='Board' name='class10_board' type='text' />
+                    
                     <TextField label='School' name='class10_school' type='text' />
                     <TextField label='Total Mark' name='class10_totalMark' type='number' />
                     <TextField label='Mark Obtain' name='class10_markObtain' type='number' />
@@ -127,11 +137,14 @@ const ApplyEducationalDetails = () => {
                          <h3>Class 12 exam details</h3>
                         </div> 
                   <TextField label='Passing year' name='class12_passingYear' type='number' />
-                    <TextField label='Roll' name='class12_roll' type='number' />
+                    <TextField label='Roll' name='class12_roll' type='taxt' />
                     <TextField label='No' name='class12_no' type='number' />
                     <TextField label='Board' name='class12_board' type='text' />
                     <TextField label='School/College' name='class12_college' type='text' />
-                    <TextField label='Strem' name='class12_strem' type='text' />
+                    {/* <TextField label='Strem' name='class12_strem' type='text' /> */}
+
+                    <SelectField label="Strem" name="class12_strem" options={stremOptions} />
+
                     <TextField label='Total Mark' name='class12_totalMark' type='number' />
                     <TextField label='Mark Obtain' name='class12_markObtain' type='number' />
                     

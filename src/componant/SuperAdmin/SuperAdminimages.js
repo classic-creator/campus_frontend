@@ -1,31 +1,27 @@
 import React, { Fragment, useEffect } from 'react'
-import TableComponent from '../layout/TableComponent'
-import { Image, Space, Button, Popconfirm } from 'antd'
-import { Link } from 'react-router-dom'
+import AdminSidebar from './adminSidebar'
+import ImageUploadModal from './imageUploadModal'
+import { Button, Image, Popconfirm, Space } from 'antd'
+import { GetCarouselimage, clearErrors, deleteCarouselImageAction, deleteImageAction } from '../../action/imageAction'
+import { DELETE_CAROUSEL_RESET, DELETE_IMAGE_RESET } from '../../constants/imageConstants'
 import { useDispatch, useSelector } from 'react-redux'
-import { myCollegeAction } from '../../action/collegeAdminAction'
-import Sidebar from './sidebar'
-import CollegeDataChange from './CollegeDataChange'
+import TableComponent from '../layout/TableComponent'
 import { useAlert } from 'react-alert'
-import { DELETE_IMAGE_RESET } from '../../constants/imageConstants'
-import { clearErrors } from '../../action/collegeAction'
-import { deleteImageAction } from '../../action/imageAction'
 
-const CollegeImages = () => {
-
-  const dispatch = useDispatch()
-  const alert = useAlert()
-  const { photos, cover_image, logo_image } = useSelector(state => state.myCollege)
-  const { isDeleted, messege, error } = useSelector(state => state.deleteImg)
-
+const SuperAdminimages = () => {
+  const { isDeleted,  error,loading:dltLoading } = useSelector(state => state.dltCarousel)
+  const {photos,loading}=useSelector(state=>state.getCarousel)
+  const dispatch=useDispatch()
+  const alert=useAlert()
   const deleteHandler = (id) => {
-    dispatch(deleteImageAction(id))
+    dispatch(deleteCarouselImageAction(id))
   }
   const columns = [
     {
       title: 'Id',
       dataIndex: 'id',
       // width: 50,
+      key:'id',
       fixed: 'left'
     },
     {
@@ -50,7 +46,7 @@ const CollegeImages = () => {
         rows.length >= 1 ? (
           <Space>
             <Popconfirm onConfirm={() => { deleteHandler(record.id) }} title='Are you sure you want to delete ?'>
-              <Button type='primary' danger> Delete </Button>
+              <Button type='primary' loading={dltLoading} danger> Delete </Button>
             </Popconfirm>
             {/* <Button onClick={() => console.log('edit')} type='primary'>Edit</Button>
             <Button onClick={() => console.log('edit')} danger type='primary'>Delete</Button> */}
@@ -58,20 +54,7 @@ const CollegeImages = () => {
         ) : null
     }
   ]
-  const rows = [
-    {
-      id: cover_image && cover_image.id,
-      image: cover_image && cover_image.image_url,
-      type: 'cover '
-    },
-    {
-
-      id: logo_image && logo_image.id,
-      image: logo_image && logo_image.image_url,
-      type: 'logo '
-    }
-  ]
-
+  const rows = []
 
   photos && photos.forEach((item) => {
     rows.push({
@@ -82,39 +65,37 @@ const CollegeImages = () => {
     })
   })
 
-
+  
   useEffect(() => {
 
     if (isDeleted) {
       alert.success('Delete Image SuccessFully')
-      dispatch({ type: DELETE_IMAGE_RESET })
+      dispatch({ type: DELETE_CAROUSEL_RESET })
     }
     if (error) {
       alert.error(error)
       dispatch(clearErrors())
     }
 
-    dispatch(myCollegeAction())
+    dispatch(GetCarouselimage())
   }, [dispatch, isDeleted, error, alert])
 
-
-
   return (
-    <Fragment>
+   <Fragment>
       <div className="depertmentDeash">
-        <Sidebar />
-        <div className="dashboard">
-          <div className='headdept'>
-
-            <h2>Images</h2>
-          </div>
-          <CollegeDataChange />
-
-          <TableComponent columns={columns} dataSource={rows} />
-        </div>
+      <AdminSidebar />
+      <div className="dashboard">
+      <div className='headdept'>
+          <h2>Images</h2>
       </div>
-    </Fragment>
+        <ImageUploadModal/>
+
+        <TableComponent columns={columns} loading={loading} dataSource={rows} />
+      </div>
+      </div>
+   </Fragment> 
+    
   )
 }
 
-export default CollegeImages
+export default SuperAdminimages

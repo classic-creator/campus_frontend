@@ -41,8 +41,9 @@ const Header = () => {
                         <Link >College Executive</Link>
                        
                     )}
+                    
                       {user && user.user_role !== 'student' ? (
-                        <Link to="/college/register">Government Executive</Link>
+                        <Link to="/admin">Government Executive</Link>
                         ) : (
                     <Link className='leftBorder'>Government Executive</Link>   )}
                 </div>

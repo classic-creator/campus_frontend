@@ -39,10 +39,6 @@ const CollegeProfile = () => {
         <div>
           <Sidebar />
         </div>
-      
-
-       
-
 
         {/* {loading ? <Loader /> : (  */}
         <div className='dashboardContainer'>

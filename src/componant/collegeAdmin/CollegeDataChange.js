@@ -7,7 +7,7 @@ import { CollegeCoverimgAction, CollegeLogoimgAction, CollegeOtherimgAction, Cou
 import { faEye, faMultiply, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAlert } from 'react-alert'
-import { Button } from 'antd'
+import { Button, Image } from 'antd'
 import { COLLEGE_COVERIMG_UPLOAD_RESET, COLLEGE_OTHERIMG_UPLOAD_RESET } from '../../constants/imageConstants'
 
 const CollegeDataChange = () => {
@@ -162,8 +162,8 @@ const CollegeDataChange = () => {
     return (
         <Fragment>
 
-            <button type="button" className="btn btn-primary shadow-none Settingbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Setting
+            <button type="button" className="btn btn-primary shadow-none " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Image Upload
             </button>
 
 
@@ -171,7 +171,7 @@ const CollegeDataChange = () => {
                 <div className="modal-dialog modal-dialog-scrollable modal-xl">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Course Setting</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">College image upload</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
@@ -209,7 +209,7 @@ const CollegeDataChange = () => {
 
                                 {coverPreview && <div className='mb-2 coverPreview'>
 
-                                    <img src={preview} alt="preview" style={{ maxWidth: '100%' }} />
+                                    <Image src={preview} alt="preview"  />
 
                                 </div>}
 
@@ -247,7 +247,7 @@ const CollegeDataChange = () => {
 
                                 {logoDivPreview && <div className='mb-2 coverPreview'>
 
-                                    <img src={logopreview} alt="preview" style={{ maxWidth: '100%' }} />
+                                    <Image src={logopreview} alt="preview" />
 
                                 </div>}
                             </div>
@@ -291,7 +291,7 @@ const CollegeDataChange = () => {
                                     <div className='mb-2 image-preview '>
                                         {previewOtherImage.map((image, index) => (
                                             <div className='preview-image ' key={index}>
-                                                <img src={image} alt="preview" />
+                                                <Image src={image} alt="preview" />
                                                 <FontAwesomeIcon icon={faTimes} className='delete-button'
                                                     onClick={() => handleRemoveImage(index)} />
                                             </div>
