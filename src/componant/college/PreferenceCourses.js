@@ -31,7 +31,7 @@ const PreferenceCourses = () => {
 
     <Fragment>
       {loading ? <Loader /> : <Fragment>
-      <span id='modalp' >Courses matching with your Preference  <UpdatePreference/></span>
+      <div id='modalp' ><span>Courses matching with your Preference </span> <UpdatePreference/></div>
         <div className="coursesdiv prefered">
         {preferCourses && preferCourses.map(course => (<CourseCard key={course.id} course={course} />))}
       </div></Fragment>}

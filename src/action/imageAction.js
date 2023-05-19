@@ -30,7 +30,10 @@ import {
    OTHER_COURSEPHOTO_SUCCESS,
    DELETE_CAROUSEL_REQUEST,
    DELETE_CAROUSEL_SUCCESS,
-   DELETE_CAROUSEL_FAIL
+   DELETE_CAROUSEL_FAIL,
+   SCHEME_UPLOAD_REQUEST,
+   SCHEME_UPLOAD_SUCCESS,
+   SCHEME_UPLOAD_FAIL
 } from '../constants/imageConstants';
 
 
@@ -335,6 +338,39 @@ export const deleteCarouselImageAction = (id) => async (dispatch) => {
       dispatch({
          type: DELETE_CAROUSEL_FAIL,
          payload: error.response.data.messege
+      })
+   }
+}
+
+
+//super admin landing page Scheme  upload 
+
+
+export const SchemeUpload = (formData) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "multipart/form-data",
+            "Authorization": `Bearer ${token}`
+         },
+
+      };
+      dispatch({ type: SCHEME_UPLOAD_REQUEST })
+
+      const { data } = await axios.post(`/api/scheme/upload`, formData, config)
+
+      dispatch({
+         type: SCHEME_UPLOAD_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: SCHEME_UPLOAD_FAIL,
+         payload: error.response.data.message
       })
    }
 }

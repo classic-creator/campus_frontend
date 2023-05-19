@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { TreeView,TreeItem } from '@material-ui/lab'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAdd,  faBars,  faBookAtlas,  faBuilding,  faClose,  faDashboard, faDoorClosed, faDoorOpen, faFileAlt, faFileImport, faFrownOpen,  faImage,  faLink,  faListAlt } from '@fortawesome/free-solid-svg-icons'
+import { faAdd,  faBars,  faBookAtlas,  faBuilding,  faClose,  faDashboard, faDoorClosed, faDoorOpen, faFileAlt, faFileImport, faFrownOpen,  faImage,  faLink,  faListAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons'
  
 const AdminSidebar = () => {
 
@@ -47,13 +47,13 @@ const AdminSidebar = () => {
                <span>Deashboard</span>
             </p>
         </Link>
-        <Link to="/admin/course">
+        {/* <Link to="/admin/course">
             <p >
                 <FontAwesomeIcon icon={faBookAtlas}/>
                <span>Courses</span>
             </p>
         </Link>
-      
+       */}
         <Link to="/admin/colleges">
             <p>
                 <FontAwesomeIcon  icon={faBuilding}/>
@@ -62,7 +62,7 @@ const AdminSidebar = () => {
         </Link>
         <Link to="/admin/users">
             <p>
-                <FontAwesomeIcon  icon={faLink}/>
+                <FontAwesomeIcon  icon={faUserAlt}/>
                 <span className='spantext'>Users</span>
             </p>
         </Link>
@@ -70,6 +70,12 @@ const AdminSidebar = () => {
             <p>
                 <FontAwesomeIcon  icon={faImage}/>
                 <span className='spantext'>Images</span>
+            </p>
+        </Link>
+        <Link to="/admin/Schemes">
+            <p>
+                <FontAwesomeIcon  icon={faImage}/>
+                <span className='spantext'>Schemes</span>
             </p>
         </Link>
       

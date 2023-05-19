@@ -1,10 +1,22 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import AdminSidebar from './adminSidebar'
 import { Link } from 'react-router-dom'
 import { Typography } from '@material-ui/core'
+import { getAllcollegesAction, getAlluserAction } from '../../action/adminAction'
+import { useDispatch, useSelector } from 'react-redux'
 
+import CountUp from 'react-countup';
 const SuperAdminDashboard = () => {
+    const {Total_users}=useSelector(state=>state.allUser)
+    const dispatch=useDispatch()
+    const {collegeCounts}=useSelector(state=>state.allCollege)
 
+
+    useEffect(() => {
+        dispatch(getAlluserAction())
+        dispatch(getAllcollegesAction())
+    }, [])
+    
 
     return (
         <Fragment>
@@ -27,7 +39,7 @@ const SuperAdminDashboard = () => {
                             <Link to="/college/course">
                                 <p>Institutes</p>
                                 
-                                {/* <CountUp end={myCourses && myCourses.length} duration={5} /> */}
+                                <CountUp end={collegeCounts && collegeCounts} duration={5} />
                             </Link>
                             <Link to="/admin/orders">
                                 <p> Applications </p>
@@ -35,7 +47,7 @@ const SuperAdminDashboard = () => {
                             </Link>
                             <Link to="/confirm/admission/college">
                                 <p>Students</p>
-                                {/* <CountUp end={clgConfirmApplication && clgConfirmApplication.length} duration={5} /> */}
+                                <CountUp end={Total_users && Total_users} duration={5} />
                               
                             </Link>
                         </div>

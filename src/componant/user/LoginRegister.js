@@ -6,6 +6,7 @@ import { clearErrors, forgetPassword, login, registerUser } from '../../action/u
 import { useLocation, useNavigate } from "react-router-dom"
 import Loader from "../layout/loader/loader"
 import { useAlert } from "react-alert"
+import { Button } from 'antd'
 
 const LoginRegister = () => {
     const loginTab = useRef(null)
@@ -126,7 +127,7 @@ const LoginRegister = () => {
 
     return (
         <Fragment>
-            {loading ? < Loader /> : <Fragment>
+            {/* {loading ? < Loader /> : <Fragment> */}
                 {/* login form */}
                 <div className="formContainer ">
                     <div className="content">
@@ -166,8 +167,9 @@ const LoginRegister = () => {
 
                             </div>
 
-                            <div className="button">
-                                <input type="submit" value="Login" />
+                            <div className="button ">
+                                {/* <input type="submit" value="Login" /> */}
+                                <Button loading={loading} onClick={loginFunction}>Login</Button>
                             </div>
 
                           { forgetLoading ? <Loader/> : <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Forget_pass">
@@ -245,7 +247,8 @@ const LoginRegister = () => {
                                     </label>
                                 </div>
                             </div>
-                            <div className="input-box">
+                            <div className='d-flex'>
+                            <div className="input-box applyinput me-5">
                                     <span className="details">Registation Type</span>
                                   <select  onChange={regisDataChange} name="user_role" value={user_role}  >
                                     <option   value=''>Select</option>
@@ -259,9 +262,9 @@ const LoginRegister = () => {
                                    
                                 </div>
 
-                                
+                                </div>
                             <div className="button">
-                                <input type="submit" value="Register" />
+                                <Button onClick={registerFunction}  loading={loading} >Register</Button>
                             </div>
                         </form>
                         <form onSubmit={forgetPasswordFunction}>
@@ -297,7 +300,7 @@ const LoginRegister = () => {
                 </div>
 
 
-            </Fragment>}
+            {/* </Fragment>} */}
         </Fragment>
     )
 }

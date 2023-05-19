@@ -15,8 +15,10 @@ switch (action.type) {
     case ALL_COLLEGE_REQUEST:
         
       return{
+        ...state,
         loading:true,
-        colleges:[],
+        // colleges:[],
+
     
       };
     case ALL_COLLEGE_SUCCESS:

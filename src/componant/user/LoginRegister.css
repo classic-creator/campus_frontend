@@ -25,9 +25,11 @@
     left: 0;
   }
   .content{
+    margin-top: 5px;
     background-color: white;
     width: 90vw;
-    height: 90vh;
+    /* height: 90vh; */
+    height: 100vh;
     box-sizing: border-box;
     /* overflow: hidden; */
     /* overflow-x: hidden; */
@@ -165,11 +167,12 @@ form input[type="radio"]{
   display: none;
 }
 form .button{
-  height: 45px;
+   height: 45px;
   margin: 35px 0;
-  width: 15rem;
+  /* width: 15rem;  */
+ 
 }
-form .button input{
+form .button input {
   height: 100%;
   width: 100%;
   border-radius: 5px;
@@ -185,7 +188,7 @@ form .button input{
 
 
  
-   form .button input:hover{
+   form .button input:hover, form .button button:hover{
     transform: scale(0.99);
     background: linear-gradient(-135deg,rgba(255, 99, 71, 0.219), tomato);
     }

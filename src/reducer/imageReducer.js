@@ -27,6 +27,10 @@ import {
     GET_CAROUSEL_REQUEST,
     GET_CAROUSEL_SUCCESS,
     OTHER_COURSEPHOTO_FAIL,
+    SCHEME_UPLOAD_REQUEST,
+    SCHEME_UPLOAD_SUCCESS,
+    SCHEME_UPLOAD_RESET,
+    SCHEME_UPLOAD_FAIL,
 } from "../constants/imageConstants";
 
 export const CarouselImageReducer = ((state = {}, action) => {
@@ -58,6 +62,53 @@ export const CarouselImageReducer = ((state = {}, action) => {
 
 
         case CAROUSEL_IMAGE_UPLOAD_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+
+            };
+
+        case CLEAR_ERRORS:
+
+            return {
+                ...state,
+                error: null,
+            };
+
+        default:
+            return state;
+    }
+
+})
+export const SchemeReducer = ((state = {}, action) => {
+
+    switch (action.type) {
+        case SCHEME_UPLOAD_REQUEST:
+
+            return {
+
+                loading: true
+
+            };
+
+        case SCHEME_UPLOAD_SUCCESS:
+
+            return {
+                loading: false,
+
+                message: action.payload.message,
+
+            };
+
+
+        case SCHEME_UPLOAD_RESET:
+            return {
+                loading: false,
+
+            };
+
+
+        case SCHEME_UPLOAD_FAIL:
             return {
                 loading: false,
                 error: action.payload,

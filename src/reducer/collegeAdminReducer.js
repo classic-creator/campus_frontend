@@ -35,6 +35,10 @@ import {
     REGISTER_COLLEGE_FAIL,
     REGISTER_COLLEGE_REQUEST,
     REGISTER_COLLEGE_SUCCESS,
+    UPDATE_COLLEGE_FAIL,
+    UPDATE_COLLEGE_REQUEST,
+    UPDATE_COLLEGE_RESET,
+    UPDATE_COLLEGE_SUCCESS,
     UPDATE_COURSES_FAIL,
     UPDATE_COURSES_REQUEST,
     UPDATE_COURSES_RESET,
@@ -62,6 +66,59 @@ export const collegesReducer = ((state = {}, action) => {
 
 
         case REGISTER_COLLEGE_FAIL:
+
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+
+            return {
+                ...state,
+                error: null,
+            };
+
+        default:
+            return state;
+    }
+
+})
+
+export const UpdatecollegesReducer = ((state = {}, action) => {
+
+    switch (action.type) {
+
+        case UPDATE_COLLEGE_REQUEST:
+
+            return {
+
+                loading: true,
+
+            };
+        case UPDATE_COLLEGE_SUCCESS:
+
+
+            return {
+
+                loading: false,
+                message: action.payload.message,
+                isUpdated:true,
+
+            };
+
+        case UPDATE_COLLEGE_RESET:
+
+
+            return {
+
+                loading: false,
+                isUpdated:false,
+
+            };
+
+
+        case UPDATE_COLLEGE_FAIL:
 
             return {
                 loading: false,
@@ -143,11 +200,14 @@ export const GetDepertmentReducer = ((state = { depertments: [], courses: [] }, 
 
         case GET_DEPERTMENT_SUCCESS:
             return {
+...state,
                 loading: false,
                 depertments: action.payload.depertments,
             }
         case DEPERTMENT_COURSES_SUCCESS:
             return {
+                ...state,
+
                 loading: false,
                 courses: action.payload.courses,
             }
@@ -156,6 +216,7 @@ export const GetDepertmentReducer = ((state = { depertments: [], courses: [] }, 
         case DEPERTMENT_COURSES_FAIL:
 
             return {
+                ...state,
                 loading: false,
                 error: action.payload
             }
@@ -318,6 +379,7 @@ export const updateCourseReducer = ((state = {}, action) => {
         case UPDATE_COURSES_REQUEST:
 
             return {
+                ...state,
                 loading: true,
             };
 
@@ -416,6 +478,7 @@ export const GetNoticReducer = ((state = {   notic:[]}, action) => {
         case GET_NOTIC_REQUEST:
 
             return {
+                ...state,
                 loading: true,
                
 

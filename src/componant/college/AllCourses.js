@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, getAllCourses } from '../../action/courseAction';
@@ -19,13 +19,9 @@ const AllCourses = () => {
 
   const [showResults, setShowResults] = useState(false)
   const courseToggle = () => {
-    if (showResults === false) {
-      setShowResults(true)
-
-    }
-    if (showResults === true) {
-      setShowResults(false)
-
+    setShowResults(!showResults);
+    if (showResults) {
+      scrollToAllCourses();
     }
   }
 
@@ -41,30 +37,48 @@ const AllCourses = () => {
     dispatch(getPreferences());
     dispatch(getAllCourses(keyword))
 
-  }, [dispatch ,keyword])
+  }, [dispatch, keyword])
+
+ 
+  const allCoursesRef = useRef(null); // Reference to the all courses section
+
+  const scrollToAllCourses = () => {
+    if (allCoursesRef.current) {
+      allCoursesRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
 
   return (
     <Fragment>
 
-      <SidebarOfcave/>
+      {/* <SidebarOfcave/> */}
       <div className=" course">
-      
-        {/* <div className='main'> */}
-        
-          <div className='allcourse'>
-            {/* modal button */}
 
-            {preferCourses ? <PreferenceCourses /> : <span id='modalp'>Add your preferences <AddPreference /></span>}
+        {/* <div className='main'> */}
+
+        <div className='allcourse'>
+          {/* modal button */}
+          <div className='preferenceBtn'>
+            
+          <Link onClick={courseToggle}>Show all courses {showResults ? <FontAwesomeIcon icon={faMultiply} /> : <FontAwesomeIcon icon={faEye} />} </Link>
+
+
+            {preferCourses ? <PreferenceCourses /> : <div id='modalp'><span>Add your preferences </span><AddPreference /></div>}
+          </div>
 
           {/* </div> */}
         </div>
+
+
         <div className='allcourse '>
-          <Link  onClick={courseToggle}>Show all courses {showResults? <FontAwesomeIcon icon={faMultiply}/> :  <FontAwesomeIcon icon={faEye}/>} </Link>
-          
-            {showResults ? <All /> : null}
-            
+          {/* <Link onClick={courseToggle}>Show all courses {showResults ? <FontAwesomeIcon icon={faMultiply} /> : <FontAwesomeIcon icon={faEye} />} </Link> */}
+
+          {showResults ? <All ref={allCoursesRef}/> : null}
+
         </div>
+
+
       </div>
     </Fragment>
   )
@@ -86,13 +100,16 @@ const All = () => {
     }
     // dispatch(getAllCourses(keyword))
   }, [dispatch, error, alert, keyword])
+ 
+
+
 
   return (
     <Fragment>
       {loading ? <Loader /> : <Fragment>
 
         <p id='allCourse'>All courses </p>
-        <div className="container ">
+        <div className="container ref={allCoursesRef}" >
           {courses && courses.map(course => (<CourseCard key={course.id} course={course} />))}
         </div>
       </Fragment>}

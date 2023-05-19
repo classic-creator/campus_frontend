@@ -8,6 +8,7 @@ import * as Yup from 'yup'
 import './registercollege.css'
 import {  clearErrors, collegeRegisterAction } from '../../action/collegeAdminAction'
 import Loader from "../layout/loader/loader"
+import SelectField from '../application/SelectField'
 
 
 const RegisterCollege = () => {
@@ -59,7 +60,43 @@ const RegisterCollege = () => {
        
       })
     
-    
+      const districtOptions = [
+        { value: '', label: 'Select' },
+        { value: 'baksa', label: 'Baksa' },
+        { value: 'barpeta', label: 'Barpeta' },
+        { value: 'biswanath', label: 'Biswanath' },
+        { value: 'bongaigaon', label: 'Bongaigaon' },
+        { value: 'cachar', label: 'Cachar' },
+        { value: 'charaideo', label: 'Charaideo' },
+        { value: 'chirang', label: 'Chirang' },
+        { value: 'darrang', label: 'Darrang' },
+        { value: 'dhemaji', label: 'Dhemaji' },
+        { value: 'dhubri', label: 'Dhubri' },
+        { value: 'dibrugarh', label: 'Dibrugarh' },
+        { value: 'dimahasao', label: 'Dima Hasao' },
+        { value: 'goalpara', label: 'Goalpara' },
+        { value: 'golaghat', label: 'Golaghat' },
+        { value: 'hailakandi', label: 'Hailakandi' },
+        { value: 'hojai', label: 'Hojai' },
+        { value: 'jorhat', label: 'Jorhat' },
+        { value: 'kamrup', label: 'Kamrup' },
+        { value: 'kamrup_metropolitan', label: 'Kamrup Metropolitan' },
+        { value: 'karbi_anglong', label: 'Karbi Anglong' },
+        { value: 'karimganj', label: 'Karimganj' },
+        { value: 'kokrajhar', label: 'Kokrajhar' },
+        { value: 'lakhimpur', label: 'Lakhimpur' },
+        { value: 'majuli', label: 'Majuli' },
+        { value: 'morigaon', label: 'Morigaon' },
+        { value: 'nagaon', label: 'Nagaon' },
+        { value: 'nalbari', label: 'Nalbari' },
+        { value: 'sivasagar', label: 'Sivasagar' },
+        { value: 'sonitpur', label: 'Sonitpur' },
+        { value: 'south_salmara-mankachar', label: 'South Salmara-Mankachar' },
+        { value: 'tinsukia', label: 'Tinsukia' },
+        { value: 'udalguri', label: 'Udalguri' },
+        { value: 'west_karbi_anglong', label: 'West Karbi Anglong' },
+      ];
+      
   return (
    <Fragment>
     {
@@ -94,10 +131,12 @@ const RegisterCollege = () => {
     
                         <TextField label='College Name' name='collegeName' type='text' />
                         <TextField label='Email' name='email' type='email'     />
-                        <TextField label='Address' name='address' type='text'     />
-                        <TextField label='District' name='district' type='text'     />
+                        {/* <TextField label='District' name='address' type='text'     /> */}
+                        <SelectField label="District" name="address" options={districtOptions} />
+
+                        {/* <TextField label='District' name='district' type='text'     /> */}
                         <TextField label='Description' name='description' type='text'     />
-                        <TextField label='rating' name='rating' type='text'     />
+                        <TextField label='NAAC Ranking with year' name='rating' type='text'     />
                    
                       
                         

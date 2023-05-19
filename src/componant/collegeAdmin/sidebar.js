@@ -4,7 +4,7 @@ import "./sidebar.css"
 import { TreeView,TreeItem } from '@material-ui/lab'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAdd,  faBars,  faBookAtlas,  faClose,  faDashboard, faDoorClosed, faDoorOpen, faFileAlt, faFileImport, faFrownOpen,  faImage,  faLink,  faListAlt } from '@fortawesome/free-solid-svg-icons'
+import { faAdd,  faBars,  faBookAtlas,  faClose,  faDashboard, faDoorClosed, faDoorOpen, faFileAlt, faFileImport, faFrownOpen,  faImage,  faLink,  faListAlt, faUserEdit } from '@fortawesome/free-solid-svg-icons'
  
 const Sidebar = () => {
 
@@ -96,6 +96,12 @@ const Sidebar = () => {
             <p>
                 <FontAwesomeIcon  icon={faImage}/>
                 <span className='spantext'>Images</span>
+            </p>
+        </Link>
+        <Link to="/college/edit">
+            <p>
+                <FontAwesomeIcon  icon={faUserEdit}/>
+                <span className='spantext'>Edit Details</span>
             </p>
         </Link>
       

@@ -1,9 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import MetaData from '../layout/MetaData.js'
-
 import "./home.css"
-import SchemesCarusol from '../application/ApplicationFileUpload.js';
-import SchemesCarusolMemoized from '../application/ApplicationFileUpload.js';
 import './seaccarusol.css'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper";
@@ -13,10 +9,13 @@ import "swiper/css/navigation";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetCarouselimage } from '../../action/imageAction.js';
+import { getColleges } from '../../action/collegeAction.js';
+import CountUp from 'react-countup';
 
 const Home = () => {
 
   const {photos}=useSelector(state=>state.getCarousel)
+  const { colleges } = useSelector(state => state.colleges)
   const dispatch=useDispatch()
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -37,6 +36,7 @@ const Home = () => {
   // ];
 
   useEffect(() => {
+    dispatch(getColleges())
    dispatch(GetCarouselimage())
   }, [dispatch])
   
@@ -116,7 +116,7 @@ const Home = () => {
           <div class="card  text-dark bg-primary mb-3" style={{ width: '18rem', }}>
             <div class="card-header"><h2>Institute</h2> </div>
             <div class="card-body">
-              <h2 class="card-title text-center">420+</h2>
+              <h2 class="card-title text-center"> <CountUp end={colleges && colleges.length} duration={5} />+</h2>
 
             </div>
           </div>

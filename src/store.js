@@ -8,10 +8,11 @@ import { courseReducer ,courseDetailsReducer, preferedCourseReducer} from './red
 import { preferenceReducer, updatePreferenceReducer } from './reducer/preferenceReducer';
 import { ForgetPasswordReducer, profileReducer, userReducer } from './reducer/userReducer';
 import { ApplicationReducer, ConfirmStudentReducer, CourseApplicationReducer, MyApplicationReducer, SelectedApplicationReducer, applicationDetailsReducer, applyAdmissionReducer, applyFormAddressReducer, applyFormEducationReducer, applyFormReducer, appyFormfileReducer, studentDetailsReducer } from './reducer/applyReducer';
-import { AddnoticReducer, DeleteNoticReducer, GetDepertmentReducer, GetNoticReducer, addCourseReducer, collegeCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer } from './reducer/collegeAdminReducer';
+import { AddnoticReducer, DeleteNoticReducer, GetDepertmentReducer, GetNoticReducer, UpdatecollegesReducer, addCourseReducer, collegeCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer } from './reducer/collegeAdminReducer';
 import thunk from 'redux-thunk';
-import { CarouselDeleteReducer, CarouselImageReducer, GetCarouselImageReducer, ImageDeleteReducer, courseImageReducer } from './reducer/imageReducer';
+import { CarouselDeleteReducer, CarouselImageReducer, GetCarouselImageReducer, ImageDeleteReducer, SchemeReducer, courseImageReducer } from './reducer/imageReducer';
 import { AddPaymentReducer, CoursePaymentDetailsReducer, ProcessPaymentReducer, closePaymentsReducer, getCoursePaymentHistoryReducer, getStudentNewPaymentReducer, getStudentPaymentHistorryReducer } from './reducer/paymentReducer';
+import { adminCollegeDetailReducer, getAllCollegesReducer, getAlluserReducer } from './reducer/adminReducer';
 
 
 
@@ -50,6 +51,7 @@ const reducers = combineReducers({
             application:MyApplicationReducer,
             college:collegesReducer,
            myCollege: mycollegesReducer,
+           myCollegeupdate: UpdatecollegesReducer,
             depertment:depertmentReducer,
             depertments:GetDepertmentReducer,
             deptAdCourse:addCourseReducer,
@@ -74,6 +76,11 @@ const reducers = combineReducers({
             addCarousel:CarouselImageReducer,
             getCarousel:GetCarouselImageReducer,
             dltCarousel:CarouselDeleteReducer,
+            allUser:getAlluserReducer,
+            allCollege:getAllCollegesReducer,
+            admincollegedetail:adminCollegeDetailReducer,
+            addScheme:SchemeReducer
+
 })
 
 const middleWare= [thunk]

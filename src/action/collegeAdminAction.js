@@ -32,6 +32,9 @@ import {
     REGISTER_COLLEGE_FAIL,
     REGISTER_COLLEGE_REQUEST,
     REGISTER_COLLEGE_SUCCESS,
+    UPDATE_COLLEGE_FAIL,
+    UPDATE_COLLEGE_REQUEST,
+    UPDATE_COLLEGE_SUCCESS,
     UPDATE_COURSES_FAIL,
     UPDATE_COURSES_REQUEST,
     UPDATE_COURSES_SUCCESS
@@ -65,6 +68,38 @@ export const collegeRegisterAction = (collegeData) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: REGISTER_COLLEGE_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
+export const collegeUpdateAction = (collegeData) => async (dispatch) => {
+    try {
+
+        const token = localStorage.getItem('token')
+
+        const config = {
+            baseURL: process.env.REACT_APP_API_BASE_URL,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        };
+        dispatch({ type: UPDATE_COLLEGE_REQUEST })
+
+        const { data } = await axios.put(
+            "/api/college/update",
+            collegeData,
+            config
+        )
+
+        dispatch({
+            type: UPDATE_COLLEGE_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: UPDATE_COLLEGE_FAIL,
             payload: error.response.data.message
         })
     }

@@ -1,12 +1,16 @@
 .course{
     display: flex;
     flex-direction: column;
-    /* width: 100vw; */
+    width: 100vw;
    margin-left: 15px;
     margin-right: 15px;
     margin-top: 1vmax;
 }
+.preferenceBtn{
+  margin-bottom: 2vmax;
+    /* display: flex; */
 
+}
 /* h1{
   
     position: relative;
@@ -34,7 +38,7 @@
     justify-content: center;
 }
 .allcourse{
-    /* width: 100%; */
+    width: 80%;
     /* border-top: 2px solid black; */
     /* margin-left: 1%; */
 
@@ -60,4 +64,7 @@
 }
 #modalp{
     /* margin-left: 10vmax; */
+    margin-bottom: 2vmax;
+   position: relative;
+   left: 0;
 }

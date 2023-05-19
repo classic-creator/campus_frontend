@@ -149,7 +149,7 @@ export const appyFormfileReducer = (state = {}, action) => {
         case REGISTER_FILES_REQUEST:
 
             return {
-                // ...state,
+                ...state,
                 loading: true
             }
 
@@ -431,6 +431,7 @@ export const CourseApplicationReducer = (state = { course_applications: [] }, ac
                 ...state,
                 loading: true
             }
+
 
 
         case COURSE_APPLICATION_SUCCESS:

@@ -56,6 +56,12 @@ import Notice from './componant/college/Notice';
 
 import SuperAdminDashboard from './componant/SuperAdmin/SuperAdminDashboard';
 import SuperAdminimages from './componant/SuperAdmin/SuperAdminimages.js';
+import AllUsers from './componant/SuperAdmin/AllUsers';
+import AllColleges from './componant/SuperAdmin/AllCollegesList';
+import CollegeCourses from './componant/SuperAdmin/adminCollegeDetails';
+import UpdateCollege from './componant/collegeAdmin/updateCollege';
+import Paymentsuccess from './componant/payment/paymentsuccess';
+import SchemeAdminimages from './componant/SuperAdmin/Schemes';
 
 
 function ScrollToTop({ children }) {
@@ -83,8 +89,8 @@ function App() {
   return (
 
 
-    <BrowserRouter>
-
+    // <BrowserRouter>
+<div>
       <Header />
       <ScrollToTop />
       <Routes>
@@ -113,13 +119,14 @@ function App() {
         <Route exact path='/admission/payment/:id' element={<ProtectedRoute component={AdmissionPayment} />} />
         <Route exact path='/college/gallery/:id' element={<ProtectedRoute component={ImageGallery} />} />
         <Route exact path='/view/newpayment/:id' element={<ProtectedRoute component={StudentNew_old_payments} />} />
-       
+        <Route path="/paymentsuccess" element={<Paymentsuccess />} />
 
         <Route exact path='/college/depertment/create' element={<ProtectedRoute isAdmin={true} component={CreateDepertment} />} />
         <Route exact path='/depertments' element={<ProtectedRoute isAdmin={true} component={AllDepertments} />} />
         <Route exact path='/depertment/:id' element={<ProtectedRoute isAdmin={true} component={DepertmentDetails} />} />
         <Route exact path='/Register/Course/:id' element={<ProtectedRoute isAdmin={true} component={AddCourse} />} />
         <Route exact path='/course/update/:id' element={<ProtectedRoute isAdmin={true} component={UpdateCourse} />} />
+        <Route exact path='/college/edit' element={<ProtectedRoute isAdmin={true} component={UpdateCollege} />} />
         <Route exact path='/course/deashboard/:id' element={<ProtectedRoute isAdmin={true} component={CourseDeashboard} />} />
         <Route exact path='/course/apply/:id' element={<ProtectedRoute isAdmin={true} component={CourseAdmissionList} />} />
         <Route exact path='/apply/update/:id' element={<ProtectedRoute isAdmin={true} component={ApplyDetails} />} />
@@ -135,13 +142,17 @@ function App() {
         <Route exact path='/college/manager/profile' element={<ProtectedRoute isAdmin={true} component={CollegeProfile} />} />
         <Route exact path='/admin' element={<ProtectedRoute isAdmin={true} component={SuperAdminDashboard} />} />
         <Route exact path='/admin/images' element={<ProtectedRoute isAdmin={true} component={SuperAdminimages} />} />
+        <Route exact path='/admin/users' element={<ProtectedRoute isAdmin={true} component={AllUsers} />} />
+        <Route exact path='/admin/colleges' element={<ProtectedRoute isAdmin={true} component={AllColleges} />} />
+        <Route exact path='/admin/college/:id' element={<ProtectedRoute isAdmin={true} component={CollegeCourses} />} />
+        <Route exact path='/admin/Schemes' element={<ProtectedRoute isAdmin={true} component={SchemeAdminimages} />} />
         <Route exact path='/about' element={<About />} />
 
       </Routes>
     
       <Footer />
-
-    </BrowserRouter>
+      </div>
+    // </BrowserRouter>
 
 
 
