@@ -39,7 +39,7 @@ import {
     UPDATE_COURSES_REQUEST,
     UPDATE_COURSES_SUCCESS
 } from '../constants/collegeAdminConstants';
-import { ADD_COURSECOVER_SUCCESS } from '../constants/imageConstants';
+
 
 export const collegeRegisterAction = (collegeData) => async (dispatch) => {
     try {

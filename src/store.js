@@ -6,13 +6,13 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import { collegeDetailsReducer, collegeReducer } from './reducer/collegeReducer';
 import { courseReducer ,courseDetailsReducer, preferedCourseReducer} from './reducer/courseReducer';
 import { preferenceReducer, updatePreferenceReducer } from './reducer/preferenceReducer';
-import { ForgetPasswordReducer, profileReducer, userReducer } from './reducer/userReducer';
+import { ForgetPasswordReducer, GetCountReducer, profileReducer, userReducer } from './reducer/userReducer';
 import { ApplicationReducer, ConfirmStudentReducer, CourseApplicationReducer, MyApplicationReducer, SelectedApplicationReducer, applicationDetailsReducer, applyAdmissionReducer, applyFormAddressReducer, applyFormEducationReducer, applyFormReducer, appyFormfileReducer, studentDetailsReducer } from './reducer/applyReducer';
 import { AddnoticReducer, DeleteNoticReducer, GetDepertmentReducer, GetNoticReducer, UpdatecollegesReducer, addCourseReducer, collegeCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer } from './reducer/collegeAdminReducer';
 import thunk from 'redux-thunk';
-import { CarouselDeleteReducer, CarouselImageReducer, GetCarouselImageReducer, ImageDeleteReducer, SchemeReducer, courseImageReducer } from './reducer/imageReducer';
-import { AddPaymentReducer, CoursePaymentDetailsReducer, ProcessPaymentReducer, closePaymentsReducer, getCoursePaymentHistoryReducer, getStudentNewPaymentReducer, getStudentPaymentHistorryReducer } from './reducer/paymentReducer';
-import { adminCollegeDetailReducer, getAllCollegesReducer, getAlluserReducer } from './reducer/adminReducer';
+import { CarouselDeleteReducer, CarouselImageReducer, GetCarouselImageReducer, GetSchemeReducer, ImageDeleteReducer, SchemeReducer, courseImageReducer } from './reducer/imageReducer';
+import { AddPaymentReducer, CoursePaymentDetailsReducer,  closePaymentsReducer, getCoursePaymentHistoryReducer, getStudentNewPaymentReducer, getStudentPaymentHistorryReducer } from './reducer/paymentReducer';
+import { ApproveCollegeReducer, GetPandingCollegesReducer, UpdateUSersReducer, adminCollegeDetailReducer, getAllCollegesReducer, getAlluserReducer } from './reducer/adminReducer';
 
 
 
@@ -79,7 +79,12 @@ const reducers = combineReducers({
             allUser:getAlluserReducer,
             allCollege:getAllCollegesReducer,
             admincollegedetail:adminCollegeDetailReducer,
-            addScheme:SchemeReducer
+            addScheme:SchemeReducer,
+            getScheme:GetSchemeReducer,
+            updateUser:UpdateUSersReducer,
+            getcount:GetCountReducer,
+            pandingColleges:GetPandingCollegesReducer,
+            approve:ApproveCollegeReducer,
 
 })
 

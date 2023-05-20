@@ -25,6 +25,7 @@ const RegisterCollege = () => {
     const {user}=useSelector(state=>state.user)
 
     const redirect = location.search ? location.search.split("=")[1] : "/college/manager/profile";
+    const waitingredirect = location.search ? location.search.split("=")[1] : "/college/waiting";
    
     // 
       useEffect(() => {
@@ -34,7 +35,8 @@ const RegisterCollege = () => {
                     // dispatch(loadUser())
                     // navigate(redirect)
                     // window.location.reload(false);
-                    user['type']='manager'
+                    // user['type']='manager'
+                    user['user_role']='waiting'
                     // console.log(user)
                 }
                 if(error){
@@ -45,7 +47,11 @@ const RegisterCollege = () => {
                   navigate(redirect)
                 }
        
-      }, [error,navigate, dispatch, message,user,redirect, alert])
+                if(user['user_role']==='waiting'){
+                  navigate(waitingredirect)
+                }
+       
+      }, [error,navigate, dispatch,waitingredirect, message,user,redirect, alert])
 
 
     const validate = Yup.object({

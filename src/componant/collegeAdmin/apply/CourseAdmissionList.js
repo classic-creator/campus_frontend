@@ -1,4 +1,4 @@
-import { Space, Table,Button } from 'antd'
+import { Space, Button } from 'antd'
 import React, { Fragment, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Sidebar from '../sidebar'

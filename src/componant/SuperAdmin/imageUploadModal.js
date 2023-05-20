@@ -1,14 +1,14 @@
 
 import React, { Fragment, useEffect, useState } from 'react'
 
-import { Link, useParams } from 'react-router-dom'
+
 import { useDispatch, useSelector } from 'react-redux'
-import { CarouselImageUpload, CollegeCoverimgAction,clearErrors } from '../../action/imageAction'
+import { CarouselImageUpload, clearErrors } from '../../action/imageAction'
 import { faEye, faMultiply} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAlert } from 'react-alert'
 import { Button, Image } from 'antd'
-import { CAROUSEL_IMAGE_UPLOAD_RESET, COLLEGE_COVERIMG_UPLOAD_RESET} from '../../constants/imageConstants'
+import { CAROUSEL_IMAGE_UPLOAD_RESET} from '../../constants/imageConstants'
 
 const ImageUploadModal = () => {
 

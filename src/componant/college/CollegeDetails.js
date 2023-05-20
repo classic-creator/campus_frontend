@@ -3,14 +3,14 @@ import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom';
 import { clearErrors, getCollegesDetails } from '../../action/collegeAction';
-import Loader from '../layout/loader/loader';
+
 import "./collegeDetails.css"
 
 
 
 
 import CoverAndNav from './collegecardAndComponent/coverAndNav';
-import ImportantLinkCard from './collegecardAndComponent/importantLinkCard';
+
 import Imgcarousel from './collegecardAndComponent/Imgcarousel';
 import { Button, Space, } from 'antd'
 import TableComponent from '../layout/TableComponent';

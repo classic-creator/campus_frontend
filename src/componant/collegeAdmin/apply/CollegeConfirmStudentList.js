@@ -1,12 +1,12 @@
 
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Sidebar from '../sidebar'
 
 import { Link } from 'react-router-dom'
 
-import { Button, Table, Space, Form, Input } from 'antd'
+import { Button, Space } from 'antd'
 import { myCollegeAction } from '../../../action/collegeAdminAction'
 import TableComponent from '../../layout/TableComponent'
 
@@ -14,7 +14,7 @@ const CollegeConfirmStudentList = () => {
 
     const dispatch = useDispatch()
 
-     const { clgConfirmApplication, loading, error } = useSelector(state => state.myCollege)
+     const { clgConfirmApplication, loading } = useSelector(state => state.myCollege)
     
   
     useEffect(() => {

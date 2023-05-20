@@ -7,7 +7,7 @@ import "./courseDetails.css"
 
 
 import CoverAndNav from './collegecardAndComponent/coverAndNav'
-import { DataGrid } from '@material-ui/data-grid'
+// import { DataGrid } from '@material-ui/data-grid'
 import ImportantLinkCard from './collegecardAndComponent/importantLinkCard'
 import Imgcarousel from './collegecardAndComponent/Imgcarousel'
 import TableComponent from '../layout/TableComponent'
@@ -32,45 +32,45 @@ const CourseDetails = () => {
   }, [dispatch, id, alert, error])
 
   //course list table
-  const columns = [
-    {
-      dataIndex: "Fees",
-      headerName: "Header",
-      // minWidth: 100,
+  // const columns = [
+  //   {
+  //     dataIndex: "Fees",
+  //     headerName: "Header",
+  //     // minWidth: 100,
 
-      // flex: 0.3
-    },
+  //     // flex: 0.3
+  //   },
 
-    {
-      dataIndex: "name",
-      headerName: "1st Year",
-      // minWidth: 100,
-      // flex: 0.3,
-    },
-    {
-      dataIndex: "eligibility",
-      headerName: "2st Year",
+  //   {
+  //     dataIndex: "name",
+  //     headerName: "1st Year",
+  //     // minWidth: 100,
+  //     // flex: 0.3,
+  //   },
+  //   {
+  //     dataIndex: "eligibility",
+  //     headerName: "2st Year",
 
-      // minWidth: 100,
-      // flex: 0.3,
+  //     // minWidth: 100,
+  //     // flex: 0.3,
 
-    },
-    {
-      dataIndex: "duration",
-      headerName: "3st Year",
+  //   },
+  //   {
+  //     dataIndex: "duration",
+  //     headerName: "3st Year",
 
-      // minWidth: 100,
-      // flex: 0.3,
-    },
-    {
-      dataIndex: "fees",
-      headerName: "4st Year",
-      // minWidth: 100,
-      // flex: 0.3,
-    },
-  ];
+  //     // minWidth: 100,
+  //     // flex: 0.3,
+  //   },
+  //   {
+  //     dataIndex: "fees",
+  //     headerName: "4st Year",
+  //     // minWidth: 100,
+  //     // flex: 0.3,
+  //   },
+  // ];
 
-  const rows = [];
+  // const rows = [];
 
   const seatcolumns = [
 

@@ -2,9 +2,9 @@ import React, { Fragment, useEffect } from 'react'
 import TableComponent from '../../layout/TableComponent'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCoursePaymentDetailsAction } from '../../../action/paymentAction'
-import { Link, useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 import Sidebar from '../sidebar'
-import { Button, Typography } from 'antd'
+
 import CourseBar from '../courseBar'
 
 const CoursePaymentDetails = () => {
@@ -96,7 +96,7 @@ const CoursePaymentDetails = () => {
   useEffect(() => {
 
     dispatch(getCoursePaymentDetailsAction(id))
-  }, [dispatch])
+  }, [dispatch,id])
 
 
   return (

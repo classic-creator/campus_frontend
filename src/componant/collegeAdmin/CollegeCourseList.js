@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCollegeCourseAction } from '../../action/collegeAdminAction'
-import { Button, Popconfirm, Table, Space, Form, Input } from 'antd'
+import { Button, Space } from 'antd'
 import { Link } from 'react-router-dom'
 import Sidebar from './sidebar'
 import TableComponent from '../layout/TableComponent'

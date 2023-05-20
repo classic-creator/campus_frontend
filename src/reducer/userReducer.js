@@ -30,6 +30,8 @@ import {
   CHANGE_PROFILE_SUCCESS,
   CHANGE_PROFILE_FAIL,
   CHANGE_PROFILE_RESET,
+  GET_COUNT_REQUEST,
+  GET_COUNT_SUCCESS,
 } from "../constants/userConstants";
 
 const initialState = {
@@ -188,6 +190,45 @@ export const ForgetPasswordReducer=((state={},action)=>{
       error:action.payload
 
      };
+  
+     case CLEAR_ERRORS:
+      return{
+        ...state,
+        error:null
+      }
+  
+    default:
+     return state;
+  }
+
+
+})
+
+//GET USER AND APPLICATION COUNT
+export const GetCountReducer=((state={},action)=>{
+
+  switch (action.type) {
+    case GET_COUNT_REQUEST:
+ 
+      
+          return{
+        ...state,
+        loading:true,
+       
+     };
+  
+    case GET_COUNT_SUCCESS:
+   
+     return{
+
+     
+      loading:false,
+      Total_users:action.payload.Total_users,
+      application_count:action.payload.application_count
+
+     };
+  
+   
   
      case CLEAR_ERRORS:
       return{

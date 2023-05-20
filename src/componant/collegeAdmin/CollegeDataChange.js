@@ -1,21 +1,21 @@
 
 import React, { Fragment, useEffect, useState } from 'react'
 import './courseDataChange.css'
-import { Link, useParams } from 'react-router-dom'
+// import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { CollegeCoverimgAction, CollegeLogoimgAction, CollegeOtherimgAction, CourseCoverimgAction, clearErrors } from '../../action/imageAction'
+import { CollegeCoverimgAction, CollegeLogoimgAction, CollegeOtherimgAction,  clearErrors } from '../../action/imageAction'
 import { faEye, faMultiply, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAlert } from 'react-alert'
 import { Button, Image } from 'antd'
-import { COLLEGE_COVERIMG_UPLOAD_RESET, COLLEGE_OTHERIMG_UPLOAD_RESET } from '../../constants/imageConstants'
+import { COLLEGE_COVERIMG_UPLOAD_RESET, COLLEGE_OTHERIMG_UPLOAD_RESET, LOGO_UPLOAD_RESET } from '../../constants/imageConstants'
 
 const CollegeDataChange = () => {
 
     const { loading, message, error } = useSelector(state => state.courseImage);
 
     const alert = useAlert()
-    const { id } = useParams();
+    // const { id } = useParams();
     const dispatch = useDispatch()
 
 
@@ -150,8 +150,11 @@ const CollegeDataChange = () => {
             setImage(null)
             setOtherImage(null)
             setPreviewOtherImage(null)
+            setLogoPreview(null)
+            setLogo(null)
             dispatch({ type: COLLEGE_OTHERIMG_UPLOAD_RESET })
             dispatch({ type: COLLEGE_COVERIMG_UPLOAD_RESET })
+            dispatch({ type: LOGO_UPLOAD_RESET})
         }
         if (error) {
             alert.error(error);

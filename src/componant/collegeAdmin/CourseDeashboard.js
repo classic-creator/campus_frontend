@@ -7,11 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ConfirmStudentAction, GetCourseApplications, getSelectedApplication } from '../../action/applyAction';
 import CountUp from 'react-countup';
 import { getCourseDetails } from '../../action/courseAction';
-import {  Typography } from '@material-ui/core';
+
 import { Button, Popconfirm, Space, Tag } from 'antd';
-import CourseDataChange from './CourseDataChange';
+
 import TableComponent from '../layout/TableComponent';
-import { getCoursePaymenthistoryAction, updateFeesStatusAction } from '../../action/paymentAction';
+import { clearErrors, getCoursePaymenthistoryAction, updateFeesStatusAction } from '../../action/paymentAction';
 import { CLOSED_PAYMENT_RESET } from '../../constants/paymentConsttants';
 import { useAlert } from 'react-alert';
 import CourseBar from './courseBar';
@@ -28,7 +28,7 @@ const CourseDeashboard = () => {
     const {ConfirmStudent} =useSelector(state=>state.confirmStudent)
     const {payments,loading:feesLoading} =useSelector(state=>state.payments)
 
-    const {isUpdated,messege,error:updateError,loading:updateLoading}=useSelector(state=>state.closePayment)
+    const {isUpdated,error:updateError,loading:updateLoading}=useSelector(state=>state.closePayment)
    
   
     ChartJS.register(...registerables);
@@ -138,7 +138,11 @@ const ClodePayment=(record)=>{
           dispatch({type:CLOSED_PAYMENT_RESET})
           alert.success('Closed Payment Request Successfully')
         }
-    }, [dispatch, id,alert,isUpdated])
+        if(updateError){
+          alert.error(updateError)
+          dispatch(clearErrors())
+        }
+    }, [dispatch,updateError, id,alert,isUpdated])
 
     return (
         < Fragment>

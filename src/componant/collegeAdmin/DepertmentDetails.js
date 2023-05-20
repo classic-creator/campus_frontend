@@ -3,7 +3,7 @@ import Sidebar from './sidebar'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getDepertmentCourseAction } from '../../action/collegeAdminAction'
-import { Button, Popconfirm,Space } from 'antd'
+import { Button, Space } from 'antd'
 
 import TableComponent from '../layout/TableComponent'
 
@@ -108,9 +108,9 @@ const DepertmentDetails = () => {
     })
 
 
-    const handleDelete = (value) => {
+    // const handleDelete = (value) => {
 
-    }
+    // }
 
 
     return (

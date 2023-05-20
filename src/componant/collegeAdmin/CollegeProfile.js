@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
 import { Typography } from '@material-ui/core'
 import Sidebar from './sidebar'
 import { useAlert } from 'react-alert'
-import Loader from '../layout/loader/loader'
+// import Loader from '../layout/loader/loader'
 import CountUp from 'react-countup';
-import CollegeDataChange from './CollegeDataChange'
+// import CollegeDataChange from './CollegeDataChange'
 import { Button } from 'antd'
 
 const CollegeProfile = () => {

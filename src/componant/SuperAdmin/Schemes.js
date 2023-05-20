@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect } from 'react'
 import AdminSidebar from './adminSidebar'
-import ImageUploadModal from './imageUploadModal'
+
 import { Button, Image, Popconfirm, Space } from 'antd'
-import { GetCarouselimage, clearErrors, deleteCarouselImageAction, deleteImageAction } from '../../action/imageAction'
-import { DELETE_CAROUSEL_RESET, DELETE_IMAGE_RESET } from '../../constants/imageConstants'
+import {SchemeGetAction, clearErrors, deleteCarouselImageAction } from '../../action/imageAction'
+import { DELETE_CAROUSEL_RESET} from '../../constants/imageConstants'
 import { useDispatch, useSelector } from 'react-redux'
 import TableComponent from '../layout/TableComponent'
 import { useAlert } from 'react-alert'
@@ -11,7 +11,7 @@ import SchemeUploadModal from './SchemeUploadmodal'
 
 const SchemeAdminimages = () => {
   const { isDeleted,  error,loading:dltLoading } = useSelector(state => state.dltCarousel)
-  const {photos,loading}=useSelector(state=>state.getCarousel)
+  const {scheme,loading,error:getschemeError}=useSelector(state=>state.getScheme)
   const dispatch=useDispatch()
   const alert=useAlert()
   const deleteHandler = (id) => {
@@ -25,18 +25,18 @@ const SchemeAdminimages = () => {
       key:'id',
       fixed: 'left'
     },
+   
     {
-      title: 'Image Type',
-      dataIndex: 'type',
-      align: "center",
-      editable: true,
-
+      title: 'Poster',
+      dataIndex: 'image',
+      key: 'image',
+      render: (image) => <Image src={image} width={150} />,
     },
     {
-      title: 'Image',
-      dataIndex: 'image',
-      key: 'photo',
-      render: (image) => <Image src={image} width={150} />,
+      title: 'Link',
+      dataIndex: 'link',
+      key: 'link',
+    
     },
 
     {
@@ -57,11 +57,12 @@ const SchemeAdminimages = () => {
   ]
   const rows = []
 
-  photos && photos.forEach((item) => {
+  scheme && scheme.forEach((item) => {
     rows.push({
       id: item.id,
       image: item.image_url,
-      type: 'photos',
+      link:item.link,
+      // type: 'scheme',
 
     })
   })
@@ -77,9 +78,13 @@ const SchemeAdminimages = () => {
       alert.error(error)
       dispatch(clearErrors())
     }
+    if (getschemeError) {
+      alert.error(getschemeError)
+      dispatch(clearErrors())
+    }
 
-    dispatch(GetCarouselimage())
-  }, [dispatch, isDeleted, error, alert])
+    dispatch(SchemeGetAction())
+  }, [dispatch, isDeleted, error,getschemeError, alert])
 
   return (
    <Fragment>

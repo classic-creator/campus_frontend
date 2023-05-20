@@ -15,7 +15,7 @@ const SuperAdminDashboard = () => {
     useEffect(() => {
         dispatch(getAlluserAction())
         dispatch(getAllcollegesAction())
-    }, [])
+    }, [dispatch])
     
 
     return (

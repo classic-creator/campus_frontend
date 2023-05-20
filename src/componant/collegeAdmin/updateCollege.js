@@ -1,15 +1,15 @@
 import React, { Fragment, useEffect } from 'react'
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
-import Loader from '../layout/loader/loader'
+
 import TextField from '../application/textField'
 import { Formik, Form } from 'formik'
-import { getCourseDetails } from '../../action/courseAction'
-import { UPDATE_COLLEGE_RESET, UPDATE_COURSES_RESET } from '../../constants/collegeAdminConstants'
-import { clearErrors, collegeUpdateAction, myCollegeAction, updateCourseAction } from '../../action/collegeAdminAction'
-import CourseBar from './courseBar'
+
+import { UPDATE_COLLEGE_RESET } from '../../constants/collegeAdminConstants'
+import { clearErrors, collegeUpdateAction, myCollegeAction } from '../../action/collegeAdminAction'
+
 import { Button } from 'antd'
 import SelectField from '../application/SelectField'
 
@@ -18,7 +18,7 @@ export const UpdateCollege = () => {
     const dispatch = useDispatch()
     const alert = useAlert()
     const navigate = useNavigate()
-    const { id } = useParams()
+    // const { id } = useParams()
 
     const { loading, error, isUpdated } = useSelector(state => state.myCollegeupdate)
     const { myCollege } = useSelector(state => state.myCollege)

@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react'
 import TableComponent from '../layout/TableComponent'
 import { Image, Space, Button, Popconfirm } from 'antd'
-import { Link } from 'react-router-dom'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { myCollegeAction } from '../../action/collegeAdminAction'
 import Sidebar from './sidebar'
@@ -16,7 +16,7 @@ const CollegeImages = () => {
   const dispatch = useDispatch()
   const alert = useAlert()
   const { photos, cover_image, logo_image } = useSelector(state => state.myCollege)
-  const { isDeleted, messege, error } = useSelector(state => state.deleteImg)
+  const { isDeleted,  error } = useSelector(state => state.deleteImg)
 
   const deleteHandler = (id) => {
     dispatch(deleteImageAction(id))

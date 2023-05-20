@@ -1,7 +1,7 @@
 import React, { useEffect,Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Sidebar from '../sidebar'
-import { Space, Table,Button } from 'antd'
+import { Space, Button } from 'antd'
 import { useParams } from 'react-router-dom'
 import { ConfirmStudentAction } from '../../../action/applyAction'
 import { Link } from 'react-router-dom'

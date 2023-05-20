@@ -27,6 +27,9 @@ import {
     CHANGE_PROFILE_REQUEST,
     CHANGE_PROFILE_SUCCESS,
     CHANGE_PROFILE_FAIL,
+    GET_COUNT_REQUEST,
+    GET_COUNT_SUCCESS,
+    GET_COUNT_FAIL,
 } from "../constants/userConstants";
 
 import axios from "axios";
@@ -259,6 +262,38 @@ export const resetPassword = (password,token) => async (dispatch) => {
       })
   
     }}
+
+
+    //getAll student count and application count
+
+    
+
+
+
+export const getCountAction = () => async (dispatch) => {
+    try {
+    
+        const config = {
+            headers: { "Content-Type": "application/json", }
+        };
+        dispatch({ type: GET_COUNT_REQUEST })
+      const { data } = await axios.get(`/api/count`,config);
+  
+      dispatch({
+        type: GET_COUNT_SUCCESS,
+        payload: data
+      })
+  
+  
+  
+    } catch (error) {
+      dispatch({
+        type: GET_COUNT_FAIL,
+        payload: error.response.data.message
+      })
+  
+    }}
+
 
 export const clearErrors = () => async (dispatch) => {
     dispatch({

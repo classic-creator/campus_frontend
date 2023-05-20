@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect, useMemo, useState } from 'react'
+import React, { Fragment, useEffect,  useState } from 'react'
 import { clearErrors, getPreferences, updatePreference } from '../../action/preferenceAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert';
-import Loader from '../layout/loader/loader';
+
 import { UPDATE_PREFERENCE_RESET } from '../../constants/preferenceConstants';
 import { useNavigate } from 'react-router-dom';
 import { GetPreferedCourses } from '../../action/courseAction';

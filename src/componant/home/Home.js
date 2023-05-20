@@ -10,12 +10,14 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetCarouselimage } from '../../action/imageAction.js';
 import { getColleges } from '../../action/collegeAction.js';
+import { getCountAction } from '../../action/userAction.js';
 import CountUp from 'react-countup';
 
 const Home = () => {
 
   const {photos}=useSelector(state=>state.getCarousel)
   const { colleges } = useSelector(state => state.colleges)
+  const { Total_users,application_count } = useSelector(state => state.getcount)
   const dispatch=useDispatch()
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -38,6 +40,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getColleges())
    dispatch(GetCarouselimage())
+   dispatch(getCountAction())
   }, [dispatch])
   
 
@@ -125,7 +128,7 @@ const Home = () => {
           <div class="card text-dark bg-warning mb-3" style={{ width: '18rem', }}>
             <div class="card-header"><h2>Applicant</h2></div>
             <div class="card-body">
-              <h2 class="card-title text-center">440+</h2>
+              <h2 class="card-title text-center"> <CountUp end={Total_users && Total_users.length} duration={5} />+</h2>
 
             </div>
           </div>
@@ -137,7 +140,7 @@ const Home = () => {
           <div class="card text-dark bg-warning mb-3" style={{ width: '18rem', }}>
             <div class="card-header"><h2>Applications</h2></div>
             <div class="card-body">
-              <h2 class="card-title text-center">770+</h2>
+              <h2 class="card-title text-center"> <CountUp end={application_count && application_count.length} duration={5} />+</h2>
 
             </div>
           </div>

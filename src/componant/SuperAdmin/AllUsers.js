@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clearErrors, getAlluserAction } from '../../action/adminAction'
 import { useAlert } from 'react-alert'
 import { Button, Image, Space } from 'antd'
+import { Link } from 'react-router-dom'
 
 const AllUsers = () => {
 
@@ -63,7 +64,7 @@ const AllUsers = () => {
             rows.length >= 1 ? (
               <Space>
                 
-                  <Button type='primary' loading={loading} > Update </Button>
+               <Link to={`/admin/user/${record.id}`}>  <Button type='primary' loading={loading} > Update </Button></Link> 
               
                 {/* <Button onClick={() => console.log('edit')} type='primary'>Edit</Button>
                 <Button onClick={() => console.log('edit')} danger type='primary'>Delete</Button> */}
@@ -79,7 +80,7 @@ const AllUsers = () => {
           name: item.name,
           email: item.email,
           gender: item.gender,
-          type: item.user_role,
+          type: item.type,
           image: item.image_url,
 
     

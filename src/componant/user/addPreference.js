@@ -6,14 +6,13 @@ import { Autocomplete } from '@material-ui/lab';
 import { TextField } from '@material-ui/core';
 import './preference.css'
 import { GetPreferedCourses } from '../../action/courseAction';
-import { useParams } from 'react-router-dom';
 import {Button} from 'antd'
 
 const AddPreference = () => {
 
   const dispatch = useDispatch();
   const alert = useAlert()
- const {keyword}=useParams()
+
   const { error ,loading} = useSelector(state => state.preference)
   const { courses } = useSelector(state => state.courses)
 
@@ -39,16 +38,16 @@ const AddPreference = () => {
 
   const [preferences, setPreferences] = useState({
     college1: '',
-    college2: '',
-    college3: '',
+    // college2: '',
+    // college3: '',
 
     course1: '',
-    course2: '',
-    course3: '',
+    // course2: '',
+    // course3: '',
 
     depertment1:'',
-    depertment2:'',
-    depertment3:'',
+    // depertment2:'',
+    // depertment3:'',
     // address: ''
   })
 
@@ -56,13 +55,13 @@ const AddPreference = () => {
 
   // const [suggestedOptions, setSuggestedOptions] = useState([]);
 
-  const { college1, college2, college3, course1, course2, course3,depertment1,depertment2,depertment3 } = preferences
+  const { college1,  course1, depertment1} = preferences
 
-  const PreferenceDataChange = (e) => {
-    setPreferences({ ...preferences, [e.target.name]: e.target.value })
+  // const PreferenceDataChange = (e) => {
+  //   setPreferences({ ...preferences, [e.target.name]: e.target.value })
 
 
-  }
+  // }
 
 
   const PreferenceFunction = (e) => {
@@ -73,13 +72,11 @@ const AddPreference = () => {
     const myForm = new FormData()
 
     myForm.set('college1', college1)
-    myForm.set('college2', college2)
-    myForm.set('college3', college3)
+    
     myForm.set('course1', course1)
-    myForm.set('course2', course2)
+   
     myForm.set('depertment1', depertment1)
-    myForm.set('depertment2', depertment2)
-    myForm.set('depertment3', depertment3)
+  
     // myForm.set('address', address)
 
     dispatch(registerPreferenceAction(myForm))

@@ -1,14 +1,14 @@
 
 import React, { Fragment, useEffect, useState } from 'react'
 
-import { Link, useParams } from 'react-router-dom'
+
 import { useDispatch, useSelector } from 'react-redux'
-import { CarouselImageUpload, CollegeCoverimgAction,SchemeUpload,clearErrors } from '../../action/imageAction'
+import {SchemeUpload,clearErrors } from '../../action/imageAction'
 import { faEye, faMultiply} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAlert } from 'react-alert'
 import { Button, Image } from 'antd'
-import { CAROUSEL_IMAGE_UPLOAD_RESET, COLLEGE_COVERIMG_UPLOAD_RESET, SCHEME_UPLOAD_RESET} from '../../constants/imageConstants'
+import {  SCHEME_UPLOAD_RESET} from '../../constants/imageConstants'
 
 const SchemeUploadModal = () => {
 
@@ -76,7 +76,7 @@ const SchemeUploadModal = () => {
         <Fragment>
 
             <button type="button" className="btn btn-primary shadow-none " data-bs-toggle="modal" data-bs-target="#adminImageUpload">
-                Image Upload
+                Add scheme
             </button>
 
 

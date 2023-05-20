@@ -1,5 +1,4 @@
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import React, { Fragment, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./search.css"

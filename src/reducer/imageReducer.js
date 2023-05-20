@@ -31,6 +31,9 @@ import {
     SCHEME_UPLOAD_SUCCESS,
     SCHEME_UPLOAD_RESET,
     SCHEME_UPLOAD_FAIL,
+    GET_SCHEME_REQUEST,
+    GET_SCHEME_SUCCESS,
+    GET_SCHEME_FAIL,
 } from "../constants/imageConstants";
 
 export const CarouselImageReducer = ((state = {}, action) => {
@@ -80,6 +83,8 @@ export const CarouselImageReducer = ((state = {}, action) => {
     }
 
 })
+
+//upload scheme
 export const SchemeReducer = ((state = {}, action) => {
 
     switch (action.type) {
@@ -144,12 +149,55 @@ export const GetCarouselImageReducer = ((state = {photos:[]}, action) => {
         case GET_CAROUSEL_SUCCESS:
 
             return {
-                ...state,
+            
                 loading: false,
                 photos: action.payload.photos,
 
             };
         case GET_CAROUSEL_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+
+            };
+
+        case CLEAR_ERRORS:
+
+            return {
+                ...state,
+                error: null,
+            };
+
+        default:
+            return state;
+    }
+
+})
+
+
+//GET CAROUSEL IMAGES
+
+export const GetSchemeReducer = ((state = {scheme:[]}, action) => {
+
+    switch (action.type) {
+        case GET_SCHEME_REQUEST:
+
+            return {
+               ...state,
+                loading: true,
+                scheme:[]
+            };
+
+        case GET_SCHEME_SUCCESS:
+
+            return {
+              
+                loading: false,
+                scheme: action.payload.scheme,
+
+            };
+        case GET_SCHEME_FAIL:
             return {
                 ...state,
                 loading: false,

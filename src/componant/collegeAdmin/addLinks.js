@@ -3,7 +3,7 @@ import React, { Fragment, useEffect } from 'react'
 import { Formik,Form } from 'formik'
 import TextField from '../application/textField'
 import * as Yup from 'yup'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import { AddnoticsAction, clearErrors} from '../../action/collegeAdminAction'
 import {useAlert} from 'react-alert'
@@ -16,7 +16,7 @@ import { ADD_NOTIC_RESET } from '../../constants/collegeAdminConstants'
 
 const AddLinks = () => {
 
-    const {id}=useParams();
+    // const {id}=useParams();
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const alert =useAlert()

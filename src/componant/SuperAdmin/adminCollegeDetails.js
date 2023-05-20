@@ -2,9 +2,9 @@ import React, { Fragment, useEffect } from 'react'
 import AdminSidebar from './adminSidebar'
 import TableComponent from '../layout/TableComponent'
 import { useDispatch, useSelector } from 'react-redux'
-import { adminCollegeDetailsAction, clearErrors, getAllcollegesAction, getAlluserAction } from '../../action/adminAction'
+import { adminCollegeDetailsAction, clearErrors} from '../../action/adminAction'
 import { useAlert } from 'react-alert'
-import { Button, Image, Space } from 'antd'
+import { Button,  Space } from 'antd'
 import { Link, useParams } from 'react-router-dom'
 
 const CollegeCourses = () => {
@@ -99,7 +99,7 @@ const CollegeCourses = () => {
         }
     
         dispatch(adminCollegeDetailsAction(id))
-      }, [dispatch,  error, alert])
+      }, [dispatch, id, error, alert])
 
   return (
     <Fragment>

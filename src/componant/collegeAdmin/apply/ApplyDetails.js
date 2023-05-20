@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import './studentDetails.css'
-import { Space, Table, Button } from 'antd'
+import { Space,  Button } from 'antd'
 import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartColumn } from '@fortawesome/free-solid-svg-icons'
@@ -242,8 +242,8 @@ const ApplyDetails = () => {
                         <h2>{application && application.first_name}{' '}{application && application.middle_name}{' '}{application && application.last_name}</h2>
                         <span className='smlspan'>#{application && application.id}</span>
                         <span className='smlspan'>{application && application.email}</span>
-                        <p>Application Status :<span className={application && application.admission_status === 'Selected' ||application && application.admission_status === 'confirmed' ? 'greenColor' : 'redColor'}>  {application && application.admission_status}</span></p>
-                        <p>Payment Status : <span className={application && application.admission_payment_status === 'paid' ? 'greenColor' : 'redColor'}>{application && application.admission_payment_status}</span> </p>
+                        <p>Application Status :<span className={(application && application.admission_status === 'Selected') ||( application && application.admission_status === 'confirmed' )? 'greenColor' : 'redColor'}>  {application && application.admission_status}</span></p>
+                        <p>Payment Status : <span className={(application && application.admission_payment_status === 'paid') ? 'greenColor' : 'redColor'}>{application && application.admission_payment_status}</span> </p>
 
                     </div>
                     <div className="profile12">

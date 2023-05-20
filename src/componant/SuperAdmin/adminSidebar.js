@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 // import "../../sidebar.css"
 
 
-import { TreeView,TreeItem } from '@material-ui/lab'
+// import { TreeView,TreeItem } from '@material-ui/lab'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAdd,  faBars,  faBookAtlas,  faBuilding,  faClose,  faDashboard, faDoorClosed, faDoorOpen, faFileAlt, faFileImport, faFrownOpen,  faImage,  faLink,  faListAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons'
+import {   faBars,  faBuilding,  faClose,  faDashboard,  faImage,   faNewspaper, faUserAlt } from '@fortawesome/free-solid-svg-icons'
  
 const AdminSidebar = () => {
 
@@ -54,6 +54,12 @@ const AdminSidebar = () => {
             </p>
         </Link>
        */}
+        <Link to="/admin/request/colleges">
+            <p>
+                <FontAwesomeIcon  icon={faBuilding}/>
+                <span className='spantext'>Approvel Request</span>
+            </p>
+        </Link>
         <Link to="/admin/colleges">
             <p>
                 <FontAwesomeIcon  icon={faBuilding}/>
@@ -74,7 +80,7 @@ const AdminSidebar = () => {
         </Link>
         <Link to="/admin/Schemes">
             <p>
-                <FontAwesomeIcon  icon={faImage}/>
+                <FontAwesomeIcon  icon={faNewspaper}/>
                 <span className='spantext'>Schemes</span>
             </p>
         </Link>

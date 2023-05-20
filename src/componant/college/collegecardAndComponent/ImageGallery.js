@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { useSelector } from 'react-redux'
 import CoverAndNav from './coverAndNav'
 import './imagegallery.css'
+import {Image} from 'antd'
 
 const ImageGallery = () => {
     const { photos, college } = useSelector(state => state.collegeDetails);
@@ -19,7 +20,7 @@ const ImageGallery = () => {
                     <div className="col-sm-6 col-md-4 col-lg-3 imageContainer">
                        
 
-                        <img className="img-fluid"  alt='image' src={phot.image_url} />
+                        <Image width={250} height={200} alt='photos' src={phot.image_url} />
                         
 
                     </div>
@@ -27,15 +28,16 @@ const ImageGallery = () => {
                 ))}
                 {photos && photos.map(phot => (
                 
-                    <div className="col-sm-6 col-md-4 col-lg-3 gallerydiv">
-                      
-
-                        <img className="img-fluid galleryimg" alt='image' src={phot.image_url} />
+                    <div className="col-sm-6 col-md-4 col-lg-3 imageContainer">
                        
+
+                        <Image width={250} height={200} alt='photos' src={phot.image_url} />
+                        
 
                     </div>
                
                 ))}
+              
 
             </div>
             </div> 

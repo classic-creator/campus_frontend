@@ -10,8 +10,6 @@ import CourseCard from './collegecardAndComponent/courseCard'
 import CoverAndNav from './collegecardAndComponent/coverAndNav'
 import Imgcarousel from './collegecardAndComponent/Imgcarousel'
 import ImportantLinkCard from './collegecardAndComponent/importantLinkCard'
-import SidebarOfcave from './collegecardAndComponent/sidebarOfcave'
-import { Button } from 'antd'
 
 
 const Courses = () => {

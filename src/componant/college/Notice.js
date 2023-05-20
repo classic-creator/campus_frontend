@@ -76,7 +76,7 @@ const {id}=useParams()
          <CoverAndNav college={college} />
     <div className="container-fluid">
       <h2 className='m-3 text-center'> Important Links</h2>
-        <TableComponent columns={columns} dataSource={rows}/>
+        <TableComponent columns={columns} loading={loading} dataSource={rows}/>
     </div>
 
 

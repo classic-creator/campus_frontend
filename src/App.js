@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
+import {  Routes, Route, useLocation } from "react-router-dom"
 import Header from "./componant/layout/header/header.js"
 import About from "./componant/about/About.js"
 import Home from "./componant/home/Home.js"
@@ -62,6 +62,9 @@ import CollegeCourses from './componant/SuperAdmin/adminCollegeDetails';
 import UpdateCollege from './componant/collegeAdmin/updateCollege';
 import Paymentsuccess from './componant/payment/paymentsuccess';
 import SchemeAdminimages from './componant/SuperAdmin/Schemes';
+import UpdateUser from './componant/SuperAdmin/updateUser';
+import RegisterWaiting from './componant/collegeAdmin/registerWaiting';
+import AllApprovelList from './componant/SuperAdmin/AllApprovelList';
 
 
 function ScrollToTop({ children }) {
@@ -116,6 +119,7 @@ function App() {
         <Route exact path='/upload/file/:id' element={<ProtectedRoute component={FileUpload} />}  />
         <Route exact path='/myApplication' element={<ProtectedRoute component={MyApplication} />} />
         <Route exact path='/college/register' element={<ProtectedRoute component={RegisterCollege} />} />
+        <Route exact path='/college/waiting' element={<ProtectedRoute component={RegisterWaiting} />} />
         <Route exact path='/admission/payment/:id' element={<ProtectedRoute component={AdmissionPayment} />} />
         <Route exact path='/college/gallery/:id' element={<ProtectedRoute component={ImageGallery} />} />
         <Route exact path='/view/newpayment/:id' element={<ProtectedRoute component={StudentNew_old_payments} />} />
@@ -140,12 +144,16 @@ function App() {
         <Route exact path='/links' element={<ProtectedRoute isAdmin={true} component={Links} />} />
         <Route exact path='/college/images' element={<ProtectedRoute isAdmin={true} component={CollegeImages} />} />
         <Route exact path='/college/manager/profile' element={<ProtectedRoute isAdmin={true} component={CollegeProfile} />} />
-        <Route exact path='/admin' element={<ProtectedRoute isAdmin={true} component={SuperAdminDashboard} />} />
-        <Route exact path='/admin/images' element={<ProtectedRoute isAdmin={true} component={SuperAdminimages} />} />
-        <Route exact path='/admin/users' element={<ProtectedRoute isAdmin={true} component={AllUsers} />} />
-        <Route exact path='/admin/colleges' element={<ProtectedRoute isAdmin={true} component={AllColleges} />} />
-        <Route exact path='/admin/college/:id' element={<ProtectedRoute isAdmin={true} component={CollegeCourses} />} />
-        <Route exact path='/admin/Schemes' element={<ProtectedRoute isAdmin={true} component={SchemeAdminimages} />} />
+       
+        <Route exact path='/admin' element={<ProtectedRoute isSuperAdmin={true} component={SuperAdminDashboard} />} />
+        <Route exact path='/admin/images' element={<ProtectedRoute isSuperAdmin={true} component={SuperAdminimages} />} />
+        <Route exact path='/admin/request/colleges' element={<ProtectedRoute isSuperAdmin={true} component={AllApprovelList} />} />
+        <Route exact path='/admin/users' element={<ProtectedRoute isSuperAdmin={true} component={AllUsers} />} />
+        <Route exact path='/admin/colleges' element={<ProtectedRoute isSuperAdmin={true} component={AllColleges} />} />
+        <Route exact path='/admin/college/:id' element={<ProtectedRoute isSuperAdmin={true} component={CollegeCourses} />} />
+        <Route exact path='/admin/Schemes' element={<ProtectedRoute isSuperAdmin={true} component={SchemeAdminimages} />} />
+        <Route exact path='/admin/user/:id' element={<ProtectedRoute isSuperAdmin={true} component={UpdateUser} />} />
+      
         <Route exact path='/about' element={<About />} />
 
       </Routes>

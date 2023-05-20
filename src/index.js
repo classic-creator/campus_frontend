@@ -24,8 +24,8 @@ root.render(
   <Provider store={store}>
     <AlertProvider template={AlertTemplate}{...options}>
 
-
-    <BrowserRouter basename="/build">
+    {/* basename="/build" */}
+    <BrowserRouter>
         <App />
       </BrowserRouter>
     </AlertProvider>

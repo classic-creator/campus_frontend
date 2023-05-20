@@ -11,7 +11,7 @@ import AddPreference from '../user/addPreference';
 import PreferenceCourses from './PreferenceCourses';
 
 import { getPreferences } from '../../action/preferenceAction';
-import SidebarOfcave from './collegecardAndComponent/sidebarOfcave';
+// import SidebarOfcave from './collegecardAndComponent/sidebarOfcave';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faMultiply } from '@fortawesome/free-solid-svg-icons';
 

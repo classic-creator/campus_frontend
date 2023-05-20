@@ -5,7 +5,7 @@ import Sidebar from './sidebar'
 
 import { Link } from 'react-router-dom'
 import './depertment.css'
-import { Button, Table, Space, Form, Input } from 'antd'
+import { Button, Space } from 'antd'
 import TableComponent from '../layout/TableComponent'
 
 const AllDepertments = () => {

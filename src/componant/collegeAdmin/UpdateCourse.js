@@ -3,7 +3,7 @@ import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import * as Yup from 'yup'
-import Loader from '../layout/loader/loader'
+// import Loader from '../layout/loader/loader'
 import TextField from '../application/textField'
 import { Formik, Form } from 'formik'
 import { getCourseDetails } from '../../action/courseAction'
@@ -36,7 +36,7 @@ export const UpdateCourse = () => {
 
         dispatch(getCourseDetails(id))
 
-    }, [course, alert, dispatch, error, navigate])
+    }, [course,id, alert, dispatch, error,details.depertment_id, navigate])
 
 
     const validate = Yup.object({

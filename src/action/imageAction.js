@@ -33,7 +33,10 @@ import {
    DELETE_CAROUSEL_FAIL,
    SCHEME_UPLOAD_REQUEST,
    SCHEME_UPLOAD_SUCCESS,
-   SCHEME_UPLOAD_FAIL
+   SCHEME_UPLOAD_FAIL,
+   GET_SCHEME_REQUEST,
+   GET_SCHEME_SUCCESS,
+   GET_SCHEME_FAIL
 } from '../constants/imageConstants';
 
 
@@ -370,6 +373,37 @@ export const SchemeUpload = (formData) => async (dispatch) => {
    } catch (error) {
       dispatch({
          type: SCHEME_UPLOAD_FAIL,
+         payload: error.response.data.message
+      })
+   }
+}
+//super admin landing page Scheme  GET 
+
+
+export const SchemeGetAction = () => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "multipart/form-data",
+            "Authorization": `Bearer ${token}`
+         },
+
+      };
+      dispatch({ type: GET_SCHEME_REQUEST })
+
+      const { data } = await axios.get(`/api/scheme/get`,  config)
+
+      dispatch({
+         type: GET_SCHEME_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: GET_SCHEME_FAIL,
          payload: error.response.data.message
       })
    }

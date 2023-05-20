@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import './aplicationCard.css'
 import { Link } from 'react-router-dom'
 

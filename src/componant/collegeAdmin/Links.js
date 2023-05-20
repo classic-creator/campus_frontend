@@ -1,4 +1,4 @@
-import { Button, Space, Popconfirm, Table } from 'antd'
+import { Button, Space, Popconfirm } from 'antd'
 import React, { Fragment, useEffect } from 'react'
 import TableComponent from '../layout/TableComponent'
 import { Link, useNavigate } from 'react-router-dom'
