@@ -158,7 +158,7 @@ const ReviewApplication = () => {
 
             <div className='applyFor '>
               <Form className='applyForm  applyform'>
-
+              {fileLoading? <Button loading={fileLoading}></Button>:null}
                 <div className='but'>
                   <h3>Personal details</h3>
                 </div>

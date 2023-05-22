@@ -34,6 +34,7 @@ import {
     MY_COLLEGE_SUCCESS,
     REGISTER_COLLEGE_FAIL,
     REGISTER_COLLEGE_REQUEST,
+    REGISTER_COLLEGE_RESET,
     REGISTER_COLLEGE_SUCCESS,
     UPDATE_COLLEGE_FAIL,
     UPDATE_COLLEGE_REQUEST,
@@ -64,7 +65,12 @@ export const collegesReducer = ((state = {}, action) => {
 
             };
 
-
+            case REGISTER_COLLEGE_RESET:
+        
+            return{
+              loading:false,
+              
+            };
         case REGISTER_COLLEGE_FAIL:
 
             return {

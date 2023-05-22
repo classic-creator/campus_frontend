@@ -113,6 +113,7 @@ export const myCollegeAction = () => async (dispatch) => {
     try {
         const token = localStorage.getItem('token')
 
+        
         const config = {
             headers: {
                 // "Access-Control-Allow-Origin:": "*",

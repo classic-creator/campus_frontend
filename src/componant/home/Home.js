@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import "./home.css"
 import './seaccarusol.css'
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Autoplay } from "swiper";
+import { Pagination, Navigation, HashNavigation,Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -116,8 +116,8 @@ const Home = () => {
         </div>
         <div className="boxes">
           {/* <div className="box1   box "> */}
-          <div class="card  text-dark bg-primary mb-3" style={{ width: '18rem', }}>
-            <div class="card-header"><h2>Institute</h2> </div>
+          <div class="card  text-light bg-primary mb-3" style={{ width: '18rem', }}>
+            <div class="card-header text-center"><h2 >Institute</h2> </div>
             <div class="card-body">
               <h2 class="card-title text-center"> <CountUp end={colleges && colleges.length} duration={5} />+</h2>
 
@@ -125,10 +125,10 @@ const Home = () => {
           </div>
           {/* </div> */}
           {/* <div className="box2   box"> */}
-          <div class="card text-dark bg-warning mb-3" style={{ width: '18rem', }}>
-            <div class="card-header"><h2>Applicant</h2></div>
+          <div class="card text-light bg-primary mb-3" style={{ width: '18rem', }}>
+            <div class="card-header "><h2 className='text-center'>Applicant</h2></div>
             <div class="card-body">
-              <h2 class="card-title text-center"> <CountUp end={Total_users && Total_users.length} duration={5} />+</h2>
+              <h2 class="card-title text-center"> <CountUp end={Total_users && Total_users} duration={5} />+</h2>
 
             </div>
           </div>
@@ -137,10 +137,10 @@ const Home = () => {
             <h3>User Count</h3>
             <span>5000</span>
           </div> */}
-          <div class="card text-dark bg-warning mb-3" style={{ width: '18rem', }}>
-            <div class="card-header"><h2>Applications</h2></div>
+          <div class="card text-light bg-primary mb-3" style={{ width: '18rem', }}>
+            <div class="card-header text-center"><h2>Applications</h2></div>
             <div class="card-body">
-              <h2 class="card-title text-center"> <CountUp end={application_count && application_count.length} duration={5} />+</h2>
+              <h2 class="card-title text-center"> <CountUp end={application_count && application_count} duration={5} />+</h2>
 
             </div>
           </div>
@@ -151,7 +151,7 @@ const Home = () => {
           <span className='ms-3'>Some educational scheme and scholarship provided by government </span>
           <Swiper
             slidesPerView={4}
-            // centeredSlides={true}
+            centeredSlides={true}
             spaceBetween={30}
             grabCursor={true}
             pagination={{
@@ -162,10 +162,10 @@ const Home = () => {
               delay: 2500,
               disableOnInteraction: false,
             }}
-            // hashNavigation={{
-            //     watchState: true,
-            //   }}
-            modules={[Pagination, Navigation, Autoplay]}
+            HashNavigation={{
+                watchState: true,
+              }}
+            modules={[Pagination, Navigation,HashNavigation, Autoplay]}
             className="mySwiper mt-3"
           >
 

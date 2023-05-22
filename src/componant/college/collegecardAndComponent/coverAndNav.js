@@ -16,12 +16,12 @@ const CoverAndNav = ( {college ,scrollToSection,courses,seatStructure ,eligibili
                 <img className='clgCoverimg' src={college && college.cover_image_url} alt="College Cover" />
                 <div className="bottomleft">
                     <h2>{ college && college.collegeName}</h2>
-                    <h4>{college && college.depertment_name}</h4>
+                    <h4 className='mt-1 text-dark'>{college && college.depertment_name}</h4>
                     {/* <h1>{college && college.college_id}</h1> */}
-                    <span><FontAwesomeIcon icon={faLocationPin} />{college && college.address}</span>
+                    <span><FontAwesomeIcon icon={faLocationPin} />{college && college.address},{college && college.city} </span>
                 </div>
                 <div className="bottomRight">
-                    <p> NAAC 2023 A gread college</p>
+                    <p> NAAC {college && college.rating} gread college</p>
                 </div>
                 
             </div>

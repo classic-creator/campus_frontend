@@ -28,6 +28,7 @@ switch (action.type) {
         colleges:action.payload.colleges,
         collegeCounts:action.payload.collegeCounts
       };
+   
     case ALL_COLLEGE_FAIL:
         
       return{

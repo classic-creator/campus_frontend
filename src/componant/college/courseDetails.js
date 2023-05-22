@@ -151,7 +151,7 @@ const CourseDetails = () => {
       <div className="detailContainer">
 
         <div className='detailsdiv-1 p-edit pl-3 flex-column' >
-          <h4  className='m-3' >About course :</h4>
+          <h4  className='m-3 text-left' >About course :</h4>
           <p className='m-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium alias non facere quae? Corrupti molestias repellendus beatae, cum dolore inventore unde commodi eius corporis, nemo, maiores ad quam autem assumenda quia! Illum itaque, iure inventore voluptate natus minus vel nam voluptatibus mollitia, qui, ex aliquid perferendis magnam recusandae cupiditate libero.</p>
 
           <h4 className='m-3' id="eligibility" ref={scrollRef}>Eligibility :</h4>
@@ -162,8 +162,8 @@ const CourseDetails = () => {
         
 
         <div>
-          <ImportantLinkCard />
-          <Imgcarousel />
+          {/* <ImportantLinkCard />
+          <Imgcarousel /> */}
         </div>
 
       </div>

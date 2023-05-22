@@ -5,6 +5,7 @@ import { useAlert } from 'react-alert'
 import { Button, Popconfirm, Space } from 'antd'
 import AdminSidebar from './adminSidebar'
 import TableComponent from '../layout/TableComponent'
+import { COLLEGE_APPROVEL_RESET } from '../../constants/adminConstants'
 
 const AllApprovelList = () => {
 
@@ -65,6 +66,20 @@ dispatch(ApproveCollegeRegisterAction(data))
             editable: true,
 
         },
+        {
+            title: 'City',
+            dataIndex: 'city',
+            align: "center",
+            editable: true,
+
+        },
+        {
+            title: 'Description',
+            dataIndex: 'description',
+            align: "center",
+            editable: true,
+
+        },
 
 
         {
@@ -94,6 +109,8 @@ dispatch(ApproveCollegeRegisterAction(data))
             email: item.email,
             district: item.address,
             user_id: item['create-by'],
+            description:item.description,
+            city:item.city,
 
         })
     })
@@ -106,7 +123,7 @@ dispatch(ApproveCollegeRegisterAction(data))
         }
         if (isUpdated) {
             alert.success('Approve Request Success')
-            dispatch(clearErrors())
+            dispatch({type:COLLEGE_APPROVEL_RESET})
         }
         if (approveError) {
             alert.error(approveError)

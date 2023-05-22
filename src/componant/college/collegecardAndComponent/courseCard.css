@@ -68,7 +68,10 @@
     overflow: hidden;
     transition: all 0.2s ease-in-out;
   
-    background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%);
+    /* background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%); */
+    background: linear-gradient(110deg, #f9fcff 60%, #dddeebb7 60%);
+
+
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
     border-radius: 10px;
   }
@@ -91,7 +94,9 @@
   
   .coursecard_body {
     
-    background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%);
+    /* background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%); */
+    background: linear-gradient(110deg, #f9fcff 60%, #dddeebb7 60%);
+
     padding: 10px;
     /* height: 220px; */
     height: 80%;

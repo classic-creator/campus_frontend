@@ -105,8 +105,8 @@ const identificationOptions = [
 
   return (
     <Fragment>
-      {loading ? <Loader /> :
-        <Fragment>
+      {/* {loading ? <Loader /> :
+        <Fragment> */}
           <CheckoutSteps activeStep={0} />
           <Formik
             enableReinitialize={true}
@@ -150,7 +150,7 @@ const identificationOptions = [
 
           </Formik>
 
-        </Fragment>}
+        {/* </Fragment>} */}
     </Fragment>
   )
 }

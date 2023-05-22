@@ -62,7 +62,7 @@ const Courses = () => {
         </div>
         <div>
 
-          <ImportantLinkCard />
+          {/* <ImportantLinkCard /> */}
           <Imgcarousel />
         </div>
       </div>

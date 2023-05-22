@@ -15,13 +15,22 @@ import { getPreferences } from '../../action/preferenceAction';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faMultiply } from '@fortawesome/free-solid-svg-icons';
 
-const AllCourses = () => {
+const AllCourses = ({scrollToSection}) => {
 
   const [showResults, setShowResults] = useState(false)
   const courseToggle = () => {
-    setShowResults(!showResults);
-    if (showResults) {
-      scrollToAllCourses();
+    // setShowResults(!showResults);
+    // if (showResults) {
+      
+    //   scrollToSection('courses');
+    // }
+    if(showResults===false){
+      setShowResults(true)
+      scrollToSection('courses');
+    }
+    if(showResults===true){
+      setShowResults(false)
+     
     }
   }
 
@@ -40,14 +49,9 @@ const AllCourses = () => {
   }, [dispatch, keyword])
 
  
-  const allCoursesRef = useRef(null); // Reference to the all courses section
+  const allCoursesRef = useRef(null);
 
-  const scrollToAllCourses = () => {
-    if (allCoursesRef.current) {
-      allCoursesRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+ 
 
   return (
     <Fragment>
@@ -61,7 +65,7 @@ const AllCourses = () => {
           {/* modal button */}
           <div className='preferenceBtn'>
             
-          <Link onClick={courseToggle}>Show all courses {showResults ? <FontAwesomeIcon icon={faMultiply} /> : <FontAwesomeIcon icon={faEye} />} </Link>
+          <Link to="#allCourses" onClick={courseToggle}>Show all courses {showResults ? <FontAwesomeIcon icon={faMultiply} /> : <FontAwesomeIcon icon={faEye} />} </Link>
 
 
             {preferCourses ? <PreferenceCourses /> : <div id='modalp'><span>Add your preferences </span><AddPreference /></div>}
@@ -71,10 +75,10 @@ const AllCourses = () => {
         </div>
 
 
-        <div className='allcourse '>
+        <div className='allcourse ' ref={allCoursesRef} id="allCourses">
           {/* <Link onClick={courseToggle}>Show all courses {showResults ? <FontAwesomeIcon icon={faMultiply} /> : <FontAwesomeIcon icon={faEye} />} </Link> */}
 
-          {showResults ? <All ref={allCoursesRef}/> : null}
+          {showResults ? <All  /> : null}
 
         </div>
 
@@ -87,6 +91,7 @@ export default AllCourses
 
 const All = () => {
 
+  
   const { keyword } = useParams()
   const alert = useAlert()
   const dispatch = useDispatch();
@@ -108,8 +113,8 @@ const All = () => {
     <Fragment>
       {loading ? <Loader /> : <Fragment>
 
-        <p id='allCourse'>All courses </p>
-        <div className="container ref={allCoursesRef}" >
+        <p >All courses </p>
+        <div className="container"   >
           {courses && courses.map(course => (<CourseCard key={course.id} course={course} />))}
         </div>
       </Fragment>}

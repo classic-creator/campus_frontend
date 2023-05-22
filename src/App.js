@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import {  Routes, Route, useLocation } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom"
 import Header from "./componant/layout/header/header.js"
 import About from "./componant/about/About.js"
 import Home from "./componant/home/Home.js"
@@ -65,6 +65,10 @@ import SchemeAdminimages from './componant/SuperAdmin/Schemes';
 import UpdateUser from './componant/SuperAdmin/updateUser';
 import RegisterWaiting from './componant/collegeAdmin/registerWaiting';
 import AllApprovelList from './componant/SuperAdmin/AllApprovelList';
+import LoadingBar from 'react-top-loading-bar';
+import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+// import Loader from './componant/layout/loader/loader';
 
 
 function ScrollToTop({ children }) {
@@ -89,13 +93,16 @@ function App() {
 
     store.dispatch(loadUser())
   })
+
   return (
 
 
     // <BrowserRouter>
-<div>
-      <Header />
+    <>
+
+
       <ScrollToTop />
+      <Header />
       <Routes>
 
         <Route exact path='/' element={<Home />} />
@@ -116,7 +123,7 @@ function App() {
         <Route exact path='/apply/address/:id' element={<ProtectedRoute component={ApplyAddress} />} />
         <Route exact path='/apply/education/:id' element={<ProtectedRoute component={ApplyEducationalDetails} />} />
         <Route exact path='/review/application/:id' element={<ProtectedRoute component={ReviewApplication} />} />
-        <Route exact path='/upload/file/:id' element={<ProtectedRoute component={FileUpload} />}  />
+        <Route exact path='/upload/file/:id' element={<ProtectedRoute component={FileUpload} />} />
         <Route exact path='/myApplication' element={<ProtectedRoute component={MyApplication} />} />
         <Route exact path='/college/register' element={<ProtectedRoute component={RegisterCollege} />} />
         <Route exact path='/college/waiting' element={<ProtectedRoute component={RegisterWaiting} />} />
@@ -124,7 +131,7 @@ function App() {
         <Route exact path='/college/gallery/:id' element={<ProtectedRoute component={ImageGallery} />} />
         <Route exact path='/view/newpayment/:id' element={<ProtectedRoute component={StudentNew_old_payments} />} />
         <Route path="/paymentsuccess" element={<Paymentsuccess />} />
-
+    
         <Route exact path='/college/depertment/create' element={<ProtectedRoute isAdmin={true} component={CreateDepertment} />} />
         <Route exact path='/depertments' element={<ProtectedRoute isAdmin={true} component={AllDepertments} />} />
         <Route exact path='/depertment/:id' element={<ProtectedRoute isAdmin={true} component={DepertmentDetails} />} />
@@ -144,7 +151,7 @@ function App() {
         <Route exact path='/links' element={<ProtectedRoute isAdmin={true} component={Links} />} />
         <Route exact path='/college/images' element={<ProtectedRoute isAdmin={true} component={CollegeImages} />} />
         <Route exact path='/college/manager/profile' element={<ProtectedRoute isAdmin={true} component={CollegeProfile} />} />
-       
+
         <Route exact path='/admin' element={<ProtectedRoute isSuperAdmin={true} component={SuperAdminDashboard} />} />
         <Route exact path='/admin/images' element={<ProtectedRoute isSuperAdmin={true} component={SuperAdminimages} />} />
         <Route exact path='/admin/request/colleges' element={<ProtectedRoute isSuperAdmin={true} component={AllApprovelList} />} />
@@ -153,13 +160,13 @@ function App() {
         <Route exact path='/admin/college/:id' element={<ProtectedRoute isSuperAdmin={true} component={CollegeCourses} />} />
         <Route exact path='/admin/Schemes' element={<ProtectedRoute isSuperAdmin={true} component={SchemeAdminimages} />} />
         <Route exact path='/admin/user/:id' element={<ProtectedRoute isSuperAdmin={true} component={UpdateUser} />} />
-      
+
         <Route exact path='/about' element={<About />} />
 
       </Routes>
-    
+
       <Footer />
-      </div>
+    </>
     // </BrowserRouter>
 
 

@@ -1,7 +1,7 @@
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { Fragment } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 
 const Paymentsuccess = () => {
     const seachQuery = useSearchParams()[0]
@@ -19,7 +19,7 @@ const Paymentsuccess = () => {
                     <h1>Thank You !</h1>
                     <p>Your payments was successfull </p>
                     <p>   Reference No. - <span className='greenColor'>{referenceNum}</span>  </p>
-                    {/* <button className="btn btn-primary">Back Home</button> */}
+                    <Link to={'/myApplication'} className="btn btn-primary">Back </Link>
                 </div>
             </div>
             </div>

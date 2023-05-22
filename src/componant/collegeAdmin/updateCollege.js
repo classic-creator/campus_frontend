@@ -12,6 +12,8 @@ import { clearErrors, collegeUpdateAction, myCollegeAction } from '../../action/
 
 import { Button } from 'antd'
 import SelectField from '../application/SelectField'
+import TextArea from '../application/areainput'
+import Sidebar from './sidebar'
 
 export const UpdateCollege = () => {
 
@@ -43,8 +45,10 @@ export const UpdateCollege = () => {
     const validate = Yup.object({
 
         collegeName: Yup.string().required('required'),
-        address: Yup.string().required('required'),
+        // address: Yup.string().required('required'),
         rating: Yup.string().required('required'),
+        city: Yup.string().required('required'),
+        description: Yup.string().required('required'),
       
 
     })
@@ -55,6 +59,8 @@ export const UpdateCollege = () => {
         collegeName: myCollege.collegeName ? myCollege.collegeName : '',
         // address: myCollege.address ? myCollege.address : '',
         rating: myCollege.rating ? myCollege.rating : '',
+        city: myCollege.city ? myCollege.city : '',
+        description: myCollege.description ? myCollege.description : '',
        
 
     }
@@ -101,6 +107,13 @@ export const UpdateCollege = () => {
             {/* {
                 loading ? <Loader /> : <Fragment> */}
 
+<div className="depertmentDeash">
+        <Sidebar />
+        <div className="dashboard">
+          <div className='headdept'>
+
+            <h2>Links</h2>
+          </div>
                     <Formik
                         enableReinitialize={true}
                         initialValues={initialvalues}
@@ -122,6 +135,8 @@ export const UpdateCollege = () => {
                                         <TextField label='College Name' name='collegeName' type='text' />
                                         <SelectField label="District" name="address" options={districtOptions} />
                                         <TextField label='NAAC ranking with year' name='rating' type='text' />
+                                        <TextField label='City' name='city' type='text' />
+                                        <TextArea label='Description' name='description' />
                                        
 
 
@@ -141,6 +156,9 @@ export const UpdateCollege = () => {
 
                 {/* </Fragment>
             } */}
+
+            </div>
+            </div>
         </Fragment>
 
     )

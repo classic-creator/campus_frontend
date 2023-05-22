@@ -130,7 +130,9 @@ custom_fields: [
     
     })
   })
-
+  const downloadReciept=(record)=>{
+    window.location.replace(`http://127.0.0.1:8000/api/download/reciept/${record.id}`)
+  }
 
   const hiatorycolumns = [
     {
@@ -188,7 +190,7 @@ custom_fields: [
       render: (_, record) => (
         <Space>
           <Link to={`/pay/fees/${record.id}`}>
-            <Button type='primary'>Download receipt</Button>
+            <Button onClick={()=>downloadReciept(record)} type='primary'>Download receipt</Button>
           </Link>
         </Space>
       )
@@ -208,6 +210,8 @@ custom_fields: [
       fees_type:item.fees_type,
 
   })
+
+ 
 
   })
   useEffect(() => {

@@ -76,9 +76,18 @@ export const GetPreferedCourses=()=>async(dispatch)=>{
 
 export const getCourseDetails=(id)=>async(dispatch)=>{
     try {
+
+        const config = {
+            baseURL: process.env.REACT_APP_API_BASE_URL,
+            headers: {
+                "Content-Type": "application/json",
+                // Authorization: `Bearer ${token}`
+            }
+        };
+
         dispatch({type:COURSE_DETAILS_REQUEST })
     
-        const {data}=await axios.get(`/api/college/course/${id}`)
+        const {data}=await axios.get(`/api/college/course/${id}`,config)
         dispatch({
             type:COURSE_DETAILS_SUCCESS,
             payload:data

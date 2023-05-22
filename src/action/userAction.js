@@ -159,12 +159,18 @@ export const UpdateProfileAction = (formData) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
         const token = localStorage.getItem('token');
-        const headers = { Authorization: `Bearer ${token}` }; 
+        const config = {
+            baseURL: process.env.REACT_APP_API_BASE_URL,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        };
       
         dispatch({ type: LOGOUT_REQUEST })
 
 
-       await axios.post('/api/logout', null, { headers });
+       await axios.post('/api/logout', null, config);
 
         dispatch({
             type: LOGOUT_SUCCESS,
@@ -218,7 +224,11 @@ export const forgetPassword = (email) => async (dispatch) => {
     try {
     
         const config = {
-            headers: { "Content-Type": "application/json", }
+            baseURL: process.env.REACT_APP_API_BASE_URL,
+            headers: {
+                "Content-Type": "application/json",
+                // Authorization: `Bearer ${token}`
+            }
         };
         dispatch({ type: FORGET_PASSWORD_REQUEST })
       const { data } = await axios.post("/api/sent-reset-password-email", email, config);
@@ -243,7 +253,11 @@ export const resetPassword = (password,token) => async (dispatch) => {
     try {
     
         const config = {
-            headers: { "Content-Type": "application/json", }
+            baseURL: process.env.REACT_APP_API_BASE_URL,
+            headers: {
+                "Content-Type": "application/json",
+                // Authorization: `Bearer ${token}`
+            }
         };
         dispatch({ type: RESET_PASSWORD_REQUEST })
       const { data } = await axios.put(`/api/reset-password/${token}`, password,config);
@@ -273,8 +287,12 @@ export const resetPassword = (password,token) => async (dispatch) => {
 export const getCountAction = () => async (dispatch) => {
     try {
     
-        const config = {
-            headers: { "Content-Type": "application/json", }
+         const config = {
+            baseURL: process.env.REACT_APP_API_BASE_URL,
+            headers: {
+                "Content-Type": "application/json",
+                // Authorization: `Bearer ${token}`
+            }
         };
         dispatch({ type: GET_COUNT_REQUEST })
       const { data } = await axios.get(`/api/count`,config);

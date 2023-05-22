@@ -130,12 +130,11 @@
 
 
 .detailsdiv-1 {
-    display: block;
+    /* display: block; */
     margin: 1vmax auto;
     display: flex;
-    /* flex-direction: column; */
-    /* border: 2px solid rgb(168, 34, 34); */
-    width: 75%;
+   
+    width: 80%;
     flex-wrap: wrap;
 
 }

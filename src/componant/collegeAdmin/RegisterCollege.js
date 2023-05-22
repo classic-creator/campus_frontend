@@ -9,6 +9,8 @@ import './registercollege.css'
 import {  clearErrors, collegeRegisterAction } from '../../action/collegeAdminAction'
 import Loader from "../layout/loader/loader"
 import SelectField from '../application/SelectField'
+import { REGISTER_COLLEGE_RESET } from '../../constants/collegeAdminConstants'
+import TextArea from '../application/areainput'
 
 
 const RegisterCollege = () => {
@@ -29,7 +31,7 @@ const RegisterCollege = () => {
    
     // 
       useEffect(() => {
-                if( message)
+                if(message)
                 {
                     alert.success("College Register Success")
                     // dispatch(loadUser())
@@ -37,6 +39,7 @@ const RegisterCollege = () => {
                     // window.location.reload(false);
                     // user['type']='manager'
                     user['user_role']='waiting'
+                    dispatch({type:REGISTER_COLLEGE_RESET})
                     // console.log(user)
                 }
                 if(error){
@@ -57,11 +60,12 @@ const RegisterCollege = () => {
     const validate = Yup.object({
 
         collegeName: Yup.string().required('required'),
-        district: Yup.string().max(15, 'Must be characters or less'),
+        // district: Yup.string().required('required'),
         email: Yup.string().email('email is invalid').required('required'),
         description: Yup.string().required('required'),
-        rating: Yup.string().max(15, 'Must be characters or less').required('required'),
-        address: Yup.string().max(15, 'Must be characters or less').required('required'),
+        rating: Yup.string().required('required'),
+        address: Yup.string().required('required'),
+        city: Yup.string().required('required'),
       
        
       })
@@ -116,13 +120,12 @@ const RegisterCollege = () => {
                     email:'',
                     description:'',
                     rating:'',
-                    address:''
-    
-    
-                
+                    address:'',
+                    city:''
                 }}
                 validationSchema={validate}
-                onSubmit={values => { dispatch(collegeRegisterAction(values)) }}
+                onSubmit={values =>{dispatch(collegeRegisterAction(values))}}
+                // onSubmit={values =>{console.log(values)}}
               
               >
                 {Formik => (
@@ -135,19 +138,19 @@ const RegisterCollege = () => {
                        <h3>Register College </h3>
                         </div>  
     
-                        <TextField label='College Name' name='collegeName' type='text' />
-                        <TextField label='Email' name='email' type='email'     />
+                        <TextField label='College Name' name='collegeName' type='text'/>
+                        <SelectField label="District" name="address"  options={districtOptions}/>
+                        <TextField label='Email' name='email' type='email'/>
+                        {/* <TextField label='Description' name='description' type='text'/> */}
+                        <TextField label="City" name="city" type='text' />
+                        <TextField label='NAAC Ranking with year' name='rating' type='text'/>
                         {/* <TextField label='District' name='address' type='text'     /> */}
-                        <SelectField label="District" name="address" options={districtOptions} />
-
                         {/* <TextField label='District' name='district' type='text'     /> */}
-                        <TextField label='Description' name='description' type='text'     />
-                        <TextField label='NAAC Ranking with year' name='rating' type='text'     />
+                        <TextArea label='Description' name='description'      />
                    
-                      
-                        
                        <div className='but'>
-                        <button type='submit' className='btn '>Register</button>
+                        <input type='submit' className='btn '/>
+                        {/* Register</input> */}
                        </div>
                       
                         

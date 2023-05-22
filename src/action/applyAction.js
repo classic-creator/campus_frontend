@@ -45,6 +45,9 @@ import {
    GET_FILES_REQUEST,
    GET_FILES_SUCCESS,
    GET_FILES_FAIL,
+   DOWNLOAD_ACKNOWLEDGEMENT_REQUEST,
+   DOWNLOAD_ACKNOWLEDGEMENT_SUCCESS,
+   DOWNLOAD_ACKNOWLEDGEMENT_FAIL,
 
    
 } from "../constants/applyConstants";
@@ -515,6 +518,38 @@ export const ConfirmStudentAction = (id) => async (dispatch) => {
       })
    }
 }
+
+
+
+//confirm student application
+
+export const DownloadAcknowledgement = (id) => async (dispatch) => {
+
+   try {
+      const token = localStorage.getItem('token')
+      const config = {
+         baseURL: process.env.REACT_APP_API_BASE_URL,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+         }
+      };
+      dispatch({ type: DOWNLOAD_ACKNOWLEDGEMENT_REQUEST })
+
+      const { data } = await axios.post(`/api/download/pdf/${id}`,null,config)
+      
+      dispatch({
+         type: DOWNLOAD_ACKNOWLEDGEMENT_SUCCESS,
+         payload: data
+      })
+   } catch (error) {
+      dispatch({
+         type: DOWNLOAD_ACKNOWLEDGEMENT_FAIL,
+         payload:error.response.data.message
+      })
+   }
+}
+
 
 export const clearErrors = () => async (dispatch) => {
    dispatch({

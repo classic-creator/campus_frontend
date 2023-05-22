@@ -14,16 +14,26 @@
 .p-edit p{
     border-left: 3px solid tomato;
     padding: 1vmax 1vmax;
-    background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%);
+    background: linear-gradient(110deg, #545557 60%, #707981 60%);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
     border-radius: 10px;
     min-height: 5vmax;
+   color:rgb(245, 231, 231);
+   /* font-weight: bold;   */
+   font-size: 18px;
+   font-family: 'Rotobo';
+   width: 95%;
+}
+.p-edit h4{
+    text-align: left;
 }
 .courseHeader
 {
     margin-top: 3vmax;
     display: flex;
     justify-content: space-evenly;
+    font-family: 'Rotobo';
+    
     
 }
 .courseHeader h2{

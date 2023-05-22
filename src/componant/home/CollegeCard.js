@@ -27,7 +27,7 @@ const CollegeCard = ({ college }) => {
                             <p > <FontAwesomeIcon icon={faLocationDot}/> {college.address}</p>
                             <p > <FontAwesomeIcon icon={faMailBulk}/> {college.email}</p>
                             <p >{college.description}</p>
-                            <p ><small className="text-muted">Last updated 3 mins ago</small></p>
+                            {/* <p ><small className="text-muted">Last updated 3 mins ago</small></p> */}
                             
                     </div>
                     <div className="cardbutton">

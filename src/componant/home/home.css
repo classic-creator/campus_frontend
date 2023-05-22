@@ -91,10 +91,11 @@
     text-decoration: none;
     border-radius: 6px;
     margin: 0.5vh;
+    min-height: 30vh;
     height: auto;
-    height: 30vh;
-    background-color: rgba(250, 41, 58, 0.548);
-    /* background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%); */
+    /* height: 30vh; */
+    /* background-color: rgba(250, 41, 58, 0.548); */
+    background: linear-gradient(110deg, #cce5ff 60%, #99caff 60%);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
     transition: all 0.5s;
     padding-bottom: 0.3vmax;
@@ -137,6 +138,7 @@
   .clgData {
     /* margin: 1px auto; */
     height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     margin-left: 2vmax;
@@ -179,18 +181,18 @@
   width: 100vw;
 }
 .boxes div:first-child{
-  background: linear-gradient(110deg, #80b193 60%, #45cf7f 60%);
+  /* background: linear-gradient(110deg, #4f5af1 60%, tomato 60%); */
 }
 .boxes div:last-child{
 
-  background: linear-gradient(110deg, #697197 60%, #4571ac 60%);
+  /* background: linear-gradient(110deg, #697197 60%, #4571ac 60%); */
 }
 .box{
   
   height: 20vh;
   width: 23vw;
   /* border-radius: 20%; */
-  background: rgb(204, 102, 19);
+  /* background: rgb(204, 102, 19); */
   color: aliceblue;
   display: flex;
   flex-direction: column;
@@ -199,10 +201,10 @@
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
 }
 .box:first-child{
-  background: aqua;
+  /* background: aqua; */
 }
 .box:last-child{
-  background: rgb(59, 140, 216);
+  /* background: rgb(59, 140, 216); */
 }
 .box span{
 font-size: 2vmax;
