@@ -223,5 +223,8 @@ margin-top: 35px;
       height: auto;
     
     }
+    /* .dropdown:hover .dropdown-menu{
+      display: block;
+    } */
     
 }

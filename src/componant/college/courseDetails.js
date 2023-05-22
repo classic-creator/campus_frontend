@@ -114,13 +114,13 @@ const CourseDetails = () => {
   ]
   const seatrows = [{
 
-    total_seat:course.total_seat,
-    open:course.open,
-    other:course.other,
-    SC:course.SC,
-    ST:course.ST,
-    EWS:course.EWS,
-    OBC:course.OBC,
+    total_seat: course && course.total_seat,
+    open:course && course.open,
+    other:course && course.other,
+    SC:course && course.SC,
+    ST:course && course.ST,
+    EWS:course && course.EWS,
+    OBC:course && course.OBC,
     
     
   }
@@ -145,7 +145,7 @@ const CourseDetails = () => {
       <CoverAndNav  scrollToSection={scrollToSection} eligibility seatStructure duration college={course} />
       <div className='courseHeader'>
 
-      <h2 className='courseHeaderh2'>{course.courseName}</h2>
+      <h2 className='courseHeaderh2'>{course && course.courseName}</h2>
       <Link to={`/apply/${id}`} className="btn btn-primary item-center" >Apply</Link>
       </div>
       <div className="detailContainer">
@@ -155,9 +155,9 @@ const CourseDetails = () => {
           <p className='m-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium alias non facere quae? Corrupti molestias repellendus beatae, cum dolore inventore unde commodi eius corporis, nemo, maiores ad quam autem assumenda quia! Illum itaque, iure inventore voluptate natus minus vel nam voluptatibus mollitia, qui, ex aliquid perferendis magnam recusandae cupiditate libero.</p>
 
           <h4 className='m-3' id="eligibility" ref={scrollRef}>Eligibility :</h4>
-          <p className='m-3'  id="duration" ref={scrollRef}>{course.eligibility}</p>
+          <p className='m-3'  id="duration" ref={scrollRef}>{course && course.eligibility}</p>
           <h4  className='m-3' >Duration :</h4>
-          <p className='m-3'>{course.duration},Number of semister : 6</p>
+          <p className='m-3'>{course && course.duration},Number of semister : 6</p>
         </div>
         
 

@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetCarouselimage } from '../../action/imageAction.js';
+import { GetCarouselimage, SchemeGetAction } from '../../action/imageAction.js';
 import { getColleges } from '../../action/collegeAction.js';
 import { getCountAction } from '../../action/userAction.js';
 import CountUp from 'react-countup';
@@ -17,6 +17,7 @@ const Home = () => {
 
   const {photos}=useSelector(state=>state.getCarousel)
   const { colleges } = useSelector(state => state.colleges)
+  const { scheme } = useSelector(state => state.getScheme)
   const { Total_users,application_count } = useSelector(state => state.getcount)
   const dispatch=useDispatch()
 
@@ -41,6 +42,7 @@ const Home = () => {
     dispatch(getColleges())
    dispatch(GetCarouselimage())
    dispatch(getCountAction())
+   dispatch(SchemeGetAction())
   }, [dispatch])
   
 
@@ -169,16 +171,19 @@ const Home = () => {
             className="mySwiper mt-3"
           >
 
-            <SwiperSlide style={{ width: "300px" }}>
+        {scheme && scheme.map(item=>(
+          <SwiperSlide  key={item.id} style={{ width: "300px" }}>
               <div>
-                <Link>
-                  <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
+                <Link to={item.link}>
+                  <img src={item.image_url} alt="img" />
 
-                  <span>Anandaram baruah award</span>
+                  {/* <span>Anandaram baruah award</span> */}
                 </Link>
               </div>
             </SwiperSlide>
-            <SwiperSlide style={{ width: "300px" }}>
+            ))}  
+          
+            {/* <SwiperSlide style={{ width: "300px" }}>
               <Link>
                 <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
                 <span>Anandaram baruah award</span>
@@ -201,7 +206,7 @@ const Home = () => {
                 <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
                 <span>Anandaram baruah award</span>
               </Link>
-            </SwiperSlide>
+            </SwiperSlide> */}
 
 
           </Swiper>

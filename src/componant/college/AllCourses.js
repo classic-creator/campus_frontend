@@ -17,16 +17,17 @@ import { faEye, faMultiply } from '@fortawesome/free-solid-svg-icons';
 
 const AllCourses = ({scrollToSection}) => {
 
+  const {isAuthenticated}=useSelector(state=>state.user)
   const [showResults, setShowResults] = useState(false)
   const courseToggle = () => {
     // setShowResults(!showResults);
     // if (showResults) {
       
-    //   scrollToSection('courses');
+      // scrollToSection('courses');
     // }
     if(showResults===false){
       setShowResults(true)
-      scrollToSection('courses');
+  scrollToSection('courses');
     }
     if(showResults===true){
       setShowResults(false)
@@ -68,7 +69,7 @@ const AllCourses = ({scrollToSection}) => {
           <Link to="#allCourses" onClick={courseToggle}>Show all courses {showResults ? <FontAwesomeIcon icon={faMultiply} /> : <FontAwesomeIcon icon={faEye} />} </Link>
 
 
-            {preferCourses ? <PreferenceCourses /> : <div id='modalp'><span>Add your preferences </span><AddPreference /></div>}
+            {preferCourses ? <PreferenceCourses /> : <div id='modalp'><span>Add your preferences </span>    {isAuthenticated ?  <AddPreference /> : <Link className='btn btn-primary' to={'/login'}>Add</Link>} </div>}
           </div>
 
           {/* </div> */}

@@ -14,6 +14,7 @@ import CoverAndNav from './collegecardAndComponent/coverAndNav';
 import Imgcarousel from './collegecardAndComponent/Imgcarousel';
 import { Button, Space, } from 'antd'
 import TableComponent from '../layout/TableComponent';
+import Spinner from '../layout/spinner';
 
 const CollegeDetails = () => {
 
@@ -178,7 +179,9 @@ const CollegeDetails = () => {
 
 
         <div className="detailContainer">
-      {loading ?    <Button loading={loading}></Button> :null}
+
+      {/* {loading ?    <Button loading={loading}></Button> :null} */}
+      {/* {loading ?   <Spinner/> :null} */}
  
           <div className='detailsdiv-1'>
 

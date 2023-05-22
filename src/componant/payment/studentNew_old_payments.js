@@ -137,10 +137,17 @@ custom_fields: [
   const hiatorycolumns = [
     {
       title: 'Fees Id',
+      dataIndex: 'id',
+   
+      editable: true,
+      fixed: 'left'
+    },
+    {
+      title: 'Fees Id',
       dataIndex: 'fees_id',
       key: 'id',
       editable: true,
-      fixed: 'left'
+     
     },
     {
       title: 'Payment Id',
@@ -189,9 +196,9 @@ custom_fields: [
       align: "center",
       render: (_, record) => (
         <Space>
-          <Link to={`/pay/fees/${record.id}`}>
+        
             <Button onClick={()=>downloadReciept(record)} type='primary'>Download receipt</Button>
-          </Link>
+        
         </Space>
       )
     }
@@ -202,6 +209,7 @@ custom_fields: [
   paymentsHistory && paymentsHistory.forEach((item)=>{
     historyrows.push({
       key: item.payment_id,
+      id: item.id,
       payment_id: item.payment_id,
       fees_id:item.fees_id,
       status:item.payment_status,

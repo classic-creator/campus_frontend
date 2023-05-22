@@ -173,7 +173,7 @@ const LoginRegister = () => {
                             </div>
 
                           { forgetLoading ? <Loader/> : <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Forget_pass">
-                                forget password?
+                                Forget password?
                             </button>}  
                         </form>
 
