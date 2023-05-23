@@ -152,7 +152,7 @@ const Home = () => {
           <h3 className='ms-3'> Scheme</h3>
           <span className='ms-3'>Some educational scheme and scholarship provided by government </span>
           <Swiper
-            slidesPerView={4}
+            slidesPerView={3}
             centeredSlides={true}
             spaceBetween={30}
             grabCursor={true}
@@ -161,13 +161,13 @@ const Home = () => {
             }}
             navigation={true}
             autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
+              delay: 4500,
+              disableOnInteraction: true,
             }}
-            HashNavigation={{
-                watchState: true,
-              }}
-            modules={[Pagination, Navigation,HashNavigation, Autoplay]}
+            // HashNavigation={{
+            //     watchState: true,
+            //   }}
+            modules={[Pagination, Navigation, Autoplay]}
             className="mySwiper mt-3"
           >
 
@@ -182,33 +182,7 @@ const Home = () => {
               </div>
             </SwiperSlide>
             ))}  
-          
-            {/* <SwiperSlide style={{ width: "300px" }}>
-              <Link>
-                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
-                <span>Anandaram baruah award</span>
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide style={{ width: "300px" }}>
-              <Link>
-                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
-                <span>Anandaram baruah award</span>
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide style={{ width: "300px" }}>
-              <Link>
-                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
-                <span>Anandaram baruah award</span>
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide style={{ width: "300px" }}>
-              <Link>
-                <img src="https://farm2.staticflickr.com/1764/43537569152_1e028fc7f6_o.jpg" alt="img" />
-                <span>Anandaram baruah award</span>
-              </Link>
-            </SwiperSlide> */}
-
-
+        
           </Swiper>
 
         </div>

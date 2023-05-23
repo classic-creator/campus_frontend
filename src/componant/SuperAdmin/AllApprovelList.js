@@ -46,7 +46,7 @@ dispatch(ApproveCollegeRegisterAction(data))
 
 
         {
-            title: 'Request by',
+            title: 'Request by(userId)',
             dataIndex: 'user_id',
             align: "center",
             editable: true,

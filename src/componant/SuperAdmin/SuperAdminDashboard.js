@@ -10,7 +10,8 @@ const SuperAdminDashboard = () => {
     const {Total_users}=useSelector(state=>state.allUser)
     const dispatch=useDispatch()
     const {collegeCounts}=useSelector(state=>state.allCollege)
-
+    const { application_count } = useSelector(state => state.getcount)
+    const {user}=useSelector(state=>state.user)
 
     useEffect(() => {
         dispatch(getAlluserAction())
@@ -31,7 +32,7 @@ const SuperAdminDashboard = () => {
                     <div className='dashboardSummery'>
                         <div >
                             <p className='dashboardSummeryP'>
-                           
+                           {user && user.name}
                             </p>
 
                         </div>
@@ -43,6 +44,7 @@ const SuperAdminDashboard = () => {
                             </Link>
                             <Link to="/admin/orders">
                                 <p> Applications </p>
+                                <CountUp end={application_count && application_count} duration={5} />
                                 
                             </Link>
                             <Link to="/confirm/admission/college">

@@ -5,7 +5,7 @@ import { Link,  useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import "./Account.css"
-import { Button } from 'antd'
+import { Button, Image } from 'antd'
 import { useAlert } from 'react-alert'
 import { logout } from '../../action/userAction'
 
@@ -41,8 +41,8 @@ const Account = () => {
         <div className='profileContainer'>
             <div>
                 <h1>MY PROFILE</h1>
-                <img src={user.image_url} alt={user.name} />
-                <Link to="/profile/update">Edit Profile</Link>
+                <Image width={350} height={350} style={{borderRadius: '100%'}}  src={user.image_url} alt={user.name} />
+                <Link to={"/profile/update"}>Edit Profile</Link>
             </div>
             <div>
                 <div>

@@ -118,14 +118,17 @@
     height: 69px; */
 }
 
-.middle {}
+.middle {
+  width: 65%;
+}
 
 .middle h3 {
   margin: 0;
   font-size: 2vmax;
-  font-weight: 400;
-  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-family: 'Roboto';
   text-align: center;
+  margin-left: 2vmax;
 }
 
 .navMain {

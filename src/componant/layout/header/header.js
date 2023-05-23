@@ -7,9 +7,7 @@ import "./header.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Image, Progress } from 'antd'
 // import Loader from '../loader/loader'
-import LoadingBar from 'react-top-loading-bar';
-import { LinearProgress } from '@material-ui/core'
-import Loader from '../loader/loader'
+
 import { useAlert } from 'react-alert'
 import { logout } from '../../../action/userAction'
 const Header = () => {
@@ -42,7 +40,7 @@ const Header = () => {
                     </a>
                 </div>
                 <div className="middle1">
-                    {loading ? <Button loading={loading}></Button> : null}
+                  
 
                 </div>
                 {/* <div className="right1 ">
@@ -59,7 +57,7 @@ const Header = () => {
 
                     )} */}
                   <Link>
-                    Login As : {user && user.name}
+                    {isAuthenticated ?'Login As :' :(<Link to={'/login'}> Login / Register </Link>)}     {loading ? <Button loading={loading}></Button> : (user && user.name)}
                   </Link>
               
 
@@ -82,7 +80,7 @@ const Header = () => {
 
                 <div className="middle">
 
-                    <h3>Common Admission Management Plateform For Undergraduate Studies</h3>
+                    <h3>Common Admission Management Platform For Undergraduate Studies</h3>
 
                 </div>
 

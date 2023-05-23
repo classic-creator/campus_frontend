@@ -12,6 +12,12 @@
     height: 100%;
     opacity: 0.7;
 }
+.clgDec p {
+    width: 80%;
+    margin: 1px auto;
+    font-family: "Roboto";
+    font-size: 20px;
+}
 
 .bottomleft {
     position: absolute;

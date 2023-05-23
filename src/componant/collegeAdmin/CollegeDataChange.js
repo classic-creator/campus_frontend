@@ -107,24 +107,32 @@ const CollegeDataChange = () => {
     }
 
     const handleOtherImageUpload = () => {
-        // console.log(otherImage.length)
+        console.log(otherImage.length)
         const formData = new FormData();
 
         otherImage.forEach((image, index) => {
             formData.append(`image_${index}`, image);
         });
-
-
-
-
         dispatch(CollegeOtherimgAction(formData));
     };
+
+
     const handleRemoveImage = (index) => {
 
-        const newOtherImage = [...previewOtherImage];
+        // const newOtherImage = [...previewOtherImage];
+        // newOtherImage.splice(index, 1);
+        // setPreviewOtherImage(newOtherImage)
+        // setOtherImage(newOtherImage)
+
+        const newPreviewOtherImage = [...previewOtherImage];
+        const newOtherImage = [...otherImage];
+      
+        newPreviewOtherImage.splice(index, 1);
         newOtherImage.splice(index, 1);
-        setPreviewOtherImage(newOtherImage)
-        setOtherImage(newOtherImage)
+      
+        setPreviewOtherImage(newPreviewOtherImage);
+        setOtherImage(newOtherImage);
+        
     }
 
     const handleLogoChange = (event) => {
@@ -148,8 +156,8 @@ const CollegeDataChange = () => {
             alert.success(message);
             setCoverPreview(null)
             setImage(null)
-            setOtherImage(null)
-            setPreviewOtherImage(null)
+            // setOtherImage(null)
+            // setPreviewOtherImage(null)
             setLogoPreview(null)
             setLogo(null)
             dispatch({ type: COLLEGE_OTHERIMG_UPLOAD_RESET })

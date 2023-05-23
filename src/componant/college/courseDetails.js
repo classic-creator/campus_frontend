@@ -11,11 +11,12 @@ import CoverAndNav from './collegecardAndComponent/coverAndNav'
 import ImportantLinkCard from './collegecardAndComponent/importantLinkCard'
 import Imgcarousel from './collegecardAndComponent/Imgcarousel'
 import TableComponent from '../layout/TableComponent'
+import { Button } from 'antd'
 
 
 const CourseDetails = () => {
 
-  const { error, course } = useSelector(state => state.courseDetails)
+  const { error, course,loading } = useSelector(state => state.courseDetails)
   const dispatch = useDispatch()
   const alert = useAlert()
   const { id } = useParams()
@@ -149,7 +150,7 @@ const CourseDetails = () => {
       <Link to={`/apply/${id}`} className="btn btn-primary item-center" >Apply</Link>
       </div>
       <div className="detailContainer">
-
+      {loading ?    <Button danger  loading={loading}></Button> :null}
         <div className='detailsdiv-1 p-edit pl-3 flex-column' >
           <h4  className='m-3 text-left' >About course :</h4>
           <p className='m-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium alias non facere quae? Corrupti molestias repellendus beatae, cum dolore inventore unde commodi eius corporis, nemo, maiores ad quam autem assumenda quia! Illum itaque, iure inventore voluptate natus minus vel nam voluptatibus mollitia, qui, ex aliquid perferendis magnam recusandae cupiditate libero.</p>

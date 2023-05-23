@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 // import { TreeView,TreeItem } from '@material-ui/lab'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {   faBars,  faBuilding,  faClose,  faDashboard,  faImage,   faNewspaper, faUserAlt } from '@fortawesome/free-solid-svg-icons'
+import {   faBars,  faBuilding,  faBuildingUser,  faClose,  faDashboard,  faImage,   faNewspaper, faUserAlt } from '@fortawesome/free-solid-svg-icons'
  
 const AdminSidebar = () => {
 
@@ -56,7 +56,7 @@ const AdminSidebar = () => {
        */}
         <Link to="/admin/request/colleges">
             <p>
-                <FontAwesomeIcon  icon={faBuilding}/>
+                <FontAwesomeIcon  icon={faBuildingUser}/>
                 <span className='spantext'>Approvel Request</span>
             </p>
         </Link>

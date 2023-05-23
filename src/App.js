@@ -67,6 +67,8 @@ import RegisterWaiting from './componant/collegeAdmin/registerWaiting';
 import AllApprovelList from './componant/SuperAdmin/AllApprovelList';
 import LoadingBar from 'react-top-loading-bar';
 import { useSelector } from 'react-redux';
+import RegisterSuccess from './componant/collegeAdmin/registerSuccessPage';
+import NotFound from './componant/layout/notFound/NotFound';
 // import { useSelector } from 'react-redux';
 // import Loader from './componant/layout/loader/loader';
 
@@ -126,7 +128,7 @@ function App() {
         <Route exact path='/upload/file/:id' element={<ProtectedRoute component={FileUpload} />} />
         <Route exact path='/myApplication' element={<ProtectedRoute component={MyApplication} />} />
         <Route exact path='/college/register' element={<ProtectedRoute component={RegisterCollege} />} />
-        <Route exact path='/college/waiting' element={<ProtectedRoute component={RegisterWaiting} />} />
+        <Route exact path='/college/waiting' element={<ProtectedRoute component={RegisterSuccess} />} />
         <Route exact path='/admission/payment/:id' element={<ProtectedRoute component={AdmissionPayment} />} />
         <Route exact path='/college/gallery/:id' element={<ProtectedRoute component={ImageGallery} />} />
         <Route exact path='/view/newpayment/:id' element={<ProtectedRoute component={StudentNew_old_payments} />} />
@@ -162,7 +164,7 @@ function App() {
         <Route exact path='/admin/user/:id' element={<ProtectedRoute isSuperAdmin={true} component={UpdateUser} />} />
 
         <Route exact path='/about' element={<About />} />
-
+        <Route path="*" element={<NotFound/>} />
       </Routes>
 
       <Footer />

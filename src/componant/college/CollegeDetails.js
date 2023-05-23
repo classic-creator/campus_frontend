@@ -180,12 +180,13 @@ const CollegeDetails = () => {
 
         <div className="detailContainer">
 
-      {/* {loading ?    <Button loading={loading}></Button> :null} */}
+      {loading ?    <Button danger  loading={loading}></Button> :null}
       {/* {loading ?   <Spinner/> :null} */}
  
-          <div className='detailsdiv-1'>
+          <div className='detailsdiv-1 clgDec' >
 
-            <p>
+{/* <h3>Description</h3> */}
+            <p >
               {college && college.description}
             </p>
           </div>

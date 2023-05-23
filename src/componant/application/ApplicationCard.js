@@ -21,7 +21,7 @@ const ApplicationCard = ({data}) => {
                     <p>Address : {data.address}</p>
                 </div>
                 <div className='middleDiv'>
-                    <p>Application status :<span className={data.admission_status==='Selected'||data.admission_status==='confirmed'?'greenColor':'redColor'  }>  {data.admission_status}</span></p> 
+                    <p>Application status :<span className={data.admission_status==='Selected'||data.admission_status==='confirmed'?'greenColor':'redColor'  }>  {data.admission_status=='application_fee_panding' ? 'Application Fees Not Paid' : data.admission_status}</span></p> 
                   <p>Application Payment Status : <span className={ data.apply_payment_status==='paid'?'greenColor':'redColor'}>{data.apply_payment_status} </span></p>
                     <p>Admission Payment Status : <span className={ data.admission_payment_status==='paid'?'greenColor':'redColor'}>{data.admission_payment_status}</span> </p>
              
@@ -30,7 +30,7 @@ const ApplicationCard = ({data}) => {
                     <div>
 
                     {/* <button  className='btn btn-primary'>Acknowledgement view</button> */}
-                    <button onClick={downloadHandlar} className='btn btn-primary'>Acknowledgement download</button>
+                    <button onClick={downloadHandlar} className='btn btn-secondary'>Acknowledgement</button>
 
                    {data.apply_payment_status!=='paid'?(<Fragment> <span className='paynotic'>*If you dont pay your fees then your application will be rejected  *Check payment review</span> </Fragment>):null}
                    {data.admission_payment_status!=='paid' && data.admission_status==='Selected'?(<Fragment> <span className='paynotic'>*If you dont pay your fees then your application will be rejected  *Check payment review</span> </Fragment>):null}
@@ -40,7 +40,7 @@ const ApplicationCard = ({data}) => {
                    {data.admission_payment_status==='paid' ? <span className='paynotic greenColor'>*Your admission fees pay succefully for further details you can contact with your college</span>:null}
 
                     </div>
-                   <Link className='btn btn-primary btn-sm mt-2' to={`/view/newpayment/${data.id}`}>Payments reviews</Link>
+                   <Link className='btn btn-success btn-sm mt-2' to={`/view/newpayment/${data.id}`}>Fees</Link>
                 </div>
             </div>
         </Fragment>

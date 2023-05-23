@@ -14,7 +14,7 @@ const Footer = () => {
 
 			<div class="footer-left">
 
-				<h3>Common Admission Management Plateform for Under Graduate Studies - <span>CAMPUS</span></h3>
+				<h3>Common Admission Management Platform for Undergraduate Studies - <span>CAMPUS</span></h3>
 
 				<p class="footer-links">
 					<Link to={'/'} class="link-1">Home</Link>

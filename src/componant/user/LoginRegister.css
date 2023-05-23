@@ -52,6 +52,16 @@
     color: tomato;
 }
 
+.showPassword input{
+margin: 0;
+width: 10% !important;
+}
+#checkBox{
+  margin: 0;
+width: 20px !important;
+height: 20px !important;
+
+}
 #switch{
     background-color: tomato;
     height: 3px;
