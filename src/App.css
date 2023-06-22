@@ -7,7 +7,9 @@ body{
     /* background:linear-gradient(to right,#36d5f1,#cf9dcd); */
     overflow-x: hidden;
   
-    background-color: #cce5ff;
+    /* background-color: #cce5ff; */
+    background-image: linear-gradient(to right, #ffc285, #f4d283, #e3e28a, #cdf19a, #b3ffb3) !important;
+
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{

@@ -5,6 +5,7 @@ import { Button, Space } from 'antd'
 import { Link } from 'react-router-dom'
 import Sidebar from './sidebar'
 import TableComponent from '../layout/TableComponent'
+import HeaderTypography from '../layout/header/headerTypography'
 const CollegeCourseList = () => {
 
     const dispatch = useDispatch()
@@ -102,14 +103,12 @@ const CollegeCourseList = () => {
 
     return (
         <Fragment>
-        <div className="depertmentDeash">
-          <Sidebar />
-          <div className="dashboard">
-          <div className='headdept'>
-            
-              <h2>All Courses</h2>
-          </div>
-            
+        <HeaderTypography header={'All Courses'} mb={0} mt={0}/>
+      <div className="depertmentDeash">
+       <div className='sidebardiv'>
+         <Sidebar />
+        </div>
+        <div className="dashboard mt-3">
             <TableComponent  columns={columns}
                     dataSource={rows}
                     loading={loading} />

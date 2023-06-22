@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import './depertment.css'
 import { Button, Space } from 'antd'
 import TableComponent from '../layout/TableComponent'
+import HeaderTypography from '../layout/header/headerTypography'
 
 const AllDepertments = () => {
 
@@ -56,6 +57,7 @@ const AllDepertments = () => {
           <Space>
             {/* <Popconfirm title='Are you sure you want to delete ?'> */}
             <Link to={`/depertment/${record.id}`}> <Button type='primary'> Go</Button></Link>
+            <Link to={`/college/depertment/update/${record.id}`}> <Button type='primary'> Update</Button></Link>
             {/* </Popconfirm> */}
             {/* <Button onClick={() => console.log('edit')} type='primary'>Edit</Button>
             <Button onClick={() => console.log('edit')} danger type='primary'>Delete</Button> */}
@@ -80,21 +82,24 @@ const AllDepertments = () => {
 
 
   return (
-    
+
     <Fragment>
-    <div className="depertmentDeash">
-      <Sidebar />
-      <div className="dashboard">
-      <div className='headdept'>
+      <HeaderTypography header={'Depertments'} mb={0} mt={0} />
+      <div className="depertmentDeash">
+      <div className='sidebardiv'>
+         <Sidebar />
+        </div>
+        <div className="dashboard mt-3">
+          {/* <div className='headdept'>
         
           <h2>Depertments</h2>
-      </div>
-       
-        <TableComponent  columns={columns}
+        </div> */}
+
+          <TableComponent columns={columns}
             dataSource={rows}
-            loading={loading}/>
+            loading={loading} />
+        </div>
       </div>
-    </div>
     </Fragment>)
 }
 

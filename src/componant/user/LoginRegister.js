@@ -42,8 +42,6 @@ const LoginRegister = () => {
 
     const { error, isAuthenticated, loading } = useSelector(state => state.user)
     const { loading: forgetLoading, message, error: forgetError } = useSelector(state => state.forgetPassword)
-
-
     const [forgetEmail, setForgetEmail] = useState()
 
 
@@ -74,7 +72,6 @@ const LoginRegister = () => {
         }
     }
 
-
     const loginFunction = (e) => {
         e.preventDefault()
         dispatch(login(loginEmail, loginPassword))
@@ -93,7 +90,6 @@ const LoginRegister = () => {
         myForm.append('user_role', user_role)
         myForm.append('profile', profile)
 
-        // console.log(myForm)
         dispatch(registerUser(myForm))
 
     }
@@ -119,11 +115,9 @@ const LoginRegister = () => {
         if (forgetError) {
             alert.error(forgetError)
             dispatch(clearErrors())
-
         }
         if (message) {
             alert.success(message)
-
         }
         if (isAuthenticated) {
             navigate(redirect)
@@ -136,15 +130,12 @@ const LoginRegister = () => {
             {/* login form */}
             <div className="formContainer ">
                 <div className="content">
-
                     <div>
                         <div className='login_signUp_toggle'>
                             <p onClick={(e) => switchTabs(e, "login")} >Login</p>
                             <p onClick={(e) => switchTabs(e, "register")}>Register</p>
                         </div>
                         <button id='switch' ref={switcherTab}></button>
-
-
                     </div >
 
                     <form onSubmit={loginFunction} className='loginForm' ref={loginTab}>
@@ -177,7 +168,7 @@ const LoginRegister = () => {
                         </div>
 
                         <div className="button ">
-                            {/* <input type="submit" value="Login" /> */}
+                           
                             <Button loading={loading} onClick={loginFunction}>Login</Button>
                         </div>
 
@@ -186,9 +177,6 @@ const LoginRegister = () => {
                         </button>}
                     </form>
 
-                    {/* </div> */}
-                    {/* register form */}
-                    {/* <div className="content"> */}
                     <form onSubmit={registerFunction} className='registerForm' ref={registerTab}>
                         <div className="user-details">
                             <div className="input-box">
@@ -200,10 +188,7 @@ const LoginRegister = () => {
                                     required
                                     onChange={regisDataChange} />
                             </div>
-                            {/* <div className="input-box">
-                                    <span className="details">Username</span>
-                                    <input type="text" placeholder="Enter your username" />
-                                </div> */}
+                          
                             <div className="input-box">
                                 <span className="details">Email</span>
                                 <input type="email"

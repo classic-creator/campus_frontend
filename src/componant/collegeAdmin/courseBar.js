@@ -1,9 +1,29 @@
 import { Button, Typography } from 'antd'
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { deActiveCourseAction } from '../../action/collegeAdminAction'
+import { useDispatch, useSelector } from 'react-redux'
+import { useAlert } from 'react-alert'
 
-const CourseBar = ({course,id,loading,header}) => {
+const CourseBar = ({course,id,header}) => {
+
+    const alert=useAlert()
+    const {  loading } = useSelector(state => state.courseDetails)
+    const {  loading:activeLoading, isActive } = useSelector(state => state.UpdateCourse)
+
+    const dispatch=useDispatch()
+    const DeActiveHendlar =()=>{
+        dispatch(deActiveCourseAction(id))
+    }
+    useEffect(() => {
+     if(isActive){
+        alert.success("Course active status update")
+     }
+    }, [isActive,alert])
+    
     return (
+
+
         <Fragment>
             <div>
 
@@ -14,7 +34,8 @@ const CourseBar = ({course,id,loading,header}) => {
 
                             {loading ? <Button loading={loading}></Button> : course && course.courseName}
 
-                            <Link className='btn btn-secondary ms-3 setting-btn' to={`/course/update/${id}`}>Edit</Link>
+                            <Link  className=' ms-1 ' to={`/course/update/${id}`}>  <Button className='button-all'> Edit</Button>  </Link>
+                         {course && course.active===1 ?  <Button className='button-all ms-2' loading={activeLoading} type='primary' danger onClick={DeActiveHendlar}>Deactive</Button> :<Button className='button-all ms-2' type='primary' loading={activeLoading}   onClick={DeActiveHendlar}>Active</Button> }
                         </Link>
 
                     </div>

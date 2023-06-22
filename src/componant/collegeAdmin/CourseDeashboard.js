@@ -103,7 +103,7 @@ const ClodePayment=(record)=>{
           , render: (_, record) =>
             rows.length >= 1 ? (
               <Space>
-                <Link to={`/payment/details/${record.id}`}> <Button type='primary'> Open</Button></Link>
+                <Link to={`/payment/details/${record.id}`}> <Button type='primary'> Details</Button></Link>
                   <Popconfirm  onConfirm={() => ClodePayment(record)} title='Are you sure you want to Closed ?'>
                   <Button loading={updateLoading} type='primary' danger > Closed</Button>
                 </Popconfirm>
@@ -151,9 +151,8 @@ const ClodePayment=(record)=>{
                 <div className="dashboardContainer">
                     {/* <CourseDataChange /> */}
                 
-                <CourseBar course={course} header={'Deashboard'} id={id} loading={loading}/>
+                <CourseBar course={course} header={'Course Deashboard'} id={id} />
                 <div className='dashboardSummery'>
-
                     <div className="doughnutChat">
                         <Doughnut
                             data={doughnutState} />
@@ -175,7 +174,7 @@ const ClodePayment=(record)=>{
 
 
                         <Link to={`/confirm/students/${id}`}>
-                            <p>Confirm Student</p>
+                            <p>Enrolled Student</p>
                             <CountUp end={ConfirmStudent && ConfirmStudent.length} duration={5} />
                      
                         </Link>
@@ -185,8 +184,8 @@ const ClodePayment=(record)=>{
             </div>
             <div className="container-fluid">
                 <div className='tableHeader-with-button ' >
-                <h3 className='m-3 text-center'>Active Fees / Fees History</h3>
-                 <Link className='btn btn-paimary' to={`/add/new/fees/${id}`}> New Fees Request </Link>
+                <h3 className='me-2  text-center'>Active Fees / Fees History</h3>
+                 <Link  to={`/add/new/fees/${id}`}><Button className='button-all'> New Fees Request</Button> </Link>
                 </div>
                 <TableComponent columns={columns} loading={feesLoading} dataSource={rows}/>
             </div>

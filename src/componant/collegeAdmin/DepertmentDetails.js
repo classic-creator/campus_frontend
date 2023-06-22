@@ -6,6 +6,7 @@ import { getDepertmentCourseAction } from '../../action/collegeAdminAction'
 import { Button, Space } from 'antd'
 
 import TableComponent from '../layout/TableComponent'
+import HeaderTypography from '../layout/header/headerTypography'
 
 
 
@@ -115,14 +116,13 @@ const DepertmentDetails = () => {
 
     return (
         <Fragment>
+        <HeaderTypography header={'Depertments courses'} course={courses && courses[0]}  mb={0} mt={0} />
         <div className="depertmentDeash">
-          <Sidebar />
-          <div className="dashboard">
-          <div className='headdept'>
-            
-              <h2>Registered Course </h2>
-            {courses && courses.length>0 ?  <span>{ courses[0].depertment_name }</span> : null}
+        <div className='sidebardiv'>
+           <Sidebar />
           </div>
+          <div className="dashboard mt-3">
+            {/* {courses && courses.length>0 ?  <span>{ courses[0].depertment_name }</span> : null} */}
                
                 <TableComponent  columns={columns}
                         dataSource={rows}

@@ -14,7 +14,7 @@ import { Button } from 'antd'
 import { ADD_NOTIC_RESET } from '../../constants/collegeAdminConstants'
 
 
-const AddLinks = () => {
+const AddNotics = () => {
 
     // const {id}=useParams();
     const dispatch=useDispatch()
@@ -99,4 +99,4 @@ const AddLinks = () => {
   )
 }
 
-export default AddLinks
+export default AddNotics

@@ -9,7 +9,7 @@ import { clearErrors, getCollegesDetails } from '../../action/collegeAction'
 import CourseCard from './collegecardAndComponent/courseCard'
 import CoverAndNav from './collegecardAndComponent/coverAndNav'
 import Imgcarousel from './collegecardAndComponent/Imgcarousel'
-import ImportantLinkCard from './collegecardAndComponent/importantLinkCard'
+// import ImportantLinkCard from './collegecardAndComponent/importantLinkCard'
 
 
 const Courses = () => {
@@ -39,9 +39,7 @@ const Courses = () => {
 
       <div className="detailContainer">
         <div className="depertmentbar">
-        
            <h3>Departments</h3>
-
             {courses && [...new Set(courses.map(course => course.depertment_name))]
               .map(department => (
                 <Link onClick={() => handleDepartmentClick(department)}>
@@ -49,9 +47,6 @@ const Courses = () => {
                 </Link>
 
               ))}
-
-
-          
         </div>
         <div className="detailsdiv-1 container">
          
@@ -61,7 +56,6 @@ const Courses = () => {
               .map((course) => <CourseCard course={course}  college={college} />)}
         </div>
         <div>
-
           {/* <ImportantLinkCard /> */}
           <Imgcarousel />
         </div>
@@ -71,5 +65,4 @@ const Courses = () => {
 
   )
 }
-
 export default Courses

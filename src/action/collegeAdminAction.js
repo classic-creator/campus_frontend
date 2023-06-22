@@ -14,12 +14,18 @@ import {
     CREATE_DEPERTMENT_FAIL,
     CREATE_DEPERTMENT_REQUEST,
     CREATE_DEPERTMENT_SUCCESS,
+    DEACTIVE_COURSE_FAIL,
+    DEACTIVE_COURSE_REQUEST,
+    DEACTIVE_COURSE_SUCCESS,
     DELETE_NOTIC_FAIL,
     DELETE_NOTIC_REQUEST,
     DELETE_NOTIC_SUCCESS,
     DEPERTMENT_COURSES_FAIL,
     DEPERTMENT_COURSES_REQUEST,
     DEPERTMENT_COURSES_SUCCESS,
+    DEPERTMENT_DETAILS_FAIL,
+    DEPERTMENT_DETAILS_REQUEST,
+    DEPERTMENT_DETAILS_SUCCESS,
     GET_DEPERTMENT_FAIL,
     GET_DEPERTMENT_REQUEST,
     GET_DEPERTMENT_SUCCESS,
@@ -37,7 +43,10 @@ import {
     UPDATE_COLLEGE_SUCCESS,
     UPDATE_COURSES_FAIL,
     UPDATE_COURSES_REQUEST,
-    UPDATE_COURSES_SUCCESS
+    UPDATE_COURSES_SUCCESS,
+    UPDATE_DEPERTMENT_FAIL,
+    UPDATE_DEPERTMENT_REQUEST,
+    UPDATE_DEPERTMENT_SUCCESS
 } from '../constants/collegeAdminConstants';
 
 
@@ -341,6 +350,105 @@ export const updateCourseAction = ({values,id}) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: UPDATE_COURSES_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+//update depertment
+
+export const getDepertmentDetailsAction = (id) => async (dispatch) => {
+    try {
+
+        const token = localStorage.getItem('token')
+
+        const config = {
+            baseURL: process.env.REACT_APP_API_BASE_URL,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        };
+        dispatch({ type: DEPERTMENT_DETAILS_REQUEST })
+
+        const { data } = await axios.get(
+            `/api/depertment/details/${id}`,
+  
+            config
+        )
+
+        dispatch({
+            type: DEPERTMENT_DETAILS_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: DEPERTMENT_DETAILS_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+//update depertment
+
+export const UpdateDepertmentAction = ({values,id}) => async (dispatch) => {
+    try {
+
+        const token = localStorage.getItem('token')
+
+        const config = {
+            baseURL: process.env.REACT_APP_API_BASE_URL,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        };
+        dispatch({ type: UPDATE_DEPERTMENT_REQUEST })
+
+        const { data } = await axios.put(
+            `/api/depertment/update/${id}`,
+            values,
+            config
+        )
+
+        dispatch({
+            type: UPDATE_DEPERTMENT_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: UPDATE_DEPERTMENT_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+//DEACTIVE course
+
+export const deActiveCourseAction = (id) => async (dispatch) => {
+    try {
+
+        const token = localStorage.getItem('token')
+
+        const config = {
+            baseURL: process.env.REACT_APP_API_BASE_URL,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        };
+        dispatch({ type: DEACTIVE_COURSE_REQUEST })
+
+        const { data } = await axios.delete(
+            `/api/deactive/course/${id}`,
+      
+            config
+        )
+
+        dispatch({
+            type: DEACTIVE_COURSE_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: DEACTIVE_COURSE_FAIL,
             payload: error.response.data.message
         })
     }

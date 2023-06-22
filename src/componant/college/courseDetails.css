@@ -57,10 +57,11 @@
     width: 100%;
     margin-bottom: 1vmax;
     text-transform: capitalize;
-    background: #99caff;
-    color: gray;
+    background: #1ab5f3;
+    color: white;
+    font-weight: 600;
     transition: all 0.9s;
-    border-radius: 10%;
+    border-radius: 10px;
     padding: 0.5vmax;
 }
 .depertmentbar a:hover{

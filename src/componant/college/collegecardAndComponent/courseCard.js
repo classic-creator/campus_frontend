@@ -14,7 +14,7 @@ const CourseCard = ({course,college}) => {
   return (
    <Fragment>
      
-     <div className="card courseCard">
+     <div className="card courseCard " >
       <div className="coursecard_body">
         <h2 >{course.courseName}</h2>
        

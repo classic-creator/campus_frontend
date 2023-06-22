@@ -7,8 +7,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert'
 import Sidebar from './sidebar'
 import { DELETE_NOTIC_RESET } from '../../constants/collegeAdminConstants'
+import HeaderTypography from '../layout/header/headerTypography'
 
-const Links = () => {
+const AdminNotics = () => {
 
   const dispatch = useDispatch()
   const alert = useAlert()
@@ -88,19 +89,18 @@ const handelDelete=(id)=>{
 
   return (
     <Fragment>
-      <div className="depertmentDeash">
-        <Sidebar />
-        <div className="dashboard">
-          <div className='headdept'>
-
-            <h2>Links</h2>
-          </div>
+    <HeaderTypography header={'Notics'} mb={0} mt={0} />
+    <div className="depertmentDeash">
+    <div className='sidebardiv'>
+       <Sidebar />
+      </div>
+      <div className="dashboard mt-3">
           <TableComponent columns={columns} loading={loading}  dataSource={rows} />
-          <Link to={`/add/links`}>Add Links</Link>
+          <Link to={`/add/links`}>Add Notics</Link>
         </div>
       </div>
     </Fragment>
   )
 }
 
-export default Links
+export default AdminNotics

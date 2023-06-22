@@ -15,6 +15,7 @@ import Imgcarousel from './collegecardAndComponent/Imgcarousel';
 import { Button, Space, } from 'antd'
 import TableComponent from '../layout/TableComponent';
 import Spinner from '../layout/spinner';
+import HeaderTypography from '../layout/header/headerTypography';
 
 const CollegeDetails = () => {
 
@@ -146,74 +147,81 @@ const CollegeDetails = () => {
 
   const seatrows = []
 
- courses && courses.forEach(course => {
+  courses && courses.forEach(course => {
 
-      seatrows.push({
-        courseName: course.courseName,
-        total_seat: course.total_seat,
-        open: course.open,
-        other: course.other,
-        SC: course.SC,
-        ST: course.ST,
-        EWS: course.EWS,
-        OBC: course.OBC,
-      })
-
+    seatrows.push({
+      courseName: course.courseName,
+      total_seat: course.total_seat,
+      open: course.open,
+      other: course.other,
+      SC: course.SC,
+      ST: course.ST,
+      EWS: course.EWS,
+      OBC: course.OBC,
     })
-  
-    const scrollRef = useRef(null);
 
-    const scrollToSection = (id) => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    };
+  })
+
+  const scrollRef = useRef(null);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
 
 
   return (
     <Fragment>
       {/* {loading ? <Loader /> : <Fragment> */}
-        <CoverAndNav  scrollToSection={scrollToSection} seatStructure courses college={college} />
+      <CoverAndNav scrollToSection={scrollToSection} seatStructure courses college={college} />
 
 
-        <div className="detailContainer">
+      <div className="detailContainer mb-3">
 
-      {loading ?    <Button danger  loading={loading}></Button> :null}
-      {/* {loading ?   <Spinner/> :null} */}
- 
-          <div className='detailsdiv-1 clgDec' >
+        {loading ? <Button danger loading={loading}></Button> : null}
+        {/* {loading ?   <Spinner/> :null} */}
 
-{/* <h3>Description</h3> */}
-            <p >
-              {college && college.description}
-            </p>
-          </div>
+        <div className='detailsdiv-1 clgDec' >
 
-
-          <div >
-            {/* <ImportantLinkCard /> */}
-            <Imgcarousel />
-          </div>
-
+          {/* <h3>Description</h3> */}
+          <p >
+            {college && college.description}
+          </p>
         </div>
 
-        <div className="container-fluid">
 
-          <h2 className='m-3 text-center' id="courses" ref={scrollRef} >Courses</h2>
-
-          <TableComponent columns={columns}
-            dataSource={rows}
-            loading={loading} />
+        <div >
+          {/* <ImportantLinkCard /> */}
+          <Imgcarousel />
         </div>
-        <div className='container-fluid' id="section1" ref={scrollRef}  >
-          <h2 className='m-3 text-center'>Seat Structure</h2>
 
-          <TableComponent columns={seatcolumns}
-            dataSource={seatrows}
-            loading={loading} />
-        </div>
+      </div>
+
+     
+      <HeaderTypography header={'Courses'}/>
+      <div className="container-fluid mt-4 mb-3" id="courses" ref={scrollRef} >
+
+
+        <TableComponent columns={columns}
+          dataSource={rows}
+          loading={loading} />
+      </div>
+
+      {/* <div className="headdiv">
+        <h2 className='m-3' >Seat Structure</h2>
+      </div> */}
+      <HeaderTypography header={'Seat Structure'}/>
+
+      <div className='container-fluid mt-3'  id="section1" ref={scrollRef}  >
+
+
+        <TableComponent columns={seatcolumns}
+          dataSource={seatrows}
+          loading={loading} />
+      </div>
 
       {/* </Fragment>} */}
     </Fragment>

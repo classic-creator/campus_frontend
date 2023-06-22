@@ -52,7 +52,10 @@
   
 } 
 .bar{
-  background:  #0275d8 ;
+  /* background:  #0275d8 ; */
+  /* background: #025dae; */
+  background: #3b82f6;
+
   min-height: 4vmax;
   display: flex;
   justify-content: space-between;
@@ -191,25 +194,19 @@
     text-decoration: none;
   }
   
-.boxes{
+/* .boxes{
   margin-top: 4vmax;
   display: flex;
   justify-content: space-evenly;
   width: 100vw;
 }
-.boxes div:first-child{
-  /* background: linear-gradient(110deg, #4f5af1 60%, tomato 60%); */
-}
-.boxes div:last-child{
 
-  /* background: linear-gradient(110deg, #697197 60%, #4571ac 60%); */
-}
+
 .box{
   
   height: 20vh;
   width: 23vw;
-  /* border-radius: 20%; */
-  /* background: rgb(204, 102, 19); */
+
   color: aliceblue;
   display: flex;
   flex-direction: column;
@@ -217,59 +214,172 @@
   align-items: center;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
 }
-.box:first-child{
-  /* background: aqua; */
-}
-.box:last-child{
-  /* background: rgb(59, 140, 216); */
-}
+
 .box span{
 font-size: 2vmax;
-}
-.schemes{
-  display: flex;
-  flex-direction: column;
-  margin-top: 2vmax;
-  /* border: 1px solid black; */
-  
+} */
 
-}
-.schemes h2,.schemes p{
-  /* margin:1vmax auto; */
-  margin-left: 3vmax;
-  
-}
-.schemes_body{
+.box-cards {
+  margin-top: 5vmax;
   display: flex;
-  margin: 1vmax auto;
-  /* width: 88vw; */
-  flex-wrap: wrap;
+  /* flex-direction: column; */
+  /* gap: 15px; */
+  justify-content: space-evenly ;
+}
+
+.box-cards .red {
+  background-color: #f43f5e ;
+}
+
+.box-cards .blue {
+  background-color: #3b82f6;
+}
+
+.box-cards .green {
+  background-color: #22c55e;
+}
+
+.box-cards .box-card {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  /* border: 1px solid black; */
-  
- 
-}
-.schemesCard{
-  height: 35vh;
-  width: 25vw;
-  margin: 1vmax;
-  
-}
-.schemesCard img{
-  width: 100%;
-  height: 80%;
-  background-color: rgba(224, 232, 236, 0.548);
-  transition: all 0.5s;
-  padding-bottom: 0.3vmax;
+  flex-direction: column;
+  text-align: center;
+  height: 100px;
+  width: 250px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 400ms;
 }
 
-.swiper-slide {
-  /* margin-right: 500px !important; */
+.box-cards .box-card p.tip {
+  font-size: 1em;
+  font-weight: 700;
 }
-.SchemeSlider img{
-  width: 300px;
-  height: 200px;
+
+.box-cards .box-card p.second-text {
+  font-size: 1.5rem;
 }
+
+.box-cards .box-card:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.box-cards:hover > .box-card:not(:hover) {
+  filter: blur(10px);
+  transform: scale(0.9, 0.9);
+}
+
+
+.searchInstitute{
+  margin-top: 5vmax;
+  display: flex;
+  color: white;
+
+
+background-repeat: no-repeat;
+background-size: cover;
+opacity: 0.7;
+  height: 35vh;
+  width: 100vw;
+  /* justify-content: center; */
+  align-items: center;
+
+}
+.clgLink{
+color:white
+}
+.searchbar input{
+  border-bottom :1px solid white;
+  color: #cce5ff;
+}
+.searchbar label{
+
+  color: #cce5ff;
+}
+.searchresult{
+  width: 50%;
+  text-align: center;
+  height: 50%;
+
+}
+
+.searchbar{
+  width: 30%;
+  height: 80%;
+  margin-left: 5vmax;
+  padding-right: 2vmax;
+  margin-right: 5vmax;
+  border-right:1px solid white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+
+}
+.searchbar h4{
+  font-family: "Roboto";
+  font-size: 20px;
+  color: white;
+}
+.searchbar h2{
+  font-size: 22px;
+  font-family: "Roboto";
+  padding-top: 20px;
+  color: white;
+
+}
+.instituteresult{
+  height: 100%;
+  overflow-y: auto;
+  text-align: start;
+}
+.instituteresult a h2{
+  font-size: 17px;
+  font-weight: 700;
+  color:white;
+
+}
+.instituteresult a span{
+  font-size: 14px;
+  font-weight: 500;
+  color:white;
+
+}
+.instituteresult div:hover{
+  color: white;
+ text-decoration: underline;
+ 
+
+}
+.instituteresult div{
+line-height: 7px;
+padding-bottom: 30px;
+
+}
+.govPartner{
+  width: 80vw;
+  margin: 10px auto;
+text-align: center;
+}
+.iniciatives{
+  display: flex;
+  flex-wrap: wrap; 
+  width: 80vw;
+  margin: 10px auto;
+}
+.iniciatives a{
+  /* height: 140px; */
+ padding: 15px;
+ width: 15%;
+}
+.iniciatives img{
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  /* mix-blend-mode: color-burn; */
+}
+
 @media only screen and (max-width: 768px) {
   .card_body {
     width: 90%;

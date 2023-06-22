@@ -98,8 +98,8 @@ const AllColleges = () => {
          <AdminSidebar />
       <div className="dashboard">
       <div className='headdept'>
-          <h2>Institute </h2>
-          <span> Total Institute - {collegeCounts} </span>
+          <h2>Institutes </h2>
+          <span> Total Institutes - {collegeCounts} </span>
       </div>
         <TableComponent columns={columns} loading={loading} dataSource={rows} />
       </div>

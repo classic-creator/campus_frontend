@@ -7,22 +7,23 @@ import * as Yup from 'yup'
 import TextField from '../application/textField'
 import { Formik, Form } from 'formik'
 import { getCourseDetails } from '../../action/courseAction'
-import { UPDATE_COURSES_RESET } from '../../constants/collegeAdminConstants'
-import { clearErrors, updateCourseAction } from '../../action/collegeAdminAction'
+import { UPDATE_COURSES_RESET, UPDATE_DEPERTMENT_RESET } from '../../constants/collegeAdminConstants'
+import { UpdateDepertmentAction, clearErrors, getDepertmentDetailsAction, updateCourseAction } from '../../action/collegeAdminAction'
 import CourseBar from './courseBar'
 import { Button } from 'antd'
 import Sidebar from './sidebar'
 import TextArea from '../application/areainput'
 
-export const UpdateCourse = () => {
+export const UpdateDepertment = () => {
 
     const dispatch = useDispatch()
     const alert = useAlert()
     const navigate = useNavigate()
     const { id } = useParams()
 
-    const { loading, error, course } = useSelector(state => state.UpdateCourse)
-    const { course: details,loading:detailsLoading } = useSelector(state => state.courseDetails)
+    const { loading, error, isUpdated } = useSelector(state => state.updatedepertment)
+
+    const { depertment,loading:detailsLoading } = useSelector(state => state.depertmentDetails)
 
     useEffect(() => {
 
@@ -30,37 +31,32 @@ export const UpdateCourse = () => {
             alert.error(error)
             dispatch(clearErrors())
         }
-        if (course) {
-            alert.success('Update Course Successfully')
-            dispatch({ type: UPDATE_COURSES_RESET })
+        if (isUpdated) {
+            alert.success('Update Successfully')
+            dispatch({ type: UPDATE_DEPERTMENT_RESET })
             // navigate(`/depertment/${details.depertment_id}`)
         }
 
-        dispatch(getCourseDetails(id))
+        dispatch(getDepertmentDetailsAction(id))
 
-    }, [course,id, alert, dispatch, error])
+    }, [id, alert,isUpdated, dispatch, error])
 
 
     const validate = Yup.object({
 
-        courseName: Yup.string().required('required'),
-        duration: Yup.number().max(15, 'Must be characters or less').required('required'),
-        eligibility: Yup.string().required('required'),
-        admission_fees: Yup.number().required('required'),
-        application_fees: Yup.number().required('required'),
-        seat_capacity: Yup.number().required('required'),
-
+        depertment_name: Yup.string().required('required'),
+        instructor: Yup.string().required('required'),
+        description: Yup.string().required('required'),
+       
     })
 
 
 
     const initialvalues = {
-        courseName: details.courseName ? details.courseName : '',
-        duration: details.duration ? details.duration : '',
-        eligibility: details.eligibility ? details.eligibility : '',
-        admission_fees: details.admission_fees ? details.admission_fees : '',
-        application_fees: details.application_fees ? details.application_fees : '',
-        seat_capacity: details.seat_capacity ? details.seat_capacity : '',
+        depertment_name: depertment.depertment_name ? depertment.depertment_name : '',
+        instructor: depertment.instructor ? depertment.instructor : '',
+        description: depertment.description ? depertment.description : '',
+  
 
     }
 
@@ -69,7 +65,7 @@ export const UpdateCourse = () => {
     <div className="depertmentDeash">
       <Sidebar />
       <div className="dashboard">
-            <CourseBar course={details} id={id}   />
+            <CourseBar course={depertment} id={id}   />
             {/* {
                 loading ? <Loader /> : <Fragment> */}
 
@@ -79,7 +75,7 @@ export const UpdateCourse = () => {
                         initialValues={initialvalues}
                         validationSchema={validate}
                         // onSubmit={values => { console.log(values) }}
-                        onSubmit={values => { dispatch(updateCourseAction({ values, id })) }}
+                        onSubmit={values => { dispatch(UpdateDepertmentAction({ values, id })) }}
 
                     >
                         {Formik => (
@@ -89,15 +85,14 @@ export const UpdateCourse = () => {
                                 <div className='applyFor '>
                                     <Form className='applyForm registerClg'>
                                         <div className='but'>
-                                            <h3>Update Course</h3>
+                                            <h3>Update depertment</h3>
                                         </div>
 
-                                        <TextField label='Course Name' name='courseName' type='text' />
-                                        <TextField label='Duration' name='duration' type='text' />
-                                        <TextArea label='Eligibility' name='eligibility' type='text' />
-                                        <TextField label='Seat Capacity' name='seat_capacity' type='number' />
-                                        <TextField label='Admission_fees' name='admission_fees' type='number' />
-                                        <TextField label='Application_fees' name='application_fees' type='number' />
+                                        <TextField label='Depertment Name' name='depertment_name' type='text' />
+                                        
+                                        <TextField label='Instructor' name='instructor' type='text' />
+                                      
+                                        <TextArea label='Description' name='description' />
 
 
 
@@ -122,4 +117,4 @@ export const UpdateCourse = () => {
 
     )
 }
-export default UpdateCourse
+export default UpdateDepertment

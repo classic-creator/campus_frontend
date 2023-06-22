@@ -1,9 +1,82 @@
 .SchemeSlider{
     width: 95vw;
     margin: 2px auto;
+    margin-top: 5vmax;
+    /* border: 1px solid black; */
+    padding: 15px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
+.schemeHead{
+  line-height: 5px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+
+}
+.schemeHead h3{
+ font-weight: 400;
+}
+.schemeHead span{
+ font-weight: 400;
+ color: black;
+}
+.SchemeSlider img{
+  width: 175px;
+  height: 85px;
+}
+.nameBox{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  border-right:1px solid black;
+  padding: 10px;
+  height: 25vh;
+
+ 
+}
+.imagebox{
+  width:60%
+}
+.schemeName{
+  /* border: 2px solid green; */
+  width: 100%;
+  height: 75%;
+  line-height: 25px;
+  /* height: 10vh; */
+  overflow-y: auto;
+}
+
+.schemeName ul{
+  
+  display: flex;
+  flex-wrap: wrap; 
+}
+.schemeName ul li a{
+  color: rgb(78, 67, 67);
+margin: 5px;
+padding-right: 5px;
+padding-left: 5px;
+font-weight: 300;
+text-transform: capitalize;
+border-right: 1px solid black;
+transition: all 0.5s;
+font-size: 14px;
+}
+.schemeName ul li a:hover{
+  color:lightseagreen;
+  text-decoration: underline;
+  
+}
+
 .swiper-button-prev,
 .swiper-button-next {
   color: rgba(18, 18, 19, 0.952) !important;
-  background: white;
+  /* background: white; */
+  font-size: 500px;
+
 }
+.swiper-button-prev svg, 
+.swiper-button-next svg{
+  font-weight: 700;
+} 

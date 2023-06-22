@@ -8,7 +8,7 @@ import { courseReducer ,courseDetailsReducer, preferedCourseReducer} from './red
 import { preferenceReducer, updatePreferenceReducer } from './reducer/preferenceReducer';
 import { ForgetPasswordReducer, GetCountReducer, profileReducer, userReducer } from './reducer/userReducer';
 import { ApplicationReducer, ConfirmStudentReducer, CourseApplicationReducer, MyApplicationReducer, SelectedApplicationReducer, applicationDetailsReducer, applyAdmissionReducer, applyFormAddressReducer, applyFormEducationReducer, applyFormReducer, appyFormfileReducer, studentDetailsReducer } from './reducer/applyReducer';
-import { AddnoticReducer, DeleteNoticReducer, GetDepertmentReducer, GetNoticReducer, UpdatecollegesReducer, addCourseReducer, collegeCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer } from './reducer/collegeAdminReducer';
+import { AddnoticReducer, DeleteNoticReducer, DepertmentDetailsReducer, GetDepertmentReducer, GetNoticReducer, UpdatecollegesReducer, addCourseReducer, collegeCourseReducer, collegesReducer, depertmentReducer, mycollegesReducer, updateCourseReducer, updateDepertmentReducer } from './reducer/collegeAdminReducer';
 import thunk from 'redux-thunk';
 import { CarouselDeleteReducer, CarouselImageReducer, GetCarouselImageReducer, GetSchemeReducer, ImageDeleteReducer, SchemeReducer, courseImageReducer } from './reducer/imageReducer';
 import { AddPaymentReducer, CoursePaymentDetailsReducer,  closePaymentsReducer, getCoursePaymentHistoryReducer, getStudentNewPaymentReducer, getStudentPaymentHistorryReducer } from './reducer/paymentReducer';
@@ -54,6 +54,8 @@ const reducers = combineReducers({
            myCollegeupdate: UpdatecollegesReducer,
             depertment:depertmentReducer,
             depertments:GetDepertmentReducer,
+            updatedepertment:updateDepertmentReducer,
+            depertmentDetails:DepertmentDetailsReducer,
             deptAdCourse:addCourseReducer,
             UpdateCourse:updateCourseReducer,
             collegeCourses:collegeCourseReducer,
@@ -85,6 +87,7 @@ const reducers = combineReducers({
             getcount:GetCountReducer,
             pandingColleges:GetPandingCollegesReducer,
             approve:ApproveCollegeReducer,
+          
 
 })
 

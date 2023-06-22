@@ -14,6 +14,7 @@ import { getPreferences } from '../../action/preferenceAction';
 // import SidebarOfcave from './collegecardAndComponent/sidebarOfcave';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faMultiply } from '@fortawesome/free-solid-svg-icons';
+import HeaderTypography from '../layout/header/headerTypography';
 
 const AllCourses = ({scrollToSection}) => {
 
@@ -56,7 +57,7 @@ const AllCourses = ({scrollToSection}) => {
 
   return (
     <Fragment>
-
+ <HeaderTypography header={'Courses'}/>
       {/* <SidebarOfcave/> */}
       <div className=" course">
 

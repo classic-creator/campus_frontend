@@ -38,6 +38,12 @@ const SchemeAdminimages = () => {
       key: 'link',
     
     },
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+    
+    },
 
     {
       title: 'Action',
@@ -62,7 +68,7 @@ const SchemeAdminimages = () => {
       id: item.id,
       image: item.image_url,
       link:item.link,
-      // type: 'scheme',
+      name: item.name,
 
     })
   })

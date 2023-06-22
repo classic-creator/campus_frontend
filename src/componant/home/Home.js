@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import "./home.css"
 import './seaccarusol.css'
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, HashNavigation,Autoplay } from "swiper";
+import { Pagination, Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -12,14 +12,21 @@ import { GetCarouselimage, SchemeGetAction } from '../../action/imageAction.js';
 import { getColleges } from '../../action/collegeAction.js';
 import { getCountAction } from '../../action/userAction.js';
 import CountUp from 'react-countup';
+import { TextField} from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
 
 const Home = () => {
 
-  const {photos}=useSelector(state=>state.getCarousel)
-  const { colleges } = useSelector(state => state.colleges)
+  const { photos } = useSelector(state => state.getCarousel)
   const { scheme } = useSelector(state => state.getScheme)
-  const { Total_users,application_count } = useSelector(state => state.getcount)
-  const dispatch=useDispatch()
+  const { Total_users, application_count } = useSelector(state => state.getcount)
+  const dispatch = useDispatch()
+
+  const { colleges } = useSelector(state => state.colleges)
+
+  const [selectedCollege, setCollege] = useState('')
+  const clgoption = colleges && colleges.map(college => (college.collegeName));
+
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -40,18 +47,20 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getColleges())
-   dispatch(GetCarouselimage())
-   dispatch(getCountAction())
-   dispatch(SchemeGetAction())
+    dispatch(GetCarouselimage())
+    dispatch(getCountAction())
+    dispatch(SchemeGetAction())
   }, [dispatch])
-  
+
+
+ 
 
   return (
     <Fragment>
       <div id='home' className="container-fluid homediv">
         <div id="carouselExampleIndicators" className="carousel slide " data-bs-ride="carousel">
           <div className="carousel-indicators">
-            {photos &&  photos.map((_, index) => (
+            {photos && photos.map((_, index) => (
               <button
                 type="button"
 
@@ -66,7 +75,7 @@ const Home = () => {
             ))}
           </div>
           <div className="carousel-inner  ">
-            { photos && photos.map((imageUrl, index) => (
+            {photos && photos.map((imageUrl, index) => (
               <div className={`carousel-item  ${activeIndex === index ? 'active' : ''}`} key={index}>
                 <img src={imageUrl.image_url} className="d-block w-100 " alt={`Slide ${index + 1}`} />
               </div>
@@ -108,87 +117,182 @@ const Home = () => {
           <div className="minister">
             <div className="minister1">
               <img src="https://cm.assam.gov.in/documents/34104/55533/CM.jpg/ad0d9308-26b0-8aa4-6764-cb89b59fe740?version=1.0&t=1639826849984" alt="img" />
-              <span>Hon'ble Chif Minister</span>
+              <div className='d-flex flex-column'>
+
+                <h3>Hon'ble Chif Minister</h3>
+                <p className='font-italic'>-<small><i>Dr Himanta Biswa Sarma</i></small></p>
+              </div>
             </div>
             <div className="minister2">
               <img src="https://assets.sentinelassam.com/h-upload/2022/08/05/371399-ranoj-pegu.webp" alt="img" />
-              <span>Hon'ble Education Minister</span>
-            </div>
-          </div>
-        </div>
-        <div className="boxes">
-          {/* <div className="box1   box "> */}
-          <div class="card  text-light bg-primary mb-3" style={{ width: '18rem', }}>
-            <div class="card-header text-center"><h2 >Institute</h2> </div>
-            <div class="card-body">
-              <h2 class="card-title text-center"> <CountUp end={colleges && colleges.length} duration={5} />+</h2>
+              <div className='d-flex flex-column text-start'>
 
-            </div>
-          </div>
-          {/* </div> */}
-          {/* <div className="box2   box"> */}
-          <div class="card text-light bg-primary mb-3" style={{ width: '18rem', }}>
-            <div class="card-header "><h2 className='text-center'>Applicant</h2></div>
-            <div class="card-body">
-              <h2 class="card-title text-center"> <CountUp end={Total_users && Total_users} duration={5} />+</h2>
-
-            </div>
-          </div>
-          {/* </div> */}
-          {/* <div className="box3   box">
-            <h3>User Count</h3>
-            <span>5000</span>
-          </div> */}
-          <div class="card text-light bg-primary mb-3" style={{ width: '18rem', }}>
-            <div class="card-header text-center"><h2>Applications</h2></div>
-            <div class="card-body">
-              <h2 class="card-title text-center"> <CountUp end={application_count && application_count} duration={5} />+</h2>
-
-            </div>
-          </div>
-        </div>
-
-        <div className='SchemeSlider mt-5'>
-          <h3 className='ms-3'> Scheme</h3>
-          <span className='ms-3'>Some educational scheme and scholarship provided by government </span>
-          <Swiper
-            slidesPerView={3}
-            centeredSlides={true}
-            spaceBetween={30}
-            grabCursor={true}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            autoplay={{
-              delay: 4500,
-              disableOnInteraction: true,
-            }}
-            // HashNavigation={{
-            //     watchState: true,
-            //   }}
-            modules={[Pagination, Navigation, Autoplay]}
-            className="mySwiper mt-3"
-          >
-
-        {scheme && scheme.map(item=>(
-          <SwiperSlide  key={item.id} style={{ width: "300px" }}>
-              <div>
-                <Link to={item.link}>
-                  <img src={item.image_url} alt="img" />
-
-                  {/* <span>Anandaram baruah award</span> */}
-                </Link>
+                <h3>Hon'ble Education Minister</h3>
+                <p className='text-start'>-<small><i>Ranoj Pegu</i></small> </p>
               </div>
-            </SwiperSlide>
-            ))}  
-        
-          </Swiper>
+            </div>
+          </div>
+        </div>
 
+
+        <div class="box-cards ">
+          <div class="box-card red">
+            <p class="tip"> <i class="bi bi-buildings me-3"></i>Institute
+            </p>
+            <p class="second-text">    <CountUp end={colleges && colleges.length} duration={5} />+</p>
+
+          </div>
+          <div class="box-card blue">
+            <p class="tip"> <i class="bi bi-person-lines-fill me-3"></i>Applicant
+            </p>
+            <p class="second-text">  <CountUp end={Total_users && Total_users} duration={5} />+</p>
+          </div>
+          <div class="box-card green">
+
+            <p class="tip"><i class="bi bi-window-stack me-3"></i>Applications</p>
+
+            <p class="second-text"><CountUp end={application_count && application_count} duration={5} />+</p>
+
+
+          </div>
+        </div>
+
+        <div className='searchInstitute' style={{ backgroundImage: "url('/backGround.jpg')" }}>
+
+          <div className="searchbar">
+
+            <h4> Search Institut</h4>
+            <div className="">
+
+              {clgoption && clgoption.length > 0 ? (
+                <Autocomplete
+                  disablePortal
+                  id="combo-box-demo"
+                  options={clgoption}
+                  sx={{
+                    width: 300,
+                 
+                  }}
+                  onChange={(event, value) => setCollege(value)}
+                  value={selectedCollege}
+                  renderInput={(params) => (
+                    <TextField {...params} name="college1" label="-All-" />
+                  )}
+                />
+              ) : (
+                <p>No colleges available.</p>
+              )}
+            </div>
+
+            {/* <h2>Total institute - xxx</h2> */}
+          </div>
+          <div className="searchresult">
+
+            <div className="instituteresult">
+
+              {colleges &&
+                colleges
+                  .filter(college => !selectedCollege || college.collegeName === selectedCollege)
+                  .map(college => (
+
+                    <Link to={`/college/${college.id}`}>  <div>
+                      <h2>{college.collegeName}  <i className="bi bi-box-arrow-up-right"></i> </h2>
+                      <span>{college.city}, {college.address}</span>
+                    </div></Link>
+                  ))
+              }
+
+
+            </div>
+            <Link className='clgLink' to={'/colleges'} > <span>All Colleges  <i class="bi bi-box-arrow-up-right"></i>  </span></Link>
+          </div>
+
+        </div>
+
+        <div className='SchemeSlider d-flex'>
+          <div className='nameBox'>
+            <div className='schemeHead'><h3 className='ms-3'> Schemes</h3>
+              <span className='ms-3'>Some educational scheme and scholarship </span>
+
+            </div>
+            <div className='schemeName'>
+              <ul>
+                {scheme && scheme.map(e=>  <li><Link to={e.link}> {e.name}</Link></li>)}
+              
+              </ul>
+            </div>
+
+          </div>
+          <div className='imagebox ms-3'>
+            <Swiper
+              slidesPerView={4}
+              centeredSlides={true}
+              spaceBetween={10}
+              // grabCursor={true}
+              pagination={{
+                clickable: true,
+              }}
+              navigation={true}
+              autoplay={{
+                delay: 3500,
+                // disableOnInteraction: true,
+              }}
+              // HashNavigation={{
+              //     watchState: true,
+              //   }}
+              modules={[Pagination, Navigation, Autoplay]}
+              className="mySwiper mt-3"
+            >
+
+              {scheme && scheme.map(item => (
+                <SwiperSlide key={item.id}>
+                  <div>
+                    <Link to={item.link}>
+                      <img src={item.image_url} style={{ borderRadius: '10px' }} alt="img" />
+
+                      <span>{item.name}</span>
+                    </Link>
+                  </div>
+                </SwiperSlide>
+              ))}
+
+            </Swiper>
+          </div>
         </div>
 
         <div className='govPartner'>
+          {/* <div> <h3>Major iniciative</h3> </div> */}
+          <div className='iniciatives'>
+            <Link to={'https://gandhi.gov.in/'}>
+              <img src="https://dsel.education.gov.in/themes/nexus/assets/images/150yrs.png" style={{ borderRadius: '10px' }} alt="img" />
 
+
+            </Link>
+            <Link to={'https://www.india.gov.in/'}>
+              <img src="https://dsel.education.gov.in/themes/nexus/assets/images/india_gov_logo.png" style={{ borderRadius: '10px' }} alt="img" />
+
+
+            </Link>
+            <Link to={'https://data.gov.in/'}>
+              <img src="https://dsel.education.gov.in/themes/nexus/assets/images/datagov_logo.png" style={{ borderRadius: '10px' }} alt="img" />
+            </Link>
+            <Link to={'https://www.mygov.in/'}>
+              <img src="https://dsel.education.gov.in/themes/nexus/assets/images/my_gov_logo.png" style={{ borderRadius: '10px' }} alt="img" />
+
+
+            </Link>
+            <Link to={'https://pmnrf.gov.in/en/'}>
+              <img src="https://dsel.education.gov.in/themes/nexus/assets/images/pmnrf-logo.png" style={{ borderRadius: '10px' }} alt="img" />
+
+
+            </Link>
+            <Link to={'https://scholarships.gov.in/'}>
+              <img src="https://dsel.education.gov.in/themes/nexus/assets/images/NSP-logo.jpg" style={{ borderRadius: '10px' }} alt="img" />
+
+
+            </Link>
+
+          </div>
 
         </div>
       </div>

@@ -113,7 +113,6 @@ const RegisterCollege = () => {
         loading ? <Loader/> : <Fragment>
         <div>
         <Formik
-           
                 initialValues={{
                     collegeName:'',
                     district:'',
@@ -126,34 +125,24 @@ const RegisterCollege = () => {
                 validationSchema={validate}
                 onSubmit={values =>{dispatch(collegeRegisterAction(values))}}
                 // onSubmit={values =>{console.log(values)}}
-              
               >
                 {Formik => (
                   <div>
-                   
-        
                     <div className='applyFor '>
                       <Form className='applyForm registerClg'>
                       <div className='but'>
                        <h3>Register College </h3>
                         </div>  
-    
                         <TextField label='College Name' name='collegeName' type='text'/>
                         <SelectField label="District" name="address"  options={districtOptions}/>
-                        <TextField label='Email' name='email' type='email'/>
-                        {/* <TextField label='Description' name='description' type='text'/> */}
+                        <TextField label='Email' name='email' type='email'/>                       
                         <TextField label="City" name="city" type='text' />
-                        <TextField label='NAAC Ranking with year' name='rating' type='text'/>
-                        {/* <TextField label='District' name='address' type='text'     /> */}
-                        {/* <TextField label='District' name='district' type='text'     /> */}
-                        <TextArea label='Description' name='description'      />
-                   
+                        <TextField label='NAAC Ranking with year' name='rating' type='text'/>                 
+                        <TextArea label='Description' name='description'      />                   
                        <div className='but'>
                         <input type='submit' className='btn '/>
                         {/* Register</input> */}
-                       </div>
-                      
-                        
+                       </div>                                       
                       </Form>
                     </div>
                   </div>

@@ -25,7 +25,7 @@ const SchemeUploadModal = () => {
     const [preview, setPreview] = useState(null);
     const [coverPreview, setCoverPreview] = useState(true)
 
-   
+   const [schemeName, setSchemeName] = useState('')
 
     const viewHide = () => {
         if (coverPreview === false) {
@@ -53,6 +53,7 @@ const SchemeUploadModal = () => {
         const formData = new FormData();
         formData.append('image_path', image);
         formData.append('image_link', imageName);
+        formData.append('name', schemeName);
 
         dispatch(SchemeUpload(formData));
     };
@@ -96,7 +97,8 @@ const SchemeUploadModal = () => {
                                 <div className='imgUploadbox p-2'>
                                     <div className="mb3">
                                         <input type="file" onChange={handleImageChange} />
-                                        <input type="text" value={imageName} placeholder='Enter links' onChange={(e) => setImageName(e.target.value)} />
+                                        <input type="link" value={imageName} placeholder='Enter links' onChange={(e) => setImageName(e.target.value)} />
+                                        <input type="text" value={schemeName} placeholder='Enter scheme name' onChange={(e) => setSchemeName(e.target.value)} />
 
                                     </div>
                                     <div className="button ">

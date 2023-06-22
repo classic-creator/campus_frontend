@@ -8,6 +8,8 @@ import { useAlert } from 'react-alert'
 import { CREATE_DEPERTMENT_RESET } from '../../constants/collegeAdminConstants'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../layout/loader/loader'
+import HeaderTypography from '../layout/header/headerTypography'
+import Sidebar from './sidebar'
 
 const CreateDepertment = () => {
 
@@ -45,9 +47,13 @@ useEffect(() => {
 
   return (
  
-        <Fragment>
-          {
-            loading ? <Loader/> :  <Fragment>
+    <Fragment>
+    <HeaderTypography header={'Register Depertments'} mb={0} mt={0} />
+    <div className="depertmentDeash">
+    <div className='sidebardiv'>
+       <Sidebar />
+      </div>
+      <div className="dashboard mt-3">
     
             <Formik
                
@@ -92,9 +98,10 @@ useEffect(() => {
             
             
                   </Formik>
+                  </div>
+                  </div>
           
-           </Fragment>
-          }
+          
         </Fragment>
  
   )

@@ -14,7 +14,6 @@ const Account = () => {
 
     const dispatch=useDispatch()
     const alert=useAlert()
-
     const navigate=useNavigate()
     const {user, loading,isAuthenticated}=useSelector(state=>state.user)
 
@@ -29,8 +28,6 @@ const Account = () => {
     function logoutUser(){
         dispatch(logout())
         alert.success("Logout Successfully")
-        
-        
     }
 
   return (

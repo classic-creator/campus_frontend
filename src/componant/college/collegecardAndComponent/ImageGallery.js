@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import CoverAndNav from './coverAndNav'
 import './imagegallery.css'
 import {Image} from 'antd'
+import HeaderTypography from '../../layout/header/headerTypography'
 
 const ImageGallery = () => {
     const { photos, college } = useSelector(state => state.collegeDetails);
@@ -11,6 +12,7 @@ const ImageGallery = () => {
         <Fragment>
           <CoverAndNav college={college} />
        
+          <HeaderTypography header={'Gallery'} mb={3} mt={1}/>
        
              <div className="container-fluid mt-3">
  

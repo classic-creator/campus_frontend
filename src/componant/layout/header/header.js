@@ -10,18 +10,19 @@ import { Button, Image, Progress } from 'antd'
 
 import { useAlert } from 'react-alert'
 import { logout } from '../../../action/userAction'
+import { Typography } from '@material-ui/core'
 const Header = () => {
 
-    const { user, loading ,isAuthenticated} = useSelector(state => state.user)
-    const dispatch=useDispatch()
-    const alert=useAlert()
+    const { user, loading, isAuthenticated } = useSelector(state => state.user)
+    const dispatch = useDispatch()
+    const alert = useAlert()
 
 
-    function logoutUser(){
+    function logoutUser() {
         dispatch(logout())
         alert.success("Logout Successfully")
-        
-        
+
+
     }
 
     return (
@@ -40,7 +41,7 @@ const Header = () => {
                     </a>
                 </div>
                 <div className="middle1">
-                  
+
 
                 </div>
                 {/* <div className="right1 ">
@@ -56,10 +57,10 @@ const Header = () => {
                         <Link >College Executive</Link>
 
                     )} */}
-                  <Link>
-                    {isAuthenticated ?'Login As :' :(<Link to={'/login'}> Login / Register </Link>)}     {loading ? <Button loading={loading}></Button> : (user && user.name)}
-                  </Link>
-              
+                    <Link>
+                        {isAuthenticated ? 'Login As :' : (<Link to={'/login'}> Login / Register </Link>)}     {loading ? <Button loading={loading}></Button> : (user && user.name)}
+                    </Link>
+
 
                     {/* {user && user.user_role !== 'student' ? (
                         <Link to="/admin">Government Executive</Link>
@@ -80,7 +81,7 @@ const Header = () => {
 
                 <div className="middle">
 
-                    <h3>Common Admission Management Platform For Undergraduate Studies</h3>
+               <Link to={'/'}><Typography variant="h3"><i>Common Admission Management Platform for Undergraduate Studies</i></Typography></Link>
 
                 </div>
 
@@ -99,67 +100,64 @@ const Header = () => {
                     </button>
                     <div className="collapse  navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item navli  navli">
+                            <li className="nav-item navli  ">
                                 <NavLink className="nav-link" to="/" exact>
-                                    <i>
+                                    <span> 
+                                         <i>
                                         <FontAwesomeIcon icon={faHomeAlt} />
-                                    </i><span>Home</span>
+                                         </i>
+                                        Home
+                                        </span>
                                 </NavLink>
                             </li>
                             <li className="nav-item navli">
                                 <NavLink className="nav-link" to="/colleges" exact>
-                                    <i>
+                                <span> <i>
                                         <FontAwesomeIcon icon={faBuilding} />
-                                    </i> <span> Colleges </span>
+                                    </i>  Colleges </span>
 
                                 </NavLink>
                             </li>
                             <li className="nav-item navli">
                                 <NavLink className="nav-link" to="/courses" exact>
-                                    <i>
+                                <span>  <i>
                                         <FontAwesomeIcon icon={faBookAtlas} />
-                                    </i> <span>Courses</span>
+                                    </i> Courses</span>
                                 </NavLink>
                             </li>
                             <li className="nav-item navli">
                                 <NavLink className="nav-link" to="/myApplication" exact>
-                                    <i>
+                                <span>    <i>
                                         <FontAwesomeIcon icon={faCheck} />
-                                    </i><span>My Application</span>
+                                    </i>My Application</span>
                                 </NavLink>
                             </li>
-                            {/* <li className="nav-item navli">
-                                <NavLink className="nav-link" to="/login" exact>
-                                    <i>
-                                        <FontAwesomeIcon icon={faUserAlt} />
-                                    </i><span>Profile</span>
-                                </NavLink>
-                            </li> */}
+                           
                             <li class="nav-item dropdown ">
-                           {isAuthenticated ?     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i >
+                                {isAuthenticated ? <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i >
                                         {/* <FontAwesomeIcon icon={faUserAlt} /> */}
-                                        <Image style={{borderRadius: '100%'}} width={25} height={25} src={user && user.image_url}/>
+                                        <img style={{ borderRadius: '100%',width:'28px', height:'28px'  }} src={user && user.image_url} />
                                     </i>
                                     <span className='ms-2'>Profile</span>
-                                </a> :   
-                               <li className="nav-item navli">
-                                <NavLink className="nav-link" to="/login" exact>
-                                    <i>
-                                        <FontAwesomeIcon icon={faUserAlt} />
-                                    </i><span>Login</span>
-                                </NavLink>
-                            </li>  
+                                </a> :
+                                    <li className="nav-item navli">
+                                        <NavLink className="nav-link" to="/login" exact>
+                                        <span>   <i>
+                                                <FontAwesomeIcon icon={faUserAlt} />
+                                            </i>Login</span>
+                                        </NavLink>
+                                    </li>
 
-                        }
+                                }
 
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><Link class="dropdown-item" to={"/login"}>Account</Link></li>
                                     <li><Link class="dropdown-item" to={'/'} onClick={logoutUser} >Logout</Link></li>
-                                    <li><hr class="dropdown-divider"/></li>
-                                  {user && user.type==='admin' ?  <li><Link class="dropdown-item" to={"/admin"}>Deashboard</Link></li> :null}
-                                  {(user && user.type==='manager') || (user && user.user_role === 'waiting')  || (user && user.user_role === 'instituteAdmin')  ?  <li><Link class="dropdown-item" to={"/college/register"}>Deashboard</Link></li> :null}
-                                  {/* {user && user.user_role !== 'student' 
+                                    <li><hr class="dropdown-divider" /></li>
+                                    {user && user.type === 'admin' ? <li><Link class="dropdown-item" to={"/admin"}>Deashboard</Link></li> : null}
+                                    {(user && user.type === 'manager') || (user && user.user_role === 'waiting') || (user && user.user_role === 'instituteAdmin') ? <li><Link class="dropdown-item" to={"/college/register"}>Deashboard</Link></li> : null}
+                                    {/* {user && user.user_role !== 'student' 
 
                                   } */}
                                 </ul>

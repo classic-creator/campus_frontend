@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getStudentNewPaymentAction, getStudentPayHistory } from '../../action/paymentAction';
 // import Razorpay from 'razorpay'
 import axios from 'axios';
+import HeaderTypography from '../layout/header/headerTypography';
 // import { v4 as uuidv4 } from 'uuid';
 
 const StudentNew_old_payments = () => {
@@ -28,13 +29,11 @@ const hendelPayment=async (datas)=>{
       Authorization: `Bearer ${token}`
     },
   };
-
 const {data:{orderId,orderAmount}}=  await axios.post(`/api/process/payment/${datas.id}`, datas, config)
  
 const options={
   key:key,
   amount:orderAmount,
- 
   currency:'INR',
   name:'CAMPUS',
   description:'test transistion',
@@ -45,26 +44,20 @@ const options={
     email:user.email,
     contact:'9365665169'
   },
-
 notes:{
   'address':'nic north lakhimpur',
   'fees_id':datas.id,
   'user_id':user.id,
- 
 },
 custom_fields: [
   {
     "display_name": "Fees ID",
     "variable_name": "fees_id",
     "value": datas.id
-  }
-]
-
+  }]
 }
-
  const rzp = new window.Razorpay(options);
   rzp.open();
-
 }
 
 
@@ -188,8 +181,6 @@ custom_fields: [
       align: "center",
     },
 
-
-
     {
       title: 'Action',
       dataIndex: "action",
@@ -218,9 +209,6 @@ custom_fields: [
       fees_type:item.fees_type,
 
   })
-
- 
-
   })
   useEffect(() => {
    dispatch(getStudentNewPaymentAction(id))
@@ -230,6 +218,7 @@ custom_fields: [
 
   return (
     <Fragment>
+      <HeaderTypography header={'Payments'} mb={3} mt={0}/>
       <div className='container'>
 
       <h3 className='m-4 text-center'>New Panding Payment</h3>

@@ -12,6 +12,7 @@ import ImportantLinkCard from './collegecardAndComponent/importantLinkCard'
 import Imgcarousel from './collegecardAndComponent/Imgcarousel'
 import TableComponent from '../layout/TableComponent'
 import { Button } from 'antd'
+import HeaderTypography from '../layout/header/headerTypography'
 
 
 const CourseDetails = () => {
@@ -149,7 +150,7 @@ const CourseDetails = () => {
       <h2 className='courseHeaderh2'>{course && course.courseName}</h2>
       <Link to={`/apply/${id}`} className="btn btn-primary item-center" >Apply</Link>
       </div>
-      <div className="detailContainer">
+      <div className="detailContainer mb-5">
       {loading ?    <Button danger  loading={loading}></Button> :null}
         <div className='detailsdiv-1 p-edit pl-3 flex-column' >
           <h4  className='m-3 text-left' >About course :</h4>
@@ -184,8 +185,10 @@ const CourseDetails = () => {
 
         />
       </div> */}
-      <div className="container " id="section1" ref={scrollRef} >
-        <h3  >Seat Structure</h3>
+        
+        <HeaderTypography header={'Seat Structure'}/>
+
+      <div className="container mt-3" id="section1" ref={scrollRef} >
       
 
                     <TableComponent columns={seatcolumns}

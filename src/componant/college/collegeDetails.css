@@ -12,6 +12,7 @@
     height: 100%;
     opacity: 0.7;
 }
+
 .clgDec p {
     width: 80%;
     margin: 1px auto;
@@ -89,8 +90,8 @@
     display: flex;
     list-style: none;
     position: sticky;
-    top:8.7%;
-    z-index:10;
+    top: 8.7%;
+    z-index: 10;
 }
 
 .collegeNav ul {
@@ -106,7 +107,7 @@
 
 }
 
-.collegeNav ul li a ,.collegeNav ul li span {
+.collegeNav ul li a, .collegeNav ul li span {
     text-decoration: none;
     color: black;
     font: 1.2vmax "Roboto";
@@ -114,10 +115,10 @@
     transition: all 0.5s;
     padding-left: 1vmax;
     border-left: 2px solid white;
-   cursor: pointer;
+    cursor: pointer;
 }
 
-.collegeNav ul li a:hover,.collegeNav ul li span:hover {
+.collegeNav ul li a:hover, .collegeNav ul li span:hover {
     color: tomato;
 }
 
@@ -139,12 +140,11 @@
     /* display: block; */
     margin: 1vmax auto;
     display: flex;
-   
+
     width: 80%;
     flex-wrap: wrap;
 
 }
-
 
 
 .detailsdiv-2-1 {
@@ -202,10 +202,10 @@
     display: flex;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     justify-content: center;
-    
+
     background-color: rgba(49, 39, 39, 0.692);
     width: 100%;
-    
+
 
     /* border: 2px solid rgb(194, 183, 183); */
     /* width: 230px; */
@@ -216,13 +216,14 @@
 .carousel.carousel-slider {
     min-height: 40vh;
     max-height: 40vh;
-    
+
 }
-.carousel.carousel-slider img{
+
+.carousel.carousel-slider img {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    
+
 }
 
 
@@ -230,27 +231,31 @@
 .carousel .thumbs {
     height: 30px;
     width: 100%;
-    
+
 }
-.carousel .thumb{
-    border : 1px solid white !important;
+
+.carousel .thumb {
+    border: 1px solid white !important;
 }
-.carousel .thumb .selected{ 
-    border :none !important;
+
+.carousel .thumb .selected {
+    border: none !important;
 }
 
 .carousel .thumbs img {
     height: 30px;
     width: 30px;
 }
-.image{
+
+.image {
     min-height: 40vh;
     max-height: 40vh;
-    
+
 }
+
 .image img {
     /* margin: 0 auto; */
-    height:100%;
+    height: 100%;
     width: 100%;
     object-fit: cover;
 }
@@ -320,11 +325,12 @@
         height: auto;
     }
 
-    .collegeNav ul{
+    .collegeNav ul {
         left: 10%;
     }
-    .logo{
-        left:0%;
+
+    .logo {
+        left: 0%;
         margin-top: 0;
         height: 8vmax;
         width: 8vmax;

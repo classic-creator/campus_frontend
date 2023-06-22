@@ -50,8 +50,8 @@ import ProtectedRoute from './protectedRoute/protectedRoute';
 import AddNewPayment from './componant/collegeAdmin/Payment/addNewPayment';
 import CoursePaymentDetails from './componant/collegeAdmin/Payment/CoursePaymentDetails.js';
 import StudentNew_old_payments from './componant/payment/studentNew_old_payments';
-import AddLinks from './componant/collegeAdmin/addLinks';
-import Links from './componant/collegeAdmin/Links.js';
+import AddNotics from './componant/collegeAdmin/addNotics';
+import AdminNotics from './componant/collegeAdmin/Notics.js';
 import Notice from './componant/college/Notice';
 
 import SuperAdminDashboard from './componant/SuperAdmin/SuperAdminDashboard';
@@ -69,6 +69,7 @@ import LoadingBar from 'react-top-loading-bar';
 import { useSelector } from 'react-redux';
 import RegisterSuccess from './componant/collegeAdmin/registerSuccessPage';
 import NotFound from './componant/layout/notFound/NotFound';
+import UpdateDepertment from './componant/collegeAdmin/updateDepertment';
 // import { useSelector } from 'react-redux';
 // import Loader from './componant/layout/loader/loader';
 
@@ -135,6 +136,7 @@ function App() {
         <Route path="/paymentsuccess" element={<Paymentsuccess />} />
     
         <Route exact path='/college/depertment/create' element={<ProtectedRoute isAdmin={true} component={CreateDepertment} />} />
+        <Route exact path='/college/depertment/update/:id' element={<ProtectedRoute isAdmin={true} component={UpdateDepertment} />} />
         <Route exact path='/depertments' element={<ProtectedRoute isAdmin={true} component={AllDepertments} />} />
         <Route exact path='/depertment/:id' element={<ProtectedRoute isAdmin={true} component={DepertmentDetails} />} />
         <Route exact path='/Register/Course/:id' element={<ProtectedRoute isAdmin={true} component={AddCourse} />} />
@@ -149,8 +151,8 @@ function App() {
         <Route exact path='/confirm/admission/college' element={<ProtectedRoute isAdmin={true} component={CollegeConfirmStudentList} />} />
         <Route exact path='/add/new/fees/:id' element={<ProtectedRoute isAdmin={true} component={AddNewPayment} />} />
         <Route exact path='/payment/details/:id' element={<ProtectedRoute isAdmin={true} component={CoursePaymentDetails} />} />
-        <Route exact path='/add/links' element={<ProtectedRoute isAdmin={true} component={AddLinks} />} />
-        <Route exact path='/links' element={<ProtectedRoute isAdmin={true} component={Links} />} />
+        <Route exact path='/add/links' element={<ProtectedRoute isAdmin={true} component={AddNotics} />} />
+        <Route exact path='/links' element={<ProtectedRoute isAdmin={true} component={AdminNotics} />} />
         <Route exact path='/college/images' element={<ProtectedRoute isAdmin={true} component={CollegeImages} />} />
         <Route exact path='/college/manager/profile' element={<ProtectedRoute isAdmin={true} component={CollegeProfile} />} />
 

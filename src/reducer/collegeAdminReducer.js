@@ -16,6 +16,10 @@ import {
     CREATE_DEPERTMENT_REQUEST,
     CREATE_DEPERTMENT_RESET,
     CREATE_DEPERTMENT_SUCCESS,
+    DEACTIVE_COURSE_FAIL,
+    DEACTIVE_COURSE_REQUEST,
+    DEACTIVE_COURSE_RESET,
+    DEACTIVE_COURSE_SUCCESS,
     DELETE_NOTIC_FAIL,
     DELETE_NOTIC_REQUEST,
     DELETE_NOTIC_RESET,
@@ -23,6 +27,9 @@ import {
     DEPERTMENT_COURSES_FAIL,
     DEPERTMENT_COURSES_REQUEST,
     DEPERTMENT_COURSES_SUCCESS,
+    DEPERTMENT_DETAILS_FAIL,
+    DEPERTMENT_DETAILS_REQUEST,
+    DEPERTMENT_DETAILS_SUCCESS,
     GET_DEPERTMENT_FAIL,
     GET_DEPERTMENT_REQUEST,
     GET_DEPERTMENT_SUCCESS,
@@ -43,7 +50,11 @@ import {
     UPDATE_COURSES_FAIL,
     UPDATE_COURSES_REQUEST,
     UPDATE_COURSES_RESET,
-    UPDATE_COURSES_SUCCESS
+    UPDATE_COURSES_SUCCESS,
+    UPDATE_DEPERTMENT_FAIL,
+    UPDATE_DEPERTMENT_REQUEST,
+    UPDATE_DEPERTMENT_RESET,
+    UPDATE_DEPERTMENT_SUCCESS
 } from "../constants/collegeAdminConstants";
 export const collegesReducer = ((state = {}, action) => {
 
@@ -206,13 +217,13 @@ export const GetDepertmentReducer = ((state = { depertments: [], courses: [] }, 
 
         case GET_DEPERTMENT_SUCCESS:
             return {
-...state,
+
                 loading: false,
                 depertments: action.payload.depertments,
             }
         case DEPERTMENT_COURSES_SUCCESS:
             return {
-                ...state,
+              
 
                 loading: false,
                 courses: action.payload.courses,
@@ -222,7 +233,7 @@ export const GetDepertmentReducer = ((state = { depertments: [], courses: [] }, 
         case DEPERTMENT_COURSES_FAIL:
 
             return {
-                ...state,
+         
                 loading: false,
                 error: action.payload
             }
@@ -375,7 +386,6 @@ export const collegeCourseReducer = (state = { courses: [] }, action) => {
 
 
 }
-
 //update Course
 
 export const updateCourseReducer = ((state = {}, action) => {
@@ -383,6 +393,7 @@ export const updateCourseReducer = ((state = {}, action) => {
     switch (action.type) {
 
         case UPDATE_COURSES_REQUEST:
+        case DEACTIVE_COURSE_REQUEST:
 
             return {
                 ...state,
@@ -395,12 +406,116 @@ export const updateCourseReducer = ((state = {}, action) => {
                 loading: false,
                 course: action.payload.course,
             }
+        case DEACTIVE_COURSE_SUCCESS:
+            return {
+                loading: false,
+                isActive:true
+            }
         case UPDATE_COURSES_RESET:
             return {
                 loading: false,
 
             }
+        case DEACTIVE_COURSE_RESET:
+            return {
+                loading: false,
+                isActive:true
+
+            }
         case UPDATE_COURSES_FAIL:
+        case DEACTIVE_COURSE_FAIL:
+
+
+            return {
+                loading: false,
+                error: action.payload
+            }
+      
+
+        case CLEAR_ERRORS:
+
+            return {
+                ...state,
+                error: null,
+            };
+
+        default:
+            return state;
+    }
+
+})
+
+
+//update depertment
+
+export const updateDepertmentReducer = ((state = {}, action) => {
+
+    switch (action.type) {
+
+        case UPDATE_DEPERTMENT_REQUEST:
+
+            return {
+                ...state,
+                loading: true,
+            };
+
+
+        case UPDATE_DEPERTMENT_SUCCESS:
+            return {
+                loading: false,
+                message: action.payload.message,
+                isUpdated:true,
+            }
+        case UPDATE_DEPERTMENT_RESET:
+            return {
+                loading: false,
+                isUpdated:false
+
+            }
+        case UPDATE_DEPERTMENT_FAIL:
+
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+
+            return {
+                ...state,
+                error: null,
+            };
+
+        default:
+            return state;
+    }
+
+})
+
+
+//update depertment
+
+export const DepertmentDetailsReducer = ((state = {depertment:{}}, action) => {
+
+    switch (action.type) {
+
+        case DEPERTMENT_DETAILS_REQUEST:
+
+            return {
+                ...state,
+                loading: true,
+                depertment:{}
+            };
+
+
+        case DEPERTMENT_DETAILS_SUCCESS:
+            return {
+                loading: false,
+                depertment: action.payload.depertment,
+                
+            }
+      
+        case DEPERTMENT_DETAILS_FAIL:
 
             return {
                 loading: false,
