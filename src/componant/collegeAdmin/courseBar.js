@@ -5,7 +5,7 @@ import { deActiveCourseAction } from '../../action/collegeAdminAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert'
 
-const CourseBar = ({course,id,header}) => {
+const CourseBar = ({course,id,header,update}) => {
 
     const alert=useAlert()
     const {  loading } = useSelector(state => state.courseDetails)
@@ -34,8 +34,14 @@ const CourseBar = ({course,id,header}) => {
 
                             {loading ? <Button loading={loading}></Button> : course && course.courseName}
 
-                            <Link  className=' ms-1 ' to={`/course/update/${id}`}>  <Button className='button-all'> Edit</Button>  </Link>
-                         {course && course.active===1 ?  <Button className='button-all ms-2' loading={activeLoading} type='primary' danger onClick={DeActiveHendlar}>Deactive</Button> :<Button className='button-all ms-2' type='primary' loading={activeLoading}   onClick={DeActiveHendlar}>Active</Button> }
+                          {update ? (null) : ( <Link  className=' ms-1 ' to={`/course/update/${id}`}>  <Button className='button-all'> Edit</Button>  </Link>)}
+                        
+               
+
+                        
+                         {course && course.active===1 ?  <Button className='button-all ms-2' loading={activeLoading} type='primary' danger onClick={DeActiveHendlar}>Deactive</Button> :<Button className='button-all ms-2' type='primary' loading={activeLoading}   onClick={DeActiveHendlar}>Active</Button> } 
+
+                       
                         </Link>
 
                     </div>

@@ -162,7 +162,7 @@ const ClodePayment=(record)=>{
                     <div className="dashboardSummeryBox2">
                         <Link to={`/course/apply/${id}`}>
                             <p>admission requests</p>
-                            <CountUp end={course_applications && course_applications.length>1 && course_applications.length} duration={5} />
+                            <CountUp end={course_applications ? course_applications.length : 0}  duration={5}  />
                             {/* <p>{course_applications && course_applications.length}</p> */}
                         </Link>
 

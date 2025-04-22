@@ -106,7 +106,7 @@ const Home = () => {
           <div className='edu'>
 
             <div className="bar1">
-              <img src="https://assets.sentinelassam.com/h-upload/2020/11/11/172257-assam-government.jpg" alt="img" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ99J4Y7Eg4QTYXnfPLuoB0qdnjTpB9QFQYyA&s" alt="img" />
               <h3>Goverment Of Assam</h3>
             </div>
             <div className="bar1">
@@ -124,7 +124,7 @@ const Home = () => {
               </div>
             </div>
             <div className="minister2">
-              <img src="https://assets.sentinelassam.com/h-upload/2022/08/05/371399-ranoj-pegu.webp" alt="img" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Ranoj_Pegu.jpg" alt="img" />
               <div className='d-flex flex-column text-start'>
 
                 <h3>Hon'ble Education Minister</h3>

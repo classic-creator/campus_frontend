@@ -18,7 +18,7 @@ const CourseCard = ({course,college}) => {
       <div className="coursecard_body">
         <h2 >{course.courseName}</h2>
        
-       {college ? <div className="clgname"><img src={college.logo_image_url} alt="" /><h3 >{college.collegeName}</h3></div> :  <div className="clgname"><img src="https://assets.sentinelassam.com/h-upload/2020/11/11/172257-assam-government.jpg" alt="" /><h3>{course.collegeName}</h3></div> }
+       {college ? <div className="clgname"><img src={college.logo_image_url} alt="" /><h3 >{college.collegeName}</h3></div> :  <div className="clgname"><img src={course.image_path} alt="" /><h3>{course.collegeName}</h3></div> }
         <p> <FontAwesomeIcon icon={faLocationPin}/> {course.address} , {course.city}</p>
         <p>  {course.depertment_name}</p>
         <p>Duration: {course.duration}year</p>

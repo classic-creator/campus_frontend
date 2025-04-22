@@ -9,7 +9,7 @@ import { Formik, Form } from 'formik'
 import { getCourseDetails } from '../../action/courseAction'
 import { UPDATE_COURSES_RESET, UPDATE_DEPERTMENT_RESET } from '../../constants/collegeAdminConstants'
 import { UpdateDepertmentAction, clearErrors, getDepertmentDetailsAction, updateCourseAction } from '../../action/collegeAdminAction'
-import CourseBar from './courseBar'
+// import CourseBar from './courseBar'
 import { Button } from 'antd'
 import Sidebar from './sidebar'
 import TextArea from '../application/areainput'
@@ -65,7 +65,7 @@ export const UpdateDepertment = () => {
     <div className="depertmentDeash">
       <Sidebar />
       <div className="dashboard">
-            <CourseBar course={depertment} id={id}   />
+            {/* <CourseBar course={depertment} id={id}  update /> */}
             {/* {
                 loading ? <Loader /> : <Fragment> */}
 

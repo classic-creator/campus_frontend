@@ -15,7 +15,7 @@ export const getColleges=(keyword="")=>async(dispatch)=>{
     const token=localStorage.getItem('token')
     const config = {
         // baseURL:'http://127.0.0.1:8000',
-        baseURL: process.env.REACT_APP_API_BASE_URL,
+        baseURL:process.env.REACT_APP_API_BASE_URL,
         headers: {
             // 'Accept' : 'application/json',
             'Content-Type' : 'multipart/form-data',
@@ -24,6 +24,7 @@ export const getColleges=(keyword="")=>async(dispatch)=>{
     };
     dispatch({type:ALL_COLLEGE_REQUEST })
 
+    
     const {data}=await axios.get(`/api/colleges?keyword=${keyword}`,config)
     dispatch({
         type:ALL_COLLEGE_SUCCESS,

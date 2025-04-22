@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faMultiply } from '@fortawesome/free-solid-svg-icons';
 import HeaderTypography from '../layout/header/headerTypography';
 
+
 const AllCourses = ({scrollToSection}) => {
 
   const {isAuthenticated}=useSelector(state=>state.user)
@@ -47,6 +48,7 @@ const AllCourses = ({scrollToSection}) => {
 
     dispatch(getPreferences());
     dispatch(getAllCourses(keyword))
+   
 
   }, [dispatch, keyword])
 

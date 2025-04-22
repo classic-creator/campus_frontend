@@ -48,7 +48,9 @@ const SuperAdminDashboard = () => {
                                 
                             </Link>
                             <Link to="/confirm/admission/college">
-                                <p>Students</p>
+                                <p>
+                                    Total user
+                                </p>
                                 <CountUp end={Total_users && Total_users} duration={5} />
                               
                             </Link>

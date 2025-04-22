@@ -14,7 +14,7 @@ const Footer = () => {
 
 			<div class="footer-left">
 
-				<h3>Common Admission Management Platform for Undergraduate Studies - <span>CAMPUS</span></h3>
+				<h3>Common Admission  Platform for Undergraduate Studies - <span>CAMPUS</span></h3>
 
 				<p class="footer-links">
 					<Link to={'/'} class="link-1">Home</Link>
@@ -43,7 +43,7 @@ const Footer = () => {
 
 				<div>
 					<i class="fa fa-phone"></i>
-					<p>+91.555.555.5555</p>
+					<p>+91 555 555 5555</p>
 				</div>
 
 				<div>

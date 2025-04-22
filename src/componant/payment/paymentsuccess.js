@@ -9,6 +9,7 @@ const Paymentsuccess = () => {
     const referenceNum = seachQuery.get("reference")
   return (
    <Fragment>
+    
     <div className="vh-100 d-flex justify-content-center align-items-center">
             <div>
                 <div className="mb-4 text-center">

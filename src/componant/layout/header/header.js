@@ -5,7 +5,7 @@ import { faBookAtlas, faBuilding, faCheck, faHomeAlt, faUserAlt } from '@fortawe
 import { NavLink, Link } from 'react-router-dom'
 import "./header.css"
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Image, Progress } from 'antd'
+import { Button } from 'antd'
 // import Loader from '../loader/loader'
 
 import { useAlert } from 'react-alert'
@@ -75,16 +75,16 @@ const Header = () => {
                 <div className='rigt'>
 
                     <img className='rigtfirst' src='https://indtoday.com/wp-content/uploads/2019/10/india-govt.jpg' alt='aslkfjd' />
-                    <img className='rigtsecond' src="https://static.javatpoint.com/fullformpages/images/nic.png" alt="img" />
+                    <img className='rigtsecond' src="https://www.uxdt.nic.in/wp-content/uploads/2020/06/nic-logo-nic-logo-1-bilingual-blue-1-01.jpg?x76268" alt="img" />
 
                 </div>
 
                 <div className="middle">
 
-               <Link to={'/'}><Typography variant="h3"><i>Common Admission Management Platform for Undergraduate Studies</i></Typography></Link>
+               <Link to={'/'}><Typography variant="h3"><i>Common Admission  Platform for Undergraduate Studies</i></Typography></Link>
 
                 </div>
-
+                
                 <div className="left">
 
                     <Search link='colleges' placeholder='Search Colleges' />
@@ -134,10 +134,10 @@ const Header = () => {
                             </li>
                            
                             <li class="nav-item dropdown ">
-                                {isAuthenticated ? <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {isAuthenticated ? <a href='/#' class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i >
                                         {/* <FontAwesomeIcon icon={faUserAlt} /> */}
-                                        <img style={{ borderRadius: '100%',width:'28px', height:'28px'  }} src={user && user.image_url} />
+                                        <img alt='logo' style={{ borderRadius: '100%',width:'28px', height:'28px'  }} src={user && user.image_url} />
                                     </i>
                                     <span className='ms-2'>Profile</span>
                                 </a> :
